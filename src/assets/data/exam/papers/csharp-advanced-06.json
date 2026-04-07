@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a06",
+  "title": "C# Advanced — Paper 6",
+  "description": "Advanced C# covering Delegates, Events, Async/Await, Task Parallel Library, Async Patterns & CancellationToken, Extension Methods, Expression Trees, Dynamic Types, Advanced Pattern Matching, and Records/Tuples/Deconstruction.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a06_q1",
+      "text": "What is CancellationToken and how is it used to cancel an async operation?",
+      "options": [
+        { "id": "a", "text": "CancellationToken directly stops a thread when cancelled." },
+        { "id": "b", "text": "CancellationToken is a struct passed to async methods; the method periodically checks IsCancellationRequested or calls ThrowIfCancellationRequested(), and the caller cancels via CancellationTokenSource.Cancel()." },
+        { "id": "c", "text": "CancellationToken automatically disposes resources when cancelled." },
+        { "id": "d", "text": "CancellationToken is only used with Parallel.For, not async/await." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q2",
+      "text": "What is a record type in C# 9+ and what does it provide by default?",
+      "options": [
+        { "id": "a", "text": "A record is a class with a private constructor." },
+        { "id": "b", "text": "A record is a reference type with compiler-generated value-based equality, immutable init-only properties, Deconstruct(), ToString(), and a 'with' expression for non-destructive mutation." },
+        { "id": "c", "text": "A record is a value type stored on the stack like a struct." },
+        { "id": "d", "text": "A record provides thread-safety for all its properties." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q3",
+      "text": "What does a multicast delegate's invocation return when all methods return values?",
+      "options": [
+        { "id": "a", "text": "It returns a collection of all return values." },
+        { "id": "b", "text": "Only the return value of the last method in the invocation list is returned to the caller; all earlier return values are discarded." },
+        { "id": "c", "text": "It throws an exception because multicast delegates cannot have return values." },
+        { "id": "d", "text": "It returns the first non-null return value." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q4",
+      "text": "What are the differences between event and a public delegate field in C#?",
+      "options": [
+        { "id": "a", "text": "They are identical; event is just an alias for a delegate field." },
+        { "id": "b", "text": "A public delegate field can be directly assigned (=), cleared (= null), and invoked from outside the class; an event restricts external code to only subscribe (+=) and unsubscribe (-=), preventing external invocation or replacement." },
+        { "id": "c", "text": "Events support multicast; delegate fields do not." },
+        { "id": "d", "text": "Delegate fields are thread-safe; events are not." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q5",
+      "text": "What is ValueTask<T> and when should it be preferred over Task<T>?",
+      "options": [
+        { "id": "a", "text": "ValueTask<T> is always faster and should replace Task<T> everywhere." },
+        { "id": "b", "text": "ValueTask<T> is a struct that avoids heap allocation when the result is already available synchronously (common in hot paths); use Task<T> for long-running operations that always complete asynchronously." },
+        { "id": "c", "text": "ValueTask<T> is used only for CPU-bound work." },
+        { "id": "d", "text": "ValueTask<T> does not support cancellation." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q6",
+      "text": "What is IAsyncEnumerable<T> and how is it consumed?",
+      "options": [
+        { "id": "a", "text": "IAsyncEnumerable<T> is a synchronous collection that runs on a background thread." },
+        { "id": "b", "text": "IAsyncEnumerable<T> represents an async stream of values; it is consumed with 'await foreach', which awaits each item as it becomes available without blocking the thread between items." },
+        { "id": "c", "text": "IAsyncEnumerable<T> requires manual Task.WhenAll() to enumerate." },
+        { "id": "d", "text": "IAsyncEnumerable<T> materializes all values before enumeration begins." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q7",
+      "text": "What happens when you use AsParallel().WithDegreeOfParallelism(n) in PLINQ?",
+      "options": [
+        { "id": "a", "text": "It creates exactly n dedicated threads." },
+        { "id": "b", "text": "It limits PLINQ to use at most n concurrent tasks from the thread pool, balancing parallelism with resource constraints." },
+        { "id": "c", "text": "It forces sequential execution with n as a batch size." },
+        { "id": "d", "text": "It sets the maximum number of elements to process." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q8",
+      "text": "What is the 'with' expression in C# records and how does it work?",
+      "options": [
+        { "id": "a", "text": "It modifies the original record in place." },
+        { "id": "b", "text": "It creates a copy of a record with specified properties changed and all other properties preserved from the original, enabling non-destructive mutation of immutable records." },
+        { "id": "c", "text": "It is a using-like syntax for resource management in records." },
+        { "id": "d", "text": "It merges two records into one." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q9",
+      "text": "How do you implement an extension method that works on IQueryable<T> for a custom filter?",
+      "options": [
+        { "id": "a", "text": "Extension methods cannot target IQueryable<T>." },
+        { "id": "b", "text": "Define a static method in a static class taking 'this IQueryable<T> source' and an Expression<Func<T,bool>> predicate, calling source.Where(predicate) and returning IQueryable<T> to preserve query composition." },
+        { "id": "c", "text": "Use a Func<T,bool> parameter instead of Expression<Func<T,bool>> for IQueryable." },
+        { "id": "d", "text": "Call .AsEnumerable() first, then apply the extension method." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q10",
+      "text": "What is an async stream (C# 8+) and how do you produce one?",
+      "options": [
+        { "id": "a", "text": "An async stream is produced by returning Task<IEnumerable<T>>." },
+        { "id": "b", "text": "An async stream is produced by an async iterator method that returns IAsyncEnumerable<T> and uses 'yield return' with 'await' to asynchronously produce each value." },
+        { "id": "c", "text": "Async streams require a background Task that pushes values to a queue." },
+        { "id": "d", "text": "Async streams are produced by calling Observable.Create() in Rx." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q11",
+      "text": "What is a value tuple in C# and how does it differ from System.Tuple?",
+      "options": [
+        { "id": "a", "text": "Value tuples and System.Tuple are identical." },
+        { "id": "b", "text": "Value tuples (System.ValueTuple) are value types (structs) with named elements, supporting deconstruction and more concise syntax; System.Tuple is a reference type with positional Item1/Item2 properties and no named element support." },
+        { "id": "c", "text": "Value tuples are allocated on the heap; System.Tuple is on the stack." },
+        { "id": "d", "text": "System.Tuple supports named elements; value tuples do not." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q12",
+      "text": "What is the ExpressionVisitor base class used for in C#?",
+      "options": [
+        { "id": "a", "text": "It is used to traverse the file system like a directory visitor." },
+        { "id": "b", "text": "ExpressionVisitor provides a base class for walking and optionally modifying expression trees; override specific Visit* methods to intercept and rewrite nodes of interest." },
+        { "id": "c", "text": "It is only useful for compiling expressions, not traversing them." },
+        { "id": "d", "text": "ExpressionVisitor executes expression trees without compiling." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q13",
+      "text": "What does the 'dynamic' keyword NOT give you compared to using 'object'?",
+      "options": [
+        { "id": "a", "text": "dynamic gives no access to any properties." },
+        { "id": "b", "text": "dynamic bypasses compile-time type checking entirely; you lose IntelliSense, compiler errors for typos in member names, and static analysis, unlike 'object' which still enforces compile-time typing before casting." },
+        { "id": "c", "text": "dynamic is slower than 'object' in every situation." },
+        { "id": "d", "text": "dynamic cannot call methods; it only accesses fields." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q14",
+      "text": "What does deconstruction mean for value tuples in C#?",
+      "options": [
+        { "id": "a", "text": "It converts a tuple to a string representation." },
+        { "id": "b", "text": "Deconstruction unpacks a tuple (or any type with a Deconstruct method) into individual named variables: var (name, age) = person; assigns the components to name and age directly." },
+        { "id": "c", "text": "Deconstruction removes elements from a tuple permanently." },
+        { "id": "d", "text": "Deconstruction is only available for System.Tuple, not value tuples." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q15",
+      "text": "What is the 'relational' pattern in C# 9+ pattern matching?",
+      "options": [
+        { "id": "a", "text": "A pattern that checks object identity via ReferenceEquals." },
+        { "id": "b", "text": "A pattern using comparison operators (< > <= >=) directly in a pattern: e.g., 'x is >= 0 and <= 100' matches when x is in the range [0, 100]." },
+        { "id": "c", "text": "A pattern that compares two variables for equality." },
+        { "id": "d", "text": "A pattern that matches database relation objects." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q16",
+      "text": "How does PLINQ handle ordering and what option preserves it?",
+      "options": [
+        { "id": "a", "text": "PLINQ always preserves order automatically." },
+        { "id": "b", "text": "PLINQ does not preserve order by default for performance; call .AsOrdered() to request order preservation, though this introduces synchronization overhead." },
+        { "id": "c", "text": "PLINQ preserves order only when using OrderBy." },
+        { "id": "d", "text": "PLINQ order is controlled by thread scheduling and cannot be configured." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q17",
+      "text": "What is a record struct (C# 10+) and how does it differ from a record class?",
+      "options": [
+        { "id": "a", "text": "Record struct and record class are identical." },
+        { "id": "b", "text": "A record struct is a value type (allocated on the stack) with compiler-generated value equality and Deconstruct(); a record class is a reference type. Record structs are mutable by default unless declared readonly." },
+        { "id": "c", "text": "Record structs cannot have 'with' expressions." },
+        { "id": "d", "text": "Record structs are sealed; record classes are not." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q18",
+      "text": "What is the purpose of CancellationTokenSource.CreateLinkedTokenSource()?",
+      "options": [
+        { "id": "a", "text": "It creates a new token that is independent of all parent tokens." },
+        { "id": "b", "text": "It creates a CancellationTokenSource whose token is cancelled when any of the provided tokens is cancelled, enabling composite cancellation from multiple sources." },
+        { "id": "c", "text": "It merges two tokens into a single token that requires both to be cancelled." },
+        { "id": "d", "text": "It clones a CancellationToken for use in a child task." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q19",
+      "text": "What is the difference between Task.Delay() and Thread.Sleep() in async contexts?",
+      "options": [
+        { "id": "a", "text": "They are interchangeable in async methods." },
+        { "id": "b", "text": "await Task.Delay() suspends the async method without blocking the thread, freeing it for other work; Thread.Sleep() blocks the thread for the duration, preventing it from handling other requests." },
+        { "id": "c", "text": "Task.Delay() is less precise than Thread.Sleep()." },
+        { "id": "d", "text": "Thread.Sleep() is preferred in async methods for simplicity." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q20",
+      "text": "How can you implement Deconstruct() on a custom class to enable tuple-style assignment?",
+      "options": [
+        { "id": "a", "text": "Implement the IDeconstructable interface with a Deconstruct method." },
+        { "id": "b", "text": "Define a public void Deconstruct(out T1 a, out T2 b, ...) method on the class; the compiler recognizes it and allows: var (a, b) = myObject; syntax." },
+        { "id": "c", "text": "Mark the class with [Deconstruct] attribute." },
+        { "id": "d", "text": "Override the implicit conversion operator to ValueTuple." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q21",
+      "text": "How does event thread-safety work with the Interlocked class for event subscriptions?",
+      "options": [
+        { "id": "a", "text": "Events are always thread-safe without any explicit synchronization." },
+        { "id": "b", "text": "Since delegates are immutable in .NET, subscribing/unsubscribing atomically replaces the backing delegate field; Interlocked.CompareExchange can be used in custom add/remove accessors to implement lock-free, thread-safe event management." },
+        { "id": "c", "text": "Interlocked cannot be used with delegates." },
+        { "id": "d", "text": "Thread safety for events requires a ReaderWriterLockSlim." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q22",
+      "text": "What does the 'switch expression' (C# 8+) enable that switch statements do not?",
+      "options": [
+        { "id": "a", "text": "Switch expressions support fall-through between arms." },
+        { "id": "b", "text": "Switch expressions are value-producing: they return a value from each arm, support exhaustiveness checking, use '=>' for concise arms, and integrate pattern matching more cleanly than switch statements." },
+        { "id": "c", "text": "Switch expressions require all cases to be constant values." },
+        { "id": "d", "text": "Switch expressions automatically handle null values." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q23",
+      "text": "What is an anonymous type in C# and how is it related to tuples?",
+      "options": [
+        { "id": "a", "text": "Anonymous types and tuples are identical in C#." },
+        { "id": "b", "text": "An anonymous type is a compiler-generated reference type created with 'new { Name = x, Age = y }' and is read-only; tuples are value types supporting deconstruction. Anonymous types are used in LINQ projections; tuples offer named access without a class definition." },
+        { "id": "c", "text": "Anonymous types support mutable properties; tuples are always immutable." },
+        { "id": "d", "text": "Anonymous types can be returned from public methods; tuples cannot." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q24",
+      "text": "How does expression tree manipulation enable runtime code generation?",
+      "options": [
+        { "id": "a", "text": "Expression trees can only be used for read-only code analysis." },
+        { "id": "b", "text": "You can build an expression tree programmatically at runtime using Expression.* factory methods, then call .Compile() to generate a delegate backed by IL code, effectively generating and executing code at runtime without Reflection.Emit." },
+        { "id": "c", "text": "Runtime code generation requires the Roslyn compiler API, not expression trees." },
+        { "id": "d", "text": "Expression tree compilation is only available in .NET Framework." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q25",
+      "text": "What is ExpandoObject's relationship to IDictionary<string,object>?",
+      "options": [
+        { "id": "a", "text": "ExpandoObject does not implement IDictionary." },
+        { "id": "b", "text": "ExpandoObject implements IDictionary<string,object>, so you can add/remove/iterate its dynamic properties via dictionary syntax: ((IDictionary<string,object>)expando)[\"Name\"] = \"Alice\"." },
+        { "id": "c", "text": "IDictionary<string,object> is only used for serialization of ExpandoObject." },
+        { "id": "d", "text": "Casting ExpandoObject to IDictionary throws an InvalidCastException." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q26",
+      "text": "What happens to a CancellationToken after CancellationTokenSource.Cancel() is called?",
+      "options": [
+        { "id": "a", "text": "The token is disposed and cannot be used again." },
+        { "id": "b", "text": "IsCancellationRequested becomes true, registered callbacks are invoked synchronously, and any awaiting ThrowIfCancellationRequested() calls will throw OperationCanceledException." },
+        { "id": "c", "text": "Existing async operations are immediately terminated." },
+        { "id": "d", "text": "The CancellationToken is reset and reusable." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q27",
+      "text": "In PLINQ, what is the purpose of .ForAll() vs .ToList() when collecting results?",
+      "options": [
+        { "id": "a", "text": ".ForAll() preserves order; .ToList() does not." },
+        { "id": "b", "text": ".ForAll() processes results in parallel without merging into a single collection; .ToList() merges all parallel results into a List<T> sequentially, introducing a merge overhead. .ForAll() is preferred when order and collection aren't needed." },
+        { "id": "c", "text": ".ForAll() is synchronous; .ToList() is asynchronous." },
+        { "id": "d", "text": "They are interchangeable with no performance difference." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q28",
+      "text": "What is record inheritance in C# 9+ and what constraint applies?",
+      "options": [
+        { "id": "a", "text": "Records cannot participate in inheritance." },
+        { "id": "b", "text": "A record can inherit from another record (not from a class); the derived record extends the base record's properties and the compiler-generated equality considers all properties from both." },
+        { "id": "c", "text": "Records support multiple inheritance." },
+        { "id": "d", "text": "Record inheritance automatically makes the derived record sealed." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q29",
+      "text": "What is the purpose of the Task.Yield() method in async programming?",
+      "options": [
+        { "id": "a", "text": "Task.Yield() returns the current result to the caller immediately." },
+        { "id": "b", "text": "Task.Yield() creates an awaitable that asynchronously yields control back to the current context, forcing the remainder of the method to run as a continuation, which can prevent stack overflows in async recursion and improve responsiveness." },
+        { "id": "c", "text": "Task.Yield() is equivalent to Thread.Yield() for thread scheduling." },
+        { "id": "d", "text": "Task.Yield() produces the next value in an async stream." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a06_q30",
+      "text": "How do you use a fluent extension method to build a complex pipeline (e.g., query builder)?",
+      "options": [
+        { "id": "a", "text": "Each extension method must be in the same class as the type it extends." },
+        { "id": "b", "text": "Define extension methods on the builder type, each modifying and returning 'this' (or a new instance); callers chain them like: query.Where(...).OrderBy(...).Limit(10).Execute(), with each method adding to the query state." },
+        { "id": "c", "text": "Fluent pipelines require implementing the Builder interface." },
+        { "id": "d", "text": "Extension methods cannot be chained in a fluent pattern." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

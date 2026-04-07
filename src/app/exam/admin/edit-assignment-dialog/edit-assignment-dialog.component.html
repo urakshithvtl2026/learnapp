@@ -1,0 +1,81 @@
+<h2 mat-dialog-title>
+  <mat-icon>edit</mat-icon> Edit Assignment
+</h2>
+
+<mat-dialog-content>
+
+  <!-- Warning banner -->
+  @if (warning) {
+    <div class="banner-warn">
+      <mat-icon>warning</mat-icon>
+      <span>{{ warning }}</span>
+    </div>
+  }
+ 
+  <!-- User -->
+  <mat-form-field appearance="outline" class="full-width">Already had an active assignment
+    <mat-label>User</mat-label>
+    <mat-select [(ngModel)]="selectedUserId" (ngModelChange)="onAnyChange()">
+      @for (u of users; track u.id) {
+        <mat-option [value]="u.id">{{ u.name }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Paper -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Question Paper</mat-label>
+    <mat-select [(ngModel)]="selectedPaperId" (ngModelChange)="onAnyChange()">
+      @for (p of papers; track p.id) {
+        <mat-option [value]="p.id">{{ p.title }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Timer info (read-only) -->
+  @if (selectedPaper) {
+    <p class="timer-info">
+      <mat-icon>timer</mat-icon> {{ timerLabel }}
+    </p>
+  }
+
+  <!-- Status -->
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="selectedStatus" (ngModelChange)="onAnyChange()">
+      @for (s of statusOptions; track s.value) {
+        <mat-option [value]="s.value">{{ s.label }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Original assigned-at (read-only) -->
+  <p class="meta">
+    Originally assigned: <strong>{{ data.assignment.assignedAt | date:'medium' }}</strong>
+  </p>
+
+  @if (error) {
+    <p class="error-msg">{{ error }}</p>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close(false)">Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">
+    <mat-icon>save</mat-icon> Save Changes
+  </button>
+</mat-dialog-actions>
+
+<style>
+  .full-width  { width: 100%; }
+  .timer-info  { display: flex; align-items: center; gap: 6px; color: #555; font-size: 0.88rem; margin: -8px 0 8px; }
+  .meta        { font-size: 0.82rem; color: #777; margin: 0 0 8px; }
+  .error-msg   { color: #d32f2f; font-size: 0.85rem; }
+  .banner-warn {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: #fff8e1; color: #e65100;
+    border-radius: 8px; padding: 10px 12px;
+    font-size: 0.85rem; margin-bottom: 16px;
+    mat-icon { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+  }
+</style>

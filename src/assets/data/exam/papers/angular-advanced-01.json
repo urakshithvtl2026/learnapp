@@ -1,0 +1,339 @@
+{
+  "id": "qp_ng_a01",
+  "title": "Angular Advanced — Paper 1",
+  "description": "Advanced Angular concepts: reactive forms, custom validators, routing, guards, HTTP client, RxJS, change detection, custom directives/pipes, state management, and testing.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_ng_a01_q1",
+      "text": "Given this code:\n\nconst form = new FormGroup({\n  address: new FormGroup({\n    city: new FormControl(''),\n    zip: new FormControl('')\n  })\n});\nform.patchValue({ address: { city: 'London' } });\n\nWhat is the value of form.value.address.zip after patchValue?",
+      "options": [
+        { "id": "a", "text": "null" },
+        { "id": "b", "text": "'' (empty string)" },
+        { "id": "c", "text": "undefined" },
+        { "id": "d", "text": "Throws an error" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q2",
+      "text": "Which method on FormGroup returns the form value INCLUDING controls that are disabled?",
+      "options": [
+        { "id": "a", "text": "form.value" },
+        { "id": "b", "text": "form.getRawValue()" },
+        { "id": "c", "text": "form.getDisabledValue()" },
+        { "id": "d", "text": "form.enabled" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q3",
+      "text": "Given this template-driven code:\n\nthis.fb.group({\n  items: this.fb.array([\n    this.fb.control('first'),\n    this.fb.control('second')\n  ])\n});\n\nHow do you access the FormArray instance programmatically?",
+      "options": [
+        { "id": "a", "text": "form.get('items') as FormArray" },
+        { "id": "b", "text": "form.controls.items" },
+        { "id": "c", "text": "form.array('items')" },
+        { "id": "d", "text": "form.getArray('items')" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_a01_q4",
+      "text": "What does the following custom validator return when the control value is valid?\n\nexport function noSpaces(control: AbstractControl): ValidationErrors | null {\n  return control.value?.includes(' ') ? { hasSpaces: true } : null;\n}",
+      "options": [
+        { "id": "a", "text": "{ valid: true }" },
+        { "id": "b", "text": "true" },
+        { "id": "c", "text": "null" },
+        { "id": "d", "text": "{ hasSpaces: false }" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_a01_q5",
+      "text": "An async validator function must return which of the following?",
+      "options": [
+        { "id": "a", "text": "A ValidationErrors object synchronously" },
+        { "id": "b", "text": "An Observable or Promise that resolves to ValidationErrors | null" },
+        { "id": "c", "text": "A boolean indicating validity" },
+        { "id": "d", "text": "A Subject that emits validation state" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q6",
+      "text": "In Angular routing, what is the difference between RouterModule.forRoot() and RouterModule.forChild()?",
+      "options": [
+        { "id": "a", "text": "forRoot creates the router outlet; forChild does not" },
+        { "id": "b", "text": "forRoot registers the router service and directives app-wide; forChild registers only routes without re-providing the router service" },
+        { "id": "c", "text": "forRoot is used in lazy modules; forChild is used in the root module" },
+        { "id": "d", "text": "They are identical; the names are just conventions" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q7",
+      "text": "Given route config: { path: 'product/:id', component: ProductComponent }, how do you read the 'id' param in the component using ActivatedRoute?",
+      "options": [
+        { "id": "a", "text": "this.route.params['id']" },
+        { "id": "b", "text": "this.route.snapshot.paramMap.get('id')" },
+        { "id": "c", "text": "this.route.queryParams.id" },
+        { "id": "d", "text": "this.router.params.get('id')" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q8",
+      "text": "Which guard interface would you implement to prevent a user from navigating AWAY from a form with unsaved changes?",
+      "options": [
+        { "id": "a", "text": "CanActivateFn" },
+        { "id": "b", "text": "CanMatchFn" },
+        { "id": "c", "text": "CanDeactivateFn" },
+        { "id": "d", "text": "ResolveFn" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_a01_q9",
+      "text": "What is the purpose of ResolveFn in Angular routing?",
+      "options": [
+        { "id": "a", "text": "Pre-fetches data before a route is activated so the component receives it immediately" },
+        { "id": "b", "text": "Redirects the user if they are not authenticated" },
+        { "id": "c", "text": "Lazily loads a feature module" },
+        { "id": "d", "text": "Matches routes based on custom logic" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_a01_q10",
+      "text": "Given this code:\n\nthis.http.get<User[]>('/api/users').pipe(\n  catchError(err => {\n    console.error(err);\n    return of([]);\n  })\n);\n\nWhat does this stream emit when the HTTP request fails?",
+      "options": [
+        { "id": "a", "text": "It re-throws the error" },
+        { "id": "b", "text": "An empty array []" },
+        { "id": "c", "text": "null" },
+        { "id": "d", "text": "Nothing — the stream completes silently" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q11",
+      "text": "Which HttpClient method should you use to send data and receive a response body typed as User?",
+      "options": [
+        { "id": "a", "text": "this.http.post('/api/user', body)" },
+        { "id": "b", "text": "this.http.post<User>('/api/user', body)" },
+        { "id": "c", "text": "this.http.send<User>('/api/user', body)" },
+        { "id": "d", "text": "this.http.request<User>('POST', body)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q12",
+      "text": "What does switchMap do differently from mergeMap when handling inner Observables?",
+      "options": [
+        { "id": "a", "text": "switchMap queues inner observables; mergeMap cancels them" },
+        { "id": "b", "text": "switchMap cancels the previous inner observable when a new outer value arrives; mergeMap lets all inner observables run concurrently" },
+        { "id": "c", "text": "switchMap runs inner observables sequentially; mergeMap cancels all but the last" },
+        { "id": "d", "text": "They behave identically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q13",
+      "text": "Which RxJS operator would you use to combine the latest values from two observables and emit whenever EITHER emits?",
+      "options": [
+        { "id": "a", "text": "forkJoin" },
+        { "id": "b", "text": "zip" },
+        { "id": "c", "text": "combineLatest" },
+        { "id": "d", "text": "merge" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_a01_q14",
+      "text": "What is the main benefit of using ChangeDetectionStrategy.OnPush on a component?",
+      "options": [
+        { "id": "a", "text": "The component is checked on every browser event" },
+        { "id": "b", "text": "Change detection only runs when @Input references change, an event fires inside the component, or an async pipe emits" },
+        { "id": "c", "text": "The component is excluded from the change detection tree entirely" },
+        { "id": "d", "text": "It enables two-way data binding automatically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q15",
+      "text": "What is the purpose of NgZone.runOutsideAngular()?",
+      "options": [
+        { "id": "a", "text": "To execute code that should trigger Angular change detection" },
+        { "id": "b", "text": "To execute code without triggering Angular change detection, improving performance for non-UI tasks" },
+        { "id": "c", "text": "To destroy the Angular zone entirely" },
+        { "id": "d", "text": "To schedule microtasks inside Angular" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q16",
+      "text": "Given this directive:\n\n@Directive({ selector: '[appHighlight]' })\nexport class HighlightDirective {\n  @HostBinding('style.backgroundColor') bgColor = 'yellow';\n  @HostListener('mouseenter') onEnter() { this.bgColor = 'orange'; }\n  @HostListener('mouseleave') onLeave() { this.bgColor = 'yellow'; }\n}\n\nWhat does this directive do?",
+      "options": [
+        { "id": "a", "text": "Changes text color on hover" },
+        { "id": "b", "text": "Changes the host element's background color to orange on mouseenter and back to yellow on mouseleave" },
+        { "id": "c", "text": "Adds a CSS class on hover" },
+        { "id": "d", "text": "Emits an event on mouseenter" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q17",
+      "text": "What is the difference between a pure and an impure pipe in Angular?",
+      "options": [
+        { "id": "a", "text": "A pure pipe runs on every change detection cycle; an impure pipe runs only when the input reference changes" },
+        { "id": "b", "text": "A pure pipe runs only when the input reference or primitive value changes; an impure pipe runs on every change detection cycle" },
+        { "id": "c", "text": "Pure pipes cannot be used with async data" },
+        { "id": "d", "text": "Impure pipes are deprecated in Angular 17+" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q18",
+      "text": "In NgRx, what does createSelector() return?",
+      "options": [
+        { "id": "a", "text": "An action creator" },
+        { "id": "b", "text": "A memoized selector function that derives state slices from the store" },
+        { "id": "c", "text": "A reducer function" },
+        { "id": "d", "text": "An effect observable" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q19",
+      "text": "What is the role of createEffect() in NgRx?",
+      "options": [
+        { "id": "a", "text": "Creates a new store slice" },
+        { "id": "b", "text": "Registers a side-effect listener that reacts to dispatched actions and optionally dispatches new actions" },
+        { "id": "c", "text": "Creates a synchronous reducer" },
+        { "id": "d", "text": "Defines a selector for component-level state" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q20",
+      "text": "In Angular Signals, what does computed() do?",
+      "options": [
+        { "id": "a", "text": "Creates a writable signal" },
+        { "id": "b", "text": "Creates a read-only signal that automatically recomputes when its dependent signals change" },
+        { "id": "c", "text": "Subscribes to an observable and returns a signal" },
+        { "id": "d", "text": "Schedules a side effect when signals change" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q21",
+      "text": "Which Angular testing utility is used to simulate the passage of time in fakeAsync tests?",
+      "options": [
+        { "id": "a", "text": "jasmine.clock().tick()" },
+        { "id": "b", "text": "tick()" },
+        { "id": "c", "text": "flush()" },
+        { "id": "d", "text": "advanceTimer()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q22",
+      "text": "What does TestBed.configureTestingModule() do in an Angular unit test?",
+      "options": [
+        { "id": "a", "text": "Compiles all application components for E2E tests" },
+        { "id": "b", "text": "Sets up an Angular testing module with declarations, imports, and providers needed for the test" },
+        { "id": "c", "text": "Creates a Jasmine spy on every service method" },
+        { "id": "d", "text": "Bootstraps the real application in a headless browser" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q23",
+      "text": "Given this route configuration:\n{ path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }\n\nWhat Angular feature does this demonstrate?",
+      "options": [
+        { "id": "a", "text": "Eager loading of the admin module" },
+        { "id": "b", "text": "Lazy loading — the admin module is only loaded when the 'admin' route is accessed" },
+        { "id": "c", "text": "Pre-loading the admin module at startup" },
+        { "id": "d", "text": "Dynamic component creation" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q24",
+      "text": "In an HttpInterceptorFn, which argument provides access to the original HTTP request?",
+      "options": [
+        { "id": "a", "text": "handler" },
+        { "id": "b", "text": "req" },
+        { "id": "c", "text": "context" },
+        { "id": "d", "text": "event" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q25",
+      "text": "What is a BehaviorSubject different from a regular Subject in RxJS?",
+      "options": [
+        { "id": "a", "text": "BehaviorSubject can only emit once" },
+        { "id": "b", "text": "BehaviorSubject holds and replays the current value to new subscribers; a Subject does not" },
+        { "id": "c", "text": "BehaviorSubject completes automatically; Subject never completes" },
+        { "id": "d", "text": "Subject is synchronous; BehaviorSubject is always asynchronous" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q26",
+      "text": "What does the trackBy function do in an *ngFor directive?",
+      "options": [
+        { "id": "a", "text": "Sorts items before rendering" },
+        { "id": "b", "text": "Provides a unique identifier so Angular can reuse existing DOM elements instead of recreating all of them when the list changes" },
+        { "id": "c", "text": "Enables virtual scrolling for large lists" },
+        { "id": "d", "text": "Filters items before rendering" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q27",
+      "text": "In Angular cross-field validation, where should you attach the validator to compare two form controls (e.g., password vs confirmPassword)?",
+      "options": [
+        { "id": "a", "text": "On each individual FormControl" },
+        { "id": "b", "text": "On the parent FormGroup so the validator has access to both controls" },
+        { "id": "c", "text": "Inside the component's ngOnChanges hook" },
+        { "id": "d", "text": "As a template validator using ngModel" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q28",
+      "text": "Which DomSanitizer method should you use to safely bind a trusted URL to an iframe src?",
+      "options": [
+        { "id": "a", "text": "sanitizer.sanitizeUrl(url)" },
+        { "id": "b", "text": "sanitizer.bypassSecurityTrustResourceUrl(url)" },
+        { "id": "c", "text": "sanitizer.bypassSecurityTrustHtml(url)" },
+        { "id": "d", "text": "sanitizer.trustUrl(url)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q29",
+      "text": "What is the purpose of toSignal() in Angular?",
+      "options": [
+        { "id": "a", "text": "Converts a signal into an observable" },
+        { "id": "b", "text": "Converts an observable into a signal so it can be used in signal-based templates" },
+        { "id": "c", "text": "Creates a computed signal from multiple inputs" },
+        { "id": "d", "text": "Schedules a signal update outside the Angular zone" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a01_q30",
+      "text": "In NgRx, what is the correct way to define a reducer using createReducer?",
+      "options": [
+        { "id": "a", "text": "const reducer = createReducer(initialState, on(myAction, (state) => ({ ...state, loaded: true })));" },
+        { "id": "b", "text": "const reducer = new Reducer(initialState, myAction, (state) => state);" },
+        { "id": "c", "text": "const reducer = (state = initialState, action) => { switch(action.type) { default: return state; } };" },
+        { "id": "d", "text": "const reducer = createReducer(myAction, (state) => state);" }
+      ],
+      "correctOptionId": "a"
+    }
+  ]
+}

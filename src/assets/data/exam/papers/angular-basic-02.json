@@ -1,0 +1,339 @@
+{
+  "id": "qp_ng_b02",
+  "title": "Angular Basic — Paper 2",
+  "description": "Foundational Angular concepts: components, data binding, directives, component communication, lifecycle hooks, services, modules, template-driven forms, pipes, and CLI.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_ng_b02_q1",
+      "text": "What does the 'templateUrl' property in the @Component decorator specify?",
+      "options": [
+        { "id": "a", "text": "The URL of an external CSS file" },
+        { "id": "b", "text": "The path to the component's external HTML template file" },
+        { "id": "c", "text": "The routing URL for the component" },
+        { "id": "d", "text": "The base URL of the application" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q2",
+      "text": "What is two-way data binding in Angular and what syntax is used for it?",
+      "options": [
+        { "id": "a", "text": "Binding from template to component using [( )]" },
+        { "id": "b", "text": "Syncing data between component and template in both directions using [(ngModel)]" },
+        { "id": "c", "text": "Binding component events to the template using (( ))" },
+        { "id": "d", "text": "Binding two properties together using {{ }}" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q3",
+      "text": "What does the ngStyle directive allow you to do in Angular?",
+      "options": [
+        { "id": "a", "text": "Apply a CSS class based on a condition" },
+        { "id": "b", "text": "Dynamically set inline styles on an HTML element" },
+        { "id": "c", "text": "Import external stylesheets" },
+        { "id": "d", "text": "Scope CSS to the component view" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q4",
+      "text": "What is EventEmitter used for in Angular?",
+      "options": [
+        { "id": "a", "text": "To emit DOM events natively from the browser" },
+        { "id": "b", "text": "To create custom events that a child component can emit to its parent" },
+        { "id": "c", "text": "To listen for global application events" },
+        { "id": "d", "text": "To trigger lifecycle hooks manually" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q5",
+      "text": "In what order are the lifecycle hooks ngOnChanges, ngOnInit, and ngAfterViewInit called?",
+      "options": [
+        { "id": "a", "text": "ngOnInit → ngOnChanges → ngAfterViewInit" },
+        { "id": "b", "text": "ngAfterViewInit → ngOnChanges → ngOnInit" },
+        { "id": "c", "text": "ngOnChanges → ngOnInit → ngAfterViewInit" },
+        { "id": "d", "text": "ngOnChanges → ngAfterViewInit → ngOnInit" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q6",
+      "text": "What happens when you add a service to the 'providers' array of a specific component's @Component decorator?",
+      "options": [
+        { "id": "a", "text": "The service becomes a singleton shared across the entire application" },
+        { "id": "b", "text": "The service becomes available only within the root module" },
+        { "id": "c", "text": "A new instance of the service is created for that component and its children" },
+        { "id": "d", "text": "The service is registered globally as a singleton" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q7",
+      "text": "Which module provides commonly used directives such as NgIf, NgFor, and NgSwitch in Angular?",
+      "options": [
+        { "id": "a", "text": "FormsModule" },
+        { "id": "b", "text": "RouterModule" },
+        { "id": "c", "text": "HttpClientModule" },
+        { "id": "d", "text": "CommonModule" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b02_q8",
+      "text": "In a template-driven form, how do you access the form's validity state in the template?",
+      "options": [
+        { "id": "a", "text": "By checking the form element's 'valid' HTML attribute" },
+        { "id": "b", "text": "By using a template reference variable assigned to ngForm and checking .valid" },
+        { "id": "c", "text": "By importing FormControl and calling its isValid() method" },
+        { "id": "d", "text": "By subscribing to a FormGroup observable" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q9",
+      "text": "Which Angular built-in pipe formats a date value in the template?",
+      "options": [
+        { "id": "a", "text": "time" },
+        { "id": "b", "text": "datetime" },
+        { "id": "c", "text": "calendar" },
+        { "id": "d", "text": "date" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b02_q10",
+      "text": "Which Angular CLI command generates a new component with the default files?",
+      "options": [
+        { "id": "a", "text": "ng add component" },
+        { "id": "b", "text": "ng create component" },
+        { "id": "c", "text": "ng generate component" },
+        { "id": "d", "text": "ng make component" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q11",
+      "text": "What is ViewEncapsulation in Angular components?",
+      "options": [
+        { "id": "a", "text": "A security feature that hides component logic" },
+        { "id": "b", "text": "A mechanism that controls how component CSS styles are scoped and applied" },
+        { "id": "c", "text": "A method to encapsulate component data from the template" },
+        { "id": "d", "text": "A way to prevent child components from rendering" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q12",
+      "text": "What is a template reference variable in Angular and how is it declared?",
+      "options": [
+        { "id": "a", "text": "A TypeScript variable declared with the 'ref' keyword" },
+        { "id": "b", "text": "A component property prefixed with $ sign" },
+        { "id": "c", "text": "A variable declared in the template using #varName that references an element or directive" },
+        { "id": "d", "text": "A variable created by @ViewChild in the component class" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q13",
+      "text": "In Angular's *ngFor directive, what does the 'trackBy' function do?",
+      "options": [
+        { "id": "a", "text": "It sorts the items in the list" },
+        { "id": "b", "text": "It filters items before rendering" },
+        { "id": "c", "text": "It tracks changes in the list by a unique identifier to improve rendering performance" },
+        { "id": "d", "text": "It limits the number of items rendered" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q14",
+      "text": "What is ng-content used for in Angular?",
+      "options": [
+        { "id": "a", "text": "To project content from a parent component into a child component's template" },
+        { "id": "b", "text": "To load lazy-loaded content" },
+        { "id": "c", "text": "To declare the component's internal content" },
+        { "id": "d", "text": "To generate dynamic templates at runtime" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b02_q15",
+      "text": "Which lifecycle hook is called after Angular has fully initialized all content projected into the component via ng-content?",
+      "options": [
+        { "id": "a", "text": "ngOnInit" },
+        { "id": "b", "text": "ngAfterViewInit" },
+        { "id": "c", "text": "ngAfterContentInit" },
+        { "id": "d", "text": "ngDoCheck" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q16",
+      "text": "When a service is provided in a specific NgModule's providers array (not root), what is the scope of its instance?",
+      "options": [
+        { "id": "a", "text": "It is shared as a singleton across the entire application" },
+        { "id": "b", "text": "It is scoped to that module and components within it" },
+        { "id": "c", "text": "A new instance is created for every injection point" },
+        { "id": "d", "text": "It is only available in the root component" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q17",
+      "text": "In a standalone Angular component, how do you import a module or other standalone components for use in the template?",
+      "options": [
+        { "id": "a", "text": "By adding them to the declarations array of the @Component decorator" },
+        { "id": "b", "text": "By adding them to the imports array of the @Component decorator" },
+        { "id": "c", "text": "By adding them to the @NgModule imports array" },
+        { "id": "d", "text": "By using the ng-import directive in the template" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q18",
+      "text": "What HTML attribute is used to bind an input's value to a component property using two-way binding in template-driven forms?",
+      "options": [
+        { "id": "a", "text": "formControl" },
+        { "id": "b", "text": "[(value)]" },
+        { "id": "c", "text": "[(ngModel)]" },
+        { "id": "d", "text": "[ngBind]" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q19",
+      "text": "Which pipe would you use to display the text 'hello world' as 'Hello World' in Angular?",
+      "options": [
+        { "id": "a", "text": "uppercase" },
+        { "id": "b", "text": "capitalize" },
+        { "id": "c", "text": "titlecase" },
+        { "id": "d", "text": "propercase" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q20",
+      "text": "Which Angular CLI command compiles the application and outputs production-ready files to the dist folder?",
+      "options": [
+        { "id": "a", "text": "ng compile" },
+        { "id": "b", "text": "ng package" },
+        { "id": "c", "text": "ng build" },
+        { "id": "d", "text": "ng export" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q21",
+      "text": "Which ViewEncapsulation mode makes component styles apply globally (no encapsulation)?",
+      "options": [
+        { "id": "a", "text": "ViewEncapsulation.Emulated" },
+        { "id": "b", "text": "ViewEncapsulation.ShadowDom" },
+        { "id": "c", "text": "ViewEncapsulation.None" },
+        { "id": "d", "text": "ViewEncapsulation.Global" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q22",
+      "text": "What does attribute binding allow you to do in Angular?",
+      "options": [
+        { "id": "a", "text": "Bind a component property to a DOM property" },
+        { "id": "b", "text": "Set HTML attributes that have no corresponding DOM property using [attr.name]" },
+        { "id": "c", "text": "Bind event attributes to component methods" },
+        { "id": "d", "text": "Create custom HTML attributes for styling" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q23",
+      "text": "What does the *ngSwitch directive set of directives include?",
+      "options": [
+        { "id": "a", "text": "ngSwitch, *ngCase, *ngSwitchDefault" },
+        { "id": "b", "text": "ngSwitch, *ngSwitchCase, *ngSwitchDefault" },
+        { "id": "c", "text": "[ngSwitch], ngCase, ngDefault" },
+        { "id": "d", "text": "*ngSwitch, *ngIf, *ngElse" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q24",
+      "text": "How does the parent component pass data to a child component in Angular?",
+      "options": [
+        { "id": "a", "text": "By calling a method on the child component instance" },
+        { "id": "b", "text": "By using a shared service" },
+        { "id": "c", "text": "By binding to the child component's @Input() property using property binding [inputName]=\"value\"" },
+        { "id": "d", "text": "By emitting events with EventEmitter" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q25",
+      "text": "What interface should a component implement to use the ngOnInit lifecycle hook?",
+      "options": [
+        { "id": "a", "text": "OnChange" },
+        { "id": "b", "text": "Initializable" },
+        { "id": "c", "text": "AfterInit" },
+        { "id": "d", "text": "OnInit" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b02_q26",
+      "text": "What is the purpose of the inject() function introduced in Angular 14?",
+      "options": [
+        { "id": "a", "text": "It replaces the @Injectable decorator" },
+        { "id": "b", "text": "It allows injecting dependencies outside of a constructor, such as in field initializers or factory functions" },
+        { "id": "c", "text": "It creates a new injector instance" },
+        { "id": "d", "text": "It injects HTML content into the template" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b02_q27",
+      "text": "Which property of @NgModule lists the services that the module contributes to the global collection of services?",
+      "options": [
+        { "id": "a", "text": "declarations" },
+        { "id": "b", "text": "exports" },
+        { "id": "c", "text": "imports" },
+        { "id": "d", "text": "providers" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b02_q28",
+      "text": "What does the 'touched' state represent in an Angular template-driven form control?",
+      "options": [
+        { "id": "a", "text": "The input has been modified by the user" },
+        { "id": "b", "text": "The input has been validated at least once" },
+        { "id": "c", "text": "The user has focused and then blurred the input field" },
+        { "id": "d", "text": "The input's value is valid" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q29",
+      "text": "How do you chain multiple pipes together in an Angular template?",
+      "options": [
+        { "id": "a", "text": "By nesting pipe functions: pipe(pipe(value))" },
+        { "id": "b", "text": "By using + operator between pipes" },
+        { "id": "c", "text": "By separating pipes with | character: value | pipe1 | pipe2" },
+        { "id": "d", "text": "By using a comma: value, pipe1, pipe2" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b02_q30",
+      "text": "What is the purpose of the angular.json file in an Angular project?",
+      "options": [
+        { "id": "a", "text": "It defines the application routes" },
+        { "id": "b", "text": "It lists all npm dependencies" },
+        { "id": "c", "text": "It contains workspace and project configuration for the Angular CLI" },
+        { "id": "d", "text": "It bootstraps the Angular application" }
+      ],
+      "correctOptionId": "c"
+    }
+  ]
+}

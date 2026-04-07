@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_b07",
+  "title": "C# Basic — Paper 7",
+  "description": "C# concepts: switch expressions/patterns, loops, loop control, arrays, variables, enums, access modifiers, properties, static members, and inheritance basics.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_b07_q1",
+      "text": "What is a tuple pattern in a C# switch expression?",
+      "options": [
+        { "id": "a", "text": "A pattern that matches against multiple values simultaneously using tuple syntax" },
+        { "id": "b", "text": "A pattern that matches a type that inherits from Tuple" },
+        { "id": "c", "text": "A pattern that only works with named tuples" },
+        { "id": "d", "text": "A pattern that matches elements of an array" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b07_q2",
+      "text": "What does the `and` pattern do in a C# switch expression?",
+      "options": [
+        { "id": "a", "text": "Matches when either of two sub-patterns match" },
+        { "id": "b", "text": "Matches when both sub-patterns match simultaneously" },
+        { "id": "c", "text": "Negates a pattern" },
+        { "id": "d", "text": "Combines two types in a single check" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q3",
+      "text": "What is a positional pattern in C# pattern matching?",
+      "options": [
+        { "id": "a", "text": "A pattern that matches based on the position of a type in an inheritance hierarchy" },
+        { "id": "b", "text": "A pattern that uses deconstruction to match properties positionally" },
+        { "id": "c", "text": "A pattern that matches based on array index" },
+        { "id": "d", "text": "A pattern that uses named arguments" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q4",
+      "text": "What is the output of `for (int i = 0; i < 5; i++) { if (i == 3) break; Console.Write(i); }`?",
+      "options": [
+        { "id": "a", "text": "0 1 2 3 4" },
+        { "id": "b", "text": "0 1 2 3" },
+        { "id": "c", "text": "0 1 2" },
+        { "id": "d", "text": "1 2 3" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b07_q5",
+      "text": "What does `continue` print if used inside `for (int i=0; i<5; i++) { if (i%2==0) continue; Console.Write(i); }`?",
+      "options": [
+        { "id": "a", "text": "0 2 4" },
+        { "id": "b", "text": "1 3" },
+        { "id": "c", "text": "0 1 2 3 4" },
+        { "id": "d", "text": "1 2 3 4" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q6",
+      "text": "Why is `goto` generally discouraged in modern C# code?",
+      "options": [
+        { "id": "a", "text": "It is not supported in C# 8+" },
+        { "id": "b", "text": "It can make code flow hard to follow and maintain (spaghetti code)" },
+        { "id": "c", "text": "It causes memory leaks" },
+        { "id": "d", "text": "It is slower than structured loops" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q7",
+      "text": "What does `Array.Length` return for a 2D array `int[3,4]` in C#?",
+      "options": [
+        { "id": "a", "text": "3" },
+        { "id": "b", "text": "4" },
+        { "id": "c", "text": "7" },
+        { "id": "d", "text": "12" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_b07_q8",
+      "text": "How do you access the element at row 2, column 1 of a 2D array `arr` in C#?",
+      "options": [
+        { "id": "a", "text": "arr[2][1]" },
+        { "id": "b", "text": "arr[2,1]" },
+        { "id": "c", "text": "arr.Get(2,1)" },
+        { "id": "d", "text": "arr.(2,1)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q9",
+      "text": "What method copies elements from one array to another in C#?",
+      "options": [
+        { "id": "a", "text": "Array.Move()" },
+        { "id": "b", "text": "Array.Clone()" },
+        { "id": "c", "text": "Array.Copy()" },
+        { "id": "d", "text": "Array.Transfer()" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b07_q10",
+      "text": "Which of the following correctly uses the `var` keyword in C#?",
+      "options": [
+        { "id": "a", "text": "var x; x = 10;" },
+        { "id": "b", "text": "var x = 10;" },
+        { "id": "c", "text": "var int x = 10;" },
+        { "id": "d", "text": "var x = null;" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q11",
+      "text": "What is the difference between `const` and `readonly` in C#?",
+      "options": [
+        { "id": "a", "text": "`const` can be set at runtime; `readonly` must be set at compile time" },
+        { "id": "b", "text": "`const` is a compile-time constant; `readonly` can be set in the constructor at runtime" },
+        { "id": "c", "text": "They are identical in behavior" },
+        { "id": "d", "text": "`readonly` cannot be used in classes, only in structs" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q12",
+      "text": "What are the ranges of `int` and `uint` in C#?",
+      "options": [
+        { "id": "a", "text": "int: 0 to 2^32-1; uint: -2^31 to 2^31-1" },
+        { "id": "b", "text": "int: -2^31 to 2^31-1; uint: 0 to 2^32-1" },
+        { "id": "c", "text": "Both are 0 to 2^32-1" },
+        { "id": "d", "text": "int: -2^15 to 2^15-1; uint: 0 to 2^16-1" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q13",
+      "text": "How do you cast an `int` to an enum named `Status` in C#?",
+      "options": [
+        { "id": "a", "text": "Status s = Status.Parse(1);" },
+        { "id": "b", "text": "Status s = (Status)1;" },
+        { "id": "c", "text": "Status s = Status[1];" },
+        { "id": "d", "text": "Status s = Enum.Convert(1);" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q14",
+      "text": "What does `Enum.Parse(typeof(Direction), \"North\")` do in C#?",
+      "options": [
+        { "id": "a", "text": "Returns the integer value of North in the enum" },
+        { "id": "b", "text": "Returns the Direction enum member corresponding to the string \"North\"" },
+        { "id": "c", "text": "Throws an exception always" },
+        { "id": "d", "text": "Creates a new enum member called \"North\"" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q15",
+      "text": "How do you define an enum with `byte` as the underlying type in C#?",
+      "options": [
+        { "id": "a", "text": "byte enum Color { Red, Green, Blue }" },
+        { "id": "b", "text": "enum Color as byte { Red, Green, Blue }" },
+        { "id": "c", "text": "enum Color : byte { Red, Green, Blue }" },
+        { "id": "d", "text": "enum Color { Red=byte, Green=byte, Blue=byte }" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b07_q16",
+      "text": "What is the `protected` access modifier's effect in C# when used on a method?",
+      "options": [
+        { "id": "a", "text": "The method can only be called from within the same file" },
+        { "id": "b", "text": "The method is accessible within the declaring class and all derived classes" },
+        { "id": "c", "text": "The method is only accessible within the same assembly" },
+        { "id": "d", "text": "The method is inaccessible from derived classes outside the assembly" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q17",
+      "text": "What happens when you try to access a `private` member of a base class from a derived class in C#?",
+      "options": [
+        { "id": "a", "text": "It is accessible because the derived class inherits all members" },
+        { "id": "b", "text": "A compile-time error occurs because private members are not accessible in derived classes" },
+        { "id": "c", "text": "It is accessible if the derived class is in the same file" },
+        { "id": "d", "text": "A runtime exception is thrown" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q18",
+      "text": "What is the default access level for a top-level class in C# (not nested)?",
+      "options": [
+        { "id": "a", "text": "public" },
+        { "id": "b", "text": "private" },
+        { "id": "c", "text": "internal" },
+        { "id": "d", "text": "protected" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b07_q19",
+      "text": "What does `public int Count { get; set; } = 0;` declare in C#?",
+      "options": [
+        { "id": "a", "text": "A read-only property defaulting to 0" },
+        { "id": "b", "text": "An auto-implemented property with a default initial value of 0" },
+        { "id": "c", "text": "A static property always returning 0" },
+        { "id": "d", "text": "A field named Count" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q20",
+      "text": "What is the difference between `public string Name { get; set; }` and `public string Name { get; }`?",
+      "options": [
+        { "id": "a", "text": "Both are mutable" },
+        { "id": "b", "text": "The first allows reading and writing; the second is read-only" },
+        { "id": "c", "text": "The second allows writing but not reading" },
+        { "id": "d", "text": "They are identical" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q21",
+      "text": "How do you declare a computed (expression-bodied) property that returns a full name from FirstName and LastName?",
+      "options": [
+        { "id": "a", "text": "public string FullName { return FirstName + \" \" + LastName; }" },
+        { "id": "b", "text": "public string FullName => FirstName + \" \" + LastName;" },
+        { "id": "c", "text": "public string FullName { get { yield return FirstName; } }" },
+        { "id": "d", "text": "public string FullName = FirstName + LastName;" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q22",
+      "text": "What keyword can you use to call a base class's static method from a derived class in C#?",
+      "options": [
+        { "id": "a", "text": "base.MethodName()" },
+        { "id": "b", "text": "BaseClassName.MethodName()" },
+        { "id": "c", "text": "super.MethodName()" },
+        { "id": "d", "text": "parent.MethodName()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q23",
+      "text": "What is a static property in C# and how is it accessed?",
+      "options": [
+        { "id": "a", "text": "A property that can only be read, accessed via an instance" },
+        { "id": "b", "text": "A property belonging to the class, accessed via the class name without an instance" },
+        { "id": "c", "text": "A property that cannot be changed once set" },
+        { "id": "d", "text": "A property shared between two classes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q24",
+      "text": "What is an abstract method in C#?",
+      "options": [
+        { "id": "a", "text": "A method with no return type" },
+        { "id": "b", "text": "A method declared without a body in an abstract class that derived classes must implement" },
+        { "id": "c", "text": "A static method that cannot be overridden" },
+        { "id": "d", "text": "A private method in an interface" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q25",
+      "text": "What does the `base` keyword do in a derived class constructor in C#?",
+      "options": [
+        { "id": "a", "text": "It calls a static method of the base class" },
+        { "id": "b", "text": "It calls the constructor of the base class" },
+        { "id": "c", "text": "It refers to the current instance" },
+        { "id": "d", "text": "It prevents the base class from being instantiated" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q26",
+      "text": "What does the `is` keyword return when checking `myObj is MyClass c` in C#?",
+      "options": [
+        { "id": "a", "text": "An integer indicating type compatibility" },
+        { "id": "b", "text": "A bool: true if myObj is a MyClass, and assigns it to c; false otherwise" },
+        { "id": "c", "text": "A new instance of MyClass" },
+        { "id": "d", "text": "The type of myObj" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q27",
+      "text": "What is the `as` operator used for in C# and what does it return on failure?",
+      "options": [
+        { "id": "a", "text": "Converts a type; throws InvalidCastException on failure" },
+        { "id": "b", "text": "Checks type equality; returns 0 on failure" },
+        { "id": "c", "text": "Attempts a reference or nullable conversion; returns null on failure" },
+        { "id": "d", "text": "Performs an explicit cast; throws NullReferenceException on failure" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b07_q28",
+      "text": "What does a `sealed` method (inside a non-sealed class) prevent in C#?",
+      "options": [
+        { "id": "a", "text": "The method from being called by anyone" },
+        { "id": "b", "text": "Further overriding of that method in classes derived from this class" },
+        { "id": "c", "text": "The method from being static" },
+        { "id": "d", "text": "The class from being inherited" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b07_q29",
+      "text": "What is the difference between an abstract class and an interface in C#?",
+      "options": [
+        { "id": "a", "text": "An abstract class can have implemented methods and state; an interface (pre-C#8) only declares members without implementation" },
+        { "id": "b", "text": "Both can only declare members without implementation" },
+        { "id": "c", "text": "An interface can have constructors; an abstract class cannot" },
+        { "id": "d", "text": "A class can implement multiple abstract classes but only one interface" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b07_q30",
+      "text": "Can a class implement multiple interfaces in C#?",
+      "options": [
+        { "id": "a", "text": "No, only one interface is allowed" },
+        { "id": "b", "text": "Yes, a class can implement multiple interfaces" },
+        { "id": "c", "text": "Only if the interfaces share the same base interface" },
+        { "id": "d", "text": "Only if the class is abstract" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

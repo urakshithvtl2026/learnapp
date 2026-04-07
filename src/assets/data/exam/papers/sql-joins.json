@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_03",
+  "title": "SQL Joins — INNER, LEFT, RIGHT, FULL",
+  "description": "All SQL join types: combining tables, understanding join behavior, and multi-table queries.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_03_q1",
+      "text": "Which type of JOIN returns only the rows that have matching values in BOTH tables?",
+      "options": [
+        { "id": "a", "text": "LEFT JOIN" },
+        { "id": "b", "text": "RIGHT JOIN" },
+        { "id": "c", "text": "INNER JOIN" },
+        { "id": "d", "text": "FULL OUTER JOIN" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_03_q2",
+      "text": "Which JOIN returns ALL rows from the left table and matching rows from the right table (NULLs for non-matches on the right)?",
+      "options": [
+        { "id": "a", "text": "INNER JOIN" },
+        { "id": "b", "text": "LEFT JOIN" },
+        { "id": "c", "text": "RIGHT JOIN" },
+        { "id": "d", "text": "CROSS JOIN" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q3",
+      "text": "Which JOIN returns ALL rows from the right table and only matching rows from the left table?",
+      "options": [
+        { "id": "a", "text": "LEFT JOIN" },
+        { "id": "b", "text": "FULL OUTER JOIN" },
+        { "id": "c", "text": "RIGHT JOIN" },
+        { "id": "d", "text": "INNER JOIN" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_03_q4",
+      "text": "Which JOIN returns ALL rows from BOTH tables, with NULLs where there is no match?",
+      "options": [
+        { "id": "a", "text": "INNER JOIN" },
+        { "id": "b", "text": "CROSS JOIN" },
+        { "id": "c", "text": "LEFT JOIN" },
+        { "id": "d", "text": "FULL OUTER JOIN" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_03_q5",
+      "text": "What does a CROSS JOIN produce?",
+      "options": [
+        { "id": "a", "text": "Only rows where there is a match between tables" },
+        { "id": "b", "text": "The Cartesian product — every row from the left table combined with every row from the right table" },
+        { "id": "c", "text": "All rows from the left table with NULLs for missing right rows" },
+        { "id": "d", "text": "A set difference between two tables" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q6",
+      "text": "How many rows does a CROSS JOIN of a 5-row table and a 4-row table produce?",
+      "options": [
+        { "id": "a", "text": "9" },
+        { "id": "b", "text": "5" },
+        { "id": "c", "text": "20" },
+        { "id": "d", "text": "4" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_03_q7",
+      "text": "What is a self join?",
+      "options": [
+        { "id": "a", "text": "A join that automatically selects the correct join type" },
+        { "id": "b", "text": "A join where a table is joined to itself using aliases" },
+        { "id": "c", "text": "A join with no ON condition" },
+        { "id": "d", "text": "A join that only returns one row" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q8",
+      "text": "Which query correctly finds each employee and their manager using a self join on the Employees table (ManagerID references EmployeeID)?",
+      "options": [
+        { "id": "a", "text": "SELECT e.Name, m.Name AS Manager FROM Employees e INNER JOIN Employees m ON e.ManagerID = m.EmployeeID" },
+        { "id": "b", "text": "SELECT e.Name, m.Name AS Manager FROM Employees e, Employees m WHERE e.EmployeeID = m.ManagerID" },
+        { "id": "c", "text": "SELECT Name, Manager FROM Employees SELF JOIN" },
+        { "id": "d", "text": "SELECT * FROM Employees JOIN Employees ON ManagerID" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_03_q9",
+      "text": "In a LEFT JOIN, if no matching row exists in the right table, what appears in the right-table columns?",
+      "options": [
+        { "id": "a", "text": "0" },
+        { "id": "b", "text": "Empty string ''" },
+        { "id": "c", "text": "NULL" },
+        { "id": "d", "text": "The row is excluded from results" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_03_q10",
+      "text": "Which query finds customers who have NO orders (using a LEFT JOIN)?",
+      "options": [
+        { "id": "a", "text": "SELECT c.* FROM Customers c INNER JOIN Orders o ON c.ID = o.CustomerID" },
+        { "id": "b", "text": "SELECT c.* FROM Customers c LEFT JOIN Orders o ON c.ID = o.CustomerID WHERE o.ID IS NULL" },
+        { "id": "c", "text": "SELECT c.* FROM Customers c RIGHT JOIN Orders o ON c.ID = o.CustomerID WHERE o.ID IS NULL" },
+        { "id": "d", "text": "SELECT c.* FROM Customers c FULL JOIN Orders o ON c.ID = o.CustomerID WHERE c.ID IS NOT NULL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q11",
+      "text": "What does ON specify in a JOIN clause?",
+      "options": [
+        { "id": "a", "text": "The columns to display in the result" },
+        { "id": "b", "text": "The condition used to match rows between the two tables" },
+        { "id": "c", "text": "The order in which tables are scanned" },
+        { "id": "d", "text": "The index to use for the join" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q12",
+      "text": "Which keyword can be used instead of ON when the join column has the same name in both tables?",
+      "options": [
+        { "id": "a", "text": "MATCH" },
+        { "id": "b", "text": "NATURAL" },
+        { "id": "c", "text": "USING" },
+        { "id": "d", "text": "EQUAL" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_03_q13",
+      "text": "How do you join three tables — Orders, Customers, and Products — in a single query?",
+      "options": [
+        { "id": "a", "text": "You cannot join more than two tables in SQL" },
+        { "id": "b", "text": "SELECT ... FROM Orders JOIN Customers ON ... JOIN Products ON ..." },
+        { "id": "c", "text": "SELECT ... FROM Orders, Customers, Products WHERE ..." },
+        { "id": "d", "text": "Both b and c are valid approaches" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_03_q14",
+      "text": "What is the key difference between INNER JOIN and LEFT JOIN?",
+      "options": [
+        { "id": "a", "text": "INNER JOIN is faster but LEFT JOIN is more accurate" },
+        { "id": "b", "text": "INNER JOIN only returns matched rows; LEFT JOIN returns all left-table rows including unmatched ones" },
+        { "id": "c", "text": "LEFT JOIN requires both tables to have identical schemas" },
+        { "id": "d", "text": "There is no difference; they return the same results" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q15",
+      "text": "Which join condition joins two tables on multiple columns? Example: ON a.ID = b.ID AND a.Year = b.Year",
+      "options": [
+        { "id": "a", "text": "This syntax is invalid; joins can only use one column" },
+        { "id": "b", "text": "This is a composite join condition and is perfectly valid" },
+        { "id": "c", "text": "MULTI JOIN ON (ID, Year)" },
+        { "id": "d", "text": "JOIN USING (ID, Year) is the only valid way" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q16",
+      "text": "What does a table alias do in a JOIN query? Example: FROM Employees e JOIN Departments d ON e.DeptID = d.ID",
+      "options": [
+        { "id": "a", "text": "Creates a permanent view of the table" },
+        { "id": "b", "text": "Provides a shorthand name for the table to make the query shorter and more readable" },
+        { "id": "c", "text": "Renames the table in the database permanently" },
+        { "id": "d", "text": "Creates a copy of the table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q17",
+      "text": "In which scenario would you choose a subquery OVER a JOIN?",
+      "options": [
+        { "id": "a", "text": "When you need to return columns from both tables" },
+        { "id": "b", "text": "When you only need to check existence or aggregate from a related table without displaying its columns" },
+        { "id": "c", "text": "Subqueries are always better than joins" },
+        { "id": "d", "text": "When joining more than two tables" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q18",
+      "text": "Which JOIN type is equivalent to INNER JOIN when used with no filter?",
+      "options": [
+        { "id": "a", "text": "FULL OUTER JOIN" },
+        { "id": "b", "text": "LEFT JOIN" },
+        { "id": "c", "text": "A comma-separated FROM clause with a matching WHERE condition" },
+        { "id": "d", "text": "CROSS JOIN" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_03_q19",
+      "text": "What is the result of a FULL OUTER JOIN between Customers (3 rows) and Orders (5 rows) where 2 customers have orders?",
+      "options": [
+        { "id": "a", "text": "2 rows" },
+        { "id": "b", "text": "5 rows" },
+        { "id": "c", "text": "All rows from both tables — customers without orders get NULLs, orders without customers get NULLs" },
+        { "id": "d", "text": "15 rows (Cartesian product)" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_03_q20",
+      "text": "What happens if you JOIN two tables without specifying an ON condition (in databases that require it)?",
+      "options": [
+        { "id": "a", "text": "It defaults to an INNER JOIN on the primary key" },
+        { "id": "b", "text": "It produces a syntax error" },
+        { "id": "c", "text": "It produces a Cartesian product (same as CROSS JOIN)" },
+        { "id": "d", "text": "It returns no rows" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q21",
+      "text": "Which query uses aliases correctly to disambiguate columns with the same name from two tables?",
+      "options": [
+        { "id": "a", "text": "SELECT Name FROM Employees JOIN Departments ON Employees.DeptID = Departments.ID" },
+        { "id": "b", "text": "SELECT e.Name AS EmpName, d.Name AS DeptName FROM Employees e JOIN Departments d ON e.DeptID = d.ID" },
+        { "id": "c", "text": "SELECT Name AS (Employees, Departments) FROM Employees JOIN Departments ON ID" },
+        { "id": "d", "text": "SELECT Name1, Name2 FROM Employees JOIN Departments" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q22",
+      "text": "LEFT JOIN and LEFT OUTER JOIN — are they different?",
+      "options": [
+        { "id": "a", "text": "Yes, LEFT JOIN is exclusive while LEFT OUTER JOIN includes NULLs" },
+        { "id": "b", "text": "No, they are identical; OUTER is optional" },
+        { "id": "c", "text": "Yes, LEFT OUTER JOIN returns more rows" },
+        { "id": "d", "text": "LEFT OUTER JOIN is deprecated" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q23",
+      "text": "Which join type would you use to find all rows that exist in either table, regardless of whether they have a match?",
+      "options": [
+        { "id": "a", "text": "INNER JOIN" },
+        { "id": "b", "text": "LEFT JOIN" },
+        { "id": "c", "text": "FULL OUTER JOIN" },
+        { "id": "d", "text": "CROSS JOIN" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_03_q24",
+      "text": "Is it valid to include additional filter conditions in the ON clause of a LEFT JOIN?",
+      "options": [
+        { "id": "a", "text": "No, extra conditions must go in the WHERE clause" },
+        { "id": "b", "text": "Yes, and the behavior differs from putting the condition in WHERE — ON filters before joining while WHERE filters after" },
+        { "id": "c", "text": "Yes, both ON and WHERE are equivalent in LEFT JOIN" },
+        { "id": "d", "text": "Extra conditions in ON cause a syntax error" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q25",
+      "text": "What does: SELECT * FROM A LEFT JOIN B ON A.ID = B.ID WHERE B.ID IS NULL — return?",
+      "options": [
+        { "id": "a", "text": "All rows from A that have a matching row in B" },
+        { "id": "b", "text": "All rows from B that have no match in A" },
+        { "id": "c", "text": "All rows from A that have NO matching row in B" },
+        { "id": "d", "text": "All rows from both A and B" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_03_q26",
+      "text": "Which statement is TRUE about INNER JOIN performance compared to LEFT JOIN?",
+      "options": [
+        { "id": "a", "text": "INNER JOIN is always slower than LEFT JOIN" },
+        { "id": "b", "text": "INNER JOIN may perform better since it eliminates non-matching rows earlier, but the optimizer often handles both similarly" },
+        { "id": "c", "text": "LEFT JOIN is always faster because it accesses fewer rows" },
+        { "id": "d", "text": "They always have identical performance" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q27",
+      "text": "Can you JOIN a table to a subquery (derived table)?",
+      "options": [
+        { "id": "a", "text": "No, JOINs can only be used with physical tables" },
+        { "id": "b", "text": "Yes — you can join to a derived table: FROM TableA JOIN (SELECT ...) AS sub ON ..." },
+        { "id": "c", "text": "Yes, but only with INNER JOIN" },
+        { "id": "d", "text": "Only in MySQL, not in SQL Server" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q28",
+      "text": "Tables: Products (ProductID, Name, CategoryID) and Categories (CategoryID, CategoryName). Which query gets product names with category names?",
+      "options": [
+        { "id": "a", "text": "SELECT p.Name, c.CategoryName FROM Products p JOIN Categories c ON p.ProductID = c.CategoryID" },
+        { "id": "b", "text": "SELECT p.Name, c.CategoryName FROM Products p JOIN Categories c ON p.CategoryID = c.CategoryID" },
+        { "id": "c", "text": "SELECT Name, CategoryName FROM Products, Categories" },
+        { "id": "d", "text": "SELECT p.Name, c.CategoryName FROM Products p CROSS JOIN Categories c" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_03_q29",
+      "text": "What is a NATURAL JOIN?",
+      "options": [
+        { "id": "a", "text": "A join that automatically matches all columns with the same name in both tables" },
+        { "id": "b", "text": "A join without any WHERE clause" },
+        { "id": "c", "text": "A join on primary key and foreign key automatically" },
+        { "id": "d", "text": "A join that returns NULL for all non-matching columns" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_03_q30",
+      "text": "When joining multiple tables, what is the recommended practice to avoid ambiguous column references?",
+      "options": [
+        { "id": "a", "text": "Always use SELECT * to avoid specifying columns" },
+        { "id": "b", "text": "Prefix column names with the table name or alias (e.g., e.Name, d.Name)" },
+        { "id": "c", "text": "Rename all columns in the original tables to be unique" },
+        { "id": "d", "text": "Ambiguous columns are automatically resolved by SQL" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

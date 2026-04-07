@@ -1,0 +1,96 @@
+.toolbar {
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 4px;
+}
+
+.username {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.88rem;
+  opacity: 0.9;
+  padding: 0 4px;
+}
+
+.role-badge {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-left: 4px;
+  text-transform: uppercase;
+}
+
+a[mat-button] {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.85;
+  font-size: 0.9rem;
+
+  &.nav-active {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 767px) {
+  .toolbar-title {
+    font-size: 0.95rem;
+  }
+
+  a[mat-button] {
+    font-size: 0 !important;
+    min-width: 36px !important;
+    padding: 0 4px !important;
+
+    mat-icon {
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
+      margin: 0;
+    }
+  }
+
+  .username {
+    font-size: 0;
+    padding: 0 2px;
+
+    mat-icon {
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
+    }
+
+    .role-badge {
+      display: none;
+    }
+  }
+
+  .divider {
+    margin: 0 2px;
+  }
+}

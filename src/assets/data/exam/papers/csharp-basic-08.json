@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_b08",
+  "title": "C# Basic — Paper 8",
+  "description": "C# concepts: loops, loop control, arrays, variables, strings, properties, static members, inheritance basics, enums, and structs.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_b08_q1",
+      "text": "What is the output of:\n`int sum = 0;\nfor (int i = 1; i <= 5; i++) sum += i;\nConsole.WriteLine(sum);`",
+      "options": [
+        { "id": "a", "text": "10" },
+        { "id": "b", "text": "14" },
+        { "id": "c", "text": "15" },
+        { "id": "d", "text": "5" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b08_q2",
+      "text": "What is a `while` loop that never terminates called, and what is the correct pattern in C#?",
+      "options": [
+        { "id": "a", "text": "A dead loop; pattern: while (null) { }" },
+        { "id": "b", "text": "An infinite loop; pattern: while (true) { ... break; }" },
+        { "id": "c", "text": "A recursive loop; pattern: while (self) { }" },
+        { "id": "d", "text": "A static loop; no valid pattern exists" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q3",
+      "text": "What does `foreach (var item in collection)` do if the collection is empty in C#?",
+      "options": [
+        { "id": "a", "text": "Throws an InvalidOperationException" },
+        { "id": "b", "text": "Executes the body once with item set to null" },
+        { "id": "c", "text": "Skips the loop body entirely; zero iterations" },
+        { "id": "d", "text": "Throws a NullReferenceException" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b08_q4",
+      "text": "What happens when `break` is used inside a nested loop in C#?",
+      "options": [
+        { "id": "a", "text": "All loops terminate" },
+        { "id": "b", "text": "The outermost loop terminates" },
+        { "id": "c", "text": "Only the innermost loop containing the break terminates" },
+        { "id": "d", "text": "The program exits" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b08_q5",
+      "text": "What is the output of:\n`int i = 0;\ndo { Console.Write(i); i++; } while (i < 0);`",
+      "options": [
+        { "id": "a", "text": "Nothing is printed" },
+        { "id": "b", "text": "0" },
+        { "id": "c", "text": "1" },
+        { "id": "d", "text": "Infinite loop" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q6",
+      "text": "What is the result of calling `return` in the middle of a `for` loop inside a method?",
+      "options": [
+        { "id": "a", "text": "The loop stops but the method continues" },
+        { "id": "b", "text": "The loop restarts" },
+        { "id": "c", "text": "The method exits immediately returning the specified value" },
+        { "id": "d", "text": "A compile error occurs" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b08_q7",
+      "text": "What does `Array.Length` property return for `int[] arr = {1, 2, 3, 4, 5}`?",
+      "options": [
+        { "id": "a", "text": "4" },
+        { "id": "b", "text": "5" },
+        { "id": "c", "text": "6" },
+        { "id": "d", "text": "The last element value" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q8",
+      "text": "What is the index of the first and last element of an array `arr` with 10 elements in C#?",
+      "options": [
+        { "id": "a", "text": "First: 1, Last: 10" },
+        { "id": "b", "text": "First: 0, Last: 10" },
+        { "id": "c", "text": "First: 0, Last: 9" },
+        { "id": "d", "text": "First: 1, Last: 9" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b08_q9",
+      "text": "How do you declare a jagged array of 3 inner arrays in C#?",
+      "options": [
+        { "id": "a", "text": "int[,] arr = new int[3];" },
+        { "id": "b", "text": "int[][] arr = new int[3][];" },
+        { "id": "c", "text": "int[] arr = new int[][] { 3 };" },
+        { "id": "d", "text": "int[][] arr = new int[3][3];" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q10",
+      "text": "What is the size of the `long` data type in C#?",
+      "options": [
+        { "id": "a", "text": "16 bits" },
+        { "id": "b", "text": "32 bits" },
+        { "id": "c", "text": "64 bits" },
+        { "id": "d", "text": "128 bits" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b08_q11",
+      "text": "What is the type inferred by `var greeting = \"Hello\";` in C#?",
+      "options": [
+        { "id": "a", "text": "object" },
+        { "id": "b", "text": "char[]" },
+        { "id": "c", "text": "string" },
+        { "id": "d", "text": "dynamic" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b08_q12",
+      "text": "Can you change the value of a `readonly` field after it is set in the constructor in C#?",
+      "options": [
+        { "id": "a", "text": "Yes, at any time" },
+        { "id": "b", "text": "Yes, but only from within the same class" },
+        { "id": "c", "text": "No, once set in the constructor it cannot be changed" },
+        { "id": "d", "text": "Only within the same assembly" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b08_q13",
+      "text": "What does `string.Replace(\"hello\", \"world\")` do in C#?",
+      "options": [
+        { "id": "a", "text": "Modifies the original string" },
+        { "id": "b", "text": "Returns a new string with all occurrences of \"hello\" replaced by \"world\"" },
+        { "id": "c", "text": "Replaces only the first occurrence" },
+        { "id": "d", "text": "Splits the string at \"hello\"" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q14",
+      "text": "What is the result of `\"  Hello  \".TrimStart()`?",
+      "options": [
+        { "id": "a", "text": "\"Hello  \"" },
+        { "id": "b", "text": "\"Hello\"" },
+        { "id": "c", "text": "\"  Hello\"" },
+        { "id": "d", "text": "\"Hello \"" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b08_q15",
+      "text": "How do you build a string from parts efficiently in a loop in C#?",
+      "options": [
+        { "id": "a", "text": "Concatenate with + operator inside the loop" },
+        { "id": "b", "text": "Use StringBuilder.Append() in the loop" },
+        { "id": "c", "text": "Use string.Join() inside the loop" },
+        { "id": "d", "text": "Use string.Format() in every iteration" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q16",
+      "text": "What is the difference between `{ get; }` and `{ get; private set; }` on a property in C#?",
+      "options": [
+        { "id": "a", "text": "`{ get; }` can only be set in a constructor or initializer; `{ get; private set; }` can be set anywhere in the class" },
+        { "id": "b", "text": "They are identical" },
+        { "id": "c", "text": "`{ get; private set; }` prevents any assignment" },
+        { "id": "d", "text": "`{ get; }` allows writing from derived classes" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b08_q17",
+      "text": "What is the `required` modifier for a property in C# 11+?",
+      "options": [
+        { "id": "a", "text": "It makes the property read-only" },
+        { "id": "b", "text": "It requires the property to be set during object initialization" },
+        { "id": "c", "text": "It requires the property to have a backing field" },
+        { "id": "d", "text": "It marks the property as non-nullable" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q18",
+      "text": "What does `{ get; init; }` enforce that `{ get; set; }` does not in C# 9+?",
+      "options": [
+        { "id": "a", "text": "`init` allows the property to be set by derived classes only" },
+        { "id": "b", "text": "`init` restricts setting to construction time; `set` allows setting at any time" },
+        { "id": "c", "text": "`init` makes the property thread-safe" },
+        { "id": "d", "text": "There is no practical difference" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q19",
+      "text": "What is a Singleton pattern and how do static members help implement it in C#?",
+      "options": [
+        { "id": "a", "text": "A pattern that creates multiple instances; static constructors call each one" },
+        { "id": "b", "text": "A pattern ensuring only one instance of a class exists; a static field holds the single instance" },
+        { "id": "c", "text": "A pattern where all methods are static and no instance is needed" },
+        { "id": "d", "text": "A pattern that reuses objects from a pool using static arrays" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q20",
+      "text": "What does the `static` keyword do when applied to a field?",
+      "options": [
+        { "id": "a", "text": "Makes the field constant" },
+        { "id": "b", "text": "Makes the field belong to the class rather than any instance; shared across all objects" },
+        { "id": "c", "text": "Makes the field accessible only within the method it is declared in" },
+        { "id": "d", "text": "Prevents the field from being null" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q21",
+      "text": "What happens if a static constructor throws an exception in C#?",
+      "options": [
+        { "id": "a", "text": "It is silently ignored" },
+        { "id": "b", "text": "The exception propagates and the class becomes unusable for the lifetime of the AppDomain" },
+        { "id": "c", "text": "The static constructor retries on next access" },
+        { "id": "d", "text": "A fallback default constructor is called instead" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q22",
+      "text": "What is the `base` keyword used for in an overridden method in C#?",
+      "options": [
+        { "id": "a", "text": "To call another method in the same class" },
+        { "id": "b", "text": "To call the base class's version of the overridden method" },
+        { "id": "c", "text": "To create an instance of the base class" },
+        { "id": "d", "text": "To access private fields of the base class" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q23",
+      "text": "What does `new` (as a method modifier, not operator) do in C# when used in a derived class?",
+      "options": [
+        { "id": "a", "text": "Creates a new instance inside the method" },
+        { "id": "b", "text": "Hides the base class method rather than overriding it" },
+        { "id": "c", "text": "Forces the method to call the base class version" },
+        { "id": "d", "text": "Makes the method available only as static" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q24",
+      "text": "Can a C# interface contain default method implementations (C# 8+)?",
+      "options": [
+        { "id": "a", "text": "No, interfaces can only declare signatures" },
+        { "id": "b", "text": "Yes, C# 8 introduced default interface method implementations" },
+        { "id": "c", "text": "Only abstract methods are allowed in interfaces" },
+        { "id": "d", "text": "Only if the interface is sealed" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q25",
+      "text": "What is the numeric value of `Direction.South` if Direction enum is `{ North, South, East, West }`?",
+      "options": [
+        { "id": "a", "text": "0" },
+        { "id": "b", "text": "1" },
+        { "id": "c", "text": "2" },
+        { "id": "d", "text": "3" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q26",
+      "text": "How do you combine two [Flags] enum values in C#?",
+      "options": [
+        { "id": "a", "text": "Permission.Read + Permission.Write" },
+        { "id": "b", "text": "Permission.Read | Permission.Write" },
+        { "id": "c", "text": "Permission.Read & Permission.Write" },
+        { "id": "d", "text": "Permission.Read, Permission.Write" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q27",
+      "text": "What does `Enum.GetNames(typeof(Season))` return in C#?",
+      "options": [
+        { "id": "a", "text": "The integer values of the enum" },
+        { "id": "b", "text": "An array of strings representing the enum member names" },
+        { "id": "c", "text": "A dictionary of name-to-value pairs" },
+        { "id": "d", "text": "A list of all enum types in the assembly" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q28",
+      "text": "Can a struct in C# implement an interface?",
+      "options": [
+        { "id": "a", "text": "No, only classes can implement interfaces" },
+        { "id": "b", "text": "Yes, structs can implement interfaces" },
+        { "id": "c", "text": "Only if the interface has no methods" },
+        { "id": "d", "text": "Only if the struct is declared as public" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q29",
+      "text": "Where are struct instances typically stored in C# memory?",
+      "options": [
+        { "id": "a", "text": "Always on the heap" },
+        { "id": "b", "text": "On the stack when declared as local variables (or inline in other value types)" },
+        { "id": "c", "text": "In the global data segment" },
+        { "id": "d", "text": "In a special struct pool" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b08_q30",
+      "text": "What is the primary reason structs are passed by value, not by reference, in C#?",
+      "options": [
+        { "id": "a", "text": "Structs are always immutable" },
+        { "id": "b", "text": "Structs are value types; assignment and method passing creates a copy of the data" },
+        { "id": "c", "text": "Structs cannot be referenced" },
+        { "id": "d", "text": "The C# compiler enforces this as a security measure" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

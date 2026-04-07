@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_d01",
+  "title": "SQL Developer — Paper 1",
+  "description": "Developer-focused SQL scenarios covering query writing, joins, filtering, aggregations, CTEs, indexes, transactions, window functions, stored procedures, and data safety.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_d01_q1",
+      "text": "A developer writes: SELECT * FROM Orders JOIN Customers ON Orders.CustomerId = Customers.Id WHERE Orders.Status = 'Pending'. The Orders table has 5 million rows. What is the most immediate performance problem with this query?",
+      "options": [
+        { "id": "a", "text": "SELECT * retrieves all columns including large NVARCHAR and BLOB columns, increasing network I/O and preventing index-only scans" },
+        { "id": "b", "text": "The JOIN should be a LEFT JOIN to avoid missing rows" },
+        { "id": "c", "text": "The WHERE clause should use a parameterised value instead of a string literal" },
+        { "id": "d", "text": "The ON clause column names should be fully qualified with table aliases" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_d01_q2",
+      "text": "A reporting query groups sales by region and needs to return only regions where total sales exceed 100000. A developer writes: SELECT Region, SUM(Amount) AS TotalSales FROM Sales WHERE SUM(Amount) > 100000 GROUP BY Region. What is wrong with this query?",
+      "options": [
+        { "id": "a", "text": "SUM cannot be used with GROUP BY" },
+        { "id": "b", "text": "Aggregate functions cannot be used in the WHERE clause; HAVING must be used to filter on aggregated values" },
+        { "id": "c", "text": "The alias TotalSales cannot be defined in the same SELECT that uses SUM" },
+        { "id": "d", "text": "WHERE must appear after GROUP BY in the query" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q3",
+      "text": "A developer needs to find all customers who have never placed an order. The Customers table has 500k rows and the Orders table has 3M rows. Which query pattern is most appropriate?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Customers WHERE CustomerId NOT IN (SELECT CustomerId FROM Orders)" },
+        { "id": "b", "text": "SELECT c.* FROM Customers c LEFT JOIN Orders o ON c.CustomerId = o.CustomerId WHERE o.CustomerId IS NULL" },
+        { "id": "c", "text": "SELECT * FROM Customers EXCEPT SELECT c.* FROM Customers c JOIN Orders o ON c.CustomerId = o.CustomerId" },
+        { "id": "d", "text": "SELECT * FROM Customers WHERE CustomerId IN (SELECT CustomerId FROM Orders WHERE CustomerId IS NULL)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q4",
+      "text": "A developer wants to retrieve the top 3 highest-paid employees per department. They write: SELECT DeptId, EmpName, Salary, ROW_NUMBER() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS RowNum FROM Employees. What additional step is needed to complete this requirement?",
+      "options": [
+        { "id": "a", "text": "Replace ROW_NUMBER() with RANK() to handle salary ties correctly" },
+        { "id": "b", "text": "Wrap the query in a CTE or subquery and filter WHERE RowNum <= 3" },
+        { "id": "c", "text": "Add TOP 3 directly to the outer SELECT" },
+        { "id": "d", "text": "Add ORDER BY DeptId to the outer query before applying ROW_NUMBER" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q5",
+      "text": "A stored procedure builds a query using string concatenation: SET @sql = 'SELECT * FROM Users WHERE Username = ''' + @Username + ''''. A junior developer claims this is fine because the SP already validates that @Username is not NULL. Why is this still a security vulnerability?",
+      "options": [
+        { "id": "a", "text": "String concatenation SPs always run slower than inline SQL" },
+        { "id": "b", "text": "NULL validation does not prevent a user from passing a value like admin'-- which terminates the string and injects arbitrary SQL" },
+        { "id": "c", "text": "The procedure will fail because single quotes cannot appear inside a SET statement" },
+        { "id": "d", "text": "Stored procedures cannot use dynamic SQL at all" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q6",
+      "text": "An application has a Products table with a non-clustered index on CategoryId. A developer writes: SELECT ProductId, Name FROM Products WHERE LOWER(CategoryCode) = 'electronics'. Why will this query not use the index on CategoryId?",
+      "options": [
+        { "id": "a", "text": "The index is on CategoryId but the WHERE clause filters on CategoryCode, and wrapping a column in LOWER() also prevents index seeks on that column" },
+        { "id": "b", "text": "Non-clustered indexes cannot be used with string comparisons" },
+        { "id": "c", "text": "LOWER() is not a valid SQL Server function" },
+        { "id": "d", "text": "SELECT must include CategoryId for the index to be used" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_d01_q7",
+      "text": "A developer runs the following inside a TRY...CATCH block: BEGIN TRANSACTION; UPDATE Accounts SET Balance = Balance - 500 WHERE AccountId = 1; UPDATE Accounts SET Balance = Balance + 500 WHERE AccountId = 2; COMMIT TRANSACTION. The second UPDATE fails. Without SET XACT_ABORT ON, what happens?",
+      "options": [
+        { "id": "a", "text": "SQL Server automatically rolls back the entire transaction on any error" },
+        { "id": "b", "text": "The first UPDATE is committed and the second is silently ignored" },
+        { "id": "c", "text": "The transaction remains open and the first UPDATE is uncommitted until the CATCH block explicitly issues ROLLBACK" },
+        { "id": "d", "text": "The CATCH block is skipped and the transaction commits with only the first UPDATE" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d01_q8",
+      "text": "A developer needs to identify duplicate email addresses in a Users table before applying a UNIQUE constraint. Which query correctly identifies emails that appear more than once?",
+      "options": [
+        { "id": "a", "text": "SELECT Email FROM Users WHERE COUNT(Email) > 1" },
+        { "id": "b", "text": "SELECT DISTINCT Email FROM Users GROUP BY Email HAVING COUNT(*) > 1" },
+        { "id": "c", "text": "SELECT Email, COUNT(*) AS Cnt FROM Users GROUP BY Email HAVING COUNT(*) > 1" },
+        { "id": "d", "text": "SELECT Email FROM Users HAVING COUNT(Email) > 1" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d01_q9",
+      "text": "A developer writes a CTE to calculate monthly revenue and then references it twice in the main query — once for current month and once for prior month. A colleague says to use a temp table instead. What is the main technical reason the colleague might be correct?",
+      "options": [
+        { "id": "a", "text": "CTEs cannot be referenced more than once in a query" },
+        { "id": "b", "text": "A CTE is re-evaluated each time it is referenced, so a complex CTE referenced twice performs the work twice; a temp table materialises the result once" },
+        { "id": "c", "text": "CTEs do not support window functions" },
+        { "id": "d", "text": "Temp tables always use less memory than CTEs" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q10",
+      "text": "A developer is adding a composite index on (CustomerId, OrderDate) to speed up a query. The query filter is WHERE CustomerId = 5 AND OrderDate > '2025-01-01'. In what scenario would reversing the column order to (OrderDate, CustomerId) hurt performance?",
+      "options": [
+        { "id": "a", "text": "If CustomerId has higher cardinality than OrderDate" },
+        { "id": "b", "text": "When queries frequently filter on CustomerId alone, the leading column must be CustomerId; reversing the order would make single-column CustomerId filters unable to use the index efficiently" },
+        { "id": "c", "text": "SQL Server does not support composite indexes with date columns" },
+        { "id": "d", "text": "The reversed index would increase the clustered index size" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q11",
+      "text": "A developer uses RANK() OVER (PARTITION BY DeptId ORDER BY Salary DESC) to rank employees. Two employees in the same department have an identical salary of 80000. What rank numbers will they receive?",
+      "options": [
+        { "id": "a", "text": "Both receive rank 1, and the next employee receives rank 2" },
+        { "id": "b", "text": "Both receive rank 1, and the next employee receives rank 3" },
+        { "id": "c", "text": "They receive ranks 1 and 2 arbitrarily, and the next receives rank 3" },
+        { "id": "d", "text": "RANK() does not allow ties and raises an error" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q12",
+      "text": "A developer needs to perform a safe bulk delete of archived records older than 2 years. The table has 10 million rows. Which approach is safest and most practical?",
+      "options": [
+        { "id": "a", "text": "DELETE FROM Archive WHERE CreatedDate < DATEADD(YEAR, -2, GETDATE()) with no WHERE guard" },
+        { "id": "b", "text": "TRUNCATE TABLE Archive to remove all rows instantly" },
+        { "id": "c", "text": "Delete in batches using a loop: DELETE TOP (5000) FROM Archive WHERE CreatedDate < DATEADD(YEAR, -2, GETDATE()) until @@ROWCOUNT = 0" },
+        { "id": "d", "text": "Drop and recreate the Archive table after exporting needed data" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d01_q13",
+      "text": "A developer writes: SELECT CustomerName, OrderDate FROM Customers, Orders. There is no JOIN condition. What is the result?",
+      "options": [
+        { "id": "a", "text": "An error because SQL requires an explicit JOIN keyword" },
+        { "id": "b", "text": "A Cartesian product — every customer row is matched with every order row, producing Customers_count × Orders_count rows" },
+        { "id": "c", "text": "Only matching rows are returned, equivalent to an INNER JOIN" },
+        { "id": "d", "text": "SQL Server returns NULL for unmatched columns" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q14",
+      "text": "A developer needs to compare each employee's salary against their own department's average salary. Which SQL construct is the most straightforward way to achieve this?",
+      "options": [
+        { "id": "a", "text": "Use a correlated subquery in the SELECT clause: (SELECT AVG(Salary) FROM Employees e2 WHERE e2.DeptId = e.DeptId)" },
+        { "id": "b", "text": "Use AVG(Salary) OVER (PARTITION BY DeptId) as a window function alongside the regular SELECT columns" },
+        { "id": "c", "text": "Create a separate GROUP BY query and join it back to the Employees table" },
+        { "id": "d", "text": "Both b and c are correct, but b avoids an extra JOIN and is generally simpler" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_d01_q15",
+      "text": "An application issues two concurrent transactions: T1 reads a product's stock count and T2 updates the same row simultaneously. Under READ COMMITTED isolation, what anomaly can still occur?",
+      "options": [
+        { "id": "a", "text": "Dirty reads — T1 reads T2's uncommitted changes" },
+        { "id": "b", "text": "Non-repeatable reads — T1 reads the row twice and gets different values because T2 committed between T1's reads" },
+        { "id": "c", "text": "Phantom reads are impossible at READ COMMITTED" },
+        { "id": "d", "text": "No anomalies occur at READ COMMITTED" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q16",
+      "text": "A developer queries a table with a column PhoneNumber that contains NULL for some customers. The query is: SELECT * FROM Customers WHERE PhoneNumber <> '555-0100'. Will rows where PhoneNumber IS NULL be returned?",
+      "options": [
+        { "id": "a", "text": "Yes, because NULL is not equal to '555-0100'" },
+        { "id": "b", "text": "No, because any comparison with NULL yields UNKNOWN, which is treated as false in WHERE clauses" },
+        { "id": "c", "text": "Yes, but only if ANSI_NULLS is set to OFF" },
+        { "id": "d", "text": "It depends on the data type of PhoneNumber" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q17",
+      "text": "A developer is choosing between VARCHAR(255) and NVARCHAR(255) for a customer name column. The application must support international characters including Chinese and Arabic. Which should they choose and why?",
+      "options": [
+        { "id": "a", "text": "VARCHAR(255) because it uses less storage and all characters are supported via code pages" },
+        { "id": "b", "text": "NVARCHAR(255) because it stores Unicode (UTF-16) and can represent characters from any language without data loss" },
+        { "id": "c", "text": "CHAR(255) because fixed-length columns are faster to read" },
+        { "id": "d", "text": "VARCHAR(MAX) to ensure no truncation occurs" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q18",
+      "text": "A developer writes a stored procedure that accepts @ProductId INT and @Price DECIMAL(10,2) as parameters and runs: UPDATE Products SET Price = @Price WHERE ProductId = @ProductId. After the update, they need to check whether any row was actually modified. What is the correct approach?",
+      "options": [
+        { "id": "a", "text": "Check @@ERROR immediately after the UPDATE" },
+        { "id": "b", "text": "Use SELECT COUNT(*) FROM Products WHERE ProductId = @ProductId after the UPDATE" },
+        { "id": "c", "text": "Check @@ROWCOUNT immediately after the UPDATE statement; it reflects the number of rows affected by the most recent statement" },
+        { "id": "d", "text": "Use TRY...CATCH — if no row matched, an exception is thrown automatically" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d01_q19",
+      "text": "A developer wants to produce a running total of daily sales ordered by SaleDate. Which window function expression achieves this?",
+      "options": [
+        { "id": "a", "text": "SUM(DailySales) OVER (ORDER BY SaleDate ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)" },
+        { "id": "b", "text": "SUM(DailySales) OVER (PARTITION BY SaleDate)" },
+        { "id": "c", "text": "CUMULATIVE_SUM(DailySales) ORDER BY SaleDate" },
+        { "id": "d", "text": "SUM(DailySales) GROUP BY SaleDate ORDER BY SaleDate" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_d01_q20",
+      "text": "A developer reviews a slow query and sees the execution plan shows a Key Lookup operator after a non-clustered index seek. What does this indicate and how should it be resolved?",
+      "options": [
+        { "id": "a", "text": "The query has a missing JOIN condition; add the correct ON clause" },
+        { "id": "b", "text": "The non-clustered index satisfied the WHERE clause but the query also needs columns not in the index, forcing extra lookups to the clustered index; adding those columns as INCLUDE columns creates a covering index" },
+        { "id": "c", "text": "The clustered index is fragmented and needs to be rebuilt" },
+        { "id": "d", "text": "Key Lookup means the table has no primary key; one must be added" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q21",
+      "text": "A developer uses EXISTS instead of IN for a subquery check: WHERE EXISTS (SELECT 1 FROM Orders o WHERE o.CustomerId = c.CustomerId). What is the key advantage of EXISTS over IN in this context when Orders is a large table?",
+      "options": [
+        { "id": "a", "text": "EXISTS returns multiple rows; IN returns only one row" },
+        { "id": "b", "text": "EXISTS short-circuits as soon as one matching row is found, avoiding a full scan of the subquery result; IN must evaluate the complete subquery result set first" },
+        { "id": "c", "text": "IN cannot be used with subqueries, only with literal lists" },
+        { "id": "d", "text": "EXISTS ignores NULL values automatically; IN does not" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q22",
+      "text": "A developer needs to alias a calculated column and then filter on it in the same SELECT. They write: SELECT SalePrice * Quantity AS LineTotal FROM OrderItems WHERE LineTotal > 500. What will happen?",
+      "options": [
+        { "id": "a", "text": "The query works because SQL Server resolves aliases before WHERE evaluation" },
+        { "id": "b", "text": "The query fails because column aliases defined in SELECT cannot be referenced in the WHERE clause of the same query; the expression must be repeated or wrapped in a subquery" },
+        { "id": "c", "text": "LineTotal will be evaluated as 0 in the WHERE clause" },
+        { "id": "d", "text": "The query works only if LineTotal is an existing column name in the table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q23",
+      "text": "Two developers are debating soft delete vs hard delete for a customer records table. Soft delete adds an IsDeleted BIT column. What is the primary ongoing maintenance cost introduced by soft delete?",
+      "options": [
+        { "id": "a", "text": "Soft delete requires a trigger on every table" },
+        { "id": "b", "text": "Every query against the table must include WHERE IsDeleted = 0 to exclude logically deleted rows, increasing query complexity and risk of accidentally exposing deleted data" },
+        { "id": "c", "text": "Soft delete prevents the use of foreign keys" },
+        { "id": "d", "text": "The IsDeleted column adds significant storage overhead" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q24",
+      "text": "A developer writes a self-join to find employees who share the same manager: SELECT a.EmpName, b.EmpName AS Colleague FROM Employees a JOIN Employees b ON a.ManagerId = b.ManagerId WHERE a.EmpId <> b.EmpId. What problem does this query have?",
+      "options": [
+        { "id": "a", "text": "Self-joins are not allowed in SQL Server" },
+        { "id": "b", "text": "The query will return each pair twice (A with B and B with A); adding AND a.EmpId < b.EmpId eliminates duplicates" },
+        { "id": "c", "text": "The WHERE clause should use NOT IN instead of <>" },
+        { "id": "d", "text": "The query will fail because both aliases reference the same table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q25",
+      "text": "A developer applies DISTINCT to remove duplicate rows: SELECT DISTINCT CustomerId, OrderDate FROM Orders. A colleague suggests GROUP BY CustomerId, OrderDate instead. What is the practical difference in this scenario?",
+      "options": [
+        { "id": "a", "text": "DISTINCT cannot be used with multiple columns" },
+        { "id": "b", "text": "GROUP BY requires an aggregate function; DISTINCT does not" },
+        { "id": "c", "text": "For this scenario they produce identical results; DISTINCT is more readable while GROUP BY is preferred when aggregate functions are also needed" },
+        { "id": "d", "text": "DISTINCT always performs better than GROUP BY" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d01_q26",
+      "text": "A developer encounters a deadlock between two transactions. T1 locks Table A then tries to lock Table B; T2 locks Table B then tries to lock Table A. What is the standard developer-side approach to preventing this class of deadlock?",
+      "options": [
+        { "id": "a", "text": "Use NOLOCK hints on all queries" },
+        { "id": "b", "text": "Ensure all transactions acquire locks in a consistent order — both T1 and T2 should lock Table A before Table B" },
+        { "id": "c", "text": "Increase transaction isolation to SERIALIZABLE" },
+        { "id": "d", "text": "Wrap every statement in a separate transaction" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q27",
+      "text": "A developer needs the previous month's revenue next to each month's revenue to calculate month-over-month growth. Which window function retrieves the previous row's value?",
+      "options": [
+        { "id": "a", "text": "FIRST_VALUE(Revenue) OVER (ORDER BY SaleMonth)" },
+        { "id": "b", "text": "LAG(Revenue, 1) OVER (ORDER BY SaleMonth)" },
+        { "id": "c", "text": "LEAD(Revenue, -1) OVER (ORDER BY SaleMonth)" },
+        { "id": "d", "text": "PREV(Revenue) OVER (ORDER BY SaleMonth)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q28",
+      "text": "A developer needs to use a CHECK constraint to ensure that a product's SalePrice is always greater than its CostPrice. Which constraint definition achieves this?",
+      "options": [
+        { "id": "a", "text": "CONSTRAINT chk_price CHECK (SalePrice > 0 AND CostPrice > 0)" },
+        { "id": "b", "text": "CONSTRAINT chk_price CHECK (SalePrice > CostPrice)" },
+        { "id": "c", "text": "CHECK constraints cannot compare two columns in the same table" },
+        { "id": "d", "text": "CONSTRAINT chk_price FOREIGN KEY (SalePrice) REFERENCES CostPrice" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d01_q29",
+      "text": "A developer wants to find all product categories that exist in a current catalog table but NOT in a legacy catalog table. Which set operation is most appropriate?",
+      "options": [
+        { "id": "a", "text": "UNION ALL" },
+        { "id": "b", "text": "INTERSECT" },
+        { "id": "c", "text": "EXCEPT" },
+        { "id": "d", "text": "CROSS JOIN" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d01_q30",
+      "text": "A developer adds a non-clustered index on a table that receives hundreds of INSERT and UPDATE operations per second. After adding the index, write throughput drops noticeably. What is the cause?",
+      "options": [
+        { "id": "a", "text": "Non-clustered indexes lock the table exclusively during all writes" },
+        { "id": "b", "text": "Every INSERT, UPDATE, and DELETE must also maintain the index structure, adding write overhead; indexes improve read performance at the cost of write performance" },
+        { "id": "c", "text": "The index causes SQL Server to switch to a single-threaded execution plan" },
+        { "id": "d", "text": "Non-clustered indexes are only supported on read-only tables" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

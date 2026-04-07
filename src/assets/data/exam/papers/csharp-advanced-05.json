@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a05",
+  "title": "C# Advanced — Paper 5",
+  "description": "Advanced C# covering Lambda & Functional Patterns, Delegates, Events, Async/Await, Task Parallel Library, Attributes, Extension Methods, Expression Trees, Dynamic Types, and Advanced Pattern Matching.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a05_q1",
+      "text": "What is the difference between Task.Run() and a plain async method call?",
+      "options": [
+        { "id": "a", "text": "Task.Run() and async method calls are identical in behavior." },
+        { "id": "b", "text": "Task.Run() offloads synchronous or CPU-bound work to the thread pool; an async method call begins execution synchronously on the current thread until it hits an await, then returns a Task." },
+        { "id": "c", "text": "Task.Run() creates a dedicated new thread each time." },
+        { "id": "d", "text": "Async methods cannot be called without Task.Run()." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q2",
+      "text": "What does Parallel.ForEach do differently from a regular foreach loop?",
+      "options": [
+        { "id": "a", "text": "Parallel.ForEach executes iterations sequentially with extra overhead." },
+        { "id": "b", "text": "Parallel.ForEach partitions the data source and executes iterations concurrently across multiple thread pool threads, exploiting multi-core processors for CPU-bound work." },
+        { "id": "c", "text": "Parallel.ForEach requires a CancellationToken to run." },
+        { "id": "d", "text": "Parallel.ForEach guarantees iteration order is preserved." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q3",
+      "text": "What is advanced pattern matching with a positional pattern in C# 8+?",
+      "options": [
+        { "id": "a", "text": "A pattern that matches elements by position in an array." },
+        { "id": "b", "text": "A pattern that deconstructs an object using its Deconstruct method or tuple structure, matching parts of the object by their positional components in a switch expression or is expression." },
+        { "id": "c", "text": "A pattern that uses index-based access like list[0] in a switch." },
+        { "id": "d", "text": "A positional pattern uses string positions to match substrings." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q4",
+      "text": "What is a monad-like pattern in C# and how does it relate to Func<T,TResult> chaining?",
+      "options": [
+        { "id": "a", "text": "Monads are only available in functional languages, not C#." },
+        { "id": "b", "text": "A monad-like pattern wraps a value in a context (like Maybe<T> or Task<T>) and provides a Bind/Map operation (similar to SelectMany) that chains transformations while handling the context (null, async, error) automatically." },
+        { "id": "c", "text": "A monad is a design pattern that uses multiple inheritance." },
+        { "id": "d", "text": "Monadic patterns require the dynamic keyword in C#." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q5",
+      "text": "How does removing a delegate that was never added behave in C#?",
+      "options": [
+        { "id": "a", "text": "It throws an InvalidOperationException." },
+        { "id": "b", "text": "Delegate.Remove (and the -= operator) silently does nothing if the specified delegate is not found in the invocation list; no exception is thrown." },
+        { "id": "c", "text": "It removes the last delegate in the invocation list instead." },
+        { "id": "d", "text": "It clears all delegates from the invocation list." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q6",
+      "text": "What is the difference between IObservable<T> and events in C# for reactive programming?",
+      "options": [
+        { "id": "a", "text": "IObservable<T> and events are identical; Rx is just syntactic sugar." },
+        { "id": "b", "text": "IObservable<T> is a composable, filterable, and transformable stream with built-in error and completion signals; events are simpler and lack composition operators, error channels, and lifetime management." },
+        { "id": "c", "text": "Events support LINQ operators natively; IObservable<T> does not." },
+        { "id": "d", "text": "IObservable<T> is a built-in C# language feature like events." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q7",
+      "text": "What is PLINQ and how is it enabled on an IEnumerable<T> query?",
+      "options": [
+        { "id": "a", "text": "PLINQ is a parallel version of LINQ available only via NuGet." },
+        { "id": "b", "text": "PLINQ (Parallel LINQ) executes LINQ queries in parallel across multiple threads; it is enabled by calling .AsParallel() on the source, converting it to a ParallelQuery<T>." },
+        { "id": "c", "text": "PLINQ is enabled by replacing all Select calls with ParallelSelect." },
+        { "id": "d", "text": "PLINQ requires Task.Run() to wrap each LINQ operator." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q8",
+      "text": "What does the 'not' pattern do in C# 9+ pattern matching?",
+      "options": [
+        { "id": "a", "text": "It matches null values only." },
+        { "id": "b", "text": "It negates another pattern: 'x is not null' matches when x is not null; 'x is not string' matches when x is not a string." },
+        { "id": "c", "text": "It is equivalent to the ! operator applied to a boolean expression." },
+        { "id": "d", "text": "It matches the logical NOT of a switch arm." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q9",
+      "text": "How does the [Flags] attribute on an enum change its behavior?",
+      "options": [
+        { "id": "a", "text": "It forces the enum to use byte storage." },
+        { "id": "b", "text": "It indicates that the enum values are bit flags that can be combined with bitwise operators; it also makes Enum.ToString() display combined flag names (e.g., 'Read, Write') instead of a numeric value." },
+        { "id": "c", "text": "It prevents duplicate enum values." },
+        { "id": "d", "text": "It enables LINQ queries over enum values." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q10",
+      "text": "What does the INotifyPropertyChanged interface and pattern require?",
+      "options": [
+        { "id": "a", "text": "It requires implementing a single static method called NotifyAll()." },
+        { "id": "b", "text": "It requires implementing the PropertyChanged event of type PropertyChangedEventHandler; when a property changes, raise the event passing the property name so bound UI elements can update." },
+        { "id": "c", "text": "It automatically propagates property changes without any code." },
+        { "id": "d", "text": "It requires marking each property with the [Notify] attribute." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q11",
+      "text": "How does dynamic dispatch in C# differ from virtual method dispatch?",
+      "options": [
+        { "id": "a", "text": "Dynamic dispatch uses vtable lookup; virtual dispatch uses the DLR." },
+        { "id": "b", "text": "Virtual method dispatch is resolved at compile time via vtable and operates on static types; dynamic dispatch defers member lookup entirely to runtime via the DLR, operating on values typed as 'dynamic'." },
+        { "id": "c", "text": "They are identical; dynamic is just a shorthand for virtual." },
+        { "id": "d", "text": "Virtual dispatch is always slower than dynamic dispatch." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q12",
+      "text": "What does the 'and' pattern combinator do in C# 9+ switch expressions?",
+      "options": [
+        { "id": "a", "text": "It matches if either of two patterns matches." },
+        { "id": "b", "text": "It matches only when both combined patterns match simultaneously: e.g., 'x is > 0 and < 100' matches when x is both greater than 0 and less than 100." },
+        { "id": "c", "text": "It is used to combine multiple switch arms." },
+        { "id": "d", "text": "It concatenates two string patterns." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q13",
+      "text": "How do you build an expression tree that represents a member access (reading a property)?",
+      "options": [
+        { "id": "a", "text": "Expression.Property is not available in the System.Linq.Expressions API." },
+        { "id": "b", "text": "var param = Expression.Parameter(typeof(Person), \"p\"); var prop = Expression.Property(param, \"Name\"); var lambda = Expression.Lambda<Func<Person,string>>(prop, param); var fn = lambda.Compile();" },
+        { "id": "c", "text": "Expression.Member(typeof(Person), \"Name\").Compile()" },
+        { "id": "d", "text": "Expression.Access(p => p.Name).Build()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q14",
+      "text": "What is the Thread Local Storage (ThreadLocal<T>) pattern and how does it relate to parallel code?",
+      "options": [
+        { "id": "a", "text": "ThreadLocal<T> shares one value across all threads." },
+        { "id": "b", "text": "ThreadLocal<T> gives each thread its own independent copy of a value, preventing data races in parallel code where each thread needs per-thread state (e.g., per-thread random number generator)." },
+        { "id": "c", "text": "ThreadLocal<T> is equivalent to a lock for thread synchronization." },
+        { "id": "d", "text": "ThreadLocal<T> stores values in the thread pool's shared queue." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q15",
+      "text": "What is the purpose of an extension method on IEnumerable<T> that returns IEnumerable<T> instead of void?",
+      "options": [
+        { "id": "a", "text": "It allows the method to modify the original collection in place." },
+        { "id": "b", "text": "Returning IEnumerable<T> enables fluent LINQ-style chaining, where each extension method transforms and passes the sequence to the next operator without materializing intermediate results." },
+        { "id": "c", "text": "It prevents the method from being callable on concrete collections like List<T>." },
+        { "id": "d", "text": "It signals that the method uses lazy evaluation only if returning IQueryable<T>." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q16",
+      "text": "What is the difference between Parallel.For and PLINQ for parallelism?",
+      "options": [
+        { "id": "a", "text": "Parallel.For is for LINQ queries; PLINQ is for simple loops." },
+        { "id": "b", "text": "Parallel.For is imperative and used for index-based loops; PLINQ is declarative, extending LINQ with parallelism, better suited for data transformation pipelines." },
+        { "id": "c", "text": "PLINQ uses dedicated threads; Parallel.For uses the thread pool." },
+        { "id": "d", "text": "They are identical in behavior and performance." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q17",
+      "text": "How do you implement a custom attribute that can be read at runtime to validate a property value?",
+      "options": [
+        { "id": "a", "text": "Attributes are compile-time only and cannot be read at runtime." },
+        { "id": "b", "text": "Define a class inheriting from Attribute with validation logic; at runtime, use reflection to get the attribute via GetCustomAttribute<T>() and call the validation method, passing the property value." },
+        { "id": "c", "text": "Use [Validate] from the built-in System namespace." },
+        { "id": "d", "text": "Override the Validate() method in the Attribute base class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q18",
+      "text": "What is the difference between a property pattern and a type pattern in C# pattern matching?",
+      "options": [
+        { "id": "a", "text": "They are identical; type patterns check properties." },
+        { "id": "b", "text": "A type pattern (x is TypeName t) checks the runtime type and optionally binds; a property pattern ({ PropertyName: value }) tests specific property values of an object (can be combined with a type pattern)." },
+        { "id": "c", "text": "Property patterns only work with record types." },
+        { "id": "d", "text": "Type patterns check at compile time; property patterns check at runtime." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q19",
+      "text": "What happens when you call async void instead of async Task and an exception is thrown?",
+      "options": [
+        { "id": "a", "text": "The exception is captured in the returned Task and can be awaited." },
+        { "id": "b", "text": "An exception in an async void method cannot be caught by the caller via try/catch around the call site; it propagates to the synchronization context and typically crashes the application." },
+        { "id": "c", "text": "Async void swallows all exceptions silently." },
+        { "id": "d", "text": "The compiler prevents throwing exceptions in async void methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q20",
+      "text": "How does an Expression<Func<T, bool>> differ from Func<T, bool> when used for filtering?",
+      "options": [
+        { "id": "a", "text": "Func<T,bool> can be translated to SQL; Expression<Func<T,bool>> cannot." },
+        { "id": "b", "text": "Func<T,bool> is a compiled delegate executed in-memory by LINQ to Objects; Expression<Func<T,bool>> is an expression tree that IQueryable providers (like EF) translate to SQL or other query languages." },
+        { "id": "c", "text": "They behave identically on both IEnumerable<T> and IQueryable<T>." },
+        { "id": "d", "text": "Expression<Func<T,bool>> executes faster because it bypasses the delegate call overhead." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q21",
+      "text": "What does the 'or' pattern combinator match in C# 9+?",
+      "options": [
+        { "id": "a", "text": "It matches only if both patterns match." },
+        { "id": "b", "text": "It matches if at least one of the combined patterns matches: e.g., 'x is 1 or 2 or 3' matches when x equals 1, 2, or 3." },
+        { "id": "c", "text": "It is equivalent to || on boolean expressions." },
+        { "id": "d", "text": "It matches the union of types in a type hierarchy." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q22",
+      "text": "What is the maximum number of type parameters that Func<> supports in the .NET standard library?",
+      "options": [
+        { "id": "a", "text": "8 type parameters" },
+        { "id": "b", "text": "16 type parameters (Func<T1,...,T16,TResult>)" },
+        { "id": "c", "text": "4 type parameters" },
+        { "id": "d", "text": "32 type parameters" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q23",
+      "text": "What is the purpose of ParallelOptions.MaxDegreeOfParallelism in Parallel.For/ForEach?",
+      "options": [
+        { "id": "a", "text": "It sets the priority of the parallel tasks." },
+        { "id": "b", "text": "It caps the maximum number of concurrent threads/tasks used by the parallel operation, preventing over-subscription and resource exhaustion." },
+        { "id": "c", "text": "It controls the batch size of elements per thread." },
+        { "id": "d", "text": "It sets the thread affinity for parallel operations." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q24",
+      "text": "How does dynamic interop with COM objects work in C#?",
+      "options": [
+        { "id": "a", "text": "COM objects must be wrapped in a managed proxy class before use." },
+        { "id": "b", "text": "Using the dynamic keyword, C# can call COM methods and access COM properties directly without explicitly casting or using reflection; the DLR handles the dispatch, removing the need for verbose interop code." },
+        { "id": "c", "text": "COM interop in C# requires the unsafe keyword." },
+        { "id": "d", "text": "Dynamic COM calls always require calling Marshal.ReleaseComObject()." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q25",
+      "text": "When should you prefer async/await over manual continuation-passing with Task.ContinueWith()?",
+      "options": [
+        { "id": "a", "text": "ContinueWith is always preferred because it offers more control." },
+        { "id": "b", "text": "async/await is preferred in most cases because it generates readable, linear-looking code, handles exceptions naturally, captures context correctly, and avoids the complexity of chained ContinueWith callbacks." },
+        { "id": "c", "text": "They are identical in all scenarios." },
+        { "id": "d", "text": "async/await only works with I/O-bound tasks; ContinueWith works for all tasks." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q26",
+      "text": "What is the list pattern in C# 11+ pattern matching?",
+      "options": [
+        { "id": "a", "text": "A pattern that matches any IEnumerable<T> with a LINQ expression." },
+        { "id": "b", "text": "A pattern that matches sequences by their elements: e.g., [1, 2, ..] matches a list starting with 1 and 2, and [..] matches any sequence." },
+        { "id": "c", "text": "A pattern that matches only List<T> types." },
+        { "id": "d", "text": "A pattern that enumerates all elements and checks their types." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q27",
+      "text": "What does the [NonSerialized] attribute do when applied to a field?",
+      "options": [
+        { "id": "a", "text": "It encrypts the field during serialization." },
+        { "id": "b", "text": "It excludes the field from binary serialization, so it is skipped by BinaryFormatter; the field will have its default value after deserialization." },
+        { "id": "c", "text": "It marks the field as write-only during deserialization." },
+        { "id": "d", "text": "It prevents the field from being accessed by reflection." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q28",
+      "text": "What is the difference between an instance extension method and a static helper method?",
+      "options": [
+        { "id": "a", "text": "They compile to identical IL; the only difference is calling syntax." },
+        { "id": "b", "text": "An extension method is called with instance syntax (obj.Method()) and participates in IntelliSense autocomplete on the type; a static helper requires explicit class qualification (Helper.Method(obj)) and does not appear in instance member lists." },
+        { "id": "c", "text": "Extension methods can access private members; static helpers cannot." },
+        { "id": "d", "text": "Static helpers can be inherited; extension methods cannot." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q29",
+      "text": "What is the Visitor pattern and how do expression trees embody it?",
+      "options": [
+        { "id": "a", "text": "Visitor pattern and expression trees are unrelated." },
+        { "id": "b", "text": "The Visitor pattern separates operations on a structure from the structure itself; expression trees embody this via ExpressionVisitor, which lets you walk and transform nodes of an expression tree without modifying the tree classes." },
+        { "id": "c", "text": "Expression trees use the Iterator pattern, not Visitor." },
+        { "id": "d", "text": "The Visitor pattern is automatically applied when compiling expression trees." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a05_q30",
+      "text": "What is the purpose of Parallel.For's localInit and localFinally parameters?",
+      "options": [
+        { "id": "a", "text": "localInit runs before the loop; localFinally runs after all iterations globally." },
+        { "id": "b", "text": "localInit initializes per-thread local state before that thread's first iteration; localFinally aggregates the per-thread result into a shared value after that thread completes its work, enabling thread-safe reduction without locks in the inner loop." },
+        { "id": "c", "text": "They configure the thread pool before and after the loop." },
+        { "id": "d", "text": "localFinally is called for each iteration, not per thread." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

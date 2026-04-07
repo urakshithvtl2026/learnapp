@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_06",
+  "title": "SQL Indexes & Query Performance",
+  "description": "Index types, query performance optimization, execution plans, and index maintenance.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_06_q1",
+      "text": "What is the primary difference between a clustered and a non-clustered index?",
+      "options": [
+        { "id": "a", "text": "A clustered index sorts and stores the actual table data rows; a non-clustered index has a separate structure with pointers to the data rows" },
+        { "id": "b", "text": "A non-clustered index stores data rows; a clustered index stores pointers" },
+        { "id": "c", "text": "Clustered indexes are only on primary keys; non-clustered can be on any column" },
+        { "id": "d", "text": "There is no performance difference between them" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_06_q2",
+      "text": "How many clustered indexes can a SQL Server table have?",
+      "options": [
+        { "id": "a", "text": "Unlimited" },
+        { "id": "b", "text": "Up to 999" },
+        { "id": "c", "text": "Exactly 1" },
+        { "id": "d", "text": "2 — one for primary key and one user-defined" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_06_q3",
+      "text": "What is a composite index?",
+      "options": [
+        { "id": "a", "text": "An index that combines two or more tables" },
+        { "id": "b", "text": "An index built on two or more columns" },
+        { "id": "c", "text": "An index on computed columns" },
+        { "id": "d", "text": "An index that covers all columns in a table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q4",
+      "text": "What is a covering index?",
+      "options": [
+        { "id": "a", "text": "An index that covers all tables in the database" },
+        { "id": "b", "text": "An index that contains all the columns needed to satisfy a query without accessing the base table" },
+        { "id": "c", "text": "An index on every column of a table" },
+        { "id": "d", "text": "A clustered index that includes non-key columns" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q5",
+      "text": "What are INCLUDE columns in a non-clustered index used for?",
+      "options": [
+        { "id": "a", "text": "To define the sort order of the index" },
+        { "id": "b", "text": "To add non-key columns to the leaf level of the index, making it a covering index without increasing the index key size" },
+        { "id": "c", "text": "To filter which rows are included in the index" },
+        { "id": "d", "text": "To include columns from other tables" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q6",
+      "text": "What is an index seek?",
+      "options": [
+        { "id": "a", "text": "Reading every page of the index from start to finish" },
+        { "id": "b", "text": "Navigating directly to a specific portion of the index using the B-tree structure" },
+        { "id": "c", "text": "Searching the index using a table scan" },
+        { "id": "d", "text": "Looking for a missing index in the execution plan" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q7",
+      "text": "Which is generally more efficient: an index seek or an index scan?",
+      "options": [
+        { "id": "a", "text": "Index scan is always faster" },
+        { "id": "b", "text": "Index seek is generally more efficient as it goes directly to matching rows" },
+        { "id": "c", "text": "They are always equally efficient" },
+        { "id": "d", "text": "Index scan is more efficient for large tables" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q8",
+      "text": "When can adding an index HURT performance?",
+      "options": [
+        { "id": "a", "text": "Indexes always improve performance" },
+        { "id": "b", "text": "On INSERT, UPDATE, and DELETE operations, indexes add overhead as they must be maintained" },
+        { "id": "c", "text": "Indexes only hurt performance on SELECT queries" },
+        { "id": "d", "text": "Only when the index is on a text column" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q9",
+      "text": "Which SQL Server command is used to view the execution plan of a query?",
+      "options": [
+        { "id": "a", "text": "SHOW PLAN" },
+        { "id": "b", "text": "DISPLAY PLAN" },
+        { "id": "c", "text": "SET STATISTICS IO ON or using SSMS with 'Include Actual Execution Plan'" },
+        { "id": "d", "text": "EXPLAIN SELECT" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_06_q10",
+      "text": "What does SET STATISTICS IO ON show in SQL Server?",
+      "options": [
+        { "id": "a", "text": "The query execution time only" },
+        { "id": "b", "text": "The number of logical reads, physical reads, and read-ahead reads per table accessed" },
+        { "id": "c", "text": "The index names used in the query" },
+        { "id": "d", "text": "The memory usage of the query" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q11",
+      "text": "What does the EXPLAIN command do in PostgreSQL or MySQL?",
+      "options": [
+        { "id": "a", "text": "Executes the query and returns results" },
+        { "id": "b", "text": "Shows the query execution plan without actually executing the query" },
+        { "id": "c", "text": "Explains the SQL syntax used" },
+        { "id": "d", "text": "Lists all indexes on a table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q12",
+      "text": "In an execution plan, what does a 'Missing Index' warning suggest?",
+      "options": [
+        { "id": "a", "text": "An existing index has been corrupted" },
+        { "id": "b", "text": "The query optimizer has identified an index that could improve query performance" },
+        { "id": "c", "text": "The table has no primary key" },
+        { "id": "d", "text": "A required system index is missing" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q13",
+      "text": "What is index fragmentation?",
+      "options": [
+        { "id": "a", "text": "When an index has too many columns" },
+        { "id": "b", "text": "When index pages become logically or physically disordered due to INSERT/UPDATE/DELETE operations, reducing efficiency" },
+        { "id": "c", "text": "When two indexes overlap on the same columns" },
+        { "id": "d", "text": "When an index is spread across multiple databases" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q14",
+      "text": "What is the difference between ALTER INDEX REBUILD and ALTER INDEX REORGANIZE?",
+      "options": [
+        { "id": "a", "text": "REBUILD drops and recreates the index (offline by default); REORGANIZE defragments in place and is always online" },
+        { "id": "b", "text": "REORGANIZE is more aggressive; REBUILD is lighter" },
+        { "id": "c", "text": "They are identical operations" },
+        { "id": "d", "text": "REBUILD only works on clustered indexes; REORGANIZE only on non-clustered" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_06_q15",
+      "text": "What is a filtered index?",
+      "options": [
+        { "id": "a", "text": "An index that excludes certain columns" },
+        { "id": "b", "text": "A non-clustered index with a WHERE clause that indexes only a subset of rows" },
+        { "id": "c", "text": "An index that automatically filters NULLs" },
+        { "id": "d", "text": "An index built only on filtered queries" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q16",
+      "text": "What is a columnstore index best suited for?",
+      "options": [
+        { "id": "a", "text": "OLTP workloads with many small transactions" },
+        { "id": "b", "text": "Data warehouse and analytical queries that scan large amounts of data across few columns" },
+        { "id": "c", "text": "Indexing text columns for full-text search" },
+        { "id": "d", "text": "Indexing foreign key columns for join performance" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q17",
+      "text": "How does a columnstore index differ from a traditional rowstore index?",
+      "options": [
+        { "id": "a", "text": "Columnstore stores data column-by-column allowing high compression and batch processing; rowstore stores data row-by-row" },
+        { "id": "b", "text": "Columnstore is only available on primary key columns" },
+        { "id": "c", "text": "Rowstore is column-oriented; columnstore is row-oriented" },
+        { "id": "d", "text": "Columnstore indexes cannot be updated" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_06_q18",
+      "text": "Which of the following query patterns would MOST benefit from a composite index on (LastName, FirstName)?",
+      "options": [
+        { "id": "a", "text": "WHERE FirstName = 'John'" },
+        { "id": "b", "text": "WHERE LastName = 'Smith' AND FirstName = 'John'" },
+        { "id": "c", "text": "WHERE FirstName = 'John' AND LastName = 'Smith'" },
+        { "id": "d", "text": "Both b and c would benefit equally" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_06_q19",
+      "text": "What does it mean when a query uses a 'Key Lookup' in the execution plan?",
+      "options": [
+        { "id": "a", "text": "The query is joining on a primary key" },
+        { "id": "b", "text": "After using a non-clustered index, SQL Server must go back to the base table to retrieve additional columns not in the index" },
+        { "id": "c", "text": "The query is missing an index entirely" },
+        { "id": "d", "text": "The query is accessing a foreign key" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q20",
+      "text": "How can a Key Lookup be eliminated?",
+      "options": [
+        { "id": "a", "text": "By removing the non-clustered index" },
+        { "id": "b", "text": "By creating a covering index that includes all columns needed by the query" },
+        { "id": "c", "text": "By converting the query to use SELECT *" },
+        { "id": "d", "text": "By adding more WHERE conditions" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q21",
+      "text": "What does index fragmentation percentage typically indicate above 30%?",
+      "options": [
+        { "id": "a", "text": "The index is performing optimally" },
+        { "id": "b", "text": "A REBUILD is typically recommended to restore performance" },
+        { "id": "c", "text": "The index should be dropped" },
+        { "id": "d", "text": "The table is corrupt" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q22",
+      "text": "What is the 'leading column' rule for composite indexes?",
+      "options": [
+        { "id": "a", "text": "The last column in the composite index is the most important for seeks" },
+        { "id": "b", "text": "The optimizer can use a composite index efficiently only when the query filters on the leftmost (leading) columns of the index" },
+        { "id": "c", "text": "The leading column must always be the primary key" },
+        { "id": "d", "text": "There is no leading column rule in SQL Server" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q23",
+      "text": "Which statement about unique indexes is TRUE?",
+      "options": [
+        { "id": "a", "text": "Unique indexes are only created automatically with PRIMARY KEY constraints" },
+        { "id": "b", "text": "A unique index enforces uniqueness on the indexed column(s) and can be created independently of a primary key" },
+        { "id": "c", "text": "Unique indexes cannot be non-clustered" },
+        { "id": "d", "text": "Unique indexes do not improve query performance" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q24",
+      "text": "What does a Table Scan in an execution plan mean?",
+      "options": [
+        { "id": "a", "text": "The table is scanned using a clustered index efficiently" },
+        { "id": "b", "text": "Every row in the table is read because there is no usable index (heap table access)" },
+        { "id": "c", "text": "The table is scanned using a non-clustered index" },
+        { "id": "d", "text": "A temporary table is being created" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q25",
+      "text": "Which DMV in SQL Server can be used to find missing index suggestions?",
+      "options": [
+        { "id": "a", "text": "sys.indexes" },
+        { "id": "b", "text": "sys.dm_db_missing_index_details" },
+        { "id": "c", "text": "sys.index_columns" },
+        { "id": "d", "text": "sys.dm_exec_query_stats" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q26",
+      "text": "What causes an index not to be used (index suppression) in a WHERE clause?",
+      "options": [
+        { "id": "a", "text": "Using = operator on an indexed column" },
+        { "id": "b", "text": "Applying a function to an indexed column, e.g., WHERE YEAR(OrderDate) = 2025" },
+        { "id": "c", "text": "Using ORDER BY on the indexed column" },
+        { "id": "d", "text": "Selecting the indexed column in the SELECT list" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q27",
+      "text": "What is a heap table in SQL Server?",
+      "options": [
+        { "id": "a", "text": "A table sorted by a non-clustered index" },
+        { "id": "b", "text": "A table with no clustered index — data pages are not ordered" },
+        { "id": "c", "text": "A temporary table stored in memory" },
+        { "id": "d", "text": "A table used only for bulk inserts" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_06_q28",
+      "text": "What is the general guideline for fragmentation between 10-30%?",
+      "options": [
+        { "id": "a", "text": "REBUILD the index" },
+        { "id": "b", "text": "DROP the index" },
+        { "id": "c", "text": "REORGANIZE the index" },
+        { "id": "d", "text": "No action needed" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_06_q29",
+      "text": "What is the purpose of a filtered index? Example: CREATE INDEX idx_active ON Employees(Name) WHERE IsActive = 1",
+      "options": [
+        { "id": "a", "text": "To index only a specific subset of rows matching the WHERE condition, reducing index size" },
+        { "id": "b", "text": "To filter query results automatically" },
+        { "id": "c", "text": "To create a partial primary key" },
+        { "id": "d", "text": "To allow NULL values in the indexed column" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_06_q30",
+      "text": "What does the cost percentage on an execution plan operator represent?",
+      "options": [
+        { "id": "a", "text": "The actual CPU time taken by that operator" },
+        { "id": "b", "text": "The estimated relative cost of that operator compared to the total query cost" },
+        { "id": "c", "text": "The number of rows processed by that operator" },
+        { "id": "d", "text": "The memory allocated to that operator" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

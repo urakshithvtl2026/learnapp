@@ -1,0 +1,47 @@
+<!-- Toolbar (hidden on login/signup page) -->
+@if (auth.isLoggedIn()) {
+  <mat-toolbar color="primary" class="toolbar">
+    <mat-icon>menu_book</mat-icon>
+    <span class="toolbar-title">Language Learn</span>
+    <span class="spacer"></span>
+
+    @if (auth.isAdmin()) {
+      <!-- Admin nav -->
+      <a mat-button routerLink="/exam/admin/papers" routerLinkActive="nav-active">
+        <mat-icon>description</mat-icon> Papers
+      </a>
+      <a mat-button routerLink="/exam/admin/assignments" routerLinkActive="nav-active">
+        <mat-icon>assignment_ind</mat-icon> Assignments
+      </a>
+      <a mat-button routerLink="/exam/admin/results" routerLinkActive="nav-active">
+        <mat-icon>bar_chart</mat-icon> Results
+      </a>
+      <a mat-button routerLink="/admin/users" routerLinkActive="nav-active">
+        <mat-icon>manage_accounts</mat-icon> Users
+      </a>
+    } @else {
+      <!-- User nav -->
+      <a mat-button routerLink="/dashboard" routerLinkActive="nav-active">
+        <mat-icon>dashboard</mat-icon> Dashboard
+      </a>
+      <a mat-button routerLink="/learn" routerLinkActive="nav-active">
+        <mat-icon>school</mat-icon> Learn
+      </a>
+      <a mat-button routerLink="/exam/my-exams" routerLinkActive="nav-active">
+        <mat-icon>quiz</mat-icon> My Exams
+      </a>
+    }
+
+    <span class="divider"></span>
+    <span class="username">
+      <mat-icon>account_circle</mat-icon>
+      {{ auth.getUsername() }}
+      @if (auth.isAdmin()) { <span class="role-badge">Admin</span> }
+    </span>
+    <button mat-icon-button (click)="logout()" title="Logout">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+}
+
+<router-outlet></router-outlet>

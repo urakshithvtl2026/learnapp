@@ -1,0 +1,121 @@
+<div class="signup-page">
+  <div class="signup-card">
+
+    <!-- Header -->
+    <div class="signup-header">
+      <mat-icon class="logo-icon">person_add</mat-icon>
+      <h1>Create Account</h1>
+      <p>Register with a valid access key</p>
+    </div>
+
+    <!-- Success banner -->
+    @if (success) {
+      <div class="success-banner">
+        <mat-icon>check_circle</mat-icon>
+        <span>Account created! Redirecting to sign in…</span>
+      </div>
+    }
+
+    <!-- Form -->
+    @if (!success) {
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="signup-form">
+
+        <!-- Username -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Username</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input matInput formControlName="username" autocomplete="username" />
+          @if (f.username.hasError('required') && f.username.touched) {
+            <mat-error>Username is required</mat-error>
+          } @else if (f.username.hasError('minlength') && f.username.touched) {
+            <mat-error>At least 3 characters</mat-error>
+          } @else if (f.username.hasError('pattern') && f.username.touched) {
+            <mat-error>No spaces allowed</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <mat-icon matPrefix>lock</mat-icon>
+          <input
+            matInput
+            formControlName="password"
+            [type]="hidePassword ? 'password' : 'text'"
+            autocomplete="new-password"
+          />
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          @if (f.password.hasError('required') && f.password.touched) {
+            <mat-error>Password is required</mat-error>
+          } @else if (f.password.hasError('minlength') && f.password.touched) {
+            <mat-error>At least 6 characters</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Confirm Password -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Confirm Password</mat-label>
+          <mat-icon matPrefix>lock_reset</mat-icon>
+          <input
+            matInput
+            formControlName="confirmPassword"
+            [type]="hideConfirm ? 'password' : 'text'"
+            autocomplete="new-password"
+          />
+          <button mat-icon-button matSuffix type="button" (click)="hideConfirm = !hideConfirm">
+            <mat-icon>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          @if (f.confirmPassword.hasError('required') && f.confirmPassword.touched) {
+            <mat-error>Please confirm your password</mat-error>
+          } @else if (form.hasError('passwordMismatch') && f.confirmPassword.touched) {
+            <mat-error>Passwords do not match</mat-error>
+          }
+        </mat-form-field>
+
+        <!-- Accept Key -->
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Accept Key</mat-label>
+          <mat-icon matPrefix>vpn_key</mat-icon>
+          <input matInput formControlName="acceptKey" placeholder="e.g. LEARN-2024" />
+          @if (f.acceptKey.hasError('required') && f.acceptKey.touched) {
+            <mat-error>Registration key is required</mat-error>
+          }
+          <mat-hint>You need a valid registration key to sign up</mat-hint>
+        </mat-form-field>
+
+        <!-- General error -->
+        @if (error) {
+          <p class="error-msg">
+            <mat-icon>error_outline</mat-icon>
+            {{ error }}
+          </p>
+        }
+
+        <!-- Submit -->
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="signup-btn"
+          [disabled]="loading"
+        >
+          @if (loading) {
+            <mat-spinner diameter="20"></mat-spinner>
+          } @else {
+            Create Account
+          }
+        </button>
+
+      </form>
+    }
+
+    <!-- Footer link -->
+    <div class="footer-link">
+      Already have an account?
+      <a routerLink="/login">Sign in</a>
+    </div>
+
+  </div>
+</div>

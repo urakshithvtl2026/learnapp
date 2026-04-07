@@ -1,0 +1,339 @@
+{
+  "id": "qp_ng_b03",
+  "title": "Angular Basic — Paper 3",
+  "description": "Foundational Angular concepts: components, data binding, directives, component communication, lifecycle hooks, services, modules, template-driven forms, pipes, and CLI.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_ng_b03_q1",
+      "text": "Which ViewEncapsulation mode uses the browser's native Shadow DOM to scope styles?",
+      "options": [
+        { "id": "a", "text": "ViewEncapsulation.None" },
+        { "id": "b", "text": "ViewEncapsulation.Emulated" },
+        { "id": "c", "text": "ViewEncapsulation.ShadowDom" },
+        { "id": "d", "text": "ViewEncapsulation.Native" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q2",
+      "text": "In Angular, which type of data binding reads data from the component class and displays it in the template without allowing the template to update the class?",
+      "options": [
+        { "id": "a", "text": "Two-way binding" },
+        { "id": "b", "text": "Event binding" },
+        { "id": "c", "text": "One-way binding (from component to template)" },
+        { "id": "d", "text": "Attribute binding" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q3",
+      "text": "In Angular 17+, which new control flow block replaces the *ngFor directive?",
+      "options": [
+        { "id": "a", "text": "@loop" },
+        { "id": "b", "text": "@repeat" },
+        { "id": "c", "text": "@each" },
+        { "id": "d", "text": "@for" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b03_q4",
+      "text": "When using @ViewChild to access a child component, when is the reference first available?",
+      "options": [
+        { "id": "a", "text": "In ngOnInit" },
+        { "id": "b", "text": "In ngOnChanges" },
+        { "id": "c", "text": "In ngAfterViewInit" },
+        { "id": "d", "text": "In the constructor" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q5",
+      "text": "What is the role of the ngDoCheck lifecycle hook?",
+      "options": [
+        { "id": "a", "text": "It checks if an @Input() has changed" },
+        { "id": "b", "text": "It runs after the view is fully initialized" },
+        { "id": "c", "text": "It allows custom change detection logic beyond Angular's default detection" },
+        { "id": "d", "text": "It destroys the component on the next change detection cycle" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q6",
+      "text": "Which of the following is the correct way to inject a service into a component using the constructor?",
+      "options": [
+        { "id": "a", "text": "constructor(myService: MyService) { }" },
+        { "id": "b", "text": "constructor(@Inject MyService) { }" },
+        { "id": "c", "text": "@Service() myService: MyService" },
+        { "id": "d", "text": "inject(MyService) { }" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b03_q7",
+      "text": "What is the 'bootstrap' property in @NgModule used for?",
+      "options": [
+        { "id": "a", "text": "To include Bootstrap CSS library" },
+        { "id": "b", "text": "To specify the root component that Angular inserts into index.html at startup" },
+        { "id": "c", "text": "To list modules that should be eagerly loaded" },
+        { "id": "d", "text": "To declare the main service for the application" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q8",
+      "text": "Which built-in validator attribute in a template-driven form ensures an input field is not left empty?",
+      "options": [
+        { "id": "a", "text": "minlength" },
+        { "id": "b", "text": "notEmpty" },
+        { "id": "c", "text": "required" },
+        { "id": "d", "text": "mandatory" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q9",
+      "text": "Which Angular pipe converts an object or array to a JSON string representation for debugging in templates?",
+      "options": [
+        { "id": "a", "text": "object" },
+        { "id": "b", "text": "stringify" },
+        { "id": "c", "text": "debug" },
+        { "id": "d", "text": "json" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b03_q10",
+      "text": "Which Angular CLI command runs the unit tests for an application?",
+      "options": [
+        { "id": "a", "text": "ng run tests" },
+        { "id": "b", "text": "ng test" },
+        { "id": "c", "text": "ng check" },
+        { "id": "d", "text": "ng spec" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q11",
+      "text": "When using the inline template option in @Component, which property is used instead of templateUrl?",
+      "options": [
+        { "id": "a", "text": "inlineTemplate" },
+        { "id": "b", "text": "html" },
+        { "id": "c", "text": "view" },
+        { "id": "d", "text": "template" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b03_q12",
+      "text": "What is the difference between property binding [src]=\"imgUrl\" and attribute binding [attr.colspan]=\"colNum\"?",
+      "options": [
+        { "id": "a", "text": "Property binding sets a DOM property; attribute binding sets an HTML attribute that has no DOM property equivalent" },
+        { "id": "b", "text": "There is no difference; both do the same thing" },
+        { "id": "c", "text": "Attribute binding is faster than property binding" },
+        { "id": "d", "text": "Property binding only works on custom components" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b03_q13",
+      "text": "In Angular 17+, what does the @empty block do in the new @for control flow syntax?",
+      "options": [
+        { "id": "a", "text": "It clears the list before rendering" },
+        { "id": "b", "text": "It provides a fallback template to show when the iterable collection is empty" },
+        { "id": "c", "text": "It renders an empty placeholder while data loads" },
+        { "id": "d", "text": "It hides the element when no items exist" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q14",
+      "text": "Which Angular feature allows a component to project multiple different pieces of content into named slots?",
+      "options": [
+        { "id": "a", "text": "Multiple ng-content elements with the select attribute" },
+        { "id": "b", "text": "Named @Input() properties" },
+        { "id": "c", "text": "Multiple router-outlets" },
+        { "id": "d", "text": "Multiple @ViewChild references" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b03_q15",
+      "text": "What does the ngAfterViewInit lifecycle hook signal about the component's state?",
+      "options": [
+        { "id": "a", "text": "All @Input() values have been set" },
+        { "id": "b", "text": "The component has been destroyed" },
+        { "id": "c", "text": "The component's view (and child views) have been fully initialized" },
+        { "id": "d", "text": "The component's projected content has been initialized" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q16",
+      "text": "What is a singleton service in Angular?",
+      "options": [
+        { "id": "a", "text": "A service that can only be used in one component" },
+        { "id": "b", "text": "A service where only one instance is created and shared across the application" },
+        { "id": "c", "text": "A service with only one method" },
+        { "id": "d", "text": "A service that creates a new instance every time it is injected" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q17",
+      "text": "What is the difference between a standalone component and a module-based component in Angular?",
+      "options": [
+        { "id": "a", "text": "Standalone components cannot use pipes or directives" },
+        { "id": "b", "text": "Module-based components use standalone: true in the decorator" },
+        { "id": "c", "text": "A standalone component manages its own dependencies via its imports array and does not need to be declared in an NgModule" },
+        { "id": "d", "text": "Standalone components cannot inject services" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q18",
+      "text": "Which template-driven form state is true when none of the form fields have been changed yet?",
+      "options": [
+        { "id": "a", "text": "ng-touched" },
+        { "id": "b", "text": "ng-dirty" },
+        { "id": "c", "text": "ng-valid" },
+        { "id": "d", "text": "ng-pristine" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b03_q19",
+      "text": "What does the 'number' pipe do in Angular?",
+      "options": [
+        { "id": "a", "text": "Converts a string to a number" },
+        { "id": "b", "text": "Formats a numeric value with locale-specific grouping separators and decimal digits" },
+        { "id": "c", "text": "Rounds a number to the nearest integer" },
+        { "id": "d", "text": "Converts a number to a percentage" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q20",
+      "text": "What does the ng generate service command create?",
+      "options": [
+        { "id": "a", "text": "A new HTML template file" },
+        { "id": "b", "text": "A new Angular module" },
+        { "id": "c", "text": "A TypeScript class decorated with @Injectable and a corresponding spec file" },
+        { "id": "d", "text": "A new component with a service injected" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q21",
+      "text": "In a standalone Angular component, how is ViewEncapsulation.Emulated different from ViewEncapsulation.ShadowDom?",
+      "options": [
+        { "id": "a", "text": "Emulated uses real Shadow DOM while ShadowDom uses attribute-based scoping" },
+        { "id": "b", "text": "Emulated simulates scoping by adding unique attributes to elements and selectors; ShadowDom uses the browser's native Shadow DOM API" },
+        { "id": "c", "text": "ShadowDom removes all scoping while Emulated keeps global styles" },
+        { "id": "d", "text": "They are identical in behavior" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q22",
+      "text": "Which Angular binding type responds to user DOM events such as clicks and keystrokes?",
+      "options": [
+        { "id": "a", "text": "Property binding [prop]" },
+        { "id": "b", "text": "Interpolation {{expr}}" },
+        { "id": "c", "text": "Event binding (event)" },
+        { "id": "d", "text": "Attribute binding [attr.name]" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q23",
+      "text": "In the new Angular control flow syntax (@if, @for, @switch), what is a key advantage over the structural directive approach?",
+      "options": [
+        { "id": "a", "text": "They require no imports and provide better type narrowing and performance" },
+        { "id": "b", "text": "They work only with standalone components" },
+        { "id": "c", "text": "They replace all component logic" },
+        { "id": "d", "text": "They are only available in Angular module-based apps" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b03_q24",
+      "text": "How does the child component send data back to the parent component in Angular?",
+      "options": [
+        { "id": "a", "text": "By modifying the parent component's @Input() property directly" },
+        { "id": "b", "text": "By emitting events through an @Output() EventEmitter property" },
+        { "id": "c", "text": "By setting a shared global variable" },
+        { "id": "d", "text": "By calling a method on the parent via @ViewChild" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q25",
+      "text": "Is it possible for a component to implement multiple lifecycle hook interfaces? For example, implementing both OnInit and OnDestroy?",
+      "options": [
+        { "id": "a", "text": "No, a component can only implement one lifecycle hook interface" },
+        { "id": "b", "text": "Yes, a component can implement multiple lifecycle hook interfaces" },
+        { "id": "c", "text": "Only two lifecycle interfaces can be implemented at once" },
+        { "id": "d", "text": "Lifecycle hooks are applied automatically and cannot be explicitly implemented" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q26",
+      "text": "When multiple components inject the same service provided in 'root', how many instances of that service are created?",
+      "options": [
+        { "id": "a", "text": "One instance per component" },
+        { "id": "b", "text": "Two instances: one for the root and one for child components" },
+        { "id": "c", "text": "Only one instance shared across all components" },
+        { "id": "d", "text": "A new instance per module" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q27",
+      "text": "What is the purpose of the 'exports' property in @NgModule?",
+      "options": [
+        { "id": "a", "text": "It lists services exported from the module" },
+        { "id": "b", "text": "It lists components, directives, or pipes that other modules can use after importing this module" },
+        { "id": "c", "text": "It exports the module as an ES module" },
+        { "id": "d", "text": "It lists the modules imported by this module" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q28",
+      "text": "In a template-driven form, which event binding is used to handle form submission?",
+      "options": [
+        { "id": "a", "text": "(formSubmit)" },
+        { "id": "b", "text": "(click)" },
+        { "id": "c", "text": "(ngSubmit)" },
+        { "id": "d", "text": "(submit)" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b03_q29",
+      "text": "Which pipe extracts a subset of a string or array in Angular?",
+      "options": [
+        { "id": "a", "text": "trim" },
+        { "id": "b", "text": "slice" },
+        { "id": "c", "text": "substring" },
+        { "id": "d", "text": "extract" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b03_q30",
+      "text": "What does the ng generate module command create in an Angular project?",
+      "options": [
+        { "id": "a", "text": "A new component module wrapper" },
+        { "id": "b", "text": "A new TypeScript file decorated with @NgModule" },
+        { "id": "c", "text": "A new service with its own module" },
+        { "id": "d", "text": "A new route configuration file" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

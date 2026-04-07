@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_08",
+  "title": "SQL Stored Procedures & Functions",
+  "description": "Creating and using stored procedures, user-defined functions, error handling, and performance.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_08_q1",
+      "text": "What is a stored procedure in SQL Server?",
+      "options": [
+        { "id": "a", "text": "A saved SELECT query only" },
+        { "id": "b", "text": "A precompiled set of one or more SQL statements stored in the database that can be executed by name" },
+        { "id": "c", "text": "A function that always returns a table" },
+        { "id": "d", "text": "A trigger that fires on data changes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q2",
+      "text": "Which syntax correctly creates a stored procedure named GetActiveEmployees?",
+      "options": [
+        { "id": "a", "text": "CREATE PROC GetActiveEmployees AS BEGIN SELECT * FROM Employees WHERE Active = 1 END" },
+        { "id": "b", "text": "MAKE PROCEDURE GetActiveEmployees AS SELECT * FROM Employees WHERE Active = 1" },
+        { "id": "c", "text": "STORE PROCEDURE GetActiveEmployees AS SELECT * FROM Employees" },
+        { "id": "d", "text": "CREATE STORED PROC GetActiveEmployees BEGIN SELECT * END" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_08_q3",
+      "text": "How do you execute a stored procedure called GetAllProducts in SQL Server?",
+      "options": [
+        { "id": "a", "text": "RUN GetAllProducts" },
+        { "id": "b", "text": "CALL GetAllProducts" },
+        { "id": "c", "text": "EXEC GetAllProducts" },
+        { "id": "d", "text": "START GetAllProducts" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_08_q4",
+      "text": "How do you pass an input parameter to a stored procedure? Example: procedure GetEmployeeByDept(@DeptID INT)",
+      "options": [
+        { "id": "a", "text": "EXEC GetEmployeeByDept DeptID = 5" },
+        { "id": "b", "text": "EXEC GetEmployeeByDept @DeptID = 5" },
+        { "id": "c", "text": "EXEC GetEmployeeByDept (5)" },
+        { "id": "d", "text": "Both b and c are valid" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_08_q5",
+      "text": "How is an OUTPUT parameter defined in a stored procedure?",
+      "options": [
+        { "id": "a", "text": "@ParamName DataType RETURN" },
+        { "id": "b", "text": "@ParamName DataType OUTPUT" },
+        { "id": "c", "text": "@ParamName DataType OUT" },
+        { "id": "d", "text": "RETURN @ParamName DataType" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q6",
+      "text": "What is the main difference between a stored procedure and a scalar user-defined function (UDF)?",
+      "options": [
+        { "id": "a", "text": "Stored procedures cannot have parameters; UDFs can" },
+        { "id": "b", "text": "A scalar UDF returns a single value and can be used in a SELECT expression; a stored procedure cannot be used inside a SELECT expression" },
+        { "id": "c", "text": "Stored procedures can return tables; UDFs cannot" },
+        { "id": "d", "text": "UDFs can use transactions; stored procedures cannot" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q7",
+      "text": "What does a scalar user-defined function return?",
+      "options": [
+        { "id": "a", "text": "A table result set" },
+        { "id": "b", "text": "A single scalar value of a defined data type" },
+        { "id": "c", "text": "Multiple values as OUTPUT parameters" },
+        { "id": "d", "text": "A status code only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q8",
+      "text": "What is an inline table-valued function (TVF)?",
+      "options": [
+        { "id": "a", "text": "A function that returns a single row" },
+        { "id": "b", "text": "A function that contains a single SELECT statement and returns a table result — equivalent to a parameterized view" },
+        { "id": "c", "text": "A function with multiple SELECT statements and a RETURN TABLE statement" },
+        { "id": "d", "text": "A function stored inside a table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q9",
+      "text": "What is a multi-statement table-valued function?",
+      "options": [
+        { "id": "a", "text": "A TVF with only one SELECT statement" },
+        { "id": "b", "text": "A TVF that uses multiple statements to build and return a table variable" },
+        { "id": "c", "text": "A function that calls multiple stored procedures" },
+        { "id": "d", "text": "A function returning multiple scalar values" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q10",
+      "text": "What does the RETURN statement do in a stored procedure?",
+      "options": [
+        { "id": "a", "text": "Returns a result set to the caller" },
+        { "id": "b", "text": "Exits the procedure immediately and optionally returns an integer status code" },
+        { "id": "c", "text": "Returns a table variable" },
+        { "id": "d", "text": "Commits any open transaction" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q11",
+      "text": "What is the purpose of TRY...CATCH in SQL Server?",
+      "options": [
+        { "id": "a", "text": "To improve query performance" },
+        { "id": "b", "text": "To handle runtime errors — code in TRY runs normally; if an error occurs, execution jumps to CATCH" },
+        { "id": "c", "text": "To catch duplicate key violations only" },
+        { "id": "d", "text": "To create transaction savepoints automatically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q12",
+      "text": "What does THROW do in SQL Server error handling?",
+      "options": [
+        { "id": "a", "text": "Logs the error to the Windows Event Log" },
+        { "id": "b", "text": "Re-raises the current error or raises a new error with specified message, severity, and state" },
+        { "id": "c", "text": "Terminates the session" },
+        { "id": "d", "text": "Converts an error to a warning" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q13",
+      "text": "What is the difference between THROW and RAISERROR in SQL Server?",
+      "options": [
+        { "id": "a", "text": "RAISERROR is the newer syntax; THROW is deprecated" },
+        { "id": "b", "text": "THROW is simpler, re-raises the original error with its state, and abides by SET XACT_ABORT; RAISERROR is older with more formatting options" },
+        { "id": "c", "text": "THROW only works in stored procedures; RAISERROR works everywhere" },
+        { "id": "d", "text": "They are identical" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q14",
+      "text": "What does @@ROWCOUNT contain after a DML statement?",
+      "options": [
+        { "id": "a", "text": "The total number of rows in the table" },
+        { "id": "b", "text": "The number of rows affected by the most recent DML statement" },
+        { "id": "c", "text": "The number of rows returned by the last SELECT" },
+        { "id": "d", "text": "The row count of the last table scanned" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q15",
+      "text": "What does @@ERROR contain after a statement executes?",
+      "options": [
+        { "id": "a", "text": "The error message text of the last error" },
+        { "id": "b", "text": "The error number of the last error (0 if no error)" },
+        { "id": "c", "text": "The line number where the last error occurred" },
+        { "id": "d", "text": "The severity of the last error" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q16",
+      "text": "What is a recompile hint for a stored procedure used for?",
+      "options": [
+        { "id": "a", "text": "To force the procedure to recompile and generate a new execution plan each time it runs, avoiding bad cached plans" },
+        { "id": "b", "text": "To compile the procedure for the first time" },
+        { "id": "c", "text": "To update the stored procedure's code" },
+        { "id": "d", "text": "To enable parallel execution" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_08_q17",
+      "text": "Which syntax adds a recompile hint to a stored procedure execution?",
+      "options": [
+        { "id": "a", "text": "EXEC MyProc WITH RECOMPILE" },
+        { "id": "b", "text": "EXEC MyProc OPTION (RECOMPILE)" },
+        { "id": "c", "text": "Both a and b are valid in different contexts" },
+        { "id": "d", "text": "EXEC RECOMPILE MyProc" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_08_q18",
+      "text": "What is a key performance advantage of stored procedures over ad-hoc SQL?",
+      "options": [
+        { "id": "a", "text": "Stored procedures always run faster regardless of query complexity" },
+        { "id": "b", "text": "Execution plans for stored procedures are cached and reused, reducing parse/compile overhead on subsequent calls" },
+        { "id": "c", "text": "Stored procedures bypass the query optimizer" },
+        { "id": "d", "text": "Stored procedures use less memory" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q19",
+      "text": "Can a stored procedure modify data (INSERT, UPDATE, DELETE)?",
+      "options": [
+        { "id": "a", "text": "No, stored procedures are read-only" },
+        { "id": "b", "text": "Yes, stored procedures can execute any valid SQL including DML and DDL statements" },
+        { "id": "c", "text": "Only if the procedure is defined with MODIFIABLE keyword" },
+        { "id": "d", "text": "Only SELECT is allowed inside stored procedures" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q20",
+      "text": "What functions are NOT allowed inside a user-defined scalar function in SQL Server?",
+      "options": [
+        { "id": "a", "text": "String manipulation functions like UPPER() and LEN()" },
+        { "id": "b", "text": "Non-deterministic functions like GETDATE() and RAND() are restricted; DML (INSERT/UPDATE/DELETE) is not allowed" },
+        { "id": "c", "text": "Mathematical functions like ROUND() and ABS()" },
+        { "id": "d", "text": "Aggregate functions like SUM() and AVG()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q21",
+      "text": "What does ALTER PROCEDURE do?",
+      "options": [
+        { "id": "a", "text": "Drops and recreates the procedure, losing permissions" },
+        { "id": "b", "text": "Modifies the definition of an existing stored procedure while preserving existing permissions" },
+        { "id": "c", "text": "Renames the stored procedure" },
+        { "id": "d", "text": "Copies the stored procedure to another database" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q22",
+      "text": "Which function inside a CATCH block returns the error message text?",
+      "options": [
+        { "id": "a", "text": "@@ERROR" },
+        { "id": "b", "text": "ERROR_NUMBER()" },
+        { "id": "c", "text": "ERROR_MESSAGE()" },
+        { "id": "d", "text": "@@ERRORMESSAGE" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_08_q23",
+      "text": "What is parameter sniffing in the context of stored procedures?",
+      "options": [
+        { "id": "a", "text": "A security vulnerability where parameters are exposed" },
+        { "id": "b", "text": "SQL Server compiles the execution plan using the parameter values supplied at first execution; this plan may be suboptimal for different parameter values later" },
+        { "id": "c", "text": "A method for automatically detecting missing parameters" },
+        { "id": "d", "text": "A technique for logging procedure parameters" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q24",
+      "text": "Which inline TVF syntax is more efficient than a multi-statement TVF and why?",
+      "options": [
+        { "id": "a", "text": "Multi-statement TVF because it allows complex logic" },
+        { "id": "b", "text": "Inline TVF because the optimizer can expand it inline and apply predicate pushdown, unlike multi-statement TVF which is treated as a black box" },
+        { "id": "c", "text": "They have identical performance" },
+        { "id": "d", "text": "Multi-statement TVF because it caches results" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q25",
+      "text": "What does sp_helptext do in SQL Server?",
+      "options": [
+        { "id": "a", "text": "Returns the text/definition of a stored procedure or view" },
+        { "id": "b", "text": "Lists all stored procedures in the database" },
+        { "id": "c", "text": "Returns help documentation for SQL syntax" },
+        { "id": "d", "text": "Returns the execution plan of a stored procedure" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_08_q26",
+      "text": "Can a user-defined function call a stored procedure?",
+      "options": [
+        { "id": "a", "text": "Yes, always" },
+        { "id": "b", "text": "No — SQL Server user-defined functions cannot execute stored procedures" },
+        { "id": "c", "text": "Only if the stored procedure is read-only" },
+        { "id": "d", "text": "Only scalar functions can call stored procedures" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q27",
+      "text": "What is the WITH ENCRYPTION option when creating a stored procedure?",
+      "options": [
+        { "id": "a", "text": "Encrypts the data returned by the procedure" },
+        { "id": "b", "text": "Encrypts the procedure's source code definition so it cannot be viewed with sp_helptext" },
+        { "id": "c", "text": "Requires encrypted connections to execute the procedure" },
+        { "id": "d", "text": "Encrypts the parameters passed to the procedure" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q28",
+      "text": "What is the difference between EXEC and sp_executesql for dynamic SQL?",
+      "options": [
+        { "id": "a", "text": "EXEC supports parameterized queries; sp_executesql does not" },
+        { "id": "b", "text": "sp_executesql supports parameterized queries allowing plan reuse and preventing SQL injection; EXEC concatenates strings directly" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "sp_executesql is deprecated" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q29",
+      "text": "What does the SCHEMABINDING option do when creating a function or view?",
+      "options": [
+        { "id": "a", "text": "Binds the function to a specific database schema for security" },
+        { "id": "b", "text": "Prevents underlying tables from being altered or dropped in ways that would break the function/view definition" },
+        { "id": "c", "text": "Binds the function to a specific user" },
+        { "id": "d", "text": "Makes the function visible only within its schema" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_08_q30",
+      "text": "Which system view shows all stored procedures in the current SQL Server database?",
+      "options": [
+        { "id": "a", "text": "sys.tables" },
+        { "id": "b", "text": "sys.procedures" },
+        { "id": "c", "text": "sys.objects WHERE type = 'P'" },
+        { "id": "d", "text": "Both b and c return stored procedures" }
+      ],
+      "correctOptionId": "d"
+    }
+  ]
+}

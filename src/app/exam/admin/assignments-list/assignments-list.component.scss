@@ -1,0 +1,73 @@
+.page {
+  max-width: 1000px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  h1 { margin: 0; font-size: 1.6rem; font-weight: 700; }
+}
+
+.filters {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+
+  mat-form-field { min-width: 180px; }
+}
+
+.count {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+table { width: 100%; }
+
+.chip {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.chip-grey  { background: #f0f0f0; color: #555; }
+.chip-blue  { background: #e3f2fd; color: #1565c0; }
+.chip-green { background: #e8f5e9; color: #2e7d32; }
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #777;
+}
+
+@media (max-width: 600px) {
+  .page {
+    margin: 16px auto;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .filters {
+    mat-form-field { min-width: 100%; }
+  }
+
+  mat-card {
+    overflow-x: auto;
+
+    table {
+      min-width: 520px;
+    }
+  }
+}

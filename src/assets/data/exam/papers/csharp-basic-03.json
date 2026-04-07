@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_b03",
+  "title": "C# Basic — Paper 3",
+  "description": "C# concepts: nullable types, type casting, operators, conditionals, switch expressions, methods, ref/out, classes, constructors, and access modifiers.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_b03_q1",
+      "text": "What is the null-conditional operator `?.` used for in C#?",
+      "options": [
+        { "id": "a", "text": "To assign a default value when an expression is null" },
+        { "id": "b", "text": "To safely access a member of an object that might be null, returning null instead of throwing" },
+        { "id": "c", "text": "To declare a nullable type" },
+        { "id": "d", "text": "To compare two nullable values" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q2",
+      "text": "Which statement correctly uses null-coalescing assignment `??=` in C#?",
+      "options": [
+        { "id": "a", "text": "int x = 5; x ??= 10; // x remains 5" },
+        { "id": "b", "text": "int? x = null; x ??= 10; // x remains null" },
+        { "id": "c", "text": "int? x = null; x ??= 10; // x becomes 10" },
+        { "id": "d", "text": "int? x = 5; x ??= 10; // x becomes 10" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q3",
+      "text": "What is the difference between `Nullable<int>` and `int?` in C#?",
+      "options": [
+        { "id": "a", "text": "They are different types with different behavior" },
+        { "id": "b", "text": "`int?` is shorthand for `Nullable<int>`; they are identical" },
+        { "id": "c", "text": "`Nullable<int>` can hold more values than `int?`" },
+        { "id": "d", "text": "`int?` can only be used as a method parameter" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q4",
+      "text": "What is the result of unboxing an object containing an `int` value into a `long` variable in C#?",
+      "options": [
+        { "id": "a", "text": "The value is safely widened to long" },
+        { "id": "b", "text": "An InvalidCastException is thrown at runtime" },
+        { "id": "c", "text": "A compile-time error occurs" },
+        { "id": "d", "text": "The value is silently truncated" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q5",
+      "text": "What does `as` operator do differently from a direct cast `(Type)obj` in C#?",
+      "options": [
+        { "id": "a", "text": "`as` throws an exception on failure; direct cast returns null" },
+        { "id": "b", "text": "`as` returns null on failure; direct cast throws InvalidCastException" },
+        { "id": "c", "text": "`as` only works with value types" },
+        { "id": "d", "text": "They behave identically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q6",
+      "text": "What does `double.TryParse(\"3.14\", out double result)` return?",
+      "options": [
+        { "id": "a", "text": "false, result is 0.0" },
+        { "id": "b", "text": "true, result is 3.14" },
+        { "id": "c", "text": "Throws FormatException" },
+        { "id": "d", "text": "true, result is 3" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q7",
+      "text": "What does the `^` (XOR) bitwise operator produce when applied to `0b1010 ^ 0b1100` in C#?",
+      "options": [
+        { "id": "a", "text": "0b1110" },
+        { "id": "b", "text": "0b1000" },
+        { "id": "c", "text": "0b0110" },
+        { "id": "d", "text": "0b0010" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q8",
+      "text": "What does `x++` vs `++x` differ by in C#?",
+      "options": [
+        { "id": "a", "text": "`x++` increments x before the expression is evaluated; `++x` increments after" },
+        { "id": "b", "text": "`x++` returns the original value then increments; `++x` increments then returns the new value" },
+        { "id": "c", "text": "There is no difference" },
+        { "id": "d", "text": "`x++` is not valid C# syntax" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q9",
+      "text": "Which expression evaluates to `true` given `int x = 8`?",
+      "options": [
+        { "id": "a", "text": "x > 10 && x < 20" },
+        { "id": "b", "text": "x == 8 && x % 2 == 0" },
+        { "id": "c", "text": "x < 5 || x > 15" },
+        { "id": "d", "text": "!(x == 8)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q10",
+      "text": "Which code correctly uses a `switch` statement with multiple conditions in the same case?",
+      "options": [
+        { "id": "a", "text": "case 1, 2: Console.Write(\"One or Two\"); break;" },
+        { "id": "b", "text": "case 1 || 2: Console.Write(\"One or Two\"); break;" },
+        { "id": "c", "text": "case 1: case 2: Console.Write(\"One or Two\"); break;" },
+        { "id": "d", "text": "case (1, 2): Console.Write(\"One or Two\"); break;" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q11",
+      "text": "What is the output of this code?\n`int day = 3;\nstring name = day switch { 1 => \"Mon\", 2 => \"Tue\", 3 => \"Wed\", _ => \"Other\" };`",
+      "options": [
+        { "id": "a", "text": "Compilation error" },
+        { "id": "b", "text": "Other" },
+        { "id": "c", "text": "3" },
+        { "id": "d", "text": "Wed" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_b03_q12",
+      "text": "What does an if-else if-else chain check in order in C#?",
+      "options": [
+        { "id": "a", "text": "All conditions simultaneously" },
+        { "id": "b", "text": "Each condition sequentially; the first true branch executes and the rest are skipped" },
+        { "id": "c", "text": "The last condition first" },
+        { "id": "d", "text": "All else-if blocks even after one matches" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q13",
+      "text": "What does the `when` keyword do in a `switch` expression in C#?",
+      "options": [
+        { "id": "a", "text": "It introduces a time-based condition" },
+        { "id": "b", "text": "It provides an additional guard condition for a case arm" },
+        { "id": "c", "text": "It defines a loop within the switch expression" },
+        { "id": "d", "text": "It is not valid syntax in C#" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q14",
+      "text": "What is the purpose of the `is` keyword in the context of type patterns in C#?",
+      "options": [
+        { "id": "a", "text": "It converts one type to another" },
+        { "id": "b", "text": "It checks if an object is of a specific type and optionally declares a typed variable" },
+        { "id": "c", "text": "It compares two values for equality" },
+        { "id": "d", "text": "It tests if a nullable has a value" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q15",
+      "text": "What does `_` (discard) represent as a switch expression arm in C#?",
+      "options": [
+        { "id": "a", "text": "A named variable to hold the matched value" },
+        { "id": "b", "text": "A syntax error" },
+        { "id": "c", "text": "The catch-all default case" },
+        { "id": "d", "text": "A case that matches null" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q16",
+      "text": "What is a method signature in C#?",
+      "options": [
+        { "id": "a", "text": "The method body including all statements" },
+        { "id": "b", "text": "The method name combined with its parameter types (used to distinguish overloads)" },
+        { "id": "c", "text": "The method's return type only" },
+        { "id": "d", "text": "The access modifier and return type of a method" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q17",
+      "text": "How do you define an optional parameter with a default value in a C# method?",
+      "options": [
+        { "id": "a", "text": "void Print([Optional] string msg)" },
+        { "id": "b", "text": "void Print(string? msg)" },
+        { "id": "c", "text": "void Print(string msg = \"default\")" },
+        { "id": "d", "text": "void Print(optional string msg)" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q18",
+      "text": "Can optional parameters appear before required parameters in a C# method signature?",
+      "options": [
+        { "id": "a", "text": "Yes, in any order" },
+        { "id": "b", "text": "No, optional parameters must come after all required parameters" },
+        { "id": "c", "text": "Yes, only if there is one optional parameter" },
+        { "id": "d", "text": "No difference; the compiler reorders them automatically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q19",
+      "text": "What is the purpose of `ref` return values in C#?",
+      "options": [
+        { "id": "a", "text": "They allow returning a null value from a method" },
+        { "id": "b", "text": "They allow returning a reference to a variable rather than a copy of its value" },
+        { "id": "c", "text": "They convert the return type to a reference type" },
+        { "id": "d", "text": "They enable multiple return values" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q20",
+      "text": "What error occurs if you declare an `out` parameter but do not assign it inside the method?",
+      "options": [
+        { "id": "a", "text": "Runtime NullReferenceException" },
+        { "id": "b", "text": "The parameter defaults to its type default value" },
+        { "id": "c", "text": "Compile-time error: the out parameter must be assigned before control leaves the method" },
+        { "id": "d", "text": "No error; out parameters are optional" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q21",
+      "text": "Which statement about `in` parameters is TRUE in C#?",
+      "options": [
+        { "id": "a", "text": "The `in` modifier allows the called method to modify the original value" },
+        { "id": "b", "text": "The `in` modifier requires the variable to be uninitialized before the call" },
+        { "id": "c", "text": "The `in` modifier passes by reference but disallows modification inside the method" },
+        { "id": "d", "text": "The `in` modifier is identical to passing by value" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q22",
+      "text": "What is the purpose of the `sealed` keyword when applied to a class in C#?",
+      "options": [
+        { "id": "a", "text": "It prevents the class from being instantiated" },
+        { "id": "b", "text": "It prevents the class from being inherited" },
+        { "id": "c", "text": "It prevents the class from implementing interfaces" },
+        { "id": "d", "text": "It makes all class members private" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q23",
+      "text": "What is the `protected` access modifier in C#?",
+      "options": [
+        { "id": "a", "text": "Accessible only within the same class" },
+        { "id": "b", "text": "Accessible within the same assembly" },
+        { "id": "c", "text": "Accessible within the class and derived classes" },
+        { "id": "d", "text": "Accessible everywhere" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q24",
+      "text": "Which access modifier restricts access to the same class only in C#?",
+      "options": [
+        { "id": "a", "text": "internal" },
+        { "id": "b", "text": "protected" },
+        { "id": "c", "text": "private" },
+        { "id": "d", "text": "public" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q25",
+      "text": "What does a parameterized constructor do in C#?",
+      "options": [
+        { "id": "a", "text": "It creates an object without any initial state" },
+        { "id": "b", "text": "It accepts arguments to initialize fields or properties when an object is created" },
+        { "id": "c", "text": "It can only be called once per program execution" },
+        { "id": "d", "text": "It replaces the default constructor provided by the compiler" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q26",
+      "text": "What syntax is used to chain one constructor to another within the same class in C#?",
+      "options": [
+        { "id": "a", "text": "public MyClass() : base()" },
+        { "id": "b", "text": "public MyClass() : this(defaultValue)" },
+        { "id": "c", "text": "public MyClass() => this()" },
+        { "id": "d", "text": "public MyClass() { this(); }" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q27",
+      "text": "If a class defines a parameterized constructor but no default constructor, what happens when you write `new MyClass()`?",
+      "options": [
+        { "id": "a", "text": "The compiler generates a default constructor automatically" },
+        { "id": "b", "text": "A compile-time error occurs because no parameterless constructor exists" },
+        { "id": "c", "text": "The parameterized constructor is called with default values" },
+        { "id": "d", "text": "A runtime exception is thrown" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q28",
+      "text": "How does `new` differ when creating a value type vs a reference type in C#?",
+      "options": [
+        { "id": "a", "text": "For value types, `new` allocates on the heap; for reference types, it allocates on the stack" },
+        { "id": "b", "text": "For value types, `new` initializes the value in place (usually on stack); for reference types, it allocates on the heap" },
+        { "id": "c", "text": "`new` always allocates on the heap regardless of type" },
+        { "id": "d", "text": "`new` is not required for value types" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b03_q29",
+      "text": "What is the `internal` access modifier in C#?",
+      "options": [
+        { "id": "a", "text": "Accessible only within the same file" },
+        { "id": "b", "text": "Accessible within the same class and its subclasses" },
+        { "id": "c", "text": "Accessible within the same assembly (project)" },
+        { "id": "d", "text": "Accessible everywhere in all assemblies" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b03_q30",
+      "text": "What does `protected internal` mean as an access modifier in C#?",
+      "options": [
+        { "id": "a", "text": "Only accessible by derived classes that are in a different assembly" },
+        { "id": "b", "text": "Accessible within the same assembly AND by derived classes in any assembly" },
+        { "id": "c", "text": "Accessible only within the same class" },
+        { "id": "d", "text": "Accessible only by derived classes within the same assembly" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+.center {
+  display: flex; justify-content: center; align-items: center; height: 60vh;
+  .err { color: #c62828; }
+}
+
+.page {
+  max-width: 720px;
+  margin: 32px auto;
+  padding: 0 16px 48px;
+}
+
+.banner {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 16px; border-radius: 8px; margin-bottom: 20px; font-weight: 600;
+}
+.banner-warn { background: #fff3e0; color: #e65100; }
+
+.score-card {
+  margin-bottom: 20px; text-align: center;
+
+  h1 { font-size: 1.6rem; font-weight: 700; margin: 0 0 4px; }
+  .paper-name { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+}
+
+.score {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.score-pass { color: #2e7d32; }
+.score-mid  { color: #e65100; }
+.score-fail { color: #c62828; }
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.95rem; font-weight: 500;
+}
+
+.icon-ok  { color: #2e7d32; }
+.icon-err { color: #c62828; }
+
+.breakdown-card { margin-bottom: 24px; }
+
+.answer-row {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  align-items: flex-start;
+
+  &.correct .q-text { color: #2e7d32; }
+  &.wrong   .q-text { color: #c62828; }
+}
+
+.answer-icon { margin-top: 2px; flex-shrink: 0; }
+
+.answer-details {
+  flex: 1;
+  p { margin: 0; }
+}
+
+.q-text { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px !important; }
+.a-text { font-size: 0.85rem; color: #555; }
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 600px) {
+  .page {
+    margin: 16px auto;
+  }
+
+  .score {
+    font-size: 2.8rem;
+  }
+
+  .actions {
+    justify-content: center;
+
+    button { width: 100%; }
+  }
+}

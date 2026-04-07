@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_10",
+  "title": "SQL Advanced Optimization & Execution Plans",
+  "description": "Execution plan analysis, advanced optimization techniques, statistics, and query hints.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_10_q1",
+      "text": "What is a query execution plan?",
+      "options": [
+        { "id": "a", "text": "A written document describing database design" },
+        { "id": "b", "text": "The sequence of physical operations the query optimizer chooses to execute a SQL query" },
+        { "id": "c", "text": "A list of indexes defined on a table" },
+        { "id": "d", "text": "The stored procedure cache" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q2",
+      "text": "In a graphical execution plan in SQL Server Management Studio, in which direction do you read operators?",
+      "options": [
+        { "id": "a", "text": "Left to right" },
+        { "id": "b", "text": "Top to bottom" },
+        { "id": "c", "text": "Right to left" },
+        { "id": "d", "text": "Bottom to top" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_10_q3",
+      "text": "What does a thick arrow between two operators in an execution plan indicate?",
+      "options": [
+        { "id": "a", "text": "A fast join operation" },
+        { "id": "b", "text": "A large number of rows flowing between those operators" },
+        { "id": "c", "text": "A high CPU cost operation" },
+        { "id": "d", "text": "A network transfer between servers" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q4",
+      "text": "What is the difference between an Estimated and an Actual execution plan?",
+      "options": [
+        { "id": "a", "text": "They are always identical" },
+        { "id": "b", "text": "An estimated plan is generated without running the query; an actual plan is generated after execution and includes runtime statistics like actual row counts" },
+        { "id": "c", "text": "An actual plan is less accurate than an estimated plan" },
+        { "id": "d", "text": "Estimated plans include index usage; actual plans do not" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q5",
+      "text": "What does it mean when an execution plan shows a large difference between 'Estimated Rows' and 'Actual Rows'?",
+      "options": [
+        { "id": "a", "text": "The query is running correctly" },
+        { "id": "b", "text": "Statistics are likely out of date, causing the optimizer to make poor plan choices" },
+        { "id": "c", "text": "The index is corrupted" },
+        { "id": "d", "text": "The query is returning too many rows" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q6",
+      "text": "What is a Table Scan vs. an Index Seek in execution plans?",
+      "options": [
+        { "id": "a", "text": "Table Scan navigates the B-tree directly; Index Seek reads all pages" },
+        { "id": "b", "text": "Table Scan reads every row in the table (no usable index); Index Seek navigates the B-tree to find specific rows efficiently" },
+        { "id": "c", "text": "They are equivalent operations" },
+        { "id": "d", "text": "Index Seek is only used for full-text search" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q7",
+      "text": "What is a Key Lookup (Clustered) in an execution plan, and when is it a performance concern?",
+      "options": [
+        { "id": "a", "text": "It is always efficient and not a concern" },
+        { "id": "b", "text": "After a non-clustered index seek, the engine fetches additional columns from the clustered index; it becomes costly when applied to many rows" },
+        { "id": "c", "text": "It is a join between two clustered tables" },
+        { "id": "d", "text": "It looks up the primary key value in a foreign key table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q8",
+      "text": "What is parameter sniffing and when does it cause problems?",
+      "options": [
+        { "id": "a", "text": "SQL Server detects missing parameters automatically and causes compilation errors" },
+        { "id": "b", "text": "SQL Server uses the parameter values from the first execution to compile and cache a plan; this is problematic if later executions use very different parameter values with different optimal plans" },
+        { "id": "c", "text": "A security feature that logs parameter values" },
+        { "id": "d", "text": "Automatic parameter detection that always improves performance" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q9",
+      "text": "Which query hint forces a new execution plan to be compiled for each execution, solving parameter sniffing issues?",
+      "options": [
+        { "id": "a", "text": "OPTION (OPTIMIZE FOR UNKNOWN)" },
+        { "id": "b", "text": "OPTION (RECOMPILE)" },
+        { "id": "c", "text": "OPTION (MAXDOP 1)" },
+        { "id": "d", "text": "WITH (NOLOCK)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q10",
+      "text": "What does MAXDOP control in query hints?",
+      "options": [
+        { "id": "a", "text": "The maximum number of rows returned" },
+        { "id": "b", "text": "The maximum degree of parallelism — the number of CPU cores used for a parallel query" },
+        { "id": "c", "text": "The maximum time a query can run" },
+        { "id": "d", "text": "The maximum number of joins allowed" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q11",
+      "text": "What does OPTION (MAXDOP 1) force?",
+      "options": [
+        { "id": "a", "text": "The query to use all available CPUs" },
+        { "id": "b", "text": "The query to run single-threaded with no parallelism" },
+        { "id": "c", "text": "The query to use 1 GB of memory" },
+        { "id": "d", "text": "The query to recompile once" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q12",
+      "text": "What are statistics in SQL Server and why are they important?",
+      "options": [
+        { "id": "a", "text": "System tables that list all indexes" },
+        { "id": "b", "text": "Objects containing histogram data about the distribution of column values, used by the query optimizer to estimate row counts and choose efficient plans" },
+        { "id": "c", "text": "Performance counters for server CPU usage" },
+        { "id": "d", "text": "Query execution history logs" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q13",
+      "text": "What command updates statistics on a table in SQL Server?",
+      "options": [
+        { "id": "a", "text": "REFRESH STATISTICS TableName" },
+        { "id": "b", "text": "UPDATE STATISTICS TableName" },
+        { "id": "c", "text": "REBUILD STATISTICS TableName" },
+        { "id": "d", "text": "RECALCULATE STATISTICS TableName" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q14",
+      "text": "What is the difference between a temp table (#temp) and a table variable (@tableVar) in terms of statistics?",
+      "options": [
+        { "id": "a", "text": "Table variables have full statistics; temp tables do not" },
+        { "id": "b", "text": "Temp tables have statistics and can be indexed like regular tables; table variables have no statistics and the optimizer always estimates 1 row" },
+        { "id": "c", "text": "They are identical in terms of statistics" },
+        { "id": "d", "text": "Table variables are always faster than temp tables" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q15",
+      "text": "When would you use a temp table over a table variable?",
+      "options": [
+        { "id": "a", "text": "For small datasets with a few rows" },
+        { "id": "b", "text": "For larger datasets where statistics and indexes are needed for subsequent queries, improving optimizer accuracy" },
+        { "id": "c", "text": "Table variables are always preferable" },
+        { "id": "d", "text": "When the data should persist after the session ends" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q16",
+      "text": "What is tempdb used for in SQL Server?",
+      "options": [
+        { "id": "a", "text": "Permanent storage for user databases" },
+        { "id": "b", "text": "A system database used for temporary tables, table variables, sort/hash operations, row versioning, and internal worktables" },
+        { "id": "c", "text": "Storing transaction logs" },
+        { "id": "d", "text": "Backing up user databases" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q17",
+      "text": "What does the NOLOCK table hint do and what risk does it carry?",
+      "options": [
+        { "id": "a", "text": "Prevents all writes to the table; risk is reduced write performance" },
+        { "id": "b", "text": "Reads data without acquiring shared locks, improving read concurrency but risking dirty reads of uncommitted data" },
+        { "id": "c", "text": "Locks the table exclusively; risk is blocking other reads" },
+        { "id": "d", "text": "Removes all existing locks; risk is data corruption" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q18",
+      "text": "What does the READPAST hint do?",
+      "options": [
+        { "id": "a", "text": "Reads all locked rows regardless of locks" },
+        { "id": "b", "text": "Skips rows that are currently locked by other transactions instead of waiting" },
+        { "id": "c", "text": "Forces the query to read from a past point in time" },
+        { "id": "d", "text": "Reads rows in reverse order" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q19",
+      "text": "What is the UPDLOCK hint used for?",
+      "options": [
+        { "id": "a", "text": "Prevents the table from being updated" },
+        { "id": "b", "text": "Acquires an update lock during a read, signaling intent to update and preventing deadlocks in read-then-update patterns" },
+        { "id": "c", "text": "Forces the query to update all rows it reads" },
+        { "id": "d", "text": "Bypasses the update trigger" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q20",
+      "text": "What is Query Store in SQL Server?",
+      "options": [
+        { "id": "a", "text": "A storage location for creating queries" },
+        { "id": "b", "text": "A feature that captures query texts, plans, and runtime statistics over time, enabling plan forcing and regression analysis" },
+        { "id": "c", "text": "A cache of recently executed queries" },
+        { "id": "d", "text": "A tool for writing stored procedures" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q21",
+      "text": "What does 'forcing a plan' in Query Store allow you to do?",
+      "options": [
+        { "id": "a", "text": "Force the query to return specific results" },
+        { "id": "b", "text": "Instruct SQL Server to always use a specific previously captured execution plan for a query, bypassing the optimizer" },
+        { "id": "c", "text": "Force all queries to run in parallel" },
+        { "id": "d", "text": "Force index rebuilds before each execution" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q22",
+      "text": "How do you identify blocking queries in SQL Server?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM sys.indexes" },
+        { "id": "b", "text": "Query sys.dm_exec_requests and sys.dm_os_waiting_tasks to find sessions with blocking_session_id populated" },
+        { "id": "c", "text": "Use SET STATISTICS IO ON" },
+        { "id": "d", "text": "Query sys.databases" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q23",
+      "text": "Which DMV can be used to identify the top CPU-consuming queries in SQL Server?",
+      "options": [
+        { "id": "a", "text": "sys.dm_exec_sessions" },
+        { "id": "b", "text": "sys.dm_exec_query_stats ordered by total_worker_time" },
+        { "id": "c", "text": "sys.dm_os_performance_counters" },
+        { "id": "d", "text": "sys.dm_db_index_usage_stats" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q24",
+      "text": "What causes a Hash Match join in an execution plan, and is it always bad?",
+      "options": [
+        { "id": "a", "text": "Hash match occurs on indexed columns only; it is always efficient" },
+        { "id": "b", "text": "Hash match is used when joining on unindexed or unsorted columns; it is not inherently bad but can be costly for large datasets due to memory spills to tempdb" },
+        { "id": "c", "text": "Hash match always indicates a missing index" },
+        { "id": "d", "text": "Hash match only occurs on text columns" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q25",
+      "text": "What is a Nested Loops join in an execution plan?",
+      "options": [
+        { "id": "a", "text": "A join algorithm that builds a hash table for one input and probes it with the other" },
+        { "id": "b", "text": "A join algorithm where for each row in the outer input, it seeks matching rows in the inner input — efficient when the outer set is small and the inner has a good index" },
+        { "id": "c", "text": "A join that sorts both inputs and merges them" },
+        { "id": "d", "text": "A join that only works on equal column values" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q26",
+      "text": "What is a Merge Join in an execution plan?",
+      "options": [
+        { "id": "a", "text": "A join that merges two tables into one permanent table" },
+        { "id": "b", "text": "A join that requires both inputs to be sorted on the join columns; it then merges them linearly — efficient for large sorted data sets" },
+        { "id": "c", "text": "A join that creates a hash table" },
+        { "id": "d", "text": "A join used only for FULL OUTER JOIN" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q27",
+      "text": "What is a memory spill (worktable spill) in an execution plan and why is it harmful?",
+      "options": [
+        { "id": "a", "text": "When query results are spilled to a log file — harmful because it fills the log" },
+        { "id": "b", "text": "When a sort, hash, or other memory-intensive operation does not fit in granted memory and overflows to tempdb on disk, causing significant I/O overhead" },
+        { "id": "c", "text": "When a query uses too many temp tables" },
+        { "id": "d", "text": "When a query returns too many rows to the client" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q28",
+      "text": "How does OPTION (OPTIMIZE FOR (@param UNKNOWN)) help with parameter sniffing?",
+      "options": [
+        { "id": "a", "text": "It disables parameter sniffing entirely" },
+        { "id": "b", "text": "It instructs the optimizer to use average statistical values rather than the supplied parameter value when compiling the plan, producing a more general plan" },
+        { "id": "c", "text": "It forces a recompile on every execution" },
+        { "id": "d", "text": "It caches the plan for the unknown parameter type only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_10_q29",
+      "text": "Which sys view in SQL Server helps identify long-running currently executing queries?",
+      "options": [
+        { "id": "a", "text": "sys.dm_exec_requests joined with sys.dm_exec_sql_text to get query text and start time" },
+        { "id": "b", "text": "sys.databases" },
+        { "id": "c", "text": "sys.procedures" },
+        { "id": "d", "text": "sys.dm_db_index_physical_stats" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_10_q30",
+      "text": "What is the purpose of the DBCC SHOW_STATISTICS command?",
+      "options": [
+        { "id": "a", "text": "Shows the database file sizes" },
+        { "id": "b", "text": "Displays the histogram, density vector, and header information for a statistics object on a table, used to diagnose estimation problems" },
+        { "id": "c", "text": "Shows the execution plan of a query" },
+        { "id": "d", "text": "Displays index fragmentation levels" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

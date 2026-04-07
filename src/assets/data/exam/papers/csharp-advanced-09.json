@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a09",
+  "title": "C# Advanced — Paper 9",
+  "description": "Advanced C# covering Task Parallel Library, Async Patterns & CancellationToken, Generics, Generic Variance, LINQ Core Operators, Advanced Pattern Matching, Records/Tuples/Deconstruction, Advanced Exception Handling, Memory Management, and Span<T>/Memory<T>.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a09_q1",
+      "text": "What is a generic factory method pattern and how does it use constraints?",
+      "options": [
+        { "id": "a", "text": "Generic factories require reflection to create instances." },
+        { "id": "b", "text": "A generic factory method T Create<T>() where T : class, new() uses the 'new()' constraint to call the parameterless constructor via 'new T()', creating instances of any type that satisfies the constraint." },
+        { "id": "c", "text": "Factories with generics can only return interfaces." },
+        { "id": "d", "text": "Generic factories use Activator.CreateInstance() because 'new T()' is not possible." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q2",
+      "text": "What is the IComparer<T> covariance/contravariance relationship in .NET?",
+      "options": [
+        { "id": "a", "text": "IComparer<T> is covariant (out T)." },
+        { "id": "b", "text": "IComparer<T> is contravariant (in T): an IComparer<Animal> can be used where IComparer<Dog> is expected, because a comparer that works for any Animal can certainly compare Dogs." },
+        { "id": "c", "text": "IComparer<T> is invariant." },
+        { "id": "d", "text": "IComparer<T> is both covariant and contravariant." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q3",
+      "text": "What does LINQ's SkipWhile and TakeWhile do?",
+      "options": [
+        { "id": "a", "text": "SkipWhile removes matching elements; TakeWhile keeps all elements." },
+        { "id": "b", "text": "TakeWhile returns elements as long as a condition is true, stopping at the first false; SkipWhile skips elements while a condition is true, then returns all remaining elements." },
+        { "id": "c", "text": "They both filter elements globally based on a predicate." },
+        { "id": "d", "text": "SkipWhile and TakeWhile operate only on ordered sequences." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q4",
+      "text": "What is the purpose of LINQ's Lookup<TKey, TElement> vs Dictionary<TKey, List<TElement>>?",
+      "options": [
+        { "id": "a", "text": "Lookup<TKey,TElement> is mutable; Dictionary is immutable." },
+        { "id": "b", "text": "Lookup<TKey,TElement> is an immutable one-to-many mapping returned by ToLookup(); it returns an empty sequence (not throws) for missing keys, unlike a Dictionary which throws KeyNotFoundException." },
+        { "id": "c", "text": "Lookup supports more key types than Dictionary." },
+        { "id": "d", "text": "Lookup is only available in LINQ to SQL." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q5",
+      "text": "How does the 'with' expression work with record structs (C# 10+)?",
+      "options": [
+        { "id": "a", "text": "Record structs do not support the 'with' expression." },
+        { "id": "b", "text": "'with' on a record struct creates a copy of the struct with the specified properties replaced, exactly like record classes; since structs are value types, the copy is on the stack." },
+        { "id": "c", "text": "'with' on a record struct modifies the original struct in place." },
+        { "id": "d", "text": "'with' creates a boxed copy of the record struct on the heap." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q6",
+      "text": "What is an OperationCanceledException and when should you catch it?",
+      "options": [
+        { "id": "a", "text": "It should always be caught and ignored in library code." },
+        { "id": "b", "text": "OperationCanceledException signals that an operation was intentionally cancelled via CancellationToken; library code should usually let it propagate; application code may catch it to handle cancellation gracefully (e.g., show a message or take alternative action)." },
+        { "id": "c", "text": "OperationCanceledException indicates a timeout, not user cancellation." },
+        { "id": "d", "text": "It should always be caught and re-thrown as AggregateException." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q7",
+      "text": "What does Span<T>.Fill(value) do?",
+      "options": [
+        { "id": "a", "text": "Fill() appends value to the end of the span." },
+        { "id": "b", "text": "Fill() sets all elements of the span to the specified value, providing an efficient way to initialize or reset a block of memory." },
+        { "id": "c", "text": "Fill() copies another span into this span." },
+        { "id": "d", "text": "Fill() is only available for Span<byte>." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q8",
+      "text": "What is the thread pool in .NET and how does Task.Run() use it?",
+      "options": [
+        { "id": "a", "text": "Task.Run() creates a new OS thread each time." },
+        { "id": "b", "text": "The thread pool is a managed pool of reusable threads; Task.Run() queues work to the thread pool, reusing existing threads rather than creating new ones, reducing the overhead of thread creation and destruction." },
+        { "id": "c", "text": "The thread pool is only used for I/O-bound operations." },
+        { "id": "d", "text": "Task.Run() always uses a dedicated thread, bypassing the pool." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q9",
+      "text": "What advanced pattern matching feature allows matching on nested tuple structures in C# 8+?",
+      "options": [
+        { "id": "a", "text": "Tuple matching uses a special 'match' keyword." },
+        { "id": "b", "text": "Positional patterns can match tuples by structure: '(int x, int y) point = ...; switch(point) { case (0, 0): ...; case (_, 0): ...; }' matches on the deconstructed components." },
+        { "id": "c", "text": "Tuples require implementing IMatchable to use in patterns." },
+        { "id": "d", "text": "You must deconstruct a tuple manually before pattern matching." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q10",
+      "text": "What is the purpose of the 'finally' block when an exception is unhandled?",
+      "options": [
+        { "id": "a", "text": "A finally block only runs when no exception is thrown." },
+        { "id": "b", "text": "The finally block runs regardless of whether an exception is caught or unhandled, allowing cleanup code (like closing streams) to execute even if the exception propagates uncaught up the call stack." },
+        { "id": "c", "text": "A finally block swallows unhandled exceptions." },
+        { "id": "d", "text": "Finally blocks run only when the exception is caught in the same try/catch." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q11",
+      "text": "What is memory fragmentation in .NET and how does the LOH contribute to it?",
+      "options": [
+        { "id": "a", "text": "The GC always compacts the LOH, so fragmentation is not an issue." },
+        { "id": "b", "text": "The large object heap is not compacted by default (unless forced); when large objects are freed and smaller objects are allocated into the gaps, unused pockets of memory remain, causing fragmentation that increases memory consumption." },
+        { "id": "c", "text": "Fragmentation only occurs in the small object heap." },
+        { "id": "d", "text": "Memory fragmentation only affects unmanaged memory." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q12",
+      "text": "What is the difference between stackalloc int[n] and new int[n] in C#?",
+      "options": [
+        { "id": "a", "text": "They are equivalent; stackalloc is just a shorter syntax." },
+        { "id": "b", "text": "stackalloc int[n] allocates on the stack (no GC pressure, automatically freed on method return, usable with Span<T>); new int[n] allocates on the managed heap (GC-managed, survives method return, accessible as a field or parameter)." },
+        { "id": "c", "text": "new int[n] is always faster than stackalloc int[n]." },
+        { "id": "d", "text": "stackalloc int[n] requires the unsafe keyword in all cases." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q13",
+      "text": "What is the variance issue with arrays in C# (array covariance)?",
+      "options": [
+        { "id": "a", "text": "Arrays are invariant and cannot be assigned to base-type arrays." },
+        { "id": "b", "text": "C# allows string[] to be assigned to object[] (array covariance is built into the runtime), but writing a non-string to the array throws ArrayTypeMismatchException at runtime, making array covariance unsound." },
+        { "id": "c", "text": "Array covariance is fully type-safe in C#." },
+        { "id": "d", "text": "Array covariance only applies to value-type arrays." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q14",
+      "text": "What is the Enumerable.Range() LINQ method and what does it produce?",
+      "options": [
+        { "id": "a", "text": "Range() produces a random sequence of numbers." },
+        { "id": "b", "text": "Enumerable.Range(start, count) produces a sequence of 'count' integers starting from 'start', using deferred execution; useful for generating test data or index sequences." },
+        { "id": "c", "text": "Range() returns an IList<int> with all values materialized immediately." },
+        { "id": "d", "text": "Range() produces a sequence from start to end inclusive." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q15",
+      "text": "What is a CancellationToken.None and when should it be used?",
+      "options": [
+        { "id": "a", "text": "CancellationToken.None throws if passed to an async method." },
+        { "id": "b", "text": "CancellationToken.None is a default/empty token that is never cancelled; pass it when you want to satisfy an API that requires a CancellationToken parameter but you have no cancellation intent." },
+        { "id": "c", "text": "CancellationToken.None is equivalent to default(CancellationToken)." },
+        { "id": "d", "text": "Both b and c are correct." }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_a09_q16",
+      "text": "What does Parallel.Invoke() do?",
+      "options": [
+        { "id": "a", "text": "Parallel.Invoke() schedules actions sequentially on the thread pool." },
+        { "id": "b", "text": "Parallel.Invoke() executes an array of Action delegates potentially in parallel and waits for all of them to complete, simplifying parallelizing a fixed set of independent tasks." },
+        { "id": "c", "text": "Parallel.Invoke() is equivalent to Task.WhenAll() for synchronous actions." },
+        { "id": "d", "text": "Parallel.Invoke() is for fire-and-forget; it does not wait for completion." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q17",
+      "text": "What is the purpose of the 'discard' pattern '_' in C# pattern matching?",
+      "options": [
+        { "id": "a", "text": "The discard '_' is invalid in patterns; it is only for out parameter discards." },
+        { "id": "b", "text": "The discard pattern '_' matches any value without binding it to a variable, used as a wildcard in switch arms or positional patterns when you do not need the matched value." },
+        { "id": "c", "text": "The discard pattern matches only null values." },
+        { "id": "d", "text": "The discard pattern '_' matches only the default enum value." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q18",
+      "text": "How does C# 12's primary constructors (non-record) work?",
+      "options": [
+        { "id": "a", "text": "Primary constructors in non-record classes generate init-only properties." },
+        { "id": "b", "text": "In C# 12, classes and structs can have a primary constructor (parameters in the class declaration); the parameters are scoped to the class body but do NOT automatically become properties — you must declare properties manually or use them in initializers." },
+        { "id": "c", "text": "Primary constructors on regular classes behave identically to records." },
+        { "id": "d", "text": "Primary constructors are only for struct types in C# 12." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q19",
+      "text": "What is a re-throw vs throw inside a catch block in C#?",
+      "options": [
+        { "id": "a", "text": "Both 'throw ex' and 'throw' rethrow with the same stack trace." },
+        { "id": "b", "text": "'throw' (without argument) rethrows the current exception preserving its original stack trace; 'throw ex' rethrows a specific exception but resets the stack trace to the current location, losing the original call stack." },
+        { "id": "c", "text": "'throw ex' is always preferred over bare 'throw'." },
+        { "id": "d", "text": "Both 'throw' and 'throw ex' clear the stack trace." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q20",
+      "text": "What is ReadOnlySpan<T> and how does it differ from Span<T>?",
+      "options": [
+        { "id": "a", "text": "ReadOnlySpan<T> can be stored on the heap; Span<T> cannot." },
+        { "id": "b", "text": "ReadOnlySpan<T> is a ref struct like Span<T> but provides read-only access to a memory region; you cannot modify elements through it, making it suitable for reading string data or immutable buffers." },
+        { "id": "c", "text": "ReadOnlySpan<T> supports async methods; Span<T> does not." },
+        { "id": "d", "text": "ReadOnlySpan<T> allocates a copy of the data." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q21",
+      "text": "In PLINQ, what is the difference between AsParallel() and AsSequential()?",
+      "options": [
+        { "id": "a", "text": "AsParallel() makes LINQ sequential; AsSequential() makes it parallel." },
+        { "id": "b", "text": "AsParallel() marks a query for parallel execution using multiple threads; AsSequential() can be inserted mid-pipeline to force subsequent operators to run sequentially, useful when an operator is not thread-safe." },
+        { "id": "c", "text": "AsSequential() materializes the query immediately." },
+        { "id": "d", "text": "They are interchangeable; order of execution is up to the scheduler." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q22",
+      "text": "What is the purpose of the 'base' record member specification in C# 9+ record inheritance?",
+      "options": [
+        { "id": "a", "text": "It calls the base class constructor at compile time." },
+        { "id": "b", "text": "In derived record declarations, the positional parameters include base parameters passed to the base record's primary constructor: 'record Dog(string Name, string Breed) : Animal(Name);' passes Name to Animal." },
+        { "id": "c", "text": "'base' in a record is used to access overridden properties." },
+        { "id": "d", "text": "Derived records cannot pass parameters to the base record." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q23",
+      "text": "How does Func<T> covariance work in C# and what is an example?",
+      "options": [
+        { "id": "a", "text": "Func<T> is contravariant; it cannot be assigned to Func<base>." },
+        { "id": "b", "text": "Func<TResult> is covariant in TResult: a Func<string> can be assigned to Func<object> because string is an object. This works because Func only produces (returns) a value." },
+        { "id": "c", "text": "Func<T> is invariant because it can both accept and return T." },
+        { "id": "d", "text": "Func<T> covariance requires explicit casting." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q24",
+      "text": "What is the Span<T>.SequenceEqual() method used for?",
+      "options": [
+        { "id": "a", "text": "It checks if two spans point to the same memory location." },
+        { "id": "b", "text": "SequenceEqual() compares two Span<T> instances element-by-element and returns true if they have the same length and all corresponding elements are equal." },
+        { "id": "c", "text": "SequenceEqual() is only available for Span<byte>." },
+        { "id": "d", "text": "SequenceEqual() checks if the spans are both empty." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q25",
+      "text": "What is an async method state machine and what does the compiler generate?",
+      "options": [
+        { "id": "a", "text": "The compiler generates a new Thread class for each async method." },
+        { "id": "b", "text": "The compiler transforms an async method into a struct-based state machine with MoveNext() and fields storing local variables and the current state; each 'await' is a state transition point." },
+        { "id": "c", "text": "The state machine runs on a dedicated thread pool thread." },
+        { "id": "d", "text": "The compiler only transforms async methods that have more than one await." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q26",
+      "text": "What does LINQ's Contains() method do and what does it use for equality?",
+      "options": [
+        { "id": "a", "text": "Contains() always uses reference equality." },
+        { "id": "b", "text": "Contains() returns true if any element in the sequence equals the specified value, using the default equality comparer (EqualityComparer<T>.Default) or a provided IEqualityComparer<T>." },
+        { "id": "c", "text": "Contains() only works on IList<T>, not IEnumerable<T>." },
+        { "id": "d", "text": "Contains() counts occurrences rather than checking for membership." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q27",
+      "text": "What is the Safe Handle pattern in .NET and why is it preferred over raw IntPtr?",
+      "options": [
+        { "id": "a", "text": "SafeHandle is only used for file handles." },
+        { "id": "b", "text": "SafeHandle (and derived classes like SafeFileHandle) wraps a native handle with proper finalization, ensures exactly-once release, handles edge cases like handle recycling attacks, and participates in the IDisposable pattern correctly, unlike raw IntPtr." },
+        { "id": "c", "text": "SafeHandle boxes the IntPtr for GC tracking." },
+        { "id": "d", "text": "SafeHandle prevents the handle from being passed to native code." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q28",
+      "text": "What is value tuple projection in LINQ (C# 7+)?",
+      "options": [
+        { "id": "a", "text": "Value tuples cannot be used in LINQ projections." },
+        { "id": "b", "text": "You can project LINQ results to value tuples: 'source.Select(x => (x.Name, x.Age))' produces IEnumerable<(string Name, int Age)>, giving named access to projected components without defining an anonymous type or separate class." },
+        { "id": "c", "text": "Value tuple projections require calling ToList() first." },
+        { "id": "d", "text": "Value tuples in LINQ projections only work with query syntax." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q29",
+      "text": "How do you properly implement the async-safe Dispose pattern with both IDisposable and IAsyncDisposable?",
+      "options": [
+        { "id": "a", "text": "Implement only IAsyncDisposable; IDisposable is obsolete in async code." },
+        { "id": "b", "text": "Implement both interfaces; in Dispose() provide synchronous cleanup (calling DisposeAsync().GetAwaiter().GetResult() or equivalent); in DisposeAsync() provide async cleanup; both should be idempotent with a disposed flag." },
+        { "id": "c", "text": "DisposeAsync() automatically calls Dispose() as a fallback." },
+        { "id": "d", "text": "Only one can be implemented per class; choose based on whether the resource is managed or unmanaged." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a09_q30",
+      "text": "What is C# 11's required modifier on properties and how does it work?",
+      "options": [
+        { "id": "a", "text": "required makes a property non-nullable." },
+        { "id": "b", "text": "The 'required' modifier forces callers to set a property in the object initializer; the compiler raises an error if a required property is not initialized, even when using object initializers without a parameterized constructor." },
+        { "id": "c", "text": "required makes the property a primary constructor parameter." },
+        { "id": "d", "text": "required prevents a property from having a default value." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

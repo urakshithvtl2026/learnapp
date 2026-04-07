@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s05",
+  "title": "C# SOLID — Paper 5",
+  "description": "Covers LSP concepts, LSP refactoring, ISP concepts, ISP refactoring, DIP concepts, Observer Pattern, Repository Pattern, Code Smells & SOLID Violations, Refactoring Techniques, and Unit Testing & SOLID.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s05_q1",
+      "text": "ST09-1: The Dependency Inversion Principle states that:",
+      "options": [
+        { "id": "a", "text": "High-level modules should depend directly on low-level modules for efficiency." },
+        { "id": "b", "text": "Both high-level and low-level modules should depend on abstractions; abstractions should not depend on details." },
+        { "id": "c", "text": "Low-level modules should control high-level modules." },
+        { "id": "d", "text": "All dependencies should flow from interfaces to concrete classes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q2",
+      "text": "ST18-5: The 'Extract Method' refactoring primarily improves code by:",
+      "options": [
+        { "id": "a", "text": "Reducing runtime memory allocation." },
+        { "id": "b", "text": "Improving readability, enabling reuse, and supporting SRP by giving the extracted logic a descriptive name." },
+        { "id": "c", "text": "Removing the need for unit tests on the original method." },
+        { "id": "d", "text": "Making the method run faster through inlining." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q3",
+      "text": "ST05-13: Which of the following correctly distinguishes 'behavioral subtyping' from simple 'syntactic subtyping'?",
+      "options": [
+        { "id": "a", "text": "Behavioral subtyping requires the subtype to have more methods." },
+        { "id": "b", "text": "Behavioral subtyping requires that the subtype's observable behavior fulfils the same contract as the supertype, not just that method signatures match." },
+        { "id": "c", "text": "Syntactic subtyping is stricter than behavioral subtyping." },
+        { "id": "d", "text": "Behavioral subtyping only applies to generic types." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q4",
+      "text": "ST16-10: Specification pattern is sometimes combined with repositories to:",
+      "options": [
+        { "id": "a", "text": "Replace the repository interface entirely." },
+        { "id": "b", "text": "Encapsulate query criteria as objects, keeping query logic out of both the repository and the domain service." },
+        { "id": "c", "text": "Cache repository results using an in-memory store." },
+        { "id": "d", "text": "Generate SQL dynamically based on reflection." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q5",
+      "text": "ST06-11: Which of the following behaviors in a subclass represents 'weakening a postcondition', violating LSP?",
+      "options": [
+        { "id": "a", "text": "The subclass returns a value within the same range as the base class." },
+        { "id": "b", "text": "The subclass returns null where the base class contract guarantees a non-null result." },
+        { "id": "c", "text": "The subclass logs extra information before returning." },
+        { "id": "d", "text": "The subclass delegates the call to the base class implementation." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q6",
+      "text": "ST19-1: Which SOLID principle most directly improves the testability of a class?",
+      "options": [
+        { "id": "a", "text": "OCP — because classes closed for modification are easier to test." },
+        { "id": "b", "text": "DIP — because depending on abstractions allows test doubles to be injected in place of real dependencies." },
+        { "id": "c", "text": "ISP — because small interfaces have fewer methods to mock." },
+        { "id": "d", "text": "SRP — because smaller classes have fewer edge cases to test." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q7",
+      "text": "ST08-5: Why does ISP indirectly improve unit testability?",
+      "options": [
+        { "id": "a", "text": "Smaller interfaces require fewer mock setup lines, making tests simpler and more focused." },
+        { "id": "b", "text": "ISP eliminates the need for mocking entirely." },
+        { "id": "c", "text": "Smaller interfaces run faster in the test runner." },
+        { "id": "d", "text": "ISP forces all test doubles to extend the same base class." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s05_q8",
+      "text": "ST07-8: A developer defines `IPrintable`, `IScannable`, and `IFaxable` separately. A laser printer class implements all three. An inkjet class implements only `IPrintable` and `IScannable`. This design satisfies:",
+      "options": [
+        { "id": "a", "text": "ISP — each interface represents a single role; implementors adopt only relevant roles." },
+        { "id": "b", "text": "OCP — the printer hierarchy is open for extension." },
+        { "id": "c", "text": "SRP — each printer class has a single responsibility." },
+        { "id": "d", "text": "LSP — the inkjet is substitutable for the laser printer." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s05_q9",
+      "text": "ST15-11: In C#, which mechanism allows a class to raise an event safely (null check) using the null-conditional operator?",
+      "options": [
+        { "id": "a", "text": "MyEvent.Invoke(this, args)" },
+        { "id": "b", "text": "MyEvent?.Invoke(this, args)" },
+        { "id": "c", "text": "if (MyEvent != null) MyEvent(this, args) — the only safe way in C#" },
+        { "id": "d", "text": "MyEvent!.Invoke(this, args)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q10",
+      "text": "ST17-8: Which SOLID principle violation is most commonly associated with the 'Shotgun Surgery' code smell?",
+      "options": [
+        { "id": "a", "text": "OCP — each change requires extending many classes." },
+        { "id": "b", "text": "SRP — responsibilities are spread across too many classes, so a single conceptual change affects many of them." },
+        { "id": "c", "text": "ISP — too many interface methods require updating." },
+        { "id": "d", "text": "DIP — too many concrete dependencies need updating." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q11",
+      "text": "ST09-2: In DIP, what is the direction of the dependency arrow in a correctly designed layered system?",
+      "options": [
+        { "id": "a", "text": "High-level modules depend on low-level modules directly." },
+        { "id": "b", "text": "Both high-level and low-level modules depend on abstractions (interfaces) defined in or owned by the high-level module." },
+        { "id": "c", "text": "Low-level modules depend on high-level modules." },
+        { "id": "d", "text": "Abstractions depend on low-level implementation details." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q12",
+      "text": "ST19-2: What is a 'Mock' object in the context of unit testing SOLID-compliant code?",
+      "options": [
+        { "id": "a", "text": "A production-ready object used in both tests and the live system." },
+        { "id": "b", "text": "A test double that records calls made to it and can be verified to have been called correctly." },
+        { "id": "c", "text": "A simplified real implementation with no side effects." },
+        { "id": "d", "text": "An object that returns hardcoded data without recording calls." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q13",
+      "text": "ST06-12: A subclass method accepts `null` as a parameter but the base class contract disallows `null`. This subclass:",
+      "options": [
+        { "id": "a", "text": "Violates LSP by strengthening the precondition." },
+        { "id": "b", "text": "Complies with LSP by weakening the precondition (accepting more than the base requires)." },
+        { "id": "c", "text": "Violates OCP by modifying the base class contract." },
+        { "id": "d", "text": "Violates ISP by implementing an extra capability." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q14",
+      "text": "ST18-6: 'Introduce Parameter Object' refactoring is used when:",
+      "options": [
+        { "id": "a", "text": "A method has no parameters and needs one added." },
+        { "id": "b", "text": "A group of parameters always appear together in multiple methods and can be grouped into a cohesive object." },
+        { "id": "c", "text": "A parameter is used only once and should be inlined." },
+        { "id": "d", "text": "A method returns multiple values that should be grouped." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q15",
+      "text": "ST05-14: Which type of test failure most clearly reveals an LSP violation in a class hierarchy?",
+      "options": [
+        { "id": "a", "text": "A test that fails only when the concrete subtype is used in place of the base type." },
+        { "id": "b", "text": "A test that fails due to a compile error." },
+        { "id": "c", "text": "A test that fails due to a timeout." },
+        { "id": "d", "text": "A test that fails because the database is unavailable." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s05_q16",
+      "text": "ST07-9: In C# 8.0+, default interface methods can be used to extend interfaces without breaking existing implementations. How does this support ISP?",
+      "options": [
+        { "id": "a", "text": "It encourages merging all interfaces into one." },
+        { "id": "b", "text": "It allows optional extensions to be added to role interfaces without forcing all implementors to add the method." },
+        { "id": "c", "text": "It removes the need for ISP entirely." },
+        { "id": "d", "text": "It forces all classes to implement the default method." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q17",
+      "text": "ST09-3: Which of the following code snippets demonstrates a DIP violation?",
+      "options": [
+        { "id": "a", "text": "A service class that accepts ILogger in its constructor." },
+        { "id": "b", "text": "A service class that instantiates `new SqlDatabase()` directly in its constructor." },
+        { "id": "c", "text": "A service class that accepts IDatabase in its constructor." },
+        { "id": "d", "text": "A service class registered in a DI container." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q18",
+      "text": "ST19-3: A 'Stub' test double, in contrast to a Mock, is primarily used to:",
+      "options": [
+        { "id": "a", "text": "Verify that specific methods were called during a test." },
+        { "id": "b", "text": "Provide canned responses to method calls, controlling indirect inputs to the system under test." },
+        { "id": "c", "text": "Record all calls and replay them later." },
+        { "id": "d", "text": "Replace the entire production database with an in-memory version." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q19",
+      "text": "ST17-9: 'Data Clumps' is a code smell where:",
+      "options": [
+        { "id": "a", "text": "A class has too few fields." },
+        { "id": "b", "text": "The same group of fields or parameters appear together in multiple places and should be extracted into a class." },
+        { "id": "c", "text": "Static data is shared across multiple classes." },
+        { "id": "d", "text": "A collection is passed where a scalar value would suffice." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q20",
+      "text": "ST08-6: A `IContentService` interface has methods: `GetArticle()`, `PostComment()`, `DeleteComment()`, `ModerateComment()`. A guest user's class should only call `GetArticle()`. ISP suggests:",
+      "options": [
+        { "id": "a", "text": "The guest class implements all four methods, throwing exceptions for three." },
+        { "id": "b", "text": "Split into IReadContent and IManageContent so guest users depend only on IReadContent." },
+        { "id": "c", "text": "Add an IsGuest property to IContentService." },
+        { "id": "d", "text": "Make all methods optional using default implementations." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q21",
+      "text": "ST15-12: In C#, what does unsubscribing from an event with `-=` prevent?",
+      "options": [
+        { "id": "a", "text": "The event from being raised at all." },
+        { "id": "b", "text": "Memory leaks caused by the publisher holding a reference to the subscriber, preventing garbage collection." },
+        { "id": "c", "text": "The event from being raised more than once." },
+        { "id": "d", "text": "The subscriber from being registered a second time." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q22",
+      "text": "ST16-11: Which LINQ method is commonly used inside a repository's GetAll() implementation with Entity Framework Core?",
+      "options": [
+        { "id": "a", "text": "context.Set<T>().SaveChanges()" },
+        { "id": "b", "text": "context.Set<T>().ToListAsync()" },
+        { "id": "c", "text": "context.Set<T>().Attach()" },
+        { "id": "d", "text": "context.Set<T>().Entry()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q23",
+      "text": "ST06-13: A `BankAccount.Withdraw()` base method guarantees balance will never go negative. A subclass `OverdraftAccount` allows negative balances. Is this an LSP violation?",
+      "options": [
+        { "id": "a", "text": "No — overdraft is a valid business rule." },
+        { "id": "b", "text": "Yes — the subclass weakens the invariant that balance >= 0, breaking the base class contract for code that relies on that guarantee." },
+        { "id": "c", "text": "No — as long as the method signature is the same." },
+        { "id": "d", "text": "Yes — but only if the overdraft feature is enabled." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q24",
+      "text": "ST18-7: 'Replace Magic Number with Symbolic Constant' is a refactoring that primarily improves:",
+      "options": [
+        { "id": "a", "text": "Runtime performance." },
+        { "id": "b", "text": "Code readability and maintainability by giving meaningful names to unexplained numeric literals." },
+        { "id": "c", "text": "Test coverage metrics." },
+        { "id": "d", "text": "Memory usage." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q25",
+      "text": "ST09-4: Which of the following demonstrates a correctly DIP-compliant service registration?",
+      "options": [
+        { "id": "a", "text": "OrderService creates a new PaymentGateway() in its body." },
+        { "id": "b", "text": "services.AddScoped<IPaymentGateway, StripeGateway>() with OrderService accepting IPaymentGateway in its constructor." },
+        { "id": "c", "text": "OrderService uses a static PaymentGateway.Instance property." },
+        { "id": "d", "text": "OrderService inherits from PaymentGateway to reuse its logic." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q26",
+      "text": "ST17-10: Which SOLID principle is most directly violated by the 'Feature Envy' code smell?",
+      "options": [
+        { "id": "a", "text": "ISP" },
+        { "id": "b", "text": "SRP — the method belongs in another class, indicating a misaligned responsibility." },
+        { "id": "c", "text": "OCP" },
+        { "id": "d", "text": "DIP" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q27",
+      "text": "ST19-4: A 'Fake' object in unit testing is best described as:",
+      "options": [
+        { "id": "a", "text": "A mock that records calls for later verification." },
+        { "id": "b", "text": "A simplified but working implementation suitable for testing (e.g., an in-memory database)." },
+        { "id": "c", "text": "A stub that always throws an exception." },
+        { "id": "d", "text": "A real production object used in test environments." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q28",
+      "text": "ST07-10: The principle 'clients should not be forced to depend on interfaces they do not use' was formulated by:",
+      "options": [
+        { "id": "a", "text": "Barbara Liskov" },
+        { "id": "b", "text": "Robert C. Martin (Uncle Bob)" },
+        { "id": "c", "text": "Erich Gamma" },
+        { "id": "d", "text": "Martin Fowler" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q29",
+      "text": "ST05-15: Which of the following changes to a base class method's return type is LSP-safe in a language that supports covariant return types?",
+      "options": [
+        { "id": "a", "text": "Returning a less derived type than the base class." },
+        { "id": "b", "text": "Returning a more derived type (narrower type) that still satisfies the base class contract." },
+        { "id": "c", "text": "Returning void where the base returns a value." },
+        { "id": "d", "text": "Returning a completely unrelated type." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s05_q30",
+      "text": "ST18-8: 'Consolidate Conditional Expression' refactoring is used when:",
+      "options": [
+        { "id": "a", "text": "A single condition has too many operands." },
+        { "id": "b", "text": "Multiple conditions all lead to the same result and can be combined into a single clearly named condition or method." },
+        { "id": "c", "text": "A switch statement has too many cases." },
+        { "id": "d", "text": "A conditional expression is nested inside a loop." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

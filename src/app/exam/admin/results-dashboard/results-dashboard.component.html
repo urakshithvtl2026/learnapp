@@ -1,0 +1,78 @@
+<div class="page">
+  <h1>Results</h1>
+
+  <div class="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Filter by user</mat-label>
+      <mat-select [ngModel]="filterUserId()" (ngModelChange)="filterUserId.set($event)">
+        <mat-option value="">All Users</mat-option>
+        @for (u of users(); track u.id) {
+          <mat-option [value]="u.id">{{ u.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Filter by paper</mat-label>
+      <mat-select [ngModel]="filterPaperId()" (ngModelChange)="filterPaperId.set($event)">
+        <mat-option value="">All Papers</mat-option>
+        @for (p of papers(); track p.id) {
+          <mat-option [value]="p.id">{{ p.title }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-card>
+    <table mat-table [dataSource]="filteredResults()">
+
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef>User</th>
+        <td mat-cell *matCellDef="let r">{{ userName(r.userId) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="paper">
+        <th mat-header-cell *matHeaderCellDef>Paper</th>
+        <td mat-cell *matCellDef="let r">{{ paperTitle(r.questionPaperId) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="score">
+        <th mat-header-cell *matHeaderCellDef>Score</th>
+        <td mat-cell *matCellDef="let r">
+          <span [class]="scoreClass(r.score)" class="score-badge">{{ r.score }}%</span>
+          <div class="sub">✓ {{ r.correct }} / ✗ {{ r.wrong }}</div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="timeTaken">
+        <th mat-header-cell *matHeaderCellDef>Time Taken</th>
+        <td mat-cell *matCellDef="let r">{{ formatTime(r.timeTakenSeconds) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="timedOut">
+        <th mat-header-cell *matHeaderCellDef>Timed Out</th>
+        <td mat-cell *matCellDef="let r">
+          @if (r.timedOut) {
+            <span class="chip chip-warn">
+              <mat-icon>warning</mat-icon> Yes
+            </span>
+          } @else {
+            <span class="chip chip-ok">No</span>
+          }
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="submitted">
+        <th mat-header-cell *matHeaderCellDef>Submitted</th>
+        <td mat-cell *matCellDef="let r">{{ formatDate(r.submittedAt) }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    @if (filteredResults().length === 0) {
+      <p class="empty">No results found.</p>
+    }
+  </mat-card>
+</div>

@@ -1,0 +1,35 @@
+<main class="main-content">
+
+  <!-- Loading spinner -->
+  @if (!wordService.loaded()) {
+    <div class="loading-container">
+      <mat-spinner diameter="48"></mat-spinner>
+      <p>Loading words...</p>
+    </div>
+  }
+
+  <!-- Learning view -->
+  @if (wordService.loaded() && !wordService.isPoolEmpty()) {
+    <app-word-card
+      [word]="wordService.currentWord()!"
+      [remaining]="wordService.remainingCount()"
+      [total]="stats.total"
+      [learntCount]="stats.learnt"
+      [skippedCount]="stats.skipped"
+      (skip)="wordService.skipCurrent()"
+      (learnt)="wordService.markLearnt()"
+      (next)="wordService.next()"
+    ></app-word-card>
+  }
+
+  <!-- Completion view -->
+  @if (wordService.loaded() && wordService.isPoolEmpty()) {
+    <app-completion
+      [total]="stats.total"
+      [learntCount]="stats.learnt"
+      [skippedCount]="stats.skipped"
+      (reset)="onReset($event)"
+    ></app-completion>
+  }
+
+</main>

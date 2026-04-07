@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s03",
+  "title": "C# SOLID — Paper 3",
+  "description": "Covers OCP concepts, OCP refactoring, LSP concepts, LSP refactoring, ISP concepts, Factory & Abstract Factory, Decorator Pattern, Observer Pattern, Repository Pattern, and Code Smells & SOLID Violations.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s03_q1",
+      "text": "ST07-1: The Interface Segregation Principle states that:",
+      "options": [
+        { "id": "a", "text": "Clients should implement all methods of a large, general-purpose interface." },
+        { "id": "b", "text": "Clients should not be forced to depend on interfaces they do not use." },
+        { "id": "c", "text": "Interfaces should always be implemented by at least three classes." },
+        { "id": "d", "text": "All interface methods must have default implementations." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q2",
+      "text": "ST16-4: The Repository pattern improves testability primarily because:",
+      "options": [
+        { "id": "a", "text": "It forces all queries to be written in raw SQL." },
+        { "id": "b", "text": "It hides the ORM, preventing tests from running." },
+        { "id": "c", "text": "The IRepository interface can be mocked or faked, eliminating the need for a real database in unit tests." },
+        { "id": "d", "text": "It automatically generates test data." }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s03_q3",
+      "text": "ST03-7: Which of the following is NOT a valid way to achieve OCP in C#?",
+      "options": [
+        { "id": "a", "text": "Using interfaces with multiple implementations." },
+        { "id": "b", "text": "Using abstract classes with virtual methods." },
+        { "id": "c", "text": "Directly editing a stable, published class to add a new feature." },
+        { "id": "d", "text": "Using the Strategy pattern to inject new behaviour." }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s03_q4",
+      "text": "ST13-7: When should you prefer a simple Factory Method over an Abstract Factory?",
+      "options": [
+        { "id": "a", "text": "When you need to create several families of related products." },
+        { "id": "b", "text": "When you need to create only one type of product and the creation logic needs to be subclassed." },
+        { "id": "c", "text": "When you need dependency injection built into the factory." },
+        { "id": "d", "text": "When you want to prevent any subclassing of the product." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q5",
+      "text": "ST17-1: Which code smell describes a class that has grown to handle nearly all responsibilities in a system?",
+      "options": [
+        { "id": "a", "text": "Feature Envy" },
+        { "id": "b", "text": "Shotgun Surgery" },
+        { "id": "c", "text": "God Class (Large Class)" },
+        { "id": "d", "text": "Divergent Change" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s03_q6",
+      "text": "ST05-7: Which design guideline follows directly from LSP: 'favour composition over inheritance'?",
+      "options": [
+        { "id": "a", "text": "It makes classes easier to serialize." },
+        { "id": "b", "text": "Composition avoids the tight subtype contract that inheritance imposes, reducing the risk of LSP violations." },
+        { "id": "c", "text": "Composition always runs faster than inheritance." },
+        { "id": "d", "text": "It removes the need for interfaces entirely." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q7",
+      "text": "ST14-6: Which of the following correctly describes how Decorator differs from Inheritance for adding behaviour?",
+      "options": [
+        { "id": "a", "text": "Inheritance adds behaviour at runtime; Decorator adds it at compile time." },
+        { "id": "b", "text": "Decorator adds behaviour at runtime by wrapping; Inheritance adds it at compile time through subclassing." },
+        { "id": "c", "text": "Both Decorator and Inheritance add behaviour at the same time." },
+        { "id": "d", "text": "Decorator uses reflection, while Inheritance uses code generation." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q8",
+      "text": "ST06-5: A `ReadOnlyCollection<T>` derived from `Collection<T>` throws `NotSupportedException` on calls to `Add()`. Regarding LSP, this is:",
+      "options": [
+        { "id": "a", "text": "Acceptable because it documents the exception in XML comments." },
+        { "id": "b", "text": "A violation because code expecting a writable Collection<T> cannot safely substitute ReadOnlyCollection<T>." },
+        { "id": "c", "text": "Compliant because throwing exceptions is always allowed in overrides." },
+        { "id": "d", "text": "Compliant because .NET itself does this in the BCL." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q9",
+      "text": "ST04-7: Template Method is an OCP-supporting pattern. What is its structure?",
+      "options": [
+        { "id": "a", "text": "A base class defines the overall algorithm as a series of steps; subclasses override specific steps without changing the algorithm skeleton." },
+        { "id": "b", "text": "A context class delegates all algorithm selection to a strategy object." },
+        { "id": "c", "text": "A factory creates algorithm objects based on runtime configuration." },
+        { "id": "d", "text": "An interface declares all algorithm steps, and clients choose which to call." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s03_q10",
+      "text": "ST15-7: Which of the following is an advantage of using C# events over exposing a public list of delegates for Observer?",
+      "options": [
+        { "id": "a", "text": "Events are faster than lists of delegates." },
+        { "id": "b", "text": "Events enforce encapsulation: only the publisher can raise the event; subscribers can only add/remove handlers." },
+        { "id": "c", "text": "Events automatically remove dead subscribers." },
+        { "id": "d", "text": "Events support generic type parameters, lists do not." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q11",
+      "text": "ST03-8: An IAnimal interface has Eat(), Sleep(), Fly(), and Swim(). A Dog class must implement Fly() by throwing NotSupportedException. Which principle does this violate?",
+      "options": [
+        { "id": "a", "text": "OCP — because IAnimal is not open for extension." },
+        { "id": "b", "text": "ISP — because Dog is forced to implement a method it does not use." },
+        { "id": "c", "text": "SRP — because IAnimal has too many responsibilities." },
+        { "id": "d", "text": "DIP — because IAnimal is a concrete type." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q12",
+      "text": "ST07-2: A 'fat' interface is one that:",
+      "options": [
+        { "id": "a", "text": "Has a very large number of implementing classes." },
+        { "id": "b", "text": "Contains more methods than any single client needs to use." },
+        { "id": "c", "text": "Uses generic type parameters extensively." },
+        { "id": "d", "text": "Inherits from more than one base interface." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q13",
+      "text": "ST13-8: Factory patterns support OCP by:",
+      "options": [
+        { "id": "a", "text": "Preventing any new product types from being added." },
+        { "id": "b", "text": "Centralising object creation so new product types can be added by extending the factory, not modifying client code." },
+        { "id": "c", "text": "Making all product constructors private." },
+        { "id": "d", "text": "Requiring all products to implement the same base class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q14",
+      "text": "ST06-6: Which refactoring resolves an LSP violation caused by a subclass that strengthens a precondition (e.g., rejects null while the base accepts it)?",
+      "options": [
+        { "id": "a", "text": "Remove the override and call the base method directly." },
+        { "id": "b", "text": "Redesign: either relax the subclass precondition, or extract the subclass into an unrelated class that does not inherit from the base." },
+        { "id": "c", "text": "Add a null-check to the base class method." },
+        { "id": "d", "text": "Seal the base class so it cannot be subclassed." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q15",
+      "text": "ST17-2: 'Feature Envy' is a code smell where:",
+      "options": [
+        { "id": "a", "text": "A class has too many fields." },
+        { "id": "b", "text": "A method is more interested in the data of another class than its own." },
+        { "id": "c", "text": "Two classes share the same interface." },
+        { "id": "d", "text": "A method is duplicated in multiple classes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q16",
+      "text": "ST05-8: Barbara Liskov's original formulation of LSP is stated in terms of:",
+      "options": [
+        { "id": "a", "text": "Design by Contract — preconditions, postconditions, and invariants." },
+        { "id": "b", "text": "GRASP — General Responsibility Assignment Software Patterns." },
+        { "id": "c", "text": "UML class diagrams showing inheritance hierarchies." },
+        { "id": "d", "text": "Test-Driven Development principles." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s03_q17",
+      "text": "ST16-5: A Generic Repository pattern in C# typically looks like:",
+      "options": [
+        { "id": "a", "text": "IRepository with methods specific to each entity type in one large interface." },
+        { "id": "b", "text": "IRepository<T> with generic methods such as GetById, GetAll, Add, Update, Delete." },
+        { "id": "c", "text": "A static class with entity-specific static methods." },
+        { "id": "d", "text": "DbContext subclass with entity-specific DbSet properties exposed directly." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q18",
+      "text": "ST04-8: Which of the following correctly describes the role of an abstract class in supporting OCP?",
+      "options": [
+        { "id": "a", "text": "It is closed for extension because it cannot be instantiated." },
+        { "id": "b", "text": "It provides a stable base (closed for modification) while allowing concrete subclasses to extend behaviour (open for extension)." },
+        { "id": "c", "text": "Abstract classes violate OCP because they expose implementation details." },
+        { "id": "d", "text": "Abstract classes and OCP are unrelated concepts." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q19",
+      "text": "ST07-3: 'Role interfaces' in ISP refer to:",
+      "options": [
+        { "id": "a", "text": "Interfaces that are named after their implementing classes." },
+        { "id": "b", "text": "Small, focused interfaces that each represent a specific role or capability a client requires." },
+        { "id": "c", "text": "Interfaces used only in security and authorization contexts." },
+        { "id": "d", "text": "Interfaces that contain only one abstract method." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q20",
+      "text": "ST14-7: In a C# coffee shop application, a plain Coffee class implements ICoffee. A MilkDecorator and a SugarDecorator each also implement ICoffee and wrap an ICoffee instance. A client orders a coffee with milk and sugar. How are the decorators applied?",
+      "options": [
+        { "id": "a", "text": "new Coffee() is subclassed twice to produce MilkSugarCoffee." },
+        { "id": "b", "text": "new SugarDecorator(new MilkDecorator(new Coffee())) — decorators are stacked." },
+        { "id": "c", "text": "Coffee.AddMilk() and Coffee.AddSugar() are called directly." },
+        { "id": "d", "text": "A CoffeeBuilder constructs the decorated coffee in a single step." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q21",
+      "text": "ST03-9: Which statement about the OCP and unit tests is most accurate?",
+      "options": [
+        { "id": "a", "text": "OCP-compliant code is harder to unit test because of abstraction layers." },
+        { "id": "b", "text": "When code respects OCP, new behaviour can be added (and tested) in new classes without risking regression in existing tested code." },
+        { "id": "c", "text": "OCP has no impact on testing strategies." },
+        { "id": "d", "text": "OCP requires modifying tests every time new behaviour is added." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q22",
+      "text": "ST17-3: 'Shotgun Surgery' is a code smell where:",
+      "options": [
+        { "id": "a", "text": "A single class changes for many different reasons." },
+        { "id": "b", "text": "A single change requires editing many different classes." },
+        { "id": "c", "text": "Many classes share the same method signature." },
+        { "id": "d", "text": "A method contains too many parameters." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q23",
+      "text": "ST06-7: Which of the following overriding behaviors in a subclass is fully LSP compliant?",
+      "options": [
+        { "id": "a", "text": "Logging the call before delegating to the base implementation." },
+        { "id": "b", "text": "Returning null where the base contract guarantees a non-null return." },
+        { "id": "c", "text": "Throwing an ArgumentException for inputs the base class accepts." },
+        { "id": "d", "text": "Silently ignoring all work that the base method performs." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s03_q24",
+      "text": "ST05-9: A subtype S is a subtype of T according to LSP if:",
+      "options": [
+        { "id": "a", "text": "S has more methods than T." },
+        { "id": "b", "text": "For all objects x of type S, every property provable of x by T also holds for objects of type S." },
+        { "id": "c", "text": "S inherits from T and seals all inherited methods." },
+        { "id": "d", "text": "T is an abstract class and S is a concrete implementation." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q25",
+      "text": "ST15-8: In C#, `EventHandler<TEventArgs>` is a built-in delegate type. What must a subscriber method's signature look like to be compatible?",
+      "options": [
+        { "id": "a", "text": "void Handler(TEventArgs e)" },
+        { "id": "b", "text": "void Handler(object sender, TEventArgs e)" },
+        { "id": "c", "text": "bool Handler(object sender, TEventArgs e)" },
+        { "id": "d", "text": "Task Handler(object sender, TEventArgs e)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q26",
+      "text": "ST13-9: Which problem does the Abstract Factory pattern most directly solve?",
+      "options": [
+        { "id": "a", "text": "Ensuring a class has only one instance." },
+        { "id": "b", "text": "Ensuring that a set of related objects is created together consistently, without coupling code to specific concrete classes." },
+        { "id": "c", "text": "Converting the interface of a class into another interface clients expect." },
+        { "id": "d", "text": "Defining the steps of an algorithm in a base class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q27",
+      "text": "ST07-4: Which of the following is a sign that ISP is being violated?",
+      "options": [
+        { "id": "a", "text": "An interface has three methods and three implementing classes." },
+        { "id": "b", "text": "Implementing classes routinely throw NotImplementedException for several interface methods." },
+        { "id": "c", "text": "An interface is used by only one class." },
+        { "id": "d", "text": "An interface is defined in a separate assembly." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q28",
+      "text": "ST04-9: In C#, which language feature was introduced to support OCP at the interface level by providing a fallback implementation?",
+      "options": [
+        { "id": "a", "text": "Abstract methods" },
+        { "id": "b", "text": "Default interface methods (C# 8.0+)" },
+        { "id": "c", "text": "Static constructors" },
+        { "id": "d", "text": "Partial classes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q29",
+      "text": "ST16-6: A Unit of Work pattern is often paired with the Repository pattern. Its primary role is to:",
+      "options": [
+        { "id": "a", "text": "Replace the repository interface entirely." },
+        { "id": "b", "text": "Track all changes made via repositories during a business transaction and commit them as a single atomic operation." },
+        { "id": "c", "text": "Cache repository results in a distributed cache." },
+        { "id": "d", "text": "Generate SQL queries automatically from LINQ expressions." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s03_q30",
+      "text": "ST17-4: 'Divergent Change' is a code smell that indicates a violation of:",
+      "options": [
+        { "id": "a", "text": "The Open/Closed Principle, because the class must change for every new requirement." },
+        { "id": "b", "text": "The Single Responsibility Principle, because the class changes for multiple different reasons." },
+        { "id": "c", "text": "The Interface Segregation Principle, because the class implements too many interfaces." },
+        { "id": "d", "text": "The Liskov Substitution Principle, because the class overrides base methods incorrectly." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

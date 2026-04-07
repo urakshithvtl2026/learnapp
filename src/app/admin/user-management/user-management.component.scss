@@ -1,0 +1,90 @@
+.page {
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  h1 { margin: 0; font-size: 1.6rem; font-weight: 700; }
+}
+
+table { width: 100%; }
+
+.user-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 6px;
+  color: #666;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+
+  mat-icon { font-size: 14px; width: 14px; height: 14px; }
+}
+
+.chip-purple { background: #ede7f6; color: #6a1b9a; }
+.chip-grey   { background: #f0f0f0; color: #555; }
+.chip-green  { background: #e8f5e9; color: #2e7d32; }
+.chip-red    { background: #fce4ec; color: #c62828; }
+
+.badge {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.badge-you { background: #e3f2fd; color: #1565c0; }
+
+.row-inactive td {
+  opacity: 0.55;
+}
+
+.no-action {
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: default;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #777;
+}
+
+@media (max-width: 600px) {
+  .page {
+    margin: 16px auto;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  mat-card {
+    overflow-x: auto;
+
+    table {
+      min-width: 460px;
+    }
+  }
+}

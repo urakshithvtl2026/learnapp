@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_02",
+  "title": "SQL Filtering, Sorting & Limiting",
+  "description": "Advanced filtering, sorting results, pagination, and SQL built-in functions.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_02_q1",
+      "text": "Which clause is used to sort the result set of a query?",
+      "options": [
+        { "id": "a", "text": "SORT BY" },
+        { "id": "b", "text": "ORDER BY" },
+        { "id": "c", "text": "GROUP BY" },
+        { "id": "d", "text": "ARRANGE BY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q2",
+      "text": "What is the default sort direction when using ORDER BY?",
+      "options": [
+        { "id": "a", "text": "DESC (descending)" },
+        { "id": "b", "text": "ASC (ascending)" },
+        { "id": "c", "text": "Random order" },
+        { "id": "d", "text": "Order of insertion" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q3",
+      "text": "Which query returns the 5 most expensive products?",
+      "options": [
+        { "id": "a", "text": "SELECT TOP 5 * FROM Products ORDER BY Price DESC" },
+        { "id": "b", "text": "SELECT * FROM Products ORDER BY Price DESC LIMIT 5" },
+        { "id": "c", "text": "SELECT FIRST 5 * FROM Products ORDER BY Price DESC" },
+        { "id": "d", "text": "Both a and b are correct depending on the database" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_02_q4",
+      "text": "Which SQL standard syntax limits results to 10 rows using FETCH?",
+      "options": [
+        { "id": "a", "text": "LIMIT 10" },
+        { "id": "b", "text": "TOP 10" },
+        { "id": "c", "text": "FETCH FIRST 10 ROWS ONLY" },
+        { "id": "d", "text": "ROWS 10" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q5",
+      "text": "To skip the first 20 rows and return the next 10 for pagination, which clause is used alongside FETCH?",
+      "options": [
+        { "id": "a", "text": "SKIP 20" },
+        { "id": "b", "text": "OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY" },
+        { "id": "c", "text": "START 20 LIMIT 10" },
+        { "id": "d", "text": "PAGE 2 SIZE 10" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q6",
+      "text": "Which logical operator returns TRUE only when BOTH conditions are true?",
+      "options": [
+        { "id": "a", "text": "OR" },
+        { "id": "b", "text": "NOT" },
+        { "id": "c", "text": "AND" },
+        { "id": "d", "text": "XOR" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q7",
+      "text": "What does this query return? SELECT * FROM Employees WHERE Department = 'HR' OR Department = 'IT'",
+      "options": [
+        { "id": "a", "text": "Employees in both HR and IT at the same time" },
+        { "id": "b", "text": "Employees who are in HR or IT (or both)" },
+        { "id": "c", "text": "Employees who are neither in HR nor IT" },
+        { "id": "d", "text": "An error because OR cannot be used with string values" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q8",
+      "text": "In SQL operator precedence, which operator is evaluated FIRST?",
+      "options": [
+        { "id": "a", "text": "OR" },
+        { "id": "b", "text": "AND" },
+        { "id": "c", "text": "NOT" },
+        { "id": "d", "text": "They are all equal" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q9",
+      "text": "Given: WHERE A = 1 OR B = 2 AND C = 3 — how is this evaluated due to precedence?",
+      "options": [
+        { "id": "a", "text": "WHERE (A = 1 OR B = 2) AND C = 3" },
+        { "id": "b", "text": "WHERE A = 1 OR (B = 2 AND C = 3)" },
+        { "id": "c", "text": "Left to right, no precedence" },
+        { "id": "d", "text": "WHERE (A = 1 OR B = 2 OR C = 3)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q10",
+      "text": "What does a CASE expression do in SQL?",
+      "options": [
+        { "id": "a", "text": "Converts column names to uppercase" },
+        { "id": "b", "text": "Provides conditional logic, similar to IF-THEN-ELSE, in a query" },
+        { "id": "c", "text": "Changes the data type of a column" },
+        { "id": "d", "text": "Creates a new table based on conditions" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q11",
+      "text": "What is the output of the CASE expression below for a row where Score = 85? CASE WHEN Score >= 90 THEN 'A' WHEN Score >= 80 THEN 'B' ELSE 'C' END",
+      "options": [
+        { "id": "a", "text": "'A'" },
+        { "id": "b", "text": "'B'" },
+        { "id": "c", "text": "'C'" },
+        { "id": "d", "text": "NULL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q12",
+      "text": "What does COALESCE(NULL, NULL, 'Hello', 'World') return?",
+      "options": [
+        { "id": "a", "text": "NULL" },
+        { "id": "b", "text": "'World'" },
+        { "id": "c", "text": "'Hello'" },
+        { "id": "d", "text": "An error" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q13",
+      "text": "What is the difference between COALESCE and ISNULL?",
+      "options": [
+        { "id": "a", "text": "They are identical in all databases" },
+        { "id": "b", "text": "COALESCE accepts multiple arguments and is ANSI standard; ISNULL is SQL Server specific and takes exactly 2 arguments" },
+        { "id": "c", "text": "ISNULL accepts multiple arguments; COALESCE only takes 2" },
+        { "id": "d", "text": "COALESCE only works with numeric types" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q14",
+      "text": "What does NULLIF(5, 5) return?",
+      "options": [
+        { "id": "a", "text": "5" },
+        { "id": "b", "text": "0" },
+        { "id": "c", "text": "NULL" },
+        { "id": "d", "text": "FALSE" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q15",
+      "text": "What does NULLIF(10, 5) return?",
+      "options": [
+        { "id": "a", "text": "NULL" },
+        { "id": "b", "text": "5" },
+        { "id": "c", "text": "10" },
+        { "id": "d", "text": "0" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q16",
+      "text": "Which function converts a string to all uppercase letters?",
+      "options": [
+        { "id": "a", "text": "UCASE()" },
+        { "id": "b", "text": "UPPER()" },
+        { "id": "c", "text": "CAPS()" },
+        { "id": "d", "text": "Both UPPER() and UCASE() are standard SQL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q17",
+      "text": "Which function returns the number of characters in a string in SQL Server?",
+      "options": [
+        { "id": "a", "text": "LENGTH()" },
+        { "id": "b", "text": "SIZE()" },
+        { "id": "c", "text": "LEN()" },
+        { "id": "d", "text": "COUNT()" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q18",
+      "text": "Which function removes leading and trailing spaces from a string?",
+      "options": [
+        { "id": "a", "text": "CLEAN()" },
+        { "id": "b", "text": "STRIP()" },
+        { "id": "c", "text": "TRIM()" },
+        { "id": "d", "text": "REMOVE()" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q19",
+      "text": "Which SQL Server function returns the current date and time?",
+      "options": [
+        { "id": "a", "text": "NOW()" },
+        { "id": "b", "text": "GETDATE()" },
+        { "id": "c", "text": "CURRENTDATE()" },
+        { "id": "d", "text": "SYSDATE()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q20",
+      "text": "Which function extracts the year from a date in SQL Server? Example: DATEPART(year, '2026-02-26')",
+      "options": [
+        { "id": "a", "text": "YEAR()" },
+        { "id": "b", "text": "EXTRACT(YEAR FROM date)" },
+        { "id": "c", "text": "DATEPART(year, date)" },
+        { "id": "d", "text": "Both a and c work in SQL Server" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_02_q21",
+      "text": "What does ORDER BY LastName ASC, FirstName DESC mean?",
+      "options": [
+        { "id": "a", "text": "Sort by LastName ascending, then by FirstName descending within the same LastName" },
+        { "id": "b", "text": "Sort by FirstName descending only" },
+        { "id": "c", "text": "This is invalid syntax" },
+        { "id": "d", "text": "Sort randomly using LastName and FirstName" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_02_q22",
+      "text": "Which query correctly implements page 3 of results with 10 rows per page in SQL Server?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Orders ORDER BY OrderID OFFSET 20 ROWS FETCH NEXT 10 ROWS ONLY" },
+        { "id": "b", "text": "SELECT * FROM Orders LIMIT 10 OFFSET 30" },
+        { "id": "c", "text": "SELECT * FROM Orders PAGE 3 SIZE 10" },
+        { "id": "d", "text": "SELECT TOP 10 * FROM Orders SKIP 20" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_02_q23",
+      "text": "What does NOT do when applied to a condition in a WHERE clause?",
+      "options": [
+        { "id": "a", "text": "Inverts the boolean result of the condition" },
+        { "id": "b", "text": "Removes the condition from the query" },
+        { "id": "c", "text": "Makes the condition optional" },
+        { "id": "d", "text": "Converts NULL values to FALSE" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_02_q24",
+      "text": "What does LOWER('HELLO WORLD') return?",
+      "options": [
+        { "id": "a", "text": "'Hello World'" },
+        { "id": "b", "text": "'hello world'" },
+        { "id": "c", "text": "'HELLO WORLD'" },
+        { "id": "d", "text": "NULL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q25",
+      "text": "Which CASE syntax is used to compare a single expression against multiple values? Example: CASE Status WHEN 1 THEN 'Active' WHEN 0 THEN 'Inactive' END",
+      "options": [
+        { "id": "a", "text": "Searched CASE" },
+        { "id": "b", "text": "Simple CASE" },
+        { "id": "c", "text": "Inline CASE" },
+        { "id": "d", "text": "Evaluated CASE" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q26",
+      "text": "What is returned by a CASE expression when no WHEN condition matches and there is no ELSE clause?",
+      "options": [
+        { "id": "a", "text": "An error is raised" },
+        { "id": "b", "text": "An empty string ''" },
+        { "id": "c", "text": "NULL" },
+        { "id": "d", "text": "0" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q27",
+      "text": "ISNULL(column, 'N/A') — what does this return when the column value is NULL?",
+      "options": [
+        { "id": "a", "text": "NULL" },
+        { "id": "b", "text": "FALSE" },
+        { "id": "c", "text": "'N/A'" },
+        { "id": "d", "text": "An error" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q28",
+      "text": "Which of the following correctly uses TRIM to remove leading and trailing spaces?",
+      "options": [
+        { "id": "a", "text": "TRIM(BOTH ' ' FROM Name)" },
+        { "id": "b", "text": "TRIM(Name)" },
+        { "id": "c", "text": "Both a and b are valid in different databases" },
+        { "id": "d", "text": "STRIP(Name)" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_02_q29",
+      "text": "What is the purpose of OFFSET in pagination queries?",
+      "options": [
+        { "id": "a", "text": "Sets the maximum number of rows returned" },
+        { "id": "b", "text": "Specifies how many rows to skip before starting to return rows" },
+        { "id": "c", "text": "Defines a column offset for column selection" },
+        { "id": "d", "text": "Shifts date values by a given number" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_02_q30",
+      "text": "Which statement about ORDER BY is TRUE when used with OFFSET/FETCH?",
+      "options": [
+        { "id": "a", "text": "ORDER BY is optional when using OFFSET/FETCH" },
+        { "id": "b", "text": "ORDER BY must be present when using OFFSET/FETCH NEXT in SQL Server" },
+        { "id": "c", "text": "ORDER BY cannot be used together with OFFSET" },
+        { "id": "d", "text": "ORDER BY is only needed when FETCH is used without OFFSET" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

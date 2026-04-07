@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_b04",
+  "title": "C# Basic — Paper 4",
+  "description": "C# concepts: type casting, operators, conditionals, switch expressions, loops, ref/out, classes, constructors, access modifiers, and properties.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_b04_q1",
+      "text": "What is the difference between `Convert.ToInt32()` and `(int)` cast in C# when applied to a `double`?",
+      "options": [
+        { "id": "a", "text": "Both truncate the decimal portion" },
+        { "id": "b", "text": "`Convert.ToInt32()` rounds to nearest integer; `(int)` truncates toward zero" },
+        { "id": "c", "text": "`(int)` rounds to nearest; `Convert.ToInt32()` truncates" },
+        { "id": "d", "text": "There is no difference in the result" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q2",
+      "text": "What is the result of `(int)(10.9)` in C#?",
+      "options": [
+        { "id": "a", "text": "11" },
+        { "id": "b", "text": "10.9" },
+        { "id": "c", "text": "10" },
+        { "id": "d", "text": "Compile error" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b04_q3",
+      "text": "When performing unboxing in C#, what must the target type exactly match?",
+      "options": [
+        { "id": "a", "text": "The target type must be a parent type of the boxed value's type" },
+        { "id": "b", "text": "The target type must exactly match the type originally boxed, or an InvalidCastException occurs" },
+        { "id": "c", "text": "Any numeric type can receive any unboxed numeric value" },
+        { "id": "d", "text": "The target type can be any compatible interface" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q4",
+      "text": "What is the result of `8 >> 1` (right shift by 1) in C#?",
+      "options": [
+        { "id": "a", "text": "16" },
+        { "id": "b", "text": "9" },
+        { "id": "c", "text": "7" },
+        { "id": "d", "text": "4" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_b04_q5",
+      "text": "What does the compound assignment operator `+=` do in C#?",
+      "options": [
+        { "id": "a", "text": "It adds and then assigns; `x += 3` is equivalent to `x = x + 3`" },
+        { "id": "b", "text": "It appends to a collection" },
+        { "id": "c", "text": "It increments by 1" },
+        { "id": "d", "text": "It assigns the sum without modifying the variable" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b04_q6",
+      "text": "What is the value of `int x = 3; int y = x++ + ++x;`?",
+      "options": [
+        { "id": "a", "text": "y = 6" },
+        { "id": "b", "text": "y = 8" },
+        { "id": "c", "text": "y = 7" },
+        { "id": "d", "text": "y = 9" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q7",
+      "text": "What happens if you omit the `break` at the end of a non-empty `switch` case in C#?",
+      "options": [
+        { "id": "a", "text": "Execution falls through to the next case automatically" },
+        { "id": "b", "text": "A compile-time error is produced" },
+        { "id": "c", "text": "The switch exits to the default case" },
+        { "id": "d", "text": "The program throws a runtime exception" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q8",
+      "text": "What is the difference between a `switch` statement and a `switch` expression in C#?",
+      "options": [
+        { "id": "a", "text": "A switch statement produces a value; a switch expression does not" },
+        { "id": "b", "text": "A switch expression produces a value and uses `=>` arms; a switch statement uses `case/break` and executes side effects" },
+        { "id": "c", "text": "They are identical in syntax and behavior" },
+        { "id": "d", "text": "A switch expression requires a `default` arm; a switch statement does not" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q9",
+      "text": "Which is a valid nested if statement in C#?",
+      "options": [
+        { "id": "a", "text": "if (x > 0) { if (x < 10) { Console.Write(\"single digit\"); } }" },
+        { "id": "b", "text": "if (x > 0 && { x < 10 }) { Console.Write(\"ok\"); }" },
+        { "id": "c", "text": "if (x > 0) then { if (x < 10) then {} }" },
+        { "id": "d", "text": "nested if (x > 0) { (x < 10) }" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b04_q10",
+      "text": "What does a switch expression arm using a type pattern `Shape s when s is Circle c => c.Area()` do in C#?",
+      "options": [
+        { "id": "a", "text": "Matches only if the shape is a Circle AND the `when` guard is met; binds to `c`" },
+        { "id": "b", "text": "Only checks the type without any guard condition" },
+        { "id": "c", "text": "Throws an InvalidCastException if the shape is not a Circle" },
+        { "id": "d", "text": "This syntax is invalid in C#" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b04_q11",
+      "text": "What does the `is` pattern matching expression `obj is string s` do in C#?",
+      "options": [
+        { "id": "a", "text": "Converts obj to string" },
+        { "id": "b", "text": "Tests if obj is a string and if true, assigns it to variable s" },
+        { "id": "c", "text": "Checks if s equals obj" },
+        { "id": "d", "text": "Creates a new string variable s regardless of obj's type" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q12",
+      "text": "What is the output of a `for` loop `for (int i = 0; i < 3; i++) Console.Write(i);`?",
+      "options": [
+        { "id": "a", "text": "1 2 3" },
+        { "id": "b", "text": "0 1 2" },
+        { "id": "c", "text": "0 1 2 3" },
+        { "id": "d", "text": "Infinite loop" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q13",
+      "text": "What is the key difference between a `while` loop and a `do-while` loop in C#?",
+      "options": [
+        { "id": "a", "text": "A `while` loop always runs at least once; a `do-while` may run zero times" },
+        { "id": "b", "text": "A `do-while` loop always runs at least once; a `while` may run zero times" },
+        { "id": "c", "text": "They are identical in behavior" },
+        { "id": "d", "text": "A `do-while` loop cannot use `break`" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q14",
+      "text": "What does `foreach` iterate over in C#?",
+      "options": [
+        { "id": "a", "text": "Only arrays" },
+        { "id": "b", "text": "Only List<T> collections" },
+        { "id": "c", "text": "Any object that implements IEnumerable or IEnumerable<T>" },
+        { "id": "d", "text": "Only numeric ranges" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b04_q15",
+      "text": "In a nested loop, which statement does `break` exit from in C#?",
+      "options": [
+        { "id": "a", "text": "The entire program" },
+        { "id": "b", "text": "All loops at once" },
+        { "id": "c", "text": "Only the innermost loop it is placed in" },
+        { "id": "d", "text": "The outermost loop" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b04_q16",
+      "text": "What happens to an `out` parameter if you call a method inline without pre-declaring the variable, using `Method(out int result)`?",
+      "options": [
+        { "id": "a", "text": "Compile error — variables must be pre-declared" },
+        { "id": "b", "text": "The variable `result` is declared and initialized by the method call" },
+        { "id": "c", "text": "The variable is set to 0 automatically before the call" },
+        { "id": "d", "text": "This syntax is not valid in C#" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q17",
+      "text": "What is the purpose of the `ref` keyword when passing a value type to a method?",
+      "options": [
+        { "id": "a", "text": "It converts the value type to a reference type" },
+        { "id": "b", "text": "It passes the variable by reference so the method can read and modify the original variable" },
+        { "id": "c", "text": "It prevents the method from reading the parameter" },
+        { "id": "d", "text": "It makes the parameter optional" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q18",
+      "text": "What does `in` do differently from `ref` when passed a struct to a method?",
+      "options": [
+        { "id": "a", "text": "`in` passes a copy; `ref` passes by reference" },
+        { "id": "b", "text": "`in` passes by reference but is read-only; `ref` passes by reference and allows modification" },
+        { "id": "c", "text": "`in` is faster because it copies on write; `ref` always copies" },
+        { "id": "d", "text": "They are identical for structs" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q19",
+      "text": "Which of the following is a valid class definition in C#?",
+      "options": [
+        { "id": "a", "text": "object MyClass { string Name; }" },
+        { "id": "b", "text": "class MyClass { public string Name; }" },
+        { "id": "c", "text": "type MyClass = { Name: string }" },
+        { "id": "d", "text": "define class MyClass { string Name; }" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q20",
+      "text": "What is the difference between a class field and a property in C#?",
+      "options": [
+        { "id": "a", "text": "Fields have get/set accessors; properties are plain variables" },
+        { "id": "b", "text": "Properties have get/set accessors allowing controlled access; fields are plain variables holding state" },
+        { "id": "c", "text": "Properties are always public; fields are always private" },
+        { "id": "d", "text": "There is no meaningful difference" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q21",
+      "text": "What does a copy constructor do in C#?",
+      "options": [
+        { "id": "a", "text": "It is automatically called by the garbage collector" },
+        { "id": "b", "text": "It creates a new object as a copy of an existing object, typically using an existing instance as parameter" },
+        { "id": "c", "text": "It is a static method that returns a copy" },
+        { "id": "d", "text": "It is a built-in C# constructor type" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q22",
+      "text": "What is the output of `new MyClass { X = 10, Y = 20 }` if `MyClass` has properties `X` and `Y`?",
+      "options": [
+        { "id": "a", "text": "Compile error because no constructor was explicitly defined" },
+        { "id": "b", "text": "An instance of MyClass is created with X set to 10 and Y set to 20" },
+        { "id": "c", "text": "X and Y remain 0 because the default constructor runs" },
+        { "id": "d", "text": "Runtime exception because X and Y must be set via constructor" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q23",
+      "text": "What is a static constructor used for in C#?",
+      "options": [
+        { "id": "a", "text": "To initialize instance fields when each object is created" },
+        { "id": "b", "text": "To initialize static fields of the class before the first use" },
+        { "id": "c", "text": "To provide a public factory for object creation" },
+        { "id": "d", "text": "To call parent class constructors" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q24",
+      "text": "What is the `private protected` access modifier in C#?",
+      "options": [
+        { "id": "a", "text": "Accessible by the same class and any derived class in any assembly" },
+        { "id": "b", "text": "Accessible within the same class and by derived classes within the SAME assembly only" },
+        { "id": "c", "text": "Accessible only within the same class" },
+        { "id": "d", "text": "Accessible within the same assembly regardless of inheritance" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q25",
+      "text": "Which access modifier provides the most restrictive access in C#?",
+      "options": [
+        { "id": "a", "text": "protected" },
+        { "id": "b", "text": "internal" },
+        { "id": "c", "text": "private" },
+        { "id": "d", "text": "private protected" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b04_q26",
+      "text": "What is an auto-implemented property in C#?",
+      "options": [
+        { "id": "a", "text": "A property generated by reflection at runtime" },
+        { "id": "b", "text": "A property with `get` and `set` that has an automatically created backing field without explicit implementation" },
+        { "id": "c", "text": "A property that calculates its value without storing it" },
+        { "id": "d", "text": "A property that only has a getter" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q27",
+      "text": "What is an expression-bodied property in C#?",
+      "options": [
+        { "id": "a", "text": "A property that uses a lambda to compute its get value: `public int Area => Width * Height;`" },
+        { "id": "b", "text": "A property that has both get and set using lambdas" },
+        { "id": "c", "text": "A property whose setter evaluates an expression" },
+        { "id": "d", "text": "A property defined inside a method" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b04_q28",
+      "text": "What does the `init` accessor on a property do in C# 9+?",
+      "options": [
+        { "id": "a", "text": "It allows the property to be set only during object construction or object initializer syntax" },
+        { "id": "b", "text": "It initializes the property to a default value" },
+        { "id": "c", "text": "It makes the property read-only like `get` only" },
+        { "id": "d", "text": "It calls the constructor when the property is first accessed" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b04_q29",
+      "text": "What is a backing field for a property in C#?",
+      "options": [
+        { "id": "a", "text": "A method that validates the property value" },
+        { "id": "b", "text": "A private field that stores the value exposed by the property's getter and setter" },
+        { "id": "c", "text": "A public field automatically created by the compiler" },
+        { "id": "d", "text": "A secondary property that mirrors the primary" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b04_q30",
+      "text": "Which of the following correctly defines a property with a backing field and validation?",
+      "options": [
+        { "id": "a", "text": "public int Age { get; set; } = age >= 0 ? age : 0;" },
+        { "id": "b", "text": "public int Age => _age;" },
+        { "id": "c", "text": "private int _age; public int Age { get => _age; set => _age = value >= 0 ? value : 0; }" },
+        { "id": "d", "text": "public int Age = { validate(age); return age; }" }
+      ],
+      "correctOptionId": "c"
+    }
+  ]
+}

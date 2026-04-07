@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_d05",
+  "title": "SQL Developer — Paper 5",
+  "description": "Developer-focused SQL scenarios covering query writing, joins, filtering, aggregations, CTEs, indexes, transactions, window functions, stored procedures, and data safety.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_d05_q1",
+      "text": "A developer writes a query that applies several scalar UDFs in the SELECT list across 2 million rows. The query runs for 10 minutes. A senior developer says the UDFs are the bottleneck. Why do scalar UDFs typically cause performance problems when applied to large result sets?",
+      "options": [
+        { "id": "a", "text": "Scalar UDFs are deprecated in modern SQL Server versions" },
+        { "id": "b", "text": "Scalar UDFs execute row-by-row, preventing batch execution and parallelism; in SQL Server versions prior to 2019, they also prevent the query from going parallel and hide their cost from the execution plan" },
+        { "id": "c", "text": "Scalar UDFs hold exclusive locks on tables they reference" },
+        { "id": "d", "text": "Scalar UDFs always perform a full table scan on the tables they access" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q2",
+      "text": "A developer queries: SELECT CategoryId, AVG(Price) AS AvgPrice FROM Products GROUP BY CategoryId HAVING COUNT(*) > 5. For a category with 3 products, will its average price appear in results?",
+      "options": [
+        { "id": "a", "text": "Yes, HAVING filters after AVG is calculated so the average is always shown" },
+        { "id": "b", "text": "No, the HAVING clause filters out any category group that does not have more than 5 products; this category with 3 products is excluded entirely" },
+        { "id": "c", "text": "Yes, but AvgPrice will be NULL for categories with fewer than 5 products" },
+        { "id": "d", "text": "No, but only if WHERE COUNT(*) > 5 is also added" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q3",
+      "text": "A developer writes: WHERE Discount IS NOT NULL AND Discount != 0 AND TaxCode IN ('A', 'B') OR VipFlag = 1. A product manager reports VIP customers are getting results even when discount and tax conditions fail. What is the issue?",
+      "options": [
+        { "id": "a", "text": "IS NOT NULL cannot be combined with != in the same expression" },
+        { "id": "b", "text": "Due to AND having higher precedence than OR, the condition is: (Discount IS NOT NULL AND Discount != 0 AND TaxCode IN ('A','B')) OR VipFlag = 1 — VIP rows bypass all other conditions; parentheses must wrap the entire filter correctly per business intent" },
+        { "id": "c", "text": "IN cannot be combined with AND in WHERE clauses" },
+        { "id": "d", "text": "OR always takes precedence over AND in SQL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q4",
+      "text": "A developer writes a query using ROW_NUMBER() OVER (PARTITION BY DeptId ORDER BY HireDate ASC) AS RowNum to find the longest-serving employee per department. The WHERE clause filters RowNum = 1. Two employees in the same department have the same HireDate. What happens?",
+      "options": [
+        { "id": "a", "text": "Both employees are assigned RowNum = 1 and both are returned" },
+        { "id": "b", "text": "ROW_NUMBER() assigns unique sequential numbers even for ties, so only one of the tied employees gets RowNum = 1 — which one is non-deterministic without a tiebreaker in the ORDER BY" },
+        { "id": "c", "text": "An error is raised for tied ROW_NUMBER values" },
+        { "id": "d", "text": "Both employees get RowNum = 1 and RowNum = 2, both are filtered out" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q5",
+      "text": "A developer discovers a stored procedure in production that builds SQL using: SET @SQL = 'SELECT * FROM ' + @TableName + ' WHERE Status = ' + @Status. A security review flags this. Which refactoring best mitigates both SQL injection risks in this statement?",
+      "options": [
+        { "id": "a", "text": "Use QUOTENAME(@TableName) to safely delimit the table name and pass @Status as a parameter via sp_executesql rather than concatenation" },
+        { "id": "b", "text": "Validate that @TableName exists in sys.tables using IF EXISTS before running" },
+        { "id": "c", "text": "Convert the SP to use an ORM layer" },
+        { "id": "d", "text": "Add EXECUTE AS OWNER to the stored procedure" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_d05_q6",
+      "text": "A developer creates a composite index on (AccountId, TransactionDate, Amount) to support a query that filters on AccountId and TransactionDate only. A DBA suggests the Amount column is unnecessary in the key. Why?",
+      "options": [
+        { "id": "a", "text": "Indexes cannot contain more than 2 key columns" },
+        { "id": "b", "text": "If Amount is not used in WHERE, JOIN, or ORDER BY but only in SELECT, it should be placed in the INCLUDE clause rather than the key; key columns increase index size and sort order, while INCLUDE columns add data at the leaf level with less overhead" },
+        { "id": "c", "text": "Amount columns cannot be part of non-clustered indexes" },
+        { "id": "d", "text": "Adding Amount to the key improves performance for the filter on AccountId" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q7",
+      "text": "A developer opens a transaction, inserts a record, then another developer runs a SELECT on the same table under READ COMMITTED isolation. The first transaction has not committed yet. What does the second developer's SELECT see?",
+      "options": [
+        { "id": "a", "text": "The uncommitted row inserted by the first transaction (dirty read)" },
+        { "id": "b", "text": "Only committed rows; the uncommitted insert is not visible because READ COMMITTED does not permit dirty reads" },
+        { "id": "c", "text": "A deadlock error because both sessions access the same table" },
+        { "id": "d", "text": "An empty result set until the first transaction commits" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q8",
+      "text": "A developer writes: SELECT SupplierId, SUM(OrderAmount) AS Total FROM PurchaseOrders WHERE SupplierId IS NOT NULL GROUP BY SupplierId HAVING SUM(OrderAmount) > 50000. A colleague asks whether the WHERE or HAVING clause executes first. What is the correct SQL logical processing order?",
+      "options": [
+        { "id": "a", "text": "HAVING executes first to reduce rows before grouping" },
+        { "id": "b", "text": "WHERE executes before grouping, filtering individual rows; GROUP BY then aggregates; HAVING filters the groups after aggregation — so WHERE reduces the dataset before aggregation, making it more efficient than HAVING for row-level filters" },
+        { "id": "c", "text": "WHERE and HAVING execute simultaneously in parallel" },
+        { "id": "d", "text": "ORDER BY executes before HAVING in SQL Server's processing order" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q9",
+      "text": "A developer needs to find orders placed in 2024 that have no corresponding shipment record in a Shipments table. They write: SELECT o.OrderId FROM Orders o WHERE YEAR(o.OrderDate) = 2024 AND o.OrderId NOT IN (SELECT OrderId FROM Shipments). A QA engineer says some orders are wrongly excluded. What is likely the cause?",
+      "options": [
+        { "id": "a", "text": "YEAR() cannot be used in WHERE with subqueries" },
+        { "id": "b", "text": "The Shipments table may contain rows where OrderId IS NULL; NOT IN returns UNKNOWN for all comparisons when any subquery value is NULL, causing all rows to be excluded" },
+        { "id": "c", "text": "NOT IN cannot reference a table different from the outer query" },
+        { "id": "d", "text": "YEAR(o.OrderDate) = 2024 conflicts with the NOT IN subquery logic" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q10",
+      "text": "A developer runs a query and the execution plan shows an estimated 1 row but the actual row count is 500,000. What is the most likely root cause?",
+      "options": [
+        { "id": "a", "text": "The query uses a non-clustered index" },
+        { "id": "b", "text": "The table statistics are out of date or missing, causing the optimiser to grossly underestimate row counts and choose a suboptimal plan" },
+        { "id": "c", "text": "The developer has not run DBCC CHECKDB recently" },
+        { "id": "d", "text": "The query uses NOLOCK which disables statistics" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q11",
+      "text": "A developer uses NTH_VALUE(Salary, 3) OVER (PARTITION BY DeptId ORDER BY Salary DESC) to find the third-highest salary per department. For a department with only 2 employees, what does NTH_VALUE return?",
+      "options": [
+        { "id": "a", "text": "The salary of the second employee (the last available)" },
+        { "id": "b", "text": "NULL, because there is no third row in that partition" },
+        { "id": "c", "text": "0" },
+        { "id": "d", "text": "An error is raised when NTH_VALUE offset exceeds partition size" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q12",
+      "text": "A developer needs to delete all orders older than 5 years from a table with 8M rows, foreign-keyed to an OrderItems table. What is the safest sequence of operations?",
+      "options": [
+        { "id": "a", "text": "DELETE FROM Orders WHERE OrderDate < DATEADD(YEAR, -5, GETDATE()) — FK cascade will handle child rows automatically" },
+        { "id": "b", "text": "First delete child rows from OrderItems matching the old orders, then delete the old Orders rows — in batches if the dataset is large — to respect FK constraints and avoid large transaction log growth" },
+        { "id": "c", "text": "TRUNCATE both tables and re-import recent data" },
+        { "id": "d", "text": "Disable the FK constraint, delete from Orders, then re-enable the FK" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q13",
+      "text": "A developer writes a query joining four tables. The execution plan shows a Hash Join between two large tables instead of a Nested Loops join. Under what circumstance does SQL Server typically choose a Hash Join?",
+      "options": [
+        { "id": "a", "text": "When both input sets are small and indexed" },
+        { "id": "b", "text": "When one or both inputs are large and there is no useful index on the join columns; Hash Join builds an in-memory hash table from the smaller input and probes it with the larger — it scales well for large unindexed datasets" },
+        { "id": "c", "text": "When the ON clause uses inequality operators like > or <" },
+        { "id": "d", "text": "Hash Join is only used for self-joins" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q14",
+      "text": "A developer needs to retrieve each employee's salary along with the minimum and maximum salary in their department without using a subquery or JOIN. Which approach achieves this in a single SELECT?",
+      "options": [
+        { "id": "a", "text": "Use GROUP BY DeptId and aggregate MIN/MAX in the same query" },
+        { "id": "b", "text": "Use window functions: MIN(Salary) OVER (PARTITION BY DeptId) AS DeptMin, MAX(Salary) OVER (PARTITION BY DeptId) AS DeptMax alongside the regular SELECT columns" },
+        { "id": "c", "text": "Use a PIVOT to transform salary rows into min/max columns" },
+        { "id": "d", "text": "Use CROSS JOIN to a department aggregate table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q15",
+      "text": "Two concurrent transactions T1 and T2 both run under READ COMMITTED. T1 reads an account balance and decides to withdraw if balance > 100. T2 reads the same balance and makes the same decision. Both commit, causing the balance to go negative. What concurrency problem is this?",
+      "options": [
+        { "id": "a", "text": "Dirty read" },
+        { "id": "b", "text": "Lost update / write skew — both transactions read the same value, make a decision independently, and update without awareness of the other's update, leading to inconsistent state" },
+        { "id": "c", "text": "Phantom read" },
+        { "id": "d", "text": "Cascading abort" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q16",
+      "text": "A developer stores product weights as REAL (single-precision float). When summing 10,000 product weights in a report, the total is off by a small amount each time. What is the cause?",
+      "options": [
+        { "id": "a", "text": "REAL columns round values on INSERT to 2 decimal places" },
+        { "id": "b", "text": "REAL is an approximate numeric type that cannot represent all decimal fractions exactly in binary floating point; rounding errors accumulate across many additions, producing imprecise totals" },
+        { "id": "c", "text": "SUM() is incompatible with REAL data types" },
+        { "id": "d", "text": "The column should be FLOAT(53) which has no rounding errors" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q17",
+      "text": "A developer writes a stored procedure that is called by a web API for every HTTP request. Each call runs the same parameterised SELECT query. After a deployment, query performance degrades for one specific parameter value despite fast execution for all others. What SQL Server phenomenon is most likely responsible?",
+      "options": [
+        { "id": "a", "text": "The stored procedure is being recompiled on every execution" },
+        { "id": "b", "text": "Parameter sniffing — SQL Server compiled and cached the execution plan based on the first parameter value seen, which may be atypical (e.g., a rare ID returning few rows); this plan performs poorly when a high-volume parameter is used later" },
+        { "id": "c", "text": "The web API is passing NULL for the parameter on degraded calls" },
+        { "id": "d", "text": "The procedure lacks a primary key lookup" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q18",
+      "text": "A developer writes a stored procedure that calls another stored procedure (nested SP). The inner SP has its own BEGIN/COMMIT TRANSACTION block. The outer SP also has BEGIN/COMMIT TRANSACTION. How does SQL Server handle nested transactions?",
+      "options": [
+        { "id": "a", "text": "Each COMMIT in the inner SP fully commits the inner transaction independently of the outer" },
+        { "id": "b", "text": "SQL Server increments @@TRANCOUNT with each BEGIN TRANSACTION; inner COMMITs decrement @@TRANCOUNT but do not physically commit — only the outermost COMMIT (when @@TRANCOUNT reaches 1) physically commits; a ROLLBACK at any level rolls back everything" },
+        { "id": "c", "text": "Nested transactions are not supported in SQL Server stored procedures" },
+        { "id": "d", "text": "The inner transaction is treated as a savepoint automatically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q19",
+      "text": "A developer writes: SELECT DeptId, EmpName, Salary, MAX(Salary) OVER (PARTITION BY DeptId) AS DeptMax, Salary - MAX(Salary) OVER (PARTITION BY DeptId) AS DiffFromMax FROM Employees. What does the DiffFromMax column represent for each row?",
+      "options": [
+        { "id": "a", "text": "The salary difference between the current employee and the department average" },
+        { "id": "b", "text": "How much below the highest salary in the department the current employee's salary is — a negative value for all non-top earners, 0 for the top earner(s)" },
+        { "id": "c", "text": "The total payroll minus the current employee's salary" },
+        { "id": "d", "text": "The salary gap between adjacent employees when sorted by salary" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q20",
+      "text": "A developer queries a large EventLog table (100M rows) frequently with: WHERE EventType = 'Error' AND EventDate >= DATEADD(DAY, -7, GETDATE()). An index on (EventDate) exists but the query is still slow. What would significantly improve this specific query?",
+      "options": [
+        { "id": "a", "text": "Add a second index on (EventType) so both indexes can be merged" },
+        { "id": "b", "text": "Create a composite index on (EventType, EventDate) — this allows the index to seek on EventType first, then range-scan on EventDate within that partition, dramatically reducing rows examined" },
+        { "id": "c", "text": "Partition the table by EventType" },
+        { "id": "d", "text": "Convert the non-clustered index on EventDate to a clustered index" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q21",
+      "text": "A developer writes a WHERE clause: WHERE LastName LIKE 'Sm%'. Will a non-clustered index on LastName be used for this query?",
+      "options": [
+        { "id": "a", "text": "No, LIKE never uses indexes" },
+        { "id": "b", "text": "Yes — a leading character pattern (no leading wildcard) is sargable; the index can seek to the range of values starting with 'Sm' without scanning the entire index" },
+        { "id": "c", "text": "Yes, but only if LastName is also the clustered index key" },
+        { "id": "d", "text": "No, string columns require a full-text index for LIKE queries" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q22",
+      "text": "A developer writes a CTE that calculates department headcount and then uses it in a DELETE statement to remove departments with zero employees. A colleague warns that CTEs in DML statements have a caveat. What is it?",
+      "options": [
+        { "id": "a", "text": "CTEs cannot be used in DELETE statements in SQL Server" },
+        { "id": "b", "text": "The CTE is re-evaluated during the DML execution and is not materialised; if the underlying data changes between the CTE definition and the DML operation (e.g., in a concurrent system), the DELETE may affect different rows than anticipated" },
+        { "id": "c", "text": "CTEs used in DELETE require the WITH SCHEMABINDING clause" },
+        { "id": "d", "text": "The CTE must be placed inside the DELETE statement's FROM clause using a subquery instead" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q23",
+      "text": "A developer designs an Orders table and debates between storing CustomerName as a column in Orders vs using a CustomerId foreign key linked to a Customers table. A year later, a customer changes their name. What is the consequence of the denormalised approach (CustomerName stored directly in Orders)?",
+      "options": [
+        { "id": "a", "text": "Orders cannot be queried without joining to Customers" },
+        { "id": "b", "text": "Historical order records will show the old name unless every order row is updated; the normalised approach stores the name once in Customers, so updating it automatically reflects in all order queries via the FK relationship" },
+        { "id": "c", "text": "The denormalised approach is always preferred for historical data integrity" },
+        { "id": "d", "text": "Storing CustomerName in Orders violates the PRIMARY KEY constraint" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q24",
+      "text": "A developer needs to combine results from a Customers query and a Suppliers query where both return Id and Name. They use UNION. After running, they notice fewer rows than expected. What is the most likely reason?",
+      "options": [
+        { "id": "a", "text": "UNION requires matching data types which caused some rows to be cast to NULL" },
+        { "id": "b", "text": "UNION removes duplicate rows — if a customer and a supplier share the same Id and Name values, UNION deduplicates them; UNION ALL should be used to retain all rows regardless of duplicates" },
+        { "id": "c", "text": "UNION cannot combine more than 100 rows from each table" },
+        { "id": "d", "text": "UNION applies a TOP filter automatically when no ORDER BY is specified" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q25",
+      "text": "A developer needs to report on products grouped by year and category, with subtotals per year and a grand total. Which GROUP BY extension enables subtotals and grand totals in a single query?",
+      "options": [
+        { "id": "a", "text": "GROUP BY CUBE(Year, Category) — produces all possible combinations of subtotals including per-year, per-category, and grand total" },
+        { "id": "b", "text": "GROUP BY ROLLUP(Year, Category) — produces subtotals hierarchically: detail by Year+Category, subtotals by Year, and a grand total; GROUPING() can identify which rows are subtotals" },
+        { "id": "c", "text": "GROUP BY GROUPING SETS — must list every grouping set manually to achieve the same result as ROLLUP" },
+        { "id": "d", "text": "All three options (CUBE, ROLLUP, GROUPING SETS) produce identical output for two columns" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q26",
+      "text": "A developer sets transaction isolation to SERIALIZABLE for a batch job that reads and then updates account balances. The batch runs for 20 minutes and user complaints about the application being unresponsive increase. What is the likely cause?",
+      "options": [
+        { "id": "a", "text": "SERIALIZABLE automatically cancels other transactions after 5 minutes" },
+        { "id": "b", "text": "SERIALIZABLE holds range locks for the entire batch duration, blocking concurrent inserts, updates, and reads on the affected tables; this eliminates phantom reads but severely limits concurrent access" },
+        { "id": "c", "text": "SERIALIZABLE requires the database to be in single-user mode" },
+        { "id": "d", "text": "SERIALIZABLE prevents the batch from using parallelism, slowing it down" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q27",
+      "text": "A developer uses: SELECT ProductId, SaleMonth, Revenue, Revenue - LAG(Revenue, 1, 0) OVER (PARTITION BY ProductId ORDER BY SaleMonth) AS MonthlyGrowth FROM Sales. For the first month of each product (where there is no prior month), what value does LAG return?",
+      "options": [
+        { "id": "a", "text": "NULL, causing MonthlyGrowth to be NULL for the first row" },
+        { "id": "b", "text": "0, because the third argument to LAG() specifies the default value when no prior row exists; MonthlyGrowth equals Revenue - 0 = Revenue for the first month" },
+        { "id": "c", "text": "The revenue from the last row of the partition" },
+        { "id": "d", "text": "An error because LAG cannot have a default value" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q28",
+      "text": "A developer needs to store a product's status that can only ever be one of: 'Draft', 'Active', 'Discontinued', 'Archived'. Which database-level mechanism enforces this constraint most directly?",
+      "options": [
+        { "id": "a", "text": "A FOREIGN KEY referencing a lookup table of valid statuses — this allows the list to be extended without schema changes and is the most maintainable approach" },
+        { "id": "b", "text": "A CHECK constraint: CHECK (Status IN ('Draft', 'Active', 'Discontinued', 'Archived'))" },
+        { "id": "c", "text": "A UNIQUE constraint on the Status column" },
+        { "id": "d", "text": "Both a and b are valid; a FK to a lookup table is more flexible, while a CHECK constraint is simpler for static lists — the best choice depends on whether the list needs to be user-configurable" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_d05_q29",
+      "text": "A developer writes a stored procedure that accepts an @OrderStatus NVARCHAR(20) parameter and uses it in a WHERE clause via sp_executesql parameterisation. However, the query plan changes dramatically based on the value passed. The DBA suggests adding OPTION (OPTIMIZE FOR UNKNOWN). What does this hint do?",
+      "options": [
+        { "id": "a", "text": "It forces SQL Server to recompile the query on every execution" },
+        { "id": "b", "text": "It instructs SQL Server to compile the plan using average statistical estimates rather than the specific sniffed parameter value, producing a more stable plan that avoids extreme choices made for atypical first-run values" },
+        { "id": "c", "text": "It disables parameterisation and treats all values as literals" },
+        { "id": "d", "text": "It causes SQL Server to use a full table scan regardless of indexes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d05_q30",
+      "text": "A developer creates a view that joins Orders and Customers and exposes it to the reporting team. A report writer accidentally runs SELECT * FROM vw_OrderSummary WHERE 1=1 with no other filters, returning all 5M rows. Which view option would allow the DBA to prevent the view from ever returning more rows than the underlying indexed view's query predicate allows?",
+      "options": [
+        { "id": "a", "text": "WITH ENCRYPTION on the view definition" },
+        { "id": "b", "text": "WITH CHECK OPTION — this ensures that data written through the view satisfies the view's WHERE clause, but does not restrict reads; to restrict reads, Row-Level Security or application-level row limits are required" },
+        { "id": "c", "text": "WITH SCHEMABINDING — this prevents schema changes to underlying tables but does not filter rows" },
+        { "id": "d", "text": "There is no view option that restricts SELECT output; query filtering must be enforced through RLS policies, permission restrictions, or application-layer mandatory WHERE clauses" }
+      ],
+      "correctOptionId": "d"
+    }
+  ]
+}

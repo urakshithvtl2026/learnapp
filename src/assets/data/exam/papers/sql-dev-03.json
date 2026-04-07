@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_d03",
+  "title": "SQL Developer — Paper 3",
+  "description": "Developer-focused SQL scenarios covering query writing, joins, filtering, aggregations, CTEs, indexes, transactions, window functions, stored procedures, and data safety.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_d03_q1",
+      "text": "A developer writes a report query that joins five tables and selects 40 columns with SELECT *. The DBA notices the query causes excessive memory grant warnings. Which refactoring addresses this most directly?",
+      "options": [
+        { "id": "a", "text": "Add a MAXDOP hint to limit parallelism" },
+        { "id": "b", "text": "Select only the columns needed by the report, reducing the row width so sort and hash operations require less memory" },
+        { "id": "c", "text": "Convert all INNER JOINs to LEFT JOINs" },
+        { "id": "d", "text": "Add ORDER BY to every subquery in the joins" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q2",
+      "text": "A developer writes the following to count active users who have placed at least one order: SELECT COUNT(*) FROM Users u JOIN Orders o ON u.UserId = o.UserId WHERE u.IsActive = 1. What is a potential overcounting issue?",
+      "options": [
+        { "id": "a", "text": "COUNT(*) counts NULL rows which inflates the total" },
+        { "id": "b", "text": "The JOIN multiplies user rows — a user with 5 orders is counted 5 times; COUNT(DISTINCT u.UserId) is needed" },
+        { "id": "c", "text": "WHERE must appear before JOIN in standard SQL" },
+        { "id": "d", "text": "COUNT(*) cannot be used with a JOIN" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q3",
+      "text": "A developer uses COALESCE in an ORDER BY clause: ORDER BY COALESCE(PreferredName, FirstName). What does this accomplish and when is it useful?",
+      "options": [
+        { "id": "a", "text": "COALESCE cannot be used in ORDER BY; a CASE expression must be used instead" },
+        { "id": "b", "text": "It sorts by PreferredName when it is not NULL, falling back to FirstName for rows where PreferredName is NULL, ensuring all rows sort by the most relevant available name" },
+        { "id": "c", "text": "It sorts NULL values to the top of the result set regardless of column value" },
+        { "id": "d", "text": "COALESCE in ORDER BY causes a full table scan because it wraps the column in a function" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q4",
+      "text": "A developer wants to use NTILE(4) OVER (ORDER BY Revenue DESC) to bucket customers into quartiles. The result set has 101 rows. How will NTILE distribute the extra row?",
+      "options": [
+        { "id": "a", "text": "The extra row is discarded" },
+        { "id": "b", "text": "NTILE raises an error when the row count is not evenly divisible" },
+        { "id": "c", "text": "NTILE distributes the remainder rows one each to the first buckets — bucket 1 gets 26 rows, buckets 2-4 get 25 rows each" },
+        { "id": "d", "text": "All four buckets receive 25 rows and the extra row is assigned to a fifth bucket" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d03_q5",
+      "text": "A developer uses sp_executesql with a parameterised query: EXEC sp_executesql N'SELECT * FROM Orders WHERE CustomerId = @cid', N'@cid INT', @cid = @InputId. How does this protect against SQL injection compared to string concatenation?",
+      "options": [
+        { "id": "a", "text": "sp_executesql encrypts the query before execution" },
+        { "id": "b", "text": "The parameter @cid is passed separately from the query string; user input is never interpreted as SQL syntax, so malicious strings cannot modify query structure" },
+        { "id": "c", "text": "sp_executesql validates that @InputId is a numeric value before execution" },
+        { "id": "d", "text": "sp_executesql runs in a sandboxed context with no table access" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q6",
+      "text": "A query on a Logs table with 50M rows uses: WHERE CONVERT(DATE, LogTimestamp) = '2025-03-15'. An index exists on LogTimestamp (DATETIME). Why does this query not use the index efficiently?",
+      "options": [
+        { "id": "a", "text": "DATE is not compatible with DATETIME indexes" },
+        { "id": "b", "text": "Wrapping LogTimestamp in CONVERT() makes the expression non-sargable — the optimiser cannot seek into the index because each row must be converted at scan time" },
+        { "id": "c", "text": "The index on DATETIME columns is never used for equality filters" },
+        { "id": "d", "text": "CONVERT requires a CAST hint to enable index seeks" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q7",
+      "text": "A developer handles an order placement transaction. The code inserts an order header, then inserts order lines. A constraint violation occurs on the second order line insert. The developer catches the error but does NOT explicitly ROLLBACK. What state is the transaction in?",
+      "options": [
+        { "id": "a", "text": "The entire transaction is automatically rolled back by SQL Server" },
+        { "id": "b", "text": "The transaction remains open and uncommitted; subsequent commits would commit the partial data unless a ROLLBACK is issued" },
+        { "id": "c", "text": "Only the failed statement is undone; all prior inserts are committed" },
+        { "id": "d", "text": "The connection is automatically closed after a constraint violation in a transaction" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q8",
+      "text": "A developer writes: SELECT Department, SUM(Salary) AS TotalPay, COUNT(DISTINCT EmployeeId) AS HeadCount FROM Employees GROUP BY Department. Which statement about COUNT(DISTINCT EmployeeId) is true?",
+      "options": [
+        { "id": "a", "text": "COUNT(DISTINCT col) is invalid inside GROUP BY queries" },
+        { "id": "b", "text": "COUNT(DISTINCT EmployeeId) counts unique EmployeeId values within each department group, useful when joins might introduce duplicate rows" },
+        { "id": "c", "text": "COUNT(DISTINCT col) is identical to COUNT(col) when the column has no duplicates in the raw table" },
+        { "id": "d", "text": "DISTINCT inside COUNT() is only supported in SQL Server 2019 and later" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q9",
+      "text": "A developer writes a CTE to find the second-highest salary in a company. They write: WITH Ranked AS (SELECT Salary, DENSE_RANK() OVER (ORDER BY Salary DESC) AS Rnk FROM Employees) SELECT Salary FROM Ranked WHERE Rnk = 2. Why is DENSE_RANK preferred over RANK for this use case?",
+      "options": [
+        { "id": "a", "text": "DENSE_RANK is faster than RANK on large tables" },
+        { "id": "b", "text": "If multiple employees share the highest salary, RANK would skip rank 2 entirely; DENSE_RANK ensures there is always a rank 2 value representing the second distinct salary level" },
+        { "id": "c", "text": "RANK cannot be used inside CTEs" },
+        { "id": "d", "text": "DENSE_RANK supports NULL salaries while RANK does not" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q10",
+      "text": "A developer sees that SQL Server's Missing Index DMV suggests an index on (EmailAddress) INCLUDE (FirstName, LastName, CreatedDate) for a Users table. What does the INCLUDE clause mean and why is it suggested?",
+      "options": [
+        { "id": "a", "text": "INCLUDE columns become part of the index key and are used for filtering" },
+        { "id": "b", "text": "INCLUDE columns are stored at the leaf level of the index but not in the key; they allow the query to be satisfied entirely from the index without a Key Lookup back to the clustered index" },
+        { "id": "c", "text": "INCLUDE prevents the index from being used for sorting operations" },
+        { "id": "d", "text": "INCLUDE columns are only stored in memory and are not persisted to disk" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q11",
+      "text": "A developer uses ROW_NUMBER() OVER (PARTITION BY CustomerId ORDER BY OrderDate DESC) AS RowNum and filters WHERE RowNum = 1. What does this return?",
+      "options": [
+        { "id": "a", "text": "The first order ever placed by each customer" },
+        { "id": "b", "text": "The most recent order per customer, with exactly one row returned per customer" },
+        { "id": "c", "text": "All orders where the customer placed exactly one order total" },
+        { "id": "d", "text": "The order with the lowest OrderDate per customer" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q12",
+      "text": "A developer issues an UPDATE without a WHERE clause on a 200,000 row Prices table in a production database. After the statement executes, they realise the mistake. What is the correct immediate action assuming the session has not been closed?",
+      "options": [
+        { "id": "a", "text": "Run DELETE to remove the incorrectly updated rows" },
+        { "id": "b", "text": "If the UPDATE was inside an explicit transaction that has not been committed, issue ROLLBACK TRANSACTION immediately" },
+        { "id": "c", "text": "Restore the entire database from backup before doing anything else" },
+        { "id": "d", "text": "Run UPDATE again with the original values from memory" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q13",
+      "text": "A developer queries Employees with a LEFT JOIN to Departments: SELECT e.Name, d.DeptName FROM Employees e LEFT JOIN Departments d ON e.DeptId = d.DeptId. Three employees have a DeptId that does not exist in Departments. What appears in the DeptName column for those rows?",
+      "options": [
+        { "id": "a", "text": "An empty string ''" },
+        { "id": "b", "text": "NULL" },
+        { "id": "c", "text": "The word 'UNKNOWN'" },
+        { "id": "d", "text": "Those rows are excluded from the result" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q14",
+      "text": "A developer is querying two tables: SalesQ1 and SalesQ2 with identical column structures and wants to combine results including duplicates across both quarters. Which set operation should be used?",
+      "options": [
+        { "id": "a", "text": "UNION, which removes duplicates" },
+        { "id": "b", "text": "UNION ALL, which retains all rows including duplicates across both result sets" },
+        { "id": "c", "text": "INTERSECT, which returns rows common to both" },
+        { "id": "d", "text": "EXCEPT, which returns rows in Q1 not in Q2" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q15",
+      "text": "An e-commerce application uses SNAPSHOT isolation to allow readers and writers to work concurrently. A developer notices that a long-running transaction is causing tempdb to grow rapidly. What is the cause?",
+      "options": [
+        { "id": "a", "text": "SNAPSHOT isolation locks all rows in tempdb" },
+        { "id": "b", "text": "SNAPSHOT isolation stores row versions in tempdb; the longer a transaction runs, the more versions accumulate as other transactions modify the data, growing tempdb" },
+        { "id": "c", "text": "tempdb growth is unrelated to isolation level" },
+        { "id": "d", "text": "SNAPSHOT isolation disables auto-shrink on tempdb" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q16",
+      "text": "A developer writes: SELECT ProductId, CASE WHEN Stock > 100 THEN 'High' WHEN Stock > 10 THEN 'Medium' ELSE 'Low' END AS StockLevel FROM Products WHERE StockLevel = 'High'. What is wrong?",
+      "options": [
+        { "id": "a", "text": "CASE WHEN cannot be used in SELECT alongside WHERE" },
+        { "id": "b", "text": "The alias StockLevel cannot be referenced in the WHERE clause of the same query level; the CASE expression must be repeated in WHERE or the query wrapped in a subquery" },
+        { "id": "c", "text": "ELSE is not valid in a searched CASE expression" },
+        { "id": "d", "text": "CASE WHEN with a string result requires a CAST in the WHERE clause" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q17",
+      "text": "A developer stores a customer's date of birth as VARCHAR(10) in the format 'DD-MM-YYYY'. When they try to sort customers by age they get incorrect results. What is the root cause and solution?",
+      "options": [
+        { "id": "a", "text": "VARCHAR columns cannot be sorted; a CAST is always required" },
+        { "id": "b", "text": "Storing dates as VARCHAR means sorting is alphabetical (by day first) rather than chronological; dates should be stored as DATE or DATETIME2 data types for correct temporal ordering" },
+        { "id": "c", "text": "The format 'DD-MM-YYYY' must be converted to 'YYYY-MM-DD' using REPLACE before sorting" },
+        { "id": "d", "text": "DATE columns sort differently to DATETIME columns, causing discrepancies" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q18",
+      "text": "A developer adds TRY...CATCH to a stored procedure that runs multiple INSERTs. Inside the CATCH block they want to surface the original error to the caller. Which statement achieves this in SQL Server?",
+      "options": [
+        { "id": "a", "text": "RETURN -1" },
+        { "id": "b", "text": "THROW; (re-throws the original error with its original error number, severity, and state)" },
+        { "id": "c", "text": "RAISERROR('An error occurred', 16, 1)" },
+        { "id": "d", "text": "SELECT ERROR_MESSAGE()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q19",
+      "text": "A developer writes: SELECT ProductId, SaleMonth, SUM(Revenue) OVER (PARTITION BY ProductId ORDER BY SaleMonth) AS RunningRevenue FROM MonthlySales. What does this query produce for each row?",
+      "options": [
+        { "id": "a", "text": "The total revenue for the product across all months" },
+        { "id": "b", "text": "A cumulative sum of Revenue from the first month up to the current month, reset for each product" },
+        { "id": "c", "text": "The revenue for the current month only" },
+        { "id": "d", "text": "The average monthly revenue per product" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q20",
+      "text": "A developer queries an Orders table frequently with: WHERE ShippedDate IS NULL AND OrderStatus = 'Processing'. Which composite index definition best supports this query?",
+      "options": [
+        { "id": "a", "text": "CREATE INDEX IX_Orders ON Orders(ShippedDate)" },
+        { "id": "b", "text": "CREATE INDEX IX_Orders ON Orders(OrderStatus, ShippedDate) WHERE ShippedDate IS NULL AND OrderStatus = 'Processing'" },
+        { "id": "c", "text": "CREATE INDEX IX_Orders ON Orders(OrderId) INCLUDE (ShippedDate, OrderStatus)" },
+        { "id": "d", "text": "CREATE CLUSTERED INDEX IX_Orders ON Orders(ShippedDate, OrderStatus)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q21",
+      "text": "A developer writes a correlated subquery: SELECT c.CustomerId, (SELECT COUNT(*) FROM Orders o WHERE o.CustomerId = c.CustomerId) AS OrderCount FROM Customers c. On 200k customers, the query is very slow. What is the most efficient rewrite?",
+      "options": [
+        { "id": "a", "text": "Replace the subquery with EXISTS" },
+        { "id": "b", "text": "LEFT JOIN Customers to a pre-aggregated subquery: (SELECT CustomerId, COUNT(*) AS OrderCount FROM Orders GROUP BY CustomerId) and use COALESCE to handle NULLs for customers with no orders" },
+        { "id": "c", "text": "Use CROSS APPLY instead of a correlated subquery" },
+        { "id": "d", "text": "Add an index on Customers.CustomerId" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q22",
+      "text": "A developer must write a CASE expression that labels a product's margin: 'High' if margin > 30%, 'Medium' if 10-30%, and 'Low' otherwise. The margin is calculated as (SalePrice - CostPrice) / SalePrice. What risk exists when CostPrice equals SalePrice?",
+      "options": [
+        { "id": "a", "text": "The CASE expression cannot handle negative results" },
+        { "id": "b", "text": "If SalePrice is 0, the division produces a divide-by-zero error; this must be guarded with NULLIF(SalePrice, 0) or a CASE WHEN SalePrice = 0 THEN NULL ELSE ... END" },
+        { "id": "c", "text": "CASE expressions automatically return 0 for division by zero" },
+        { "id": "d", "text": "SQL Server converts 0/0 to NULL silently" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q23",
+      "text": "A developer normalises a customer address into a separate Addresses table linked by CustomerId. Later, a report queries customer name and address for 100k customers requiring a JOIN every time. A colleague suggests denormalising. What is the main trade-off?",
+      "options": [
+        { "id": "a", "text": "Denormalisation increases the number of tables and JOINs required" },
+        { "id": "b", "text": "Denormalisation improves read performance by eliminating the JOIN but risks data anomalies — updating a customer's address must be done in multiple places or inconsistencies arise" },
+        { "id": "c", "text": "Normalisation always performs better than denormalisation for reads" },
+        { "id": "d", "text": "Denormalisation violates SQL Server constraints and cannot be implemented" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q24",
+      "text": "A developer needs to find rows in a Products table where the Description column contains the word 'organic' regardless of case. Which approach is efficient on a case-insensitive collation database?",
+      "options": [
+        { "id": "a", "text": "WHERE LOWER(Description) = 'organic'" },
+        { "id": "b", "text": "WHERE Description LIKE '%organic%'" },
+        { "id": "c", "text": "WHERE CHARINDEX('organic', Description) > 0" },
+        { "id": "d", "text": "Both b and c achieve the same result on a case-insensitive collation; neither enables an index seek since the leading wildcard in LIKE prevents it" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_d03_q25",
+      "text": "A developer writes a query that returns product sales grouped by year. They use GROUP BY YEAR(SaleDate), ProductId. A colleague points out the query could be written with GROUP BY SaleYear, ProductId where SaleYear is a calculated column. What is the issue with using an alias in GROUP BY in SQL Server?",
+      "options": [
+        { "id": "a", "text": "SQL Server allows column aliases in GROUP BY without restriction" },
+        { "id": "b", "text": "SQL Server does not allow SELECT aliases to be used in GROUP BY; the expression YEAR(SaleDate) must be repeated in GROUP BY" },
+        { "id": "c", "text": "Aliases can be used in GROUP BY only if defined in a subquery" },
+        { "id": "d", "text": "Aliases in GROUP BY are supported only in SQL Server 2022" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q26",
+      "text": "A developer encounters a deadlock and the SQL Server deadlock graph shows two SPIDs waiting on each other. The DBA recommends adding a READPAST hint. What does READPAST do?",
+      "options": [
+        { "id": "a", "text": "READPAST reads uncommitted data to avoid waiting for locks" },
+        { "id": "b", "text": "READPAST skips locked rows rather than waiting for the lock to be released, which can reduce deadlocks but means some rows may be temporarily invisible to the reader" },
+        { "id": "c", "text": "READPAST upgrades the query to SERIALIZABLE isolation" },
+        { "id": "d", "text": "READPAST forces SQL Server to choose a different execution plan" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q27",
+      "text": "A developer uses FIRST_VALUE(Revenue) OVER (PARTITION BY ProductId ORDER BY SaleMonth) AS FirstMonthRevenue. What does this return for each row?",
+      "options": [
+        { "id": "a", "text": "The revenue from the row immediately before the current row" },
+        { "id": "b", "text": "The revenue from the first month in the ordered partition for the same product, repeated on every row for that product" },
+        { "id": "c", "text": "The minimum revenue within the product partition" },
+        { "id": "d", "text": "NULL for all rows except the first row of each partition" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q28",
+      "text": "A developer designs a table for a multi-tenant SaaS app where each tenant's data must be isolated. They add a TenantId column with a foreign key to a Tenants table and ensure all queries include WHERE TenantId = @TenantId. What additional database-level safety layer could enforce this at the row level automatically?",
+      "options": [
+        { "id": "a", "text": "A CHECK constraint on TenantId > 0" },
+        { "id": "b", "text": "Row-Level Security (RLS) using a security policy and predicate function that filters rows based on the current session's tenant context" },
+        { "id": "c", "text": "A UNIQUE constraint on (TenantId, UserId)" },
+        { "id": "d", "text": "Separate databases per tenant" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q29",
+      "text": "A developer uses INTERSECT to compare two sets of CustomerIds — one from an email campaign list and one from the purchases table. What does the result contain?",
+      "options": [
+        { "id": "a", "text": "All CustomerIds from both lists combined with duplicates removed" },
+        { "id": "b", "text": "CustomerIds that appear in both lists — customers who were on the email list AND made a purchase" },
+        { "id": "c", "text": "CustomerIds that appear in the email list but not in the purchases table" },
+        { "id": "d", "text": "CustomerIds unique to each list, excluding those appearing in both" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d03_q30",
+      "text": "A developer writes a stored procedure that reads a large dataset and processes rows in a CURSOR loop, issuing an UPDATE per row. With 50,000 rows this takes 4 minutes. What is the primary reason and how should it be rewritten?",
+      "options": [
+        { "id": "a", "text": "CURSORs are not supported inside stored procedures" },
+        { "id": "b", "text": "A CURSOR issues one round-trip per row, accumulating transaction and lock overhead for each row; replacing the cursor with a single set-based UPDATE statement processes all rows in one operation and is typically orders of magnitude faster" },
+        { "id": "c", "text": "The procedure should use BULK INSERT instead" },
+        { "id": "d", "text": "The CURSOR should be changed from FAST_FORWARD to STATIC to improve speed" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

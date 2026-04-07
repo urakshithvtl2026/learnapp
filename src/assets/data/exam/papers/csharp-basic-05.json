@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_b05",
+  "title": "C# Basic — Paper 5",
+  "description": "C# concepts: operators, conditionals, switch expressions, loops, loop control, classes, constructors, access modifiers, properties, and static members.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_b05_q1",
+      "text": "Which operator checks both the reference AND value equality in C# for most primitive types?",
+      "options": [
+        { "id": "a", "text": "==" },
+        { "id": "b", "text": "===" },
+        { "id": "c", "text": "Equals()" },
+        { "id": "d", "text": "ReferenceEquals()" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b05_q2",
+      "text": "What is the result of `~5` (bitwise NOT) in C# for a 32-bit integer?",
+      "options": [
+        { "id": "a", "text": "-5" },
+        { "id": "b", "text": "-6" },
+        { "id": "c", "text": "4" },
+        { "id": "d", "text": "5" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q3",
+      "text": "What is the associativity of the assignment operators (`=`, `+=`, `-=`) in C#?",
+      "options": [
+        { "id": "a", "text": "Left-to-right" },
+        { "id": "b", "text": "Non-associative" },
+        { "id": "c", "text": "Right-to-left" },
+        { "id": "d", "text": "They have no associativity" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b05_q4",
+      "text": "What is the output of this nested if?\n`int x = 15;\nif (x > 10)\n    if (x > 20)\n        Console.Write(\"big\");\n    else\n        Console.Write(\"medium\");\nelse\n    Console.Write(\"small\");`",
+      "options": [
+        { "id": "a", "text": "big" },
+        { "id": "b", "text": "small" },
+        { "id": "c", "text": "medium" },
+        { "id": "d", "text": "No output" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b05_q5",
+      "text": "Which C# statement is a valid `switch` with a `string` variable?",
+      "options": [
+        { "id": "a", "text": "switch (color) { case \"red\": break; case \"blue\": break; }" },
+        { "id": "b", "text": "switch (color) { case color == \"red\": break; }" },
+        { "id": "c", "text": "switch on color { \"red\" -> break; }" },
+        { "id": "d", "text": "C# does not support string in switch" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b05_q6",
+      "text": "What is the purpose of the `goto` statement in C#?",
+      "options": [
+        { "id": "a", "text": "It is not supported in C#" },
+        { "id": "b", "text": "It transfers control to a labeled statement elsewhere in the code" },
+        { "id": "c", "text": "It exits a loop immediately" },
+        { "id": "d", "text": "It calls a method by name" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q7",
+      "text": "What is a relational pattern in C# switch expressions?",
+      "options": [
+        { "id": "a", "text": "A pattern that matches a range using operators like `< 0` or `>= 100`" },
+        { "id": "b", "text": "A pattern that tests if a type has a certain property" },
+        { "id": "c", "text": "A pattern that checks if an object is null" },
+        { "id": "d", "text": "A pattern that uses regex to match strings" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b05_q8",
+      "text": "What does `obj is not null` check in C# pattern matching?",
+      "options": [
+        { "id": "a", "text": "It is invalid syntax" },
+        { "id": "b", "text": "It checks that obj is of a specific type" },
+        { "id": "c", "text": "It checks that obj is not null (null negation pattern)" },
+        { "id": "d", "text": "It converts obj to a non-nullable type" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b05_q9",
+      "text": "What does a `switch` expression do when no arm matches and there is no `_` discard arm?",
+      "options": [
+        { "id": "a", "text": "Returns the default value of the result type" },
+        { "id": "b", "text": "Throws a SwitchExpressionException at runtime" },
+        { "id": "c", "text": "Falls through to the end without returning a value" },
+        { "id": "d", "text": "Causes a compile-time error" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q10",
+      "text": "How many times does the body of `for (int i = 5; i > 0; i--)` execute?",
+      "options": [
+        { "id": "a", "text": "4" },
+        { "id": "b", "text": "6" },
+        { "id": "c", "text": "5" },
+        { "id": "d", "text": "0" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b05_q11",
+      "text": "What happens if you modify the collection variable inside a `foreach` loop in C#?",
+      "options": [
+        { "id": "a", "text": "The loop sees the modified values immediately" },
+        { "id": "b", "text": "Nothing — the iteration variable is read-only inside the loop body" },
+        { "id": "c", "text": "A runtime InvalidOperationException is thrown" },
+        { "id": "d", "text": "The loop variable changes but the collection is unchanged" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q12",
+      "text": "What is the minimum number of times a `do-while` body executes?",
+      "options": [
+        { "id": "a", "text": "0" },
+        { "id": "b", "text": "1" },
+        { "id": "c", "text": "2" },
+        { "id": "d", "text": "Depends on the condition" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q13",
+      "text": "What does `continue` do inside a loop in C#?",
+      "options": [
+        { "id": "a", "text": "Exits the loop immediately" },
+        { "id": "b", "text": "Skips the rest of the current iteration and moves to the next one" },
+        { "id": "c", "text": "Restarts the loop from the beginning" },
+        { "id": "d", "text": "Pauses execution until the condition changes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q14",
+      "text": "What is the behavior of `return` inside a loop in C#?",
+      "options": [
+        { "id": "a", "text": "It exits only the loop, not the method" },
+        { "id": "b", "text": "It exits the method entirely, returning a value if specified" },
+        { "id": "c", "text": "It continues with the next iteration" },
+        { "id": "d", "text": "It throws an exception" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q15",
+      "text": "How does `break` in a `switch` statement differ from `break` in a loop in C#?",
+      "options": [
+        { "id": "a", "text": "They are identical in behavior" },
+        { "id": "b", "text": "In a switch, `break` exits the case; in a loop, `break` exits the loop. Both exit their enclosing construct" },
+        { "id": "c", "text": "`break` in a switch throws an exception; in a loop it just exits" },
+        { "id": "d", "text": "`break` in a loop exits all loops; in a switch it exits only the switch" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q16",
+      "text": "What is the difference between a class field and a class property in C#?",
+      "options": [
+        { "id": "a", "text": "Fields have accessors; properties are plain storage" },
+        { "id": "b", "text": "Properties expose controlled access via get/set; fields are direct variable storage" },
+        { "id": "c", "text": "Properties are always faster than fields" },
+        { "id": "d", "text": "Fields are always public; properties are always private" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q17",
+      "text": "Can an object initializer call a specific constructor with arguments in C#?",
+      "options": [
+        { "id": "a", "text": "No, object initializers always use the default constructor" },
+        { "id": "b", "text": "Yes, you can use `new MyClass(arg1) { Prop = val }` to call a constructor with args and then set properties" },
+        { "id": "c", "text": "No, constructors and object initializers are mutually exclusive" },
+        { "id": "d", "text": "Yes, but only if the class is sealed" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q18",
+      "text": "What does `:this()` constructor chaining allow in C#?",
+      "options": [
+        { "id": "a", "text": "One constructor to call the base class constructor" },
+        { "id": "b", "text": "One constructor to call another constructor in the same class to avoid code duplication" },
+        { "id": "c", "text": "A constructor to create a copy of itself" },
+        { "id": "d", "text": "A derived class to call the original class constructor" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q19",
+      "text": "Can a class have multiple static constructors in C#?",
+      "options": [
+        { "id": "a", "text": "Yes, up to two" },
+        { "id": "b", "text": "Yes, unlimited" },
+        { "id": "c", "text": "No, only one static constructor is allowed per class" },
+        { "id": "d", "text": "Yes, but only if they have different parameter lists" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b05_q20",
+      "text": "What does the `public` access modifier mean in C#?",
+      "options": [
+        { "id": "a", "text": "Accessible only within the declaring class" },
+        { "id": "b", "text": "Accessible only within the same assembly" },
+        { "id": "c", "text": "Accessible from any code in any assembly" },
+        { "id": "d", "text": "Accessible only to derived classes" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b05_q21",
+      "text": "Which access modifier combination in C# allows access within the same assembly AND by derived classes in any assembly?",
+      "options": [
+        { "id": "a", "text": "private protected" },
+        { "id": "b", "text": "protected internal" },
+        { "id": "c", "text": "public protected" },
+        { "id": "d", "text": "internal protected" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q22",
+      "text": "What is the default access modifier for a class member in C# if none is specified?",
+      "options": [
+        { "id": "a", "text": "public" },
+        { "id": "b", "text": "internal" },
+        { "id": "c", "text": "private" },
+        { "id": "d", "text": "protected" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b05_q23",
+      "text": "What does a property with only a `get` accessor (no `set`) represent in C#?",
+      "options": [
+        { "id": "a", "text": "A write-only property" },
+        { "id": "b", "text": "A read-only property that cannot be set after construction" },
+        { "id": "c", "text": "A property with a default value" },
+        { "id": "d", "text": "An auto-implemented property" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q24",
+      "text": "What is the difference between `{ get; set; }` and `{ get; init; }` in C# 9+?",
+      "options": [
+        { "id": "a", "text": "`{ get; set; }` allows setting any time; `{ get; init; }` only allows setting during construction" },
+        { "id": "b", "text": "`{ get; init; }` allows setting any time; `{ get; set; }` only allows setting once" },
+        { "id": "c", "text": "They are functionally identical" },
+        { "id": "d", "text": "`init` makes the property static" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b05_q25",
+      "text": "What can a property's `set` accessor do that a field assignment cannot easily do?",
+      "options": [
+        { "id": "a", "text": "Store a value in memory" },
+        { "id": "b", "text": "Execute validation logic or raise change notifications before storing the value" },
+        { "id": "c", "text": "Allow the value to change" },
+        { "id": "d", "text": "Prevent assignment of null" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q26",
+      "text": "What is a static field in C#?",
+      "options": [
+        { "id": "a", "text": "A field declared inside a method" },
+        { "id": "b", "text": "A field shared by all instances of a class, belonging to the class itself rather than any object" },
+        { "id": "c", "text": "A read-only field initialized at declaration" },
+        { "id": "d", "text": "A field that cannot be modified once set" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q27",
+      "text": "What is a static method in C#?",
+      "options": [
+        { "id": "a", "text": "A method that can only be called once" },
+        { "id": "b", "text": "A method belonging to the class rather than an instance; called via the class name" },
+        { "id": "c", "text": "A method that does not return a value" },
+        { "id": "d", "text": "A method that cannot have parameters" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q28",
+      "text": "Can a static method access instance (non-static) fields of the class directly in C#?",
+      "options": [
+        { "id": "a", "text": "Yes, static methods have full access to all members" },
+        { "id": "b", "text": "No, static methods can only access static members unless given an object instance" },
+        { "id": "c", "text": "Yes, but only if the field is public" },
+        { "id": "d", "text": "Yes, but only through the `base` keyword" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b05_q29",
+      "text": "What is the purpose of a static class in C#?",
+      "options": [
+        { "id": "a", "text": "To allow only one instance to be created (singleton)" },
+        { "id": "b", "text": "To prevent the class from being inherited" },
+        { "id": "c", "text": "To group utility methods and constants that don't require instance state; cannot be instantiated" },
+        { "id": "d", "text": "To mark all members as thread-safe" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b05_q30",
+      "text": "How do you call a static method `GetMax` from a static class `MathHelper` in C#?",
+      "options": [
+        { "id": "a", "text": "new MathHelper().GetMax(a, b);" },
+        { "id": "b", "text": "MathHelper helper = new MathHelper(); helper.GetMax(a, b);" },
+        { "id": "c", "text": "MathHelper.GetMax(a, b);" },
+        { "id": "d", "text": "static MathHelper.GetMax(a, b);" }
+      ],
+      "correctOptionId": "c"
+    }
+  ]
+}

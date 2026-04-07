@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a02",
+  "title": "C# Advanced — Paper 2",
+  "description": "Advanced C# covering Generic Variance, LINQ Core & Advanced Operators, Lambda & Functional Patterns, Delegates/Func/Action/Predicate, Memory Management, Span<T>/Memory<T>, Reflection, Attributes, and Extension Methods.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a02_q1",
+      "text": "What is the difference between a delegate and an event in C#?",
+      "options": [
+        { "id": "a", "text": "A delegate can be invoked from outside the declaring class; an event restricts invocation to within the declaring class." },
+        { "id": "b", "text": "An event can hold multiple delegates; a delegate can only hold one." },
+        { "id": "c", "text": "Delegates are only used for async operations." },
+        { "id": "d", "text": "Events cannot be multicast; delegates can." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_a02_q2",
+      "text": "Which of the following correctly declares a Func<> delegate that takes two ints and returns a bool?",
+      "options": [
+        { "id": "a", "text": "Func<int, bool, int> f;" },
+        { "id": "b", "text": "Func<int, int, bool> f;" },
+        { "id": "c", "text": "Action<int, int, bool> f;" },
+        { "id": "d", "text": "Predicate<int, int> f;" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q3",
+      "text": "What does the LINQ Join operator produce?",
+      "options": [
+        { "id": "a", "text": "A cross product of all elements from both sequences" },
+        { "id": "b", "text": "An inner join: matches elements from two sequences based on a key selector, returning a flat result" },
+        { "id": "c", "text": "A left outer join that preserves all elements of the first sequence" },
+        { "id": "d", "text": "A union of both sequences without duplicates" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q4",
+      "text": "What does LINQ's GroupJoin return that distinguishes it from a regular Join?",
+      "options": [
+        { "id": "a", "text": "It returns only matching pairs like an inner join." },
+        { "id": "b", "text": "It returns each element from the outer sequence paired with a (possibly empty) collection of matching inner elements, enabling left outer join semantics." },
+        { "id": "c", "text": "It groups elements of a single sequence by a key." },
+        { "id": "d", "text": "It joins sequences and removes duplicates using a comparer." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q5",
+      "text": "What is a higher-order function in C#?",
+      "options": [
+        { "id": "a", "text": "A function defined in a higher-priority assembly" },
+        { "id": "b", "text": "A function that takes one or more functions as parameters or returns a function as its result" },
+        { "id": "c", "text": "A function that runs on a higher-priority thread" },
+        { "id": "d", "text": "A static method defined on a base class" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q6",
+      "text": "In C#, how is method resolution performed when a generic type has an interface constraint?",
+      "options": [
+        { "id": "a", "text": "The compiler boxes the value and calls via dynamic dispatch." },
+        { "id": "b", "text": "The JIT generates specialized code for each type argument and can call interface methods directly via the constraint, avoiding boxing for structs." },
+        { "id": "c", "text": "Generic constraints are checked only at runtime, not compile time." },
+        { "id": "d", "text": "The constraint forces all calls to go through reflection." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q7",
+      "text": "In C# covariance, which of the following is a valid assignment?",
+      "options": [
+        { "id": "a", "text": "IEnumerable<object> list = new List<int>();" },
+        { "id": "b", "text": "IEnumerable<object> list = new List<string>();" },
+        { "id": "c", "text": "List<object> list = new List<string>();" },
+        { "id": "d", "text": "IList<object> list = new List<string>();" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q8",
+      "text": "What is the difference between Select and SelectMany in LINQ?",
+      "options": [
+        { "id": "a", "text": "Select flattens nested sequences; SelectMany projects each element to a single value." },
+        { "id": "b", "text": "Select projects each element to a new form; SelectMany projects each element to a sequence and flattens all results into one sequence." },
+        { "id": "c", "text": "SelectMany returns a dictionary; Select returns a list." },
+        { "id": "d", "text": "They are interchangeable." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q9",
+      "text": "Which LINQ methods force immediate execution rather than deferred execution?",
+      "options": [
+        { "id": "a", "text": "Where, Select, OrderBy" },
+        { "id": "b", "text": "ToList, ToArray, Count, First" },
+        { "id": "c", "text": "GroupBy, SelectMany, Zip" },
+        { "id": "d", "text": "Take, Skip, Distinct" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q10",
+      "text": "What does currying mean in the context of C# functional programming?",
+      "options": [
+        { "id": "a", "text": "Applying all arguments to a function at once" },
+        { "id": "b", "text": "Transforming a function that takes multiple arguments into a chain of functions that each take a single argument" },
+        { "id": "c", "text": "Caching the result of a pure function" },
+        { "id": "d", "text": "Converting a lambda into a delegate type" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q11",
+      "text": "What is the purpose of the 'where' clause filter (exception filter) introduced in C# 6?",
+      "options": [
+        { "id": "a", "text": "It filters exceptions before they unwind the stack, allowing a catch block to run only if the filter condition is true, without unwinding if false." },
+        { "id": "b", "text": "It is a LINQ where clause used inside a catch block." },
+        { "id": "c", "text": "It lets you catch multiple exception types in one catch block." },
+        { "id": "d", "text": "It re-routes exceptions to a different handler." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_a02_q12",
+      "text": "What happens if Dispose() throws an exception while the 'using' statement is handling another exception?",
+      "options": [
+        { "id": "a", "text": "Both exceptions are combined into an AggregateException." },
+        { "id": "b", "text": "The exception from Dispose() replaces the original exception, and the original exception is lost." },
+        { "id": "c", "text": "The Dispose() exception is swallowed silently." },
+        { "id": "d", "text": "The CLR logs both exceptions and rethrows the original." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q13",
+      "text": "What is the unsafe keyword required for when working with Span<T> and raw pointers?",
+      "options": [
+        { "id": "a", "text": "It allows async methods inside a Span<T> context." },
+        { "id": "b", "text": "It enables pointer arithmetic and direct memory manipulation, bypassing the CLR's safety guarantees, required for pointer types and stackalloc in pointer contexts." },
+        { "id": "c", "text": "It marks Span<T> allocations for the large object heap." },
+        { "id": "d", "text": "It disables JIT optimizations for a method." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q14",
+      "text": "What does MethodInfo.Invoke() return when calling a void method via reflection?",
+      "options": [
+        { "id": "a", "text": "It returns 0 as an integer." },
+        { "id": "b", "text": "It returns null." },
+        { "id": "c", "text": "It throws a VoidMethodException." },
+        { "id": "d", "text": "It returns Type.Missing." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q15",
+      "text": "Which attribute targets should you specify in AttributeUsage to allow a custom attribute on both classes and methods?",
+      "options": [
+        { "id": "a", "text": "[AttributeUsage(AttributeTargets.All)]" },
+        { "id": "b", "text": "[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]" },
+        { "id": "c", "text": "[AttributeUsage(AttributeTargets.Class, AttributeTargets.Method)]" },
+        { "id": "d", "text": "[AttributeUsage(AttributeTargets.ClassOrMethod)]" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q16",
+      "text": "What is an extension method in C#?",
+      "options": [
+        { "id": "a", "text": "A method defined inside the class it extends." },
+        { "id": "b", "text": "A static method in a static class with 'this' as the first parameter modifier, allowing it to be called as if it were an instance method on the extended type." },
+        { "id": "c", "text": "A method that overrides a virtual method in a base class." },
+        { "id": "d", "text": "A method added to a class via reflection at runtime." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q17",
+      "text": "Which generic interface would you implement to define a type-safe comparer that avoids boxing for value types?",
+      "options": [
+        { "id": "a", "text": "IComparable" },
+        { "id": "b", "text": "IComparer<T>" },
+        { "id": "c", "text": "IEquatable" },
+        { "id": "d", "text": "IComparableBox<T>" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q18",
+      "text": "What does the 'in' variance keyword on a generic type parameter indicate?",
+      "options": [
+        { "id": "a", "text": "The type parameter can only appear in output positions (return types)." },
+        { "id": "b", "text": "The type parameter is contravariant: it can only appear in input positions, allowing assignment from a more general type to a more specific one." },
+        { "id": "c", "text": "The type parameter is covariant." },
+        { "id": "d", "text": "It makes the type parameter read-only inside the generic class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q19",
+      "text": "What does LINQ's OrderBy return, and how do you chain a secondary sort?",
+      "options": [
+        { "id": "a", "text": "It returns IEnumerable<T>; secondary sort uses OrderBy again." },
+        { "id": "b", "text": "It returns IOrderedEnumerable<T>; you chain ThenBy or ThenByDescending for secondary sorts." },
+        { "id": "c", "text": "It returns IQueryable<T>; secondary sort uses .Sort()." },
+        { "id": "d", "text": "It returns a sorted List<T>; secondary sort requires re-calling OrderBy." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q20",
+      "text": "What does LINQ's Zip operator do?",
+      "options": [
+        { "id": "a", "text": "It compresses a sequence for serialization." },
+        { "id": "b", "text": "It combines two sequences element-by-element using a result selector, stopping when the shorter sequence is exhausted." },
+        { "id": "c", "text": "It concatenates two sequences end-to-end." },
+        { "id": "d", "text": "It groups elements from two sequences by a common key." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q21",
+      "text": "How does a multicast delegate work in C#?",
+      "options": [
+        { "id": "a", "text": "It can only target methods with matching parameter types, unlike regular delegates." },
+        { "id": "b", "text": "It holds an invocation list of multiple method references; when invoked, it calls all methods in order, and the return value is the last method's return value." },
+        { "id": "c", "text": "It invokes all methods simultaneously on separate threads." },
+        { "id": "d", "text": "It merges return values from all methods using LINQ." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q22",
+      "text": "Which of the following correctly creates a Predicate<T> that checks if a string is longer than 5 characters?",
+      "options": [
+        { "id": "a", "text": "Predicate<string> p = s => s.Length > 5;" },
+        { "id": "b", "text": "Predicate<string, bool> p = s => s.Length > 5;" },
+        { "id": "c", "text": "Func<string, string> p = s => s.Length > 5;" },
+        { "id": "d", "text": "Action<string> p = s => s.Length > 5;" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_a02_q23",
+      "text": "What is the purpose of using a WeakReference in C# to avoid memory leaks with events?",
+      "options": [
+        { "id": "a", "text": "It makes events thread-safe automatically." },
+        { "id": "b", "text": "It allows the event handler subscriber to be garbage collected even if still subscribed, because the event only holds a weak reference to the handler's target object." },
+        { "id": "c", "text": "It compresses the event handler in memory." },
+        { "id": "d", "text": "It prevents duplicate subscriptions to an event." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q24",
+      "text": "What is the GC generation model in .NET and how does it affect object lifetime?",
+      "options": [
+        { "id": "a", "text": "There is only one GC generation; all objects are collected at the same time." },
+        { "id": "b", "text": "The GC has generations 0, 1, and 2. Short-lived objects start in gen 0 and are collected frequently; surviving objects promote to higher generations which are collected less often." },
+        { "id": "c", "text": "Generations are based on object size, not lifetime." },
+        { "id": "d", "text": "The GC generations only apply to value types on the stack." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q25",
+      "text": "How can you use reflection to get the value of a property named 'Name' from an object instance?",
+      "options": [
+        { "id": "a", "text": "obj.GetProperty(\"Name\").Value" },
+        { "id": "b", "text": "obj.GetType().GetProperty(\"Name\").GetValue(obj)" },
+        { "id": "c", "text": "PropertyInfo.Get(obj, \"Name\")" },
+        { "id": "d", "text": "typeof(obj).Name" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q26",
+      "text": "When AllowMultiple = true is set in AttributeUsage, what does it enable?",
+      "options": [
+        { "id": "a", "text": "The attribute can target multiple element types." },
+        { "id": "b", "text": "The same attribute can be applied more than once to the same code element." },
+        { "id": "c", "text": "The attribute can be inherited by derived classes." },
+        { "id": "d", "text": "The attribute can be applied to both methods and properties." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q27",
+      "text": "In a fluent builder pattern using extension methods, what does each fluent method typically return?",
+      "options": [
+        { "id": "a", "text": "void, modifying state internally" },
+        { "id": "b", "text": "The same type (or the builder type) to allow method chaining" },
+        { "id": "c", "text": "A Task to enable async chaining" },
+        { "id": "d", "text": "A boolean indicating success" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q28",
+      "text": "What restriction applies to ref structs like Span<T>?",
+      "options": [
+        { "id": "a", "text": "They cannot have generic type parameters." },
+        { "id": "b", "text": "They cannot be stored on the heap: they cannot be boxed, used as generic type arguments, assigned to object/interface variables, or captured in lambdas/async methods." },
+        { "id": "c", "text": "They can only contain value types." },
+        { "id": "d", "text": "They cannot implement interfaces." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q29",
+      "text": "Which LINQ method computes a running total across a sequence and is equivalent to SQL's SUM over a set?",
+      "options": [
+        { "id": "a", "text": "Aggregate" },
+        { "id": "b", "text": "Sum" },
+        { "id": "c", "text": "Reduce" },
+        { "id": "d", "text": "Accumulate" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a02_q30",
+      "text": "What is the correct way to define an extension method for IEnumerable<T> in a static class?",
+      "options": [
+        { "id": "a", "text": "public IEnumerable<T> MyExt<T>(IEnumerable<T> source) { }" },
+        { "id": "b", "text": "public static IEnumerable<T> MyExt<T>(this IEnumerable<T> source) { }" },
+        { "id": "c", "text": "public static IEnumerable<T> MyExt<T>(extend IEnumerable<T> source) { }" },
+        { "id": "d", "text": "extension IEnumerable<T> { IEnumerable<T> MyExt<T>() { } }" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

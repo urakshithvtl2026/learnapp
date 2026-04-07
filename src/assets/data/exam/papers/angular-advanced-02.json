@@ -1,0 +1,339 @@
+{
+  "id": "qp_ng_a02",
+  "title": "Angular Advanced — Paper 2",
+  "description": "Advanced Angular concepts: reactive forms, custom validators, routing, guards, HTTP client, RxJS, change detection, custom directives/pipes, state management, and testing.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_ng_a02_q1",
+      "text": "What is the difference between setValue() and patchValue() on a FormGroup?",
+      "options": [
+        { "id": "a", "text": "setValue() requires all controls to be provided; patchValue() allows partial updates" },
+        { "id": "b", "text": "patchValue() requires all controls; setValue() allows partial updates" },
+        { "id": "c", "text": "They are identical in behavior" },
+        { "id": "d", "text": "setValue() only works on FormControl; patchValue() works on FormGroup" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_a02_q2",
+      "text": "Given this code:\n\nconst form = this.fb.group({\n  name: ['', Validators.required],\n  email: ['', [Validators.required, Validators.email]]\n});\n\nHow do you check if the 'email' control has a 'required' error?",
+      "options": [
+        { "id": "a", "text": "form.get('email').errors.required" },
+        { "id": "b", "text": "form.get('email').hasError('required')" },
+        { "id": "c", "text": "form.controls.email.invalid" },
+        { "id": "d", "text": "form.getError('email', 'required')" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q3",
+      "text": "When using FormArray, which method do you call to add a new control at the end of the array?",
+      "options": [
+        { "id": "a", "text": "formArray.addControl()" },
+        { "id": "b", "text": "formArray.push(new FormControl(''))" },
+        { "id": "c", "text": "formArray.append(new FormControl(''))" },
+        { "id": "d", "text": "formArray.insert(formArray.length, new FormControl(''))" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q4",
+      "text": "The following custom validator has a bug. What is it?\n\nexport function minAge(min: number) {\n  return (control: AbstractControl) => {\n    return control.value < min ? { minAge: true } : {};\n  };\n}",
+      "options": [
+        { "id": "a", "text": "It should use >= instead of <" },
+        { "id": "b", "text": "It returns {} instead of null when valid — validators must return null (not an empty object) to indicate no error" },
+        { "id": "c", "text": "The function name is incorrect" },
+        { "id": "d", "text": "It should accept ValidatorFn as parameter" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q5",
+      "text": "Why would you add debounceTime() inside an async validator?",
+      "options": [
+        { "id": "a", "text": "To delay showing the error message in the template" },
+        { "id": "b", "text": "To avoid making an HTTP request on every keystroke by waiting until the user pauses typing" },
+        { "id": "c", "text": "To ensure the validator runs after the form submits" },
+        { "id": "d", "text": "To convert the async validator to synchronous" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q6",
+      "text": "When navigating programmatically using Router.navigate(), what option allows you to preserve existing query parameters?",
+      "options": [
+        { "id": "a", "text": "{ keepParams: true }" },
+        { "id": "b", "text": "{ queryParamsHandling: 'preserve' }" },
+        { "id": "c", "text": "{ mergeParams: true }" },
+        { "id": "d", "text": "{ retainQueryParams: true }" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q7",
+      "text": "Which ActivatedRoute property emits new values as query parameters change WITHOUT needing to navigate to a new route?",
+      "options": [
+        { "id": "a", "text": "this.route.snapshot.queryParams" },
+        { "id": "b", "text": "this.route.queryParams (Observable)" },
+        { "id": "c", "text": "this.router.currentRoute.queryParams" },
+        { "id": "d", "text": "this.route.queryParamMap.snapshot" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q8",
+      "text": "What does the PreloadAllModules strategy do in Angular routing?",
+      "options": [
+        { "id": "a", "text": "Loads all lazy modules eagerly at startup" },
+        { "id": "b", "text": "After the initial load, preloads all lazy-loaded modules in the background so subsequent navigation is instant" },
+        { "id": "c", "text": "Prevents lazy modules from loading until authenticated" },
+        { "id": "d", "text": "Loads only the currently active module" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q9",
+      "text": "In a functional CanActivateFn guard, which return value allows navigation to proceed?",
+      "options": [
+        { "id": "a", "text": "false" },
+        { "id": "b", "text": "true" },
+        { "id": "c", "text": "null" },
+        { "id": "d", "text": "undefined" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q10",
+      "text": "Given this interceptor code:\n\nexport const authInterceptor: HttpInterceptorFn = (req, next) => {\n  const cloned = req.clone({ setHeaders: { Authorization: 'Bearer token123' } });\n  return next(cloned);\n};\n\nWhat does this interceptor do?",
+      "options": [
+        { "id": "a", "text": "Modifies the response headers" },
+        { "id": "b", "text": "Clones the request and adds an Authorization header before forwarding it" },
+        { "id": "c", "text": "Cancels the request if no token exists" },
+        { "id": "d", "text": "Logs the response body" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q11",
+      "text": "What does the retry(3) operator do when applied to an HTTP Observable?",
+      "options": [
+        { "id": "a", "text": "Retries the request 3 seconds after failure" },
+        { "id": "b", "text": "Automatically resubscribes to the source up to 3 times on error before propagating the error" },
+        { "id": "c", "text": "Caches the response after 3 successful requests" },
+        { "id": "d", "text": "Emits null up to 3 times before the real value" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q12",
+      "text": "What is the key difference between concatMap and mergeMap?",
+      "options": [
+        { "id": "a", "text": "concatMap runs all inner observables in parallel; mergeMap runs them sequentially" },
+        { "id": "b", "text": "concatMap waits for each inner observable to complete before subscribing to the next; mergeMap subscribes to all concurrently" },
+        { "id": "c", "text": "concatMap cancels previous observables; mergeMap never cancels" },
+        { "id": "d", "text": "They are aliases for the same operator" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q13",
+      "text": "What does forkJoin([obs1$, obs2$]) emit?",
+      "options": [
+        { "id": "a", "text": "A value every time either observable emits" },
+        { "id": "b", "text": "A single array of the last values from each observable, emitted when ALL observables complete" },
+        { "id": "c", "text": "The first value from whichever observable emits first" },
+        { "id": "d", "text": "An observable that retries if any source errors" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q14",
+      "text": "What happens when you call markForCheck() on a ChangeDetectorRef in an OnPush component?",
+      "options": [
+        { "id": "a", "text": "It immediately runs change detection for the component" },
+        { "id": "b", "text": "It marks the component and its ancestors to be checked in the next change detection cycle" },
+        { "id": "c", "text": "It detaches the component from the change detection tree permanently" },
+        { "id": "d", "text": "It resets all form controls in the component" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q15",
+      "text": "What is virtual scrolling in Angular CDK and when should you use it?",
+      "options": [
+        { "id": "a", "text": "A technique to lazily load images — use it for image-heavy pages" },
+        { "id": "b", "text": "Renders only the DOM items visible in the viewport — use it for large lists (thousands of items) to avoid performance degradation" },
+        { "id": "c", "text": "A CSS trick to hide off-screen elements — use it with hidden attribute" },
+        { "id": "d", "text": "A method to pre-render server-side components" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q16",
+      "text": "Given this directive:\n\n@Directive({ selector: '[appLogger]' })\nexport class LoggerDirective {\n  constructor(private el: ElementRef, private renderer: Renderer2) {}\n  @HostListener('click') onClick() {\n    this.renderer.setStyle(this.el.nativeElement, 'color', 'red');\n  }\n}\n\nWhy is Renderer2 preferred over directly accessing nativeElement.style?",
+      "options": [
+        { "id": "a", "text": "Renderer2 is faster than direct DOM manipulation" },
+        { "id": "b", "text": "Renderer2 abstracts platform-specific DOM access, making the code work in server-side rendering and web workers" },
+        { "id": "c", "text": "Direct nativeElement access is not allowed in Angular" },
+        { "id": "d", "text": "Renderer2 automatically triggers change detection" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q17",
+      "text": "What does ng-content do in an Angular component?",
+      "options": [
+        { "id": "a", "text": "Defines component styles that are encapsulated" },
+        { "id": "b", "text": "Projects content from the parent component's template into a slot inside the child component's template" },
+        { "id": "c", "text": "Creates a template reference variable" },
+        { "id": "d", "text": "Declares a named router outlet" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q18",
+      "text": "In NgRx, what is the purpose of createAction()?",
+      "options": [
+        { "id": "a", "text": "Creates a selector for reading state" },
+        { "id": "b", "text": "Creates a typed action creator function with an optional props payload" },
+        { "id": "c", "text": "Creates a reducer case handler" },
+        { "id": "d", "text": "Creates an effect that listens for browser events" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q19",
+      "text": "What is the Angular Signals equivalent of subscribing to an observable for reactive side effects?",
+      "options": [
+        { "id": "a", "text": "computed()" },
+        { "id": "b", "text": "effect()" },
+        { "id": "c", "text": "toSignal()" },
+        { "id": "d", "text": "signal()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q20",
+      "text": "What does jasmine.createSpyObj('Service', ['getData']) return in Angular tests?",
+      "options": [
+        { "id": "a", "text": "An instance of the real Service class with all methods monitored" },
+        { "id": "b", "text": "A fake object with a getData spy method that can have its return value configured" },
+        { "id": "c", "text": "A TestBed provider token" },
+        { "id": "d", "text": "An HttpTestingController mock" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q21",
+      "text": "In an Angular test, what does fixture.detectChanges() do?",
+      "options": [
+        { "id": "a", "text": "Resets the component to its initial state" },
+        { "id": "b", "text": "Triggers Angular's change detection on the component fixture, updating the DOM" },
+        { "id": "c", "text": "Destroys the component and re-creates it" },
+        { "id": "d", "text": "Compiles the component's template" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q22",
+      "text": "In a child route configuration, what is the significance of the empty path '' with pathMatch: 'full'?",
+      "options": [
+        { "id": "a", "text": "It matches all routes as a wildcard" },
+        { "id": "b", "text": "It matches only when the URL segment is exactly empty, commonly used to redirect to a default child route" },
+        { "id": "c", "text": "It prevents navigation to child routes" },
+        { "id": "d", "text": "It defines a lazy-loaded module" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q23",
+      "text": "What does the finalize() RxJS operator do in an HTTP request pipeline?",
+      "options": [
+        { "id": "a", "text": "Retries the request after completion" },
+        { "id": "b", "text": "Executes a callback when the observable completes OR errors, useful for hiding loading spinners" },
+        { "id": "c", "text": "Transforms the final emitted value" },
+        { "id": "d", "text": "Catches and suppresses all errors" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q24",
+      "text": "What is exhaustMap and when would you prefer it over switchMap?",
+      "options": [
+        { "id": "a", "text": "exhaustMap retries on error; use it for retryable HTTP calls" },
+        { "id": "b", "text": "exhaustMap ignores new outer emissions while an inner observable is active; use it for login buttons to prevent duplicate submissions" },
+        { "id": "c", "text": "exhaustMap merges all inner observables; use it for batch updates" },
+        { "id": "d", "text": "exhaustMap is identical to switchMap but with a different import path" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q25",
+      "text": "Given this pipe:\n\n@Pipe({ name: 'truncate', pure: false })\nexport class TruncatePipe implements PipeTransform {\n  transform(value: string, length: number): string {\n    return value.length > length ? value.slice(0, length) + '...' : value;\n  }\n}\n\nWhat is the performance concern with pure: false?",
+      "options": [
+        { "id": "a", "text": "The pipe cannot access component properties" },
+        { "id": "b", "text": "It runs on every change detection cycle regardless of whether the input changed, potentially causing unnecessary recalculations" },
+        { "id": "c", "text": "The pipe will not update when the input string changes" },
+        { "id": "d", "text": "Impure pipes cannot use the slice method" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q26",
+      "text": "What does HttpTestingController.expectOne('/api/users') verify in a unit test?",
+      "options": [
+        { "id": "a", "text": "That the HTTP response contains exactly one user" },
+        { "id": "b", "text": "That exactly one HTTP request matching the URL was made, and returns a TestRequest to control the mock response" },
+        { "id": "c", "text": "That the component called ngOnInit once" },
+        { "id": "d", "text": "That the route was activated exactly once" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q27",
+      "text": "Which Angular CLI command generates a lazy-loaded feature module with its own routing?",
+      "options": [
+        { "id": "a", "text": "ng generate module feature" },
+        { "id": "b", "text": "ng generate module feature --route feature --module app.module" },
+        { "id": "c", "text": "ng generate lazy-module feature" },
+        { "id": "d", "text": "ng generate component feature --lazy" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q28",
+      "text": "In Angular, what is XSS and how does Angular's template engine help prevent it by default?",
+      "options": [
+        { "id": "a", "text": "XSS is cross-site request forgery; Angular adds CSRF tokens automatically" },
+        { "id": "b", "text": "XSS is cross-site scripting; Angular automatically sanitizes values bound with interpolation {{ }} and property bindings to prevent script injection" },
+        { "id": "c", "text": "XSS is extra stylesheet sourcing; Angular bundles all styles to prevent it" },
+        { "id": "d", "text": "XSS is cross-module sharing; Angular's module system prevents unauthorized access" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q29",
+      "text": "In NgRx, when using createEffect with { dispatch: false }, what does this indicate?",
+      "options": [
+        { "id": "a", "text": "The effect should throw an error instead of dispatching" },
+        { "id": "b", "text": "The effect performs a side effect but does not dispatch any action back to the store" },
+        { "id": "c", "text": "The effect is disabled and will not run" },
+        { "id": "d", "text": "The effect dispatches an action synchronously" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a02_q30",
+      "text": "What is the takeUntilDestroyed() operator used for in Angular?",
+      "options": [
+        { "id": "a", "text": "It completes an observable after a set number of emissions" },
+        { "id": "b", "text": "It automatically unsubscribes from an observable when the component or service it is used in is destroyed, preventing memory leaks" },
+        { "id": "c", "text": "It destroys the component when the observable errors" },
+        { "id": "d", "text": "It retries the observable until the component is destroyed" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

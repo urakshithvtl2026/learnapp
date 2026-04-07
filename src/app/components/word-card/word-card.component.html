@@ -1,0 +1,104 @@
+<div class="card-wrapper">
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <span class="stat">
+      <mat-icon>list</mat-icon>
+      {{ remaining() }} remaining
+    </span>
+    <span class="stat">
+      <mat-icon>check_circle</mat-icon>
+      {{ learntCount() }} learnt
+    </span>
+    <span class="stat">
+      <mat-icon>skip_next</mat-icon>
+      {{ skippedCount() }} skipped
+    </span>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-track">
+    <div
+      class="progress-fill"
+      [style.width.%]="((total() - remaining()) / total()) * 100"
+    ></div>
+  </div>
+
+  <!-- Word card -->
+  <mat-card class="word-card" appearance="outlined">
+    <!-- Category chip -->
+    @if (word().category) {
+      <div class="category-chip">
+        <span class="chip">{{ word().category }}</span>
+      </div>
+    }
+
+    <!-- Word heading -->
+    <mat-card-header class="word-header">
+      <mat-card-title class="word-title">{{ word().word }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <!-- Description area -->
+    <mat-card-content class="card-content">
+      @if (!showDescription) {
+        <button
+          mat-stroked-button
+          color="primary"
+          class="reveal-btn"
+          (click)="reveal()"
+        >
+          <mat-icon>visibility</mat-icon>
+          Reveal Description
+        </button>
+      } @else {
+        <div class="description-block" @fadeIn>
+          <p class="description-label">Definition</p>
+          <p class="description-text">{{ word().description }}</p>
+
+          @if (word().example) {
+            <p class="example-label">Example</p>
+            <p class="example-text">"{{ word().example }}"</p>
+          }
+        </div>
+      }
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+
+    <!-- Action buttons -->
+    <mat-card-actions class="card-actions">
+      <button
+        mat-stroked-button
+        class="btn-skip"
+        (click)="onSkip()"
+        title="Skip this word for now"
+      >
+        <mat-icon>skip_next</mat-icon>
+        Skip
+      </button>
+
+      <button
+        mat-flat-button
+        color="accent"
+        class="btn-learnt"
+        (click)="onLearnt()"
+        title="Mark as already learnt"
+      >
+        <mat-icon>check_circle</mat-icon>
+        Already Learnt
+      </button>
+
+      <button
+        mat-flat-button
+        color="primary"
+        class="btn-next"
+        (click)="onNext()"
+        title="Show next random word"
+      >
+        Next
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_b02",
+  "title": "C# Basic — Paper 2",
+  "description": "C# concepts: strings, nullable types, type casting, operators, conditionals, structs, methods, ref/out, classes, and constructors.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_b02_q1",
+      "text": "What does `string.Format(\"{0} has {1} items\", \"Cart\", 5)` produce?",
+      "options": [
+        { "id": "a", "text": "{0} has {1} items" },
+        { "id": "b", "text": "Cart has 5 items" },
+        { "id": "c", "text": "Compilation error" },
+        { "id": "d", "text": "Cart has {1} items" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q2",
+      "text": "Which method removes leading and trailing whitespace from a string in C#?",
+      "options": [
+        { "id": "a", "text": "string.Strip()" },
+        { "id": "b", "text": "string.Remove()" },
+        { "id": "c", "text": "string.Trim()" },
+        { "id": "d", "text": "string.Clear()" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q3",
+      "text": "What is the result of `\"hello world\".Split(' ').Length`?",
+      "options": [
+        { "id": "a", "text": "1" },
+        { "id": "b", "text": "2" },
+        { "id": "c", "text": "11" },
+        { "id": "d", "text": "5" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q4",
+      "text": "What happens when you use `??=` (null-coalescing assignment) in C#?",
+      "options": [
+        { "id": "a", "text": "It throws an exception if the left side is null" },
+        { "id": "b", "text": "It assigns the right-hand value to the left-hand variable only if it is currently null" },
+        { "id": "c", "text": "It compares two nullable values" },
+        { "id": "d", "text": "It converts null to false" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q5",
+      "text": "What does `HasValue` property return for a nullable type `int? x = 5;`?",
+      "options": [
+        { "id": "a", "text": "5" },
+        { "id": "b", "text": "false" },
+        { "id": "c", "text": "null" },
+        { "id": "d", "text": "true" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_b02_q6",
+      "text": "What is the difference between `int? a = null; a.Value` and `a.GetValueOrDefault()`?",
+      "options": [
+        { "id": "a", "text": "Both return 0 when null" },
+        { "id": "b", "text": "`a.Value` throws InvalidOperationException when null; `GetValueOrDefault()` returns 0" },
+        { "id": "c", "text": "`a.Value` returns null; `GetValueOrDefault()` throws an exception" },
+        { "id": "d", "text": "They behave identically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q7",
+      "text": "Which Convert method converts a string \"42\" to an integer in C#?",
+      "options": [
+        { "id": "a", "text": "Convert.ToString(\"42\")" },
+        { "id": "b", "text": "Convert.ToInt32(\"42\")" },
+        { "id": "c", "text": "Convert.ToDouble(\"42\")" },
+        { "id": "d", "text": "Convert.ToChar(\"42\")" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q8",
+      "text": "What is the result of an implicit conversion from `int` to `double` in C#?",
+      "options": [
+        { "id": "a", "text": "Data is lost due to truncation" },
+        { "id": "b", "text": "A compile-time error occurs" },
+        { "id": "c", "text": "The conversion is safe; no data loss occurs" },
+        { "id": "d", "text": "A runtime InvalidCastException is thrown" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q9",
+      "text": "What does `int.Parse(\"3.14\")` do in C#?",
+      "options": [
+        { "id": "a", "text": "Returns 3" },
+        { "id": "b", "text": "Returns 3.14 as int" },
+        { "id": "c", "text": "Throws FormatException" },
+        { "id": "d", "text": "Returns 4 (rounds up)" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q10",
+      "text": "What is the result of `5 << 2` (left shift by 2) in C#?",
+      "options": [
+        { "id": "a", "text": "10" },
+        { "id": "b", "text": "20" },
+        { "id": "c", "text": "25" },
+        { "id": "d", "text": "7" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q11",
+      "text": "Which of the following correctly demonstrates short-circuit evaluation in C#?",
+      "options": [
+        { "id": "a", "text": "In `a & b`, b is always evaluated even if a is false" },
+        { "id": "b", "text": "In `a && b`, b is not evaluated if a is false" },
+        { "id": "c", "text": "In `a | b`, b is never evaluated" },
+        { "id": "d", "text": "In `a || b`, a and b are always evaluated" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q12",
+      "text": "What is the operator precedence outcome of `2 + 3 * 4` in C#?",
+      "options": [
+        { "id": "a", "text": "20" },
+        { "id": "b", "text": "24" },
+        { "id": "c", "text": "14" },
+        { "id": "d", "text": "10" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q13",
+      "text": "What is the output of the following code?\n`int x = 5;\nif (x > 3)\n    Console.WriteLine(\"A\");\nelse\n    Console.WriteLine(\"B\");`",
+      "options": [
+        { "id": "a", "text": "B" },
+        { "id": "b", "text": "A" },
+        { "id": "c", "text": "AB" },
+        { "id": "d", "text": "Nothing is printed" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q14",
+      "text": "In C#, which keyword is used in a `switch` statement to prevent fall-through to the next case?",
+      "options": [
+        { "id": "a", "text": "exit" },
+        { "id": "b", "text": "stop" },
+        { "id": "c", "text": "break" },
+        { "id": "d", "text": "end" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q15",
+      "text": "What does the `default` case in a `switch` statement do?",
+      "options": [
+        { "id": "a", "text": "It is required and must appear first" },
+        { "id": "b", "text": "It executes when no other case matches" },
+        { "id": "c", "text": "It resets the switch variable to its default value" },
+        { "id": "d", "text": "It throws an exception if reached" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q16",
+      "text": "Which statement about C# structs and classes is correct?",
+      "options": [
+        { "id": "a", "text": "Classes are value types; structs are reference types" },
+        { "id": "b", "text": "Structs are value types; classes are reference types" },
+        { "id": "c", "text": "Both structs and classes are reference types" },
+        { "id": "d", "text": "Both structs and classes are value types" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q17",
+      "text": "What is one scenario where using a struct is preferred over a class in C#?",
+      "options": [
+        { "id": "a", "text": "When the type requires inheritance" },
+        { "id": "b", "text": "When the type is large and complex with many methods" },
+        { "id": "c", "text": "When the type is small, immutable, and frequently created (e.g., Point, Color)" },
+        { "id": "d", "text": "When you need polymorphism via virtual methods" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q18",
+      "text": "How do you call a method with an optional parameter `void Print(string msg, bool upper = false)` using only the first argument?",
+      "options": [
+        { "id": "a", "text": "Print(\"hello\", null);" },
+        { "id": "b", "text": "Print(\"hello\");" },
+        { "id": "c", "text": "Print(\"hello\", undefined);" },
+        { "id": "d", "text": "Print(\"hello\", optional: true);" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q19",
+      "text": "What is the method signature rule for overloading in C#?",
+      "options": [
+        { "id": "a", "text": "Methods must differ only in return type" },
+        { "id": "b", "text": "Methods must differ in name" },
+        { "id": "c", "text": "Methods must differ in the number or types of parameters" },
+        { "id": "d", "text": "Methods must differ in access modifier" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q20",
+      "text": "What does `params int[] numbers` allow in a C# method?",
+      "options": [
+        { "id": "a", "text": "Only exactly one integer to be passed" },
+        { "id": "b", "text": "Zero or more integers to be passed as individual arguments" },
+        { "id": "c", "text": "Only arrays to be passed" },
+        { "id": "d", "text": "Only named arguments to be passed" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q21",
+      "text": "Which code correctly uses `out` to return two values from a method?",
+      "options": [
+        { "id": "a", "text": "void GetValues(out int a, out int b) { a = 1; b = 2; }" },
+        { "id": "b", "text": "void GetValues(ref int a, ref int b) { }" },
+        { "id": "c", "text": "int GetValues(out int a) { return a; }" },
+        { "id": "d", "text": "void GetValues(in int a, in int b) { a = 1; b = 2; }" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b02_q22",
+      "text": "If a method has `ref int x` parameter and you call it with `Method(ref myVar)`, what must be true of `myVar`?",
+      "options": [
+        { "id": "a", "text": "myVar must be a field, not a local variable" },
+        { "id": "b", "text": "myVar must be initialized before the call" },
+        { "id": "c", "text": "myVar must be declared as static" },
+        { "id": "d", "text": "myVar can be null" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q23",
+      "text": "Can the `in` parameter modifier be used to prevent accidental modification of large structs passed to a method?",
+      "options": [
+        { "id": "a", "text": "No, in is only for collections" },
+        { "id": "b", "text": "No, in only applies to reference types" },
+        { "id": "c", "text": "Yes, in passes the value by reference but makes it read-only inside the method" },
+        { "id": "d", "text": "Yes, but it copies the struct on every read access" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q24",
+      "text": "What is a constructor in C#?",
+      "options": [
+        { "id": "a", "text": "A static method that returns a new instance" },
+        { "id": "b", "text": "A special method automatically called when an object is created to initialize it" },
+        { "id": "c", "text": "A method used to destroy an object" },
+        { "id": "d", "text": "An interface that all classes must implement" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q25",
+      "text": "What is constructor chaining using `:this()` in C#?",
+      "options": [
+        { "id": "a", "text": "Calling the base class constructor from a derived class" },
+        { "id": "b", "text": "One constructor calling another constructor in the same class" },
+        { "id": "c", "text": "A static constructor calling an instance constructor" },
+        { "id": "d", "text": "Calling a constructor via reflection" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q26",
+      "text": "When is a static constructor called in C#?",
+      "options": [
+        { "id": "a", "text": "Every time a new instance is created" },
+        { "id": "b", "text": "Only when explicitly called in the code" },
+        { "id": "c", "text": "Once, automatically before the first use of the class" },
+        { "id": "d", "text": "At the start of the application, for all classes" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q27",
+      "text": "Which of the following is true about a class with no explicitly defined constructor in C#?",
+      "options": [
+        { "id": "a", "text": "The code will not compile" },
+        { "id": "b", "text": "A default parameterless constructor is provided by the compiler" },
+        { "id": "c", "text": "Objects cannot be created from that class" },
+        { "id": "d", "text": "All fields are initialized to non-default values" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q28",
+      "text": "What is the correct way to instantiate an object and set properties using object initializer syntax in C#?",
+      "options": [
+        { "id": "a", "text": "var obj = new MyClass(prop1 = val1, prop2 = val2);" },
+        { "id": "b", "text": "var obj = new MyClass { Prop1 = val1, Prop2 = val2 };" },
+        { "id": "c", "text": "var obj = MyClass.New { Prop1 = val1 };" },
+        { "id": "d", "text": "var obj = create MyClass with { Prop1 = val1 };" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b02_q29",
+      "text": "In C#, what happens to a field in a class that is not explicitly initialized?",
+      "options": [
+        { "id": "a", "text": "It causes a compile error" },
+        { "id": "b", "text": "It contains random memory garbage" },
+        { "id": "c", "text": "It is automatically set to its type's default value (0, false, null, etc.)" },
+        { "id": "d", "text": "It must be initialized in the constructor or the class won't compile" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b02_q30",
+      "text": "Which keyword is used to refer to the current instance of a class within its own methods?",
+      "options": [
+        { "id": "a", "text": "base" },
+        { "id": "b", "text": "self" },
+        { "id": "c", "text": "me" },
+        { "id": "d", "text": "this" }
+      ],
+      "correctOptionId": "d"
+    }
+  ]
+}

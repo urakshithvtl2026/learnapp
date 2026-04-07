@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a07",
+  "title": "C# Advanced — Paper 7",
+  "description": "Advanced C# covering Events & Event Patterns, Async/Await & Task Basics, Task Parallel Library, Async Patterns & CancellationToken, Generics, Expression Trees, Dynamic Types, Advanced Pattern Matching, Records/Tuples/Deconstruction, and Advanced Exception Handling.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a07_q1",
+      "text": "What is a generic constraint 'where T : IDisposable' used for?",
+      "options": [
+        { "id": "a", "text": "It forces T to be a value type that can be freed." },
+        { "id": "b", "text": "It ensures the generic type parameter T implements IDisposable, allowing the generic method/class to call Dispose() on instances of T safely." },
+        { "id": "c", "text": "It restricts T to sealed classes only." },
+        { "id": "d", "text": "It makes T a nullable reference type." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q2",
+      "text": "What is the difference between async Task and async Task<T> return types?",
+      "options": [
+        { "id": "a", "text": "async Task<T> cannot be awaited; async Task can." },
+        { "id": "b", "text": "async Task represents an async operation with no result; async Task<T> represents one that produces a result of type T when awaited." },
+        { "id": "c", "text": "async Task<T> always runs on a background thread; async Task does not." },
+        { "id": "d", "text": "They are identical and interchangeable." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q3",
+      "text": "What is the purpose of a ConcurrentBag<T> in parallel code?",
+      "options": [
+        { "id": "a", "text": "It provides ordered concurrent access like a queue." },
+        { "id": "b", "text": "It is a thread-safe, unordered collection optimized for scenarios where the same thread both produces and consumes items (bag semantics), avoiding lock contention in parallel loops." },
+        { "id": "c", "text": "It is a thread-safe sorted set." },
+        { "id": "d", "text": "ConcurrentBag<T> guarantees FIFO order." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q4",
+      "text": "What does 'await using' do in C# 8+?",
+      "options": [
+        { "id": "a", "text": "It disposes the resource on a background thread." },
+        { "id": "b", "text": "It asynchronously disposes a resource that implements IAsyncDisposable by calling DisposeAsync() and awaiting it, preventing blocking during async cleanup." },
+        { "id": "c", "text": "It is syntactic sugar for await + using that only works with streams." },
+        { "id": "d", "text": "It combines await and a using statement for Task objects." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q5",
+      "text": "What does the ExpressionVisitor.Visit() method do when you do not override a specific Visit method?",
+      "options": [
+        { "id": "a", "text": "It throws NotSupportedException for unhandled node types." },
+        { "id": "b", "text": "It returns the node unchanged, effectively acting as an identity transformation for node types you have not overridden." },
+        { "id": "c", "text": "It removes the unhandled node from the tree." },
+        { "id": "d", "text": "It calls Compile() on the unhandled node." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q6",
+      "text": "What is the difference between dynamic and var in C#?",
+      "options": [
+        { "id": "a", "text": "Both defer type checking to runtime." },
+        { "id": "b", "text": "var is an implicitly-typed local variable resolved at compile time (still statically typed); dynamic defers all type checking to runtime via the DLR." },
+        { "id": "c", "text": "var allows runtime member resolution; dynamic does not." },
+        { "id": "d", "text": "They behave identically for reference types." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q7",
+      "text": "How does the 'switch expression' with pattern matching handle the default/discard case?",
+      "options": [
+        { "id": "a", "text": "The 'default' keyword is used in switch expressions." },
+        { "id": "b", "text": "The discard pattern '_' acts as the catch-all arm in a switch expression, matching anything not handled by earlier arms." },
+        { "id": "c", "text": "Switch expressions do not support a default case." },
+        { "id": "d", "text": "Use 'else' as the catch-all arm in a switch expression." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q8",
+      "text": "What is a primary constructor in C# records and how does it relate to init-only properties?",
+      "options": [
+        { "id": "a", "text": "A primary constructor is a regular constructor that runs initialization logic." },
+        { "id": "b", "text": "In records, the primary constructor parameters become init-only auto-implemented properties: 'record Person(string Name, int Age)' generates public string Name { get; init; } and public int Age { get; init; }." },
+        { "id": "c", "text": "Primary constructors create mutable properties by default." },
+        { "id": "d", "text": "Primary constructors require explicit property declarations." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q9",
+      "text": "What does AggregateException.Flatten() do?",
+      "options": [
+        { "id": "a", "text": "It converts an AggregateException into a single inner exception." },
+        { "id": "b", "text": "It returns a new AggregateException with all nested AggregateExceptions recursively unwrapped into a single flat list of inner exceptions." },
+        { "id": "c", "text": "It removes duplicate exceptions from the InnerExceptions list." },
+        { "id": "d", "text": "It serializes the AggregateException to a flat string." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q10",
+      "text": "What is a weak event pattern and which class helps implement it in .NET?",
+      "options": [
+        { "id": "a", "text": "The weak event pattern uses Interlocked to manage subscriptions." },
+        { "id": "b", "text": "The weak event pattern holds only a WeakReference to subscribers so the publisher does not prevent GC; in .NET, WeakEventManager (WPF) or manual WeakReference<T> can implement this." },
+        { "id": "c", "text": "A weak event pattern stores event handlers in a HashSet." },
+        { "id": "d", "text": "WeakEvent is a built-in C# keyword for managing subscriptions." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q11",
+      "text": "What does Task.Run(async () => ...) return and how is it different from Task.Run(() => ...)?",
+      "options": [
+        { "id": "a", "text": "Both return Task<T> of the same type." },
+        { "id": "b", "text": "Task.Run(async () => ...) returns Task<Task> if you pass an async lambda returning Task; you must await it twice or use Task.Run(Func<Task>) which correctly unwraps to a single Task." },
+        { "id": "c", "text": "They behave identically because Task.Run automatically unwraps." },
+        { "id": "d", "text": "Task.Run(async () => ...) creates a dedicated thread." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q12",
+      "text": "What is the purpose of CancellationToken.Register()?",
+      "options": [
+        { "id": "a", "text": "It registers the token with the operating system scheduler." },
+        { "id": "b", "text": "It registers a callback to be invoked when cancellation is requested, enabling cleanup actions (like closing a socket) to run when the token is cancelled." },
+        { "id": "c", "text": "It adds the token to a global cancellation registry." },
+        { "id": "d", "text": "It links the token to a new CancellationTokenSource." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q13",
+      "text": "In C# generics, what is an open generic type vs a closed generic type?",
+      "options": [
+        { "id": "a", "text": "An open generic type is public; a closed generic type is internal." },
+        { "id": "b", "text": "An open generic type has unbound type parameters (e.g., List<>); a closed generic type has all parameters specified (e.g., List<int>) and can be instantiated." },
+        { "id": "c", "text": "Open generics can be instantiated; closed generics cannot." },
+        { "id": "d", "text": "Closed generics are generic interfaces; open generics are classes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q14",
+      "text": "What are Parallel.For's return value (ParallelLoopResult) LowestBreakIteration and IsCompleted properties?",
+      "options": [
+        { "id": "a", "text": "IsCompleted indicates individual task completion; LowestBreakIteration is always 0." },
+        { "id": "b", "text": "IsCompleted is true if all iterations completed normally; LowestBreakIteration holds the lowest index where Break() was called if the loop was stopped early via ParallelLoopState.Break()." },
+        { "id": "c", "text": "LowestBreakIteration is the total iteration count; IsCompleted is always true." },
+        { "id": "d", "text": "IsCompleted is always false when using ParallelLoopState." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q15",
+      "text": "How does record equality work when records have reference-type properties?",
+      "options": [
+        { "id": "a", "text": "Records use reference equality for all properties." },
+        { "id": "b", "text": "Record equality uses structural (value) equality: all properties are compared using their own Equals() methods. For reference-type properties, their Equals() is called, which may be reference equality unless overridden." },
+        { "id": "c", "text": "Records only compare value-type properties; reference-type properties are ignored." },
+        { "id": "d", "text": "Record equality requires implementing IEquatable<T> manually." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q16",
+      "text": "What is the difference between try/catch/finally and try/catch when using 'when' filters?",
+      "options": [
+        { "id": "a", "text": "Exception filters (when) cannot be used with finally blocks." },
+        { "id": "b", "text": "Exception filters (catch ... when (condition)) are evaluated before the stack unwinds, while catch without a filter unwinds the stack immediately; finally runs regardless of whether a catch is matched." },
+        { "id": "c", "text": "Exception filters replace finally blocks." },
+        { "id": "d", "text": "Try/catch/finally and try/catch with 'when' are identical." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q17",
+      "text": "How does dynamic interop with IronPython or other DLR languages work in C#?",
+      "options": [
+        { "id": "a", "text": "C# cannot call code from DLR-hosted languages." },
+        { "id": "b", "text": "The DLR provides a hosting API (ScriptEngine, ScriptScope); C# can use 'dynamic' to call methods on DLR objects, and the DLR handles dispatch between the host (C#) and the dynamic language at runtime." },
+        { "id": "c", "text": "DLR languages must be compiled to IL before C# can call them." },
+        { "id": "d", "text": "Only COM interop is supported via 'dynamic'; DLR languages require P/Invoke." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q18",
+      "text": "What is a slice pattern in C# 11+ list patterns?",
+      "options": [
+        { "id": "a", "text": "A slice pattern cuts a sequence at a specific index." },
+        { "id": "b", "text": "The '..' slice pattern within a list pattern matches zero or more elements in a sequence: '[first, .., last]' matches a sequence that starts with first and ends with last regardless of what is in between." },
+        { "id": "c", "text": "A slice pattern creates a memory slice of the matched sequence." },
+        { "id": "d", "text": "Slice patterns only work with Span<T> and Memory<T>." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q19",
+      "text": "What is async stream backpressure and how can it be managed with CancellationToken?",
+      "options": [
+        { "id": "a", "text": "Async streams do not support backpressure." },
+        { "id": "b", "text": "Backpressure occurs when the consumer cannot keep up with the producer in an async stream; passing a CancellationToken to the async iterator and checking it allows the consumer to stop production, and using await foreach with EnumeratorCancellation enables cooperative cancellation." },
+        { "id": "c", "text": "Backpressure in async streams is handled automatically by the runtime." },
+        { "id": "d", "text": "CancellationToken cannot be used inside async iterators." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q20",
+      "text": "What is the purpose of Expression.Block() in building expression trees?",
+      "options": [
+        { "id": "a", "text": "Expression.Block() groups expressions for parallel execution." },
+        { "id": "b", "text": "Expression.Block() creates a block expression that contains multiple sub-expressions executed sequentially, with the value of the block being the last expression's result." },
+        { "id": "c", "text": "Expression.Block() is used to wrap exception handling." },
+        { "id": "d", "text": "Expression.Block() creates a new variable scope." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q21",
+      "text": "What is the purpose of declaring a delegate type as 'delegate void MyHandler(object sender, EventArgs e)' rather than using a generic Func?",
+      "options": [
+        { "id": "a", "text": "Named delegate types cannot be used with += and -=." },
+        { "id": "b", "text": "A named delegate type provides clear semantic intent, appears in IntelliSense with a meaningful name, and follows the .NET event design guideline; Func<object,EventArgs,void> is not valid (void cannot be a type argument)." },
+        { "id": "c", "text": "Named delegates are faster than Func<> at runtime." },
+        { "id": "d", "text": "Named delegates are required for multicast; Func<> is not multicastable." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q22",
+      "text": "How do you deconstruct a record with additional non-primary-constructor properties in C# 9+?",
+      "options": [
+        { "id": "a", "text": "Only primary constructor properties can be deconstructed; extras are ignored." },
+        { "id": "b", "text": "The compiler generates Deconstruct() only for primary constructor parameters; you can add a custom Deconstruct() method overload to expose additional properties." },
+        { "id": "c", "text": "All record properties are automatically included in deconstruction." },
+        { "id": "d", "text": "Records do not support custom Deconstruct overloads." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q23",
+      "text": "What exception is thrown when you cancel an async operation via CancellationToken?",
+      "options": [
+        { "id": "a", "text": "CancellationException" },
+        { "id": "b", "text": "OperationCanceledException (or its subclass TaskCanceledException when a Task is cancelled)" },
+        { "id": "c", "text": "TimeoutException" },
+        { "id": "d", "text": "ThreadAbortException" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q24",
+      "text": "What is the unmanaged constraint in C# generics and what types satisfy it?",
+      "options": [
+        { "id": "a", "text": "It allows T to be any type including managed references." },
+        { "id": "b", "text": "The 'unmanaged' constraint restricts T to unmanaged types: value types that contain no managed references (e.g., int, double, structs composed entirely of unmanaged types), enabling unsafe pointer operations and stackalloc with T." },
+        { "id": "c", "text": "Unmanaged constraint restricts to types marked with [Unmanaged] attribute." },
+        { "id": "d", "text": "It is equivalent to the 'struct' constraint." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q25",
+      "text": "What does Parallel.ForEach's ParallelLoopState.Break() do?",
+      "options": [
+        { "id": "a", "text": "It immediately terminates the loop and all already-running iterations." },
+        { "id": "b", "text": "It signals that no new iterations should start after the current one, but already-started iterations continue; the loop finishes after all iterations with index below the break point complete." },
+        { "id": "c", "text": "It is equivalent to 'return' in a sequential foreach." },
+        { "id": "d", "text": "Break() causes the loop to throw a BreakException." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q26",
+      "text": "What is the 'when' guard in a switch expression arm used for?",
+      "options": [
+        { "id": "a", "text": "It defines an exception filter for errors inside the arm." },
+        { "id": "b", "text": "The 'when' guard adds a boolean condition to a switch arm; the arm is selected only if both the pattern matches and the guard condition is true: 'case SomeType x when x.Value > 0 => ...'." },
+        { "id": "c", "text": "It specifies when (time) the switch expression should execute." },
+        { "id": "d", "text": "The 'when' guard replaces the pattern in a switch arm." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q27",
+      "text": "How can ExceptionDispatchInfo be used to marshal exceptions across threads?",
+      "options": [
+        { "id": "a", "text": "ExceptionDispatchInfo serializes exceptions for cross-thread transfer." },
+        { "id": "b", "text": "Capture the exception with ExceptionDispatchInfo.Capture(ex) on the faulting thread; store the EDI; call edi.Throw() on the target thread to re-throw the exception with its original stack trace preserved." },
+        { "id": "c", "text": "ExceptionDispatchInfo automatically propagates exceptions between threads." },
+        { "id": "d", "text": "ExceptionDispatchInfo is only used for AggregateException unwrapping." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q28",
+      "text": "What happens if an async iterator method does not have any 'yield return' or 'yield break'?",
+      "options": [
+        { "id": "a", "text": "The compiler raises an error because IAsyncEnumerable<T> requires at least one yield." },
+        { "id": "b", "text": "The async iterator is valid; it returns an IAsyncEnumerable<T> that immediately completes with no elements when enumerated." },
+        { "id": "c", "text": "The method returns null instead of IAsyncEnumerable<T>." },
+        { "id": "d", "text": "The method runs indefinitely without completing." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q29",
+      "text": "What is the difference between an EventHandler and a custom delegate for events?",
+      "options": [
+        { "id": "a", "text": "EventHandler supports multicast; custom delegates do not." },
+        { "id": "b", "text": "EventHandler<TEventArgs> follows the standard (sender, args) pattern and integrates with .NET tooling; a custom delegate can have any signature but loses standardization and interoperability with frameworks expecting EventHandler." },
+        { "id": "c", "text": "Custom delegates cannot be used with the event keyword." },
+        { "id": "d", "text": "EventHandler cannot carry custom data; custom delegates can." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a07_q30",
+      "text": "What is an immutable record and what makes it 'immutable' in C#?",
+      "options": [
+        { "id": "a", "text": "A record is immutable if all its fields are private." },
+        { "id": "b", "text": "A record is considered immutable when its properties are declared with 'init' (or generated from primary constructor parameters), meaning they can only be set at construction time; the 'with' expression creates a new copy rather than mutating the original." },
+        { "id": "c", "text": "Records are always mutable because C# does not support true immutability." },
+        { "id": "d", "text": "A record becomes immutable only when sealed." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

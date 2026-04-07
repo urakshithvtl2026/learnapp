@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s10",
+  "title": "C# SOLID — Paper 10",
+  "description": "Covers DIP implementation, SRP concepts, SRP refactoring, OCP concepts, OCP refactoring, SOLID Real C# Scenarios, Dependency Injection Patterns, Strategy Pattern, Factory & Abstract Factory, and Decorator Pattern.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s10_q1",
+      "text": "ST20-19: A class `TaxCalculator` contains methods for calculating VAT, sales tax, customs duty, and excise tax — each calling different third-party APIs directly. Which refactoring restores SOLID compliance?",
+      "options": [
+        { "id": "a", "text": "Move all methods into one static method with a type parameter." },
+        { "id": "b", "text": "Extract ITaxCalculator per tax type; implement each as a separate class; inject APIs via DI — applying SRP, OCP, and DIP together." },
+        { "id": "c", "text": "Add more overloads to TaxCalculator." },
+        { "id": "d", "text": "Seal TaxCalculator to prevent further misuse." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q2",
+      "text": "ST11-14: In C#, 'decorator registration' in Microsoft.Extensions.DependencyInjection (e.g., using Scrutor's `.Decorate<IService, LoggingDecorator<IService>>()`) demonstrates which patterns together?",
+      "options": [
+        { "id": "a", "text": "Factory and Singleton" },
+        { "id": "b", "text": "Decorator pattern combined with DI — wrapping a registered service transparently without changing its registration type." },
+        { "id": "c", "text": "Strategy and Observer" },
+        { "id": "d", "text": "Composite and Proxy" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q3",
+      "text": "ST03-13: Applying OCP to a validation pipeline means:",
+      "options": [
+        { "id": "a", "text": "Writing all validation in a single large Validate() method." },
+        { "id": "b", "text": "Defining an IValidator<T> interface; adding new validators as new classes without modifying the pipeline that executes them." },
+        { "id": "c", "text": "Adding new validation rules by editing the base Validator class." },
+        { "id": "d", "text": "Using regex for all validation to avoid conditional branches." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q4",
+      "text": "ST13-13: Which of the following is a real-world .NET example of the Abstract Factory pattern?",
+      "options": [
+        { "id": "a", "text": "DbProviderFactories.GetFactory(string) — returns a provider-specific factory that creates connections, commands, and parameters for a specific database provider." },
+        { "id": "b", "text": "Console.WriteLine() — outputting text to the console." },
+        { "id": "c", "text": "Thread.Sleep() — pausing a thread." },
+        { "id": "d", "text": "String.Format() — formatting strings." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s10_q5",
+      "text": "ST01-13: Which of the following classes is most likely SRP-compliant?",
+      "options": [
+        { "id": "a", "text": "AppManager — manages application lifecycle, logging, configuration, and user sessions." },
+        { "id": "b", "text": "JwtTokenGenerator — responsible solely for creating and signing JWT tokens." },
+        { "id": "c", "text": "DataHelper — provides utility methods for database, file, and network operations." },
+        { "id": "d", "text": "SystemService — handles system-level tasks across all domains." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q6",
+      "text": "ST14-10: A `TransactionDecorator` wraps an `IRepository` and wraps every method call in a database transaction. This demonstrates the Decorator pattern because:",
+      "options": [
+        { "id": "a", "text": "TransactionDecorator inherits from the repository base class." },
+        { "id": "b", "text": "It adds cross-cutting transactional behavior by wrapping an IRepository without modifying the real repository class." },
+        { "id": "c", "text": "It uses reflection to intercept repository calls." },
+        { "id": "d", "text": "It replaces the repository interface with a transaction-aware interface." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q7",
+      "text": "ST04-13: Which of the following is an example of OCP applied at the architectural level?",
+      "options": [
+        { "id": "a", "text": "Editing the core domain library for each new business requirement." },
+        { "id": "b", "text": "Designing a plugin architecture where new features ship as separate assemblies that register themselves against defined extension points." },
+        { "id": "c", "text": "Deploying new features by hotfixing production binaries." },
+        { "id": "d", "text": "Using feature flags in the core assembly to enable/disable behavior." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q8",
+      "text": "ST20-20: A developer wrote: `public class OrderService : IOrderService, IEmailService, IReportService`. What SOLID issue does this raise?",
+      "options": [
+        { "id": "a", "text": "OCP — the class is closed for extension." },
+        { "id": "b", "text": "SRP — OrderService is implementing the contracts of three unrelated concerns, suggesting it has multiple responsibilities." },
+        { "id": "c", "text": "LSP — the class cannot be substituted correctly." },
+        { "id": "d", "text": "DIP — the class should not implement interfaces." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q9",
+      "text": "ST02-13: 'Vertical slice architecture' is a modern approach to SRP at the feature level. It means:",
+      "options": [
+        { "id": "a", "text": "Organising code by technical layer (controllers, services, repositories)." },
+        { "id": "b", "text": "Organising code by feature, with each feature containing all its own layers (handler, validator, query, command), giving each feature a single reason to change." },
+        { "id": "c", "text": "Splitting the database schema vertically by entity." },
+        { "id": "d", "text": "Keeping all feature code in a single file per feature." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q10",
+      "text": "ST10-12: In ASP.NET Core, which built-in DI extension method chains multiple registrations of the same interface, allowing all implementations to be resolved as IEnumerable<T>?",
+      "options": [
+        { "id": "a", "text": "services.AddMultiple<T>()" },
+        { "id": "b", "text": "Calling services.AddTransient<IService, Impl1>() and services.AddTransient<IService, Impl2>() — resolving IEnumerable<IService> returns both." },
+        { "id": "c", "text": "services.AddCollection<T>()" },
+        { "id": "d", "text": "services.AddAll<T>()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q11",
+      "text": "ST12-13: A `CompressionContext` supports different compression algorithms. Which of the following shows the correct usage pattern in C#?",
+      "options": [
+        { "id": "a", "text": "context.Algorithm = \"gzip\"; context.Compress(data);" },
+        { "id": "b", "text": "context.SetStrategy(new GzipStrategy()); context.ExecuteCompression(data);" },
+        { "id": "c", "text": "new GzipContext(data).Compress();" },
+        { "id": "d", "text": "CompressionContext.Gzip.Compress(data);" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q12",
+      "text": "ST03-14: Which aspect of SOLID does the concept of 'programming to an interface, not an implementation' most directly support?",
+      "options": [
+        { "id": "a", "text": "SRP — each interface has one responsibility." },
+        { "id": "b", "text": "Both OCP and DIP — depending on an abstraction (interface) allows behavior to be extended and substituted without modifying calling code." },
+        { "id": "c", "text": "LSP — interfaces guarantee substitutability." },
+        { "id": "d", "text": "ISP — all interfaces must be small." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q13",
+      "text": "ST14-11: In ASP.NET Core, middleware is registered as `app.Use(next => async ctx => { ... await next(ctx); ... })`. This is structurally equivalent to which pattern?",
+      "options": [
+        { "id": "a", "text": "Observer — each middleware subscribes to requests." },
+        { "id": "b", "text": "Decorator / Chain of Responsibility — each middleware wraps the next, adding behavior before and after calling it." },
+        { "id": "c", "text": "Strategy — each middleware selects a different algorithm." },
+        { "id": "d", "text": "Factory — each middleware creates a new request context." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q14",
+      "text": "ST01-14: Consider a `UserAccount` class with fields: Username, PasswordHash, Email, ProfilePicture, LastLoginDate, Address, PhoneNumber — and methods for authentication, profile editing, notification preferences, and billing. From an SRP perspective:",
+      "options": [
+        { "id": "a", "text": "This is acceptable — it is one entity." },
+        { "id": "b", "text": "This class aggregates multiple concerns (identity, profile, billing, notifications) and should be decomposed into focused classes." },
+        { "id": "c", "text": "Adding more fields would improve cohesion." },
+        { "id": "d", "text": "The class is SRP compliant as long as it maps to one database table." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q15",
+      "text": "ST11-15: The `IServiceCollection` in ASP.NET Core can be extended with custom extension methods (e.g., `services.AddMyFeature()`). This is an example of which principle?",
+      "options": [
+        { "id": "a", "text": "LSP — services are substitutable." },
+        { "id": "b", "text": "OCP — IServiceCollection is extended without modification by adding new extension methods." },
+        { "id": "c", "text": "ISP — the service collection is kept small." },
+        { "id": "d", "text": "DIP — the extension method depends on an abstraction." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q16",
+      "text": "ST04-14: A developer applied OCP to a pricing engine using a list of `IPricingRule` objects. New business rules are added by implementing IPricingRule. What happens to the existing PricingEngine class?",
+      "options": [
+        { "id": "a", "text": "It must be modified to include the new rule." },
+        { "id": "b", "text": "It remains unchanged — the new IPricingRule implementation is registered and the engine executes it without modification." },
+        { "id": "c", "text": "It must be recompiled to pick up the new rule." },
+        { "id": "d", "text": "It is replaced by a new PricingEngine version." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q17",
+      "text": "ST13-14: In the .NET ecosystem, `ILoggerFactory` and `ILogger<T>` represent which pattern?",
+      "options": [
+        { "id": "a", "text": "Abstract Factory — ILoggerFactory creates ILogger<T> instances configured for specific categories." },
+        { "id": "b", "text": "Singleton — only one ILogger<T> exists per type." },
+        { "id": "c", "text": "Observer — ILogger<T> subscribes to log events." },
+        { "id": "d", "text": "Strategy — different log levels select different algorithms." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s10_q18",
+      "text": "ST20-21: Given: `public class Validator { public bool IsValid(object obj) { if (obj is Customer c) return ValidateCustomer(c); if (obj is Order o) return ValidateOrder(o); return false; } }` — what is the primary SOLID issue?",
+      "options": [
+        { "id": "a", "text": "DIP — Validator depends on concrete types." },
+        { "id": "b", "text": "OCP — every new type requires editing Validator; fix by using a generic IValidator<T> or a dictionary of validators." },
+        { "id": "c", "text": "ISP — Validator has too many methods." },
+        { "id": "d", "text": "LSP — Customer and Order break substitution." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q19",
+      "text": "ST10-13: In Microsoft.Extensions.DependencyInjection, `ValidateOnBuild()` (available in .NET 6+) does what?",
+      "options": [
+        { "id": "a", "text": "Runs all unit tests at application startup." },
+        { "id": "b", "text": "Validates that all registered services can be resolved (detects missing registrations and captive dependencies) at build time, preventing runtime DI failures." },
+        { "id": "c", "text": "Validates that services implement their declared interfaces." },
+        { "id": "d", "text": "Ensures all services are singleton." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q20",
+      "text": "ST02-14: A developer has a `ReportService` with 10 public methods. Five relate to data fetching, three to formatting, and two to delivery. The SRP refactoring produces:",
+      "options": [
+        { "id": "a", "text": "One class with 10 private methods grouped by region." },
+        { "id": "b", "text": "Three classes: ReportDataService, ReportFormatter, and ReportDeliveryService — each with a single focused responsibility." },
+        { "id": "c", "text": "Ten classes — one per method." },
+        { "id": "d", "text": "Two classes splitting data-fetching from everything else." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q21",
+      "text": "ST03-15: Which of the following correctly describes the relationship between OCP and the Template Method pattern?",
+      "options": [
+        { "id": "a", "text": "Template Method violates OCP by requiring modification of the base class for each new variant." },
+        { "id": "b", "text": "Template Method supports OCP by defining a stable algorithm skeleton (closed for modification) with override points (open for extension via subclasses)." },
+        { "id": "c", "text": "Template Method is only used with abstract classes and has no relation to OCP." },
+        { "id": "d", "text": "OCP and Template Method are in direct conflict." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q22",
+      "text": "ST14-12: When using the Decorator pattern to add retry logic to an `IHttpService`, the `RetryHttpService` decorator should:",
+      "options": [
+        { "id": "a", "text": "Inherit from the concrete HttpService implementation." },
+        { "id": "b", "text": "Implement IHttpService and hold a reference to another IHttpService; on failure, retry by calling the inner service again." },
+        { "id": "c", "text": "Replace IHttpService entirely with a RetryHttpService interface." },
+        { "id": "d", "text": "Use static methods to retry calls to the real HttpService." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q23",
+      "text": "ST12-14: A C# `IBillingStrategy` has `decimal Calculate(Order order)`. Two implementations exist: `FlatRateBilling` and `PerUsageBilling`. New requirement: add `SubscriptionBilling`. What is needed?",
+      "options": [
+        { "id": "a", "text": "Modify IBillingStrategy to add a SubscriptionCalculate method." },
+        { "id": "b", "text": "Add a `SubscriptionBilling : IBillingStrategy` class implementing `Calculate(Order order)` — no existing code changes needed." },
+        { "id": "c", "text": "Add a case to a switch statement in the billing engine." },
+        { "id": "d", "text": "Modify FlatRateBilling to handle subscription logic." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q24",
+      "text": "ST01-15: When applying SRP, the 'actor' concept (from Clean Architecture) maps to a 'reason to change' because:",
+      "options": [
+        { "id": "a", "text": "Actors write the code and introduce bugs." },
+        { "id": "b", "text": "Different business actors (e.g., Finance vs. HR) drive different change requests; if a class serves multiple actors, it has multiple reasons to change." },
+        { "id": "c", "text": "Actors are only relevant in theatre, not software." },
+        { "id": "d", "text": "Actors represent classes in UML diagrams." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q25",
+      "text": "ST11-16: Which of the following describes 'ambient context' as an alternative dependency access pattern, and why it is discouraged?",
+      "options": [
+        { "id": "a", "text": "Ambient context uses static properties/thread-local state to provide dependencies; it is discouraged because it hides dependencies, makes testing harder, and breaks explicit DIP contracts." },
+        { "id": "b", "text": "Ambient context is a recommended pattern for sharing state across services." },
+        { "id": "c", "text": "Ambient context is used only in ASP.NET Core and is fully supported." },
+        { "id": "d", "text": "Ambient context is equivalent to constructor injection." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s10_q26",
+      "text": "ST13-15: A test project uses a `MockRepositoryFactory` to create `InMemoryRepository<T>` objects for each entity type. This is applying which pattern?",
+      "options": [
+        { "id": "a", "text": "Singleton — reusing the same repository." },
+        { "id": "b", "text": "Abstract Factory — the factory creates a family of related test doubles (repositories) for use together in integration tests." },
+        { "id": "c", "text": "Builder — constructing repositories step by step." },
+        { "id": "d", "text": "Prototype — cloning existing repository instances." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q27",
+      "text": "ST04-15: In C# source generators, a generator produces additional code at compile time without modifying existing source files. This is an example of OCP because:",
+      "options": [
+        { "id": "a", "text": "Source generators modify existing classes at runtime." },
+        { "id": "b", "text": "New behavior is added (generated) without editing the original source files, which remain closed for modification." },
+        { "id": "c", "text": "Source generators are a form of inheritance." },
+        { "id": "d", "text": "Source generators violate OCP by adding code automatically." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q28",
+      "text": "ST20-22: A method `ProcessRequest(HttpRequest req)` has 200 lines and handles authentication, routing, business logic, and response serialization. Which principles are violated?",
+      "options": [
+        { "id": "a", "text": "Only OCP — it cannot be extended." },
+        { "id": "b", "text": "SRP (multiple responsibilities), OCP (cannot add behavior without modification), and DIP (likely depends on concretions)." },
+        { "id": "c", "text": "Only ISP — the method signature accepts too broad a type." },
+        { "id": "d", "text": "Only LSP — the method breaks substitution." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q29",
+      "text": "ST02-15: In Hexagonal Architecture (Ports and Adapters), 'ports' represent which SRP/DIP concept?",
+      "options": [
+        { "id": "a", "text": "Concrete implementations of external services." },
+        { "id": "b", "text": "Interface abstractions (driven by or driving the domain) that define single-responsibility contracts, allowing adapters (implementations) to be swapped without changing the domain." },
+        { "id": "c", "text": "Network ports for inter-service communication." },
+        { "id": "d", "text": "Database connection pools." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s10_q30",
+      "text": "ST10-14: Which of the following is a sign of a well-configured DI container in a production ASP.NET Core application?",
+      "options": [
+        { "id": "a", "text": "All services registered as singletons for maximum performance." },
+        { "id": "b", "text": "Each service registered with the appropriate lifetime (transient/scoped/singleton), validated at startup, with no captive dependencies." },
+        { "id": "c", "text": "No interfaces used — only concrete types registered." },
+        { "id": "d", "text": "The Service Locator pattern used throughout the application." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

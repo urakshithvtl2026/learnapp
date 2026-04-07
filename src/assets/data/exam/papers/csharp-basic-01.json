@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_b01",
+  "title": "C# Basic — Paper 1",
+  "description": "Foundational C# concepts: variables, strings, nullable types, type casting, operators, enums, structs, methods, ref/out, and classes.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_b01_q1",
+      "text": "Which keyword is used to declare a constant in C# whose value cannot be changed at runtime?",
+      "options": [
+        { "id": "a", "text": "readonly" },
+        { "id": "b", "text": "static" },
+        { "id": "c", "text": "const" },
+        { "id": "d", "text": "fixed" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b01_q2",
+      "text": "What is the default value of an uninitialized `bool` field in a C# class?",
+      "options": [
+        { "id": "a", "text": "true" },
+        { "id": "b", "text": "false" },
+        { "id": "c", "text": "null" },
+        { "id": "d", "text": "0" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q3",
+      "text": "Which C# data type is best suited for storing monetary values to avoid floating-point rounding errors?",
+      "options": [
+        { "id": "a", "text": "float" },
+        { "id": "b", "text": "double" },
+        { "id": "c", "text": "decimal" },
+        { "id": "d", "text": "long" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b01_q4",
+      "text": "What does the following C# code output?\n`string name = \"World\";\nConsole.WriteLine($\"Hello, {name}!\");`",
+      "options": [
+        { "id": "a", "text": "Hello, {name}!" },
+        { "id": "b", "text": "Hello, World!" },
+        { "id": "c", "text": "$\"Hello, World!\"" },
+        { "id": "d", "text": "Compilation error" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q5",
+      "text": "Which method extracts a portion of a string starting at a given index with a specified length?",
+      "options": [
+        { "id": "a", "text": "string.Split()" },
+        { "id": "b", "text": "string.Trim()" },
+        { "id": "c", "text": "string.Substring()" },
+        { "id": "d", "text": "string.Replace()" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b01_q6",
+      "text": "What is the result of `string.Compare(\"abc\", \"ABC\", StringComparison.OrdinalIgnoreCase)`?",
+      "options": [
+        { "id": "a", "text": "1" },
+        { "id": "b", "text": "-1" },
+        { "id": "c", "text": "0" },
+        { "id": "d", "text": "true" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b01_q7",
+      "text": "What does `int? x = null;` declare in C#?",
+      "options": [
+        { "id": "a", "text": "A regular integer set to zero" },
+        { "id": "b", "text": "A nullable integer that can hold null" },
+        { "id": "c", "text": "An optional reference type integer" },
+        { "id": "d", "text": "A compile-time error" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q8",
+      "text": "What is the result of `int? a = null; int b = a ?? 10;`?",
+      "options": [
+        { "id": "a", "text": "b is null" },
+        { "id": "b", "text": "b is 0" },
+        { "id": "c", "text": "b is 10" },
+        { "id": "d", "text": "Compilation error" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b01_q9",
+      "text": "Given `string? s = null;`, what does `int len = s?.Length ?? -1;` evaluate to?",
+      "options": [
+        { "id": "a", "text": "0" },
+        { "id": "b", "text": "null" },
+        { "id": "c", "text": "Throws NullReferenceException" },
+        { "id": "d", "text": "-1" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_b01_q10",
+      "text": "Which of the following correctly performs an explicit cast from `double` to `int` in C#?",
+      "options": [
+        { "id": "a", "text": "int x = 3.7;" },
+        { "id": "b", "text": "int x = (int)3.7;" },
+        { "id": "c", "text": "int x = Convert.ToDouble(3.7);" },
+        { "id": "d", "text": "int x = int.Parse(3.7);" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q11",
+      "text": "What does `int.TryParse(\"abc\", out int result)` return?",
+      "options": [
+        { "id": "a", "text": "Throws FormatException" },
+        { "id": "b", "text": "true, with result set to 0" },
+        { "id": "c", "text": "false, with result set to 0" },
+        { "id": "d", "text": "false, with result set to -1" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b01_q12",
+      "text": "What is boxing in C#?",
+      "options": [
+        { "id": "a", "text": "Converting a reference type to a value type" },
+        { "id": "b", "text": "Converting a value type to an object reference type" },
+        { "id": "c", "text": "Wrapping a class inside another class" },
+        { "id": "d", "text": "Converting a string to a numeric type" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q13",
+      "text": "What is the result of `10 % 3` in C#?",
+      "options": [
+        { "id": "a", "text": "3" },
+        { "id": "b", "text": "1" },
+        { "id": "c", "text": "0" },
+        { "id": "d", "text": "3.33" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q14",
+      "text": "Which operator is the ternary conditional operator in C#?",
+      "options": [
+        { "id": "a", "text": "??" },
+        { "id": "b", "text": "?:" },
+        { "id": "c", "text": "&&" },
+        { "id": "d", "text": "=>" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q15",
+      "text": "What is the result of `true && false || true` in C#?",
+      "options": [
+        { "id": "a", "text": "false" },
+        { "id": "b", "text": "true" },
+        { "id": "c", "text": "Compilation error" },
+        { "id": "d", "text": "null" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q16",
+      "text": "How do you declare an enum named `Direction` with values North, South, East, West in C#?",
+      "options": [
+        { "id": "a", "text": "enum Direction { North, South, East, West }" },
+        { "id": "b", "text": "struct Direction { North, South, East, West }" },
+        { "id": "c", "text": "class Direction : Enum { North, South, East, West }" },
+        { "id": "d", "text": "define Direction = { North, South, East, West }" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b01_q17",
+      "text": "By default, what is the underlying type of a C# enum?",
+      "options": [
+        { "id": "a", "text": "short" },
+        { "id": "b", "text": "long" },
+        { "id": "c", "text": "int" },
+        { "id": "d", "text": "byte" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b01_q18",
+      "text": "What attribute allows a C# enum to be used as a bit flag, enabling bitwise combinations?",
+      "options": [
+        { "id": "a", "text": "[Serializable]" },
+        { "id": "b", "text": "[Flags]" },
+        { "id": "c", "text": "[BitField]" },
+        { "id": "d", "text": "[Combinable]" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q19",
+      "text": "In C#, a `struct` is a value type. What does this mean regarding assignment?",
+      "options": [
+        { "id": "a", "text": "Both variables point to the same memory location after assignment" },
+        { "id": "b", "text": "A copy of the struct is made when assigned to another variable" },
+        { "id": "c", "text": "Structs cannot be assigned to variables" },
+        { "id": "d", "text": "Structs are always allocated on the heap" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q20",
+      "text": "Which statement is TRUE about structs vs classes in C#?",
+      "options": [
+        { "id": "a", "text": "Structs support inheritance from other structs" },
+        { "id": "b", "text": "Structs can have parameterless constructors in C# 10+" },
+        { "id": "c", "text": "Structs are always slower than classes" },
+        { "id": "d", "text": "Structs cannot implement interfaces" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q21",
+      "text": "What is the purpose of the `params` keyword in a C# method signature?",
+      "options": [
+        { "id": "a", "text": "It marks a parameter as required" },
+        { "id": "b", "text": "It allows the method to accept a variable number of arguments" },
+        { "id": "c", "text": "It passes a parameter by reference" },
+        { "id": "d", "text": "It makes a parameter optional with a default value" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q22",
+      "text": "Which of the following demonstrates method overloading in C#?",
+      "options": [
+        { "id": "a", "text": "Two methods with the same name and same parameter types in the same class" },
+        { "id": "b", "text": "Two methods with the same name but different parameter types in the same class" },
+        { "id": "c", "text": "A method in a derived class with the same name as in the base class" },
+        { "id": "d", "text": "Two methods with different names but the same body" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q23",
+      "text": "What is the output of calling `Greet(greeting: \"Hi\", name: \"Alice\")` if the method signature is `void Greet(string name, string greeting)`?",
+      "options": [
+        { "id": "a", "text": "Compilation error — named arguments must match order" },
+        { "id": "b", "text": "The call is valid; named arguments can be in any order" },
+        { "id": "c", "text": "Runtime exception" },
+        { "id": "d", "text": "The compiler ignores argument names" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q24",
+      "text": "What is the key difference between `ref` and `out` parameters in C#?",
+      "options": [
+        { "id": "a", "text": "ref requires the variable to be initialized before the call; out does not" },
+        { "id": "b", "text": "out requires the variable to be initialized before the call; ref does not" },
+        { "id": "c", "text": "ref and out are identical in behavior" },
+        { "id": "d", "text": "ref is only for value types; out is only for reference types" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b01_q25",
+      "text": "What does the `out` keyword guarantee about a parameter inside the called method?",
+      "options": [
+        { "id": "a", "text": "It must be read before being written" },
+        { "id": "b", "text": "It must be assigned a value before the method returns" },
+        { "id": "c", "text": "It is passed as a copy" },
+        { "id": "d", "text": "It cannot be null" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q26",
+      "text": "When should you use the `in` parameter modifier in C#?",
+      "options": [
+        { "id": "a", "text": "When you want the method to modify the original variable" },
+        { "id": "b", "text": "When you want to pass a value type by reference but prevent modification" },
+        { "id": "c", "text": "When returning multiple values from a method" },
+        { "id": "d", "text": "When using iterator methods with yield" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q27",
+      "text": "What does the `new` keyword do when used with a class in C#?",
+      "options": [
+        { "id": "a", "text": "It declares a new variable type" },
+        { "id": "b", "text": "It allocates memory and calls the constructor to create an object instance" },
+        { "id": "c", "text": "It creates a value-type copy of an existing object" },
+        { "id": "d", "text": "It imports a new namespace" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q28",
+      "text": "What is object initializer syntax in C#?",
+      "options": [
+        { "id": "a", "text": "A way to declare and allocate arrays inline" },
+        { "id": "b", "text": "Setting properties of an object at the time of creation without a special constructor" },
+        { "id": "c", "text": "Calling the constructor with named arguments" },
+        { "id": "d", "text": "A pattern for factory method creation" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q29",
+      "text": "Which of the following correctly uses object initializer syntax to create a `Person` with Name \"Alice\" and Age 30?",
+      "options": [
+        { "id": "a", "text": "var p = new Person(Name: \"Alice\", Age: 30);" },
+        { "id": "b", "text": "var p = new Person { Name = \"Alice\", Age = 30 };" },
+        { "id": "c", "text": "var p = Person.Create(\"Alice\", 30);" },
+        { "id": "d", "text": "var p = new Person[\"Alice\", 30];" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b01_q30",
+      "text": "What is a field in a C# class?",
+      "options": [
+        { "id": "a", "text": "A method that returns a value" },
+        { "id": "b", "text": "A variable declared directly inside a class body that stores state" },
+        { "id": "c", "text": "A read-only property" },
+        { "id": "d", "text": "An interface member" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

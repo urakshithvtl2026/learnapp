@@ -1,0 +1,75 @@
+<div class="login-page">
+  <div class="login-card">
+
+    <!-- Logo / Title -->
+    <div class="login-header">
+      <mat-icon class="logo-icon">menu_book</mat-icon>
+      <h1>Language Learn</h1>
+      <p>Sign in to continue</p>
+    </div>
+
+    <!-- Form -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Username</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput formControlName="username" autocomplete="username" />
+        @if (form.controls.username.hasError('required') && form.controls.username.touched) {
+          <mat-error>Username is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input
+          matInput
+          formControlName="password"
+          [type]="hidePassword ? 'password' : 'text'"
+          autocomplete="current-password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hidePassword = !hidePassword"
+        >
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        @if (form.controls.password.hasError('required') && form.controls.password.touched) {
+          <mat-error>Password is required</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Error message -->
+      @if (error) {
+        <p class="error-msg">
+          <mat-icon>error_outline</mat-icon>
+          {{ error }}
+        </p>
+      }
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="login-btn"
+        [disabled]="loading"
+      >
+        @if (loading) {
+          <mat-spinner diameter="20"></mat-spinner>
+        } @else {
+          Sign In
+        }
+      </button>
+
+    </form>
+
+    <div class="footer-link">
+      Don't have an account?
+      <a routerLink="/signup">Sign up</a>
+    </div>
+
+  </div>
+</div>

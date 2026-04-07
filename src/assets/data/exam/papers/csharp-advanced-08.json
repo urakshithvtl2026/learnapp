@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a08",
+  "title": "C# Advanced — Paper 8",
+  "description": "Advanced C# covering Async/Await & Task Basics, Task Parallel Library, Async Patterns & CancellationToken, Generics, Generic Variance, Dynamic Types, Advanced Pattern Matching, Records/Tuples/Deconstruction, Advanced Exception Handling, and Memory Management.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a08_q1",
+      "text": "What is the difference between a sealed class and a sealed record in C# 9+?",
+      "options": [
+        { "id": "a", "text": "A sealed record cannot have properties; a sealed class can." },
+        { "id": "b", "text": "Both prevent inheritance; for records, sealing also prevents derivation of other records from it and means the compiler-generated equality and ToString are final." },
+        { "id": "c", "text": "A sealed record is always a value type." },
+        { "id": "d", "text": "Sealing a record disables the 'with' expression." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q2",
+      "text": "What is a deadlock in async code and what common mistake causes it?",
+      "options": [
+        { "id": "a", "text": "Deadlocks in async code are caused by using too many tasks." },
+        { "id": "b", "text": "A common deadlock is calling .Result or .Wait() on a Task inside a synchronization-context-aware environment (e.g., ASP.NET classic or WPF): the continuation needs the context to resume, but the context is blocked waiting for the task." },
+        { "id": "c", "text": "Deadlocks only occur in multi-threaded code with locks, not async code." },
+        { "id": "d", "text": "Using ConfigureAwait(false) always causes deadlocks." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q3",
+      "text": "What is the purpose of the Partitioner class in the Task Parallel Library?",
+      "options": [
+        { "id": "a", "text": "Partitioner manages thread priority in parallel operations." },
+        { "id": "b", "text": "Partitioner divides a data source into chunks for parallel processing; custom partitioners allow fine-grained control over how data is distributed across threads in Parallel.For/ForEach and PLINQ." },
+        { "id": "c", "text": "Partitioner is used to partition namespaces in assemblies." },
+        { "id": "d", "text": "Partitioner provides a thread-safe queue for task distribution." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q4",
+      "text": "What does the [EnumeratorCancellation] attribute on a CancellationToken parameter in an async iterator enable?",
+      "options": [
+        { "id": "a", "text": "It makes the iterator automatically retry on cancellation." },
+        { "id": "b", "text": "It allows the CancellationToken passed to GetAsyncEnumerator() (via WithCancellation()) to flow into the iterator method, so the iterator method's token parameter receives the consumer's cancellation token." },
+        { "id": "c", "text": "It converts the async iterator into a synchronous one." },
+        { "id": "d", "text": "It registers the iterator for automatic disposal." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q5",
+      "text": "How does a generic type parameter with multiple constraints work? E.g., 'where T : class, IComparable<T>, new()'",
+      "options": [
+        { "id": "a", "text": "Only one constraint can be active at a time; the others are ignored." },
+        { "id": "b", "text": "All constraints must be satisfied simultaneously: T must be a reference type, implement IComparable<T>, and have a public parameterless constructor." },
+        { "id": "c", "text": "Multiple constraints create an OR condition; T must satisfy any one." },
+        { "id": "d", "text": "The new() constraint is ignored when other constraints are present." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q6",
+      "text": "What is generic type variance and why can't it be applied to classes?",
+      "options": [
+        { "id": "a", "text": "Variance applies to classes; interfaces and delegates do not support it." },
+        { "id": "b", "text": "Variance (covariant 'out' and contravariant 'in') can only be applied to generic type parameters of interfaces and delegates; classes and structs are invariant because they can be both read from and written to, which would break type safety." },
+        { "id": "c", "text": "Variance is not supported in C# at all." },
+        { "id": "d", "text": "Classes support covariance but not contravariance." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q7",
+      "text": "What is the purpose of using ExpandoObject over a Dictionary<string,object>?",
+      "options": [
+        { "id": "a", "text": "ExpandoObject is faster than Dictionary<string,object>." },
+        { "id": "b", "text": "ExpandoObject supports dynamic member access syntax (expando.Name) via the DLR, can have event handlers added dynamically, and integrates with the 'dynamic' keyword; Dictionary requires string-key indexer syntax." },
+        { "id": "c", "text": "ExpandoObject provides type safety; Dictionary does not." },
+        { "id": "d", "text": "ExpandoObject serializes to JSON automatically." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q8",
+      "text": "What is a 'var pattern' in C# pattern matching?",
+      "options": [
+        { "id": "a", "text": "A var pattern matches only variables, not constants." },
+        { "id": "b", "text": "The 'var' pattern always matches any value (including null) and introduces a new variable of the inferred type: 'x is var y' always succeeds and assigns x to y." },
+        { "id": "c", "text": "A var pattern only works with value types." },
+        { "id": "d", "text": "A var pattern matches when the variable is uninitialized." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q9",
+      "text": "In C# 10+, what is a 'global using' directive?",
+      "options": [
+        { "id": "a", "text": "A using directive that applies only to a single file." },
+        { "id": "b", "text": "A 'global using' directive applies to all files in the project automatically, avoiding repetition of common using statements across files." },
+        { "id": "c", "text": "A global using makes types available across all assemblies in a solution." },
+        { "id": "d", "text": "A global using directive is only valid for static classes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q10",
+      "text": "What is a 'try/catch/when' exception filter's key safety benefit over rethrowing?",
+      "options": [
+        { "id": "a", "text": "Exception filters produce shorter code but have identical behavior to catch+rethrow." },
+        { "id": "b", "text": "An exception filter evaluates the condition before stack unwinding; if the filter is false, the runtime looks for the next handler without unwinding the stack, preserving the full original call stack for better diagnostics." },
+        { "id": "c", "text": "Exception filters allow swallowing exceptions silently." },
+        { "id": "d", "text": "They are only available in .NET 5+ and not in .NET Framework." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q11",
+      "text": "What is the large object heap (LOH) in .NET and when does an allocation go there?",
+      "options": [
+        { "id": "a", "text": "All reference types are allocated on the LOH." },
+        { "id": "b", "text": "Objects larger than approximately 85,000 bytes are allocated on the large object heap, which is collected less frequently and is not compacted by default, potentially causing fragmentation." },
+        { "id": "c", "text": "The LOH is used for all gen 2 objects." },
+        { "id": "d", "text": "The LOH only holds string objects." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q12",
+      "text": "What does Task.FromResult<T>(value) do?",
+      "options": [
+        { "id": "a", "text": "It creates a new Task<T> that runs on the thread pool." },
+        { "id": "b", "text": "It creates an already-completed Task<T> with the specified result, useful for returning a synchronous result from an async interface without creating a real async operation." },
+        { "id": "c", "text": "It schedules value to be returned when the task is awaited later." },
+        { "id": "d", "text": "It converts a synchronous method into an async method." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q13",
+      "text": "What is the DataflowBlock in System.Threading.Tasks.Dataflow and how does it relate to TPL?",
+      "options": [
+        { "id": "a", "text": "DataflowBlock is the same as ConcurrentQueue<T>." },
+        { "id": "b", "text": "TPL Dataflow provides message-passing blocks (ActionBlock, TransformBlock, etc.) that can be linked into pipelines; each block processes messages concurrently with configurable parallelism, built on top of the TPL." },
+        { "id": "c", "text": "DataflowBlock replaces async/await for all pipeline processing." },
+        { "id": "d", "text": "DataflowBlock is only available in .NET Framework." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q14",
+      "text": "What does IAsyncDisposable provide over IDisposable?",
+      "options": [
+        { "id": "a", "text": "IAsyncDisposable disposes resources on a background thread automatically." },
+        { "id": "b", "text": "IAsyncDisposable provides DisposeAsync() which returns a ValueTask, enabling cleanup of resources that require async operations (e.g., flushing a buffer) without blocking." },
+        { "id": "c", "text": "IAsyncDisposable is for COM interop only." },
+        { "id": "d", "text": "IAsyncDisposable replaces IDisposable in all .NET 6+ types." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q15",
+      "text": "What is a generic repository pattern and how does it use generic type constraints?",
+      "options": [
+        { "id": "a", "text": "A generic repository uses Func<T> to define queries." },
+        { "id": "b", "text": "A generic repository IRepository<T> where T : class defines CRUD operations for any entity type T, using constraints to ensure T can be managed by the ORM, promoting reuse without duplicating code per entity." },
+        { "id": "c", "text": "Generic repositories require reflection to work." },
+        { "id": "d", "text": "A generic repository can only be used with database entities." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q16",
+      "text": "What is the purpose of IReadOnlyList<T> vs IList<T> from a variance perspective?",
+      "options": [
+        { "id": "a", "text": "They are identical; the 'ReadOnly' prefix is just a naming convention." },
+        { "id": "b", "text": "IReadOnlyList<T> is covariant (out T) because it only exposes reads; IList<T> is invariant because it supports both reads and writes, making covariance unsafe." },
+        { "id": "c", "text": "IReadOnlyList<T> is contravariant; IList<T> is covariant." },
+        { "id": "d", "text": "IReadOnlyList<T> does not support indexing; IList<T> does." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q17",
+      "text": "How does 'dynamic' interact with operator overloading in C#?",
+      "options": [
+        { "id": "a", "text": "dynamic ignores operator overloading and uses default arithmetic." },
+        { "id": "b", "text": "When operands are 'dynamic', the DLR resolves operator overloads at runtime using the actual runtime types, so custom operators are respected even though the static type is 'dynamic'." },
+        { "id": "c", "text": "Operator overloading is disabled for dynamic types." },
+        { "id": "d", "text": "Dynamic operands always use boxing and generic arithmetic." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q18",
+      "text": "What is extended property patterns in C# 10+?",
+      "options": [
+        { "id": "a", "text": "Extended property patterns allow pattern matching on extension methods." },
+        { "id": "b", "text": "Extended property patterns allow nested property access in patterns using dot notation: '{ Address.City: \"Paris\" }' instead of requiring nested patterns '{ Address: { City: \"Paris\" } }'." },
+        { "id": "c", "text": "Extended property patterns match any number of properties simultaneously." },
+        { "id": "d", "text": "They are an extended syntax for initializing property values." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q19",
+      "text": "What is the 'init' accessor and how does it differ from 'set'?",
+      "options": [
+        { "id": "a", "text": "init and set are interchangeable." },
+        { "id": "b", "text": "'init' allows a property to be set only during object initialization (constructor or object initializer) and not after; 'set' allows mutation at any time after construction." },
+        { "id": "c", "text": "'init' makes a property read-only from all contexts including the constructor." },
+        { "id": "d", "text": "'init' is only valid on record types." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q20",
+      "text": "What does AggregateException.Handle() do?",
+      "options": [
+        { "id": "a", "text": "Handle() re-throws all unhandled exceptions." },
+        { "id": "b", "text": "Handle() calls a predicate for each inner exception; if the predicate returns true, that exception is considered handled; if any inner exception returns false (unhandled), a new AggregateException containing only the unhandled ones is thrown." },
+        { "id": "c", "text": "Handle() logs all exceptions and suppresses them." },
+        { "id": "d", "text": "Handle() is equivalent to iterating InnerExceptions and calling catch." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q21",
+      "text": "What is a pinned object in .NET GC and when is pinning necessary?",
+      "options": [
+        { "id": "a", "text": "Pinned objects are permanently promoted to gen 2." },
+        { "id": "b", "text": "Pinning prevents the GC from moving an object during collection (compaction), which is necessary when passing a managed object's address to unmanaged code via P/Invoke or unsafe pointer operations, ensuring the pointer remains valid." },
+        { "id": "c", "text": "Pinning is required for all value types passed to native code." },
+        { "id": "d", "text": "The GC never moves objects, so pinning is never needed." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q22",
+      "text": "How does Task.Run differ from Task.Factory.StartNew in the context of async lambdas?",
+      "options": [
+        { "id": "a", "text": "Task.Factory.StartNew correctly handles async lambdas; Task.Run does not." },
+        { "id": "b", "text": "Task.Run correctly unwraps async lambdas (Func<Task>) returning a Task that represents the async operation; Task.Factory.StartNew returns Task<Task> and requires explicit Unwrap() for async lambdas." },
+        { "id": "c", "text": "They are identical for async lambdas." },
+        { "id": "d", "text": "Task.Run does not support async lambdas at all." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q23",
+      "text": "What is the covariant return type feature in C# 9+ and how does it apply to class hierarchies?",
+      "options": [
+        { "id": "a", "text": "Covariant return types allow overriding with a less derived return type." },
+        { "id": "b", "text": "C# 9+ allows overriding a virtual method with a more derived return type: a method returning Animal can be overridden to return Dog, as long as Dog derives from Animal." },
+        { "id": "c", "text": "Covariant return types apply only to generic methods." },
+        { "id": "d", "text": "Covariant return types are only available on interface methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q24",
+      "text": "What is MemoryPool<T> in .NET and how does it relate to Memory<T>?",
+      "options": [
+        { "id": "a", "text": "MemoryPool<T> is a static utility class for allocating arrays." },
+        { "id": "b", "text": "MemoryPool<T> provides a reusable pool of Memory<T> buffers via Rent(size), returning an IMemoryOwner<T> that wraps a Memory<T>; returning the owner releases the buffer back to the pool, reducing allocations." },
+        { "id": "c", "text": "MemoryPool<T> is equivalent to ArrayPool<T>." },
+        { "id": "d", "text": "MemoryPool<T> allocates on the large object heap." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q25",
+      "text": "What does the 'checked' block do when applied to a floating-point operation?",
+      "options": [
+        { "id": "a", "text": "It causes an OverflowException on floating-point overflow." },
+        { "id": "b", "text": "The 'checked' keyword has no effect on floating-point arithmetic; it only affects integer arithmetic. Floating-point overflow produces Infinity or NaN, not an exception." },
+        { "id": "c", "text": "It converts floating-point results to integers before checking." },
+        { "id": "d", "text": "It enables IEEE 754 strict mode for floating-point." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q26",
+      "text": "What is an invariant generic type in C# and why is List<T> invariant?",
+      "options": [
+        { "id": "a", "text": "List<T> is covariant because it can be read from." },
+        { "id": "b", "text": "An invariant type does not support variance: List<string> is not assignable to List<object> because List<T> supports both Add(T) (input) and T this[int] (output); allowing covariance would let you add objects to a List<string>, breaking type safety." },
+        { "id": "c", "text": "List<T> is contravariant because it only supports Add()." },
+        { "id": "d", "text": "Invariant means the type parameter must be a value type." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q27",
+      "text": "What is the tuple element name feature in C# 7+ and how does it improve code?",
+      "options": [
+        { "id": "a", "text": "Tuple element names are stored at runtime and accessed via reflection." },
+        { "id": "b", "text": "Named tuple elements allow referring to components by name instead of Item1/Item2: '(string Name, int Age) person = (\"Alice\", 30); person.Name' is clearer than 'person.Item1'; names are a compile-time feature encoded in attributes." },
+        { "id": "c", "text": "Named elements in tuples create new named types like anonymous types." },
+        { "id": "d", "text": "Tuple element names are only available for System.Tuple, not value tuples." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q28",
+      "text": "What is the purpose of GC.AddMemoryPressure() in .NET?",
+      "options": [
+        { "id": "a", "text": "It manually triggers a garbage collection." },
+        { "id": "b", "text": "It informs the GC of significant unmanaged memory allocations so the GC can adjust its collection frequency, preventing situations where managed memory is low but unmanaged memory is actually exhausted." },
+        { "id": "c", "text": "It increases the managed heap size limit." },
+        { "id": "d", "text": "It pins objects in memory to prevent GC movement." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q29",
+      "text": "How can async streams be used with LINQ-like operators?",
+      "options": [
+        { "id": "a", "text": "Standard LINQ operators work directly on IAsyncEnumerable<T>." },
+        { "id": "b", "text": "The System.Linq.Async NuGet package (or similar) provides LINQ operators adapted for IAsyncEnumerable<T> (e.g., WhereAwait, SelectAwait, ToListAsync), enabling LINQ-style composition over async streams." },
+        { "id": "c", "text": "You must materialize async streams to a List<T> before using LINQ." },
+        { "id": "d", "text": "Async streams cannot be composed; each must be enumerated manually." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a08_q30",
+      "text": "What is a recursive pattern in C# 8+ and how does it combine other patterns?",
+      "options": [
+        { "id": "a", "text": "A recursive pattern is a pattern that matches recursively nested objects of the same type." },
+        { "id": "b", "text": "A recursive pattern (positional or property) can nest other patterns within it: e.g., '{ Address: { City: { Length: > 3 } } }' nests property patterns; or a positional pattern can contain other positional/property patterns." },
+        { "id": "c", "text": "Recursive patterns only work with records." },
+        { "id": "d", "text": "Recursive patterns require the object to implement IRecursive." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

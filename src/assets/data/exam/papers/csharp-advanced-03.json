@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a03",
+  "title": "C# Advanced — Paper 3",
+  "description": "Advanced C# covering LINQ Core & Advanced Operators, Lambda & Functional Patterns, Delegates/Func/Action/Predicate, Events & Event Patterns, Span<T>/Memory<T>, Reflection, Attributes, Extension Methods & Fluent APIs, and Expression Trees.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a03_q1",
+      "text": "What is the purpose of the LINQ 'let' clause in query syntax?",
+      "options": [
+        { "id": "a", "text": "It terminates a query and materializes results." },
+        { "id": "b", "text": "It introduces a new range variable that stores the result of a sub-expression for reuse within the query." },
+        { "id": "c", "text": "It declares a local variable outside the query context." },
+        { "id": "d", "text": "It acts as an alias for the 'select' clause." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q2",
+      "text": "Which LINQ method returns the first element of a sequence, throwing an exception if empty, versus returning a default value if empty?",
+      "options": [
+        { "id": "a", "text": "First() throws InvalidOperationException if empty; Single() returns default." },
+        { "id": "b", "text": "First() throws InvalidOperationException if empty; FirstOrDefault() returns default(T) if empty." },
+        { "id": "c", "text": "First() returns null if empty; FirstOrDefault() throws an exception." },
+        { "id": "d", "text": "Both First() and FirstOrDefault() throw an exception if the sequence is empty." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q3",
+      "text": "What does the Aggregate overload with a seed value do in LINQ?",
+      "options": [
+        { "id": "a", "text": "It starts accumulation from the seed value instead of the first element, applying the accumulator to each subsequent element." },
+        { "id": "b", "text": "It groups elements starting from a specific index." },
+        { "id": "c", "text": "It sets the initial size of the result collection." },
+        { "id": "d", "text": "It specifies the default value if the sequence is empty." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_a03_q4",
+      "text": "What problem can arise when capturing a loop variable inside a lambda that runs after the loop?",
+      "options": [
+        { "id": "a", "text": "The lambda cannot be compiled because loop variables are not in scope." },
+        { "id": "b", "text": "All lambdas capture the same variable reference, so when executed after the loop, they all see the final loop value rather than the value at capture time." },
+        { "id": "c", "text": "The lambda creates a defensive copy of the loop variable automatically." },
+        { "id": "d", "text": "The loop variable is treated as a const inside the lambda." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q5",
+      "text": "How does partial application differ from currying in C# functional patterns?",
+      "options": [
+        { "id": "a", "text": "Partial application and currying are the same concept." },
+        { "id": "b", "text": "Partial application fixes some arguments of a function returning a new function for the remaining arguments; currying transforms an n-argument function into n chained single-argument functions." },
+        { "id": "c", "text": "Currying fixes one argument; partial application requires fixing all arguments." },
+        { "id": "d", "text": "Partial application applies a function to a collection; currying applies it to a single value." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q6",
+      "text": "What is an anonymous method in C# and how does it differ from a lambda?",
+      "options": [
+        { "id": "a", "text": "Anonymous methods use the 'delegate' keyword and cannot capture variables; lambdas can." },
+        { "id": "b", "text": "An anonymous method is declared with the 'delegate' keyword and a block body; a lambda uses '=>' syntax. Both can capture variables, but lambdas also support expression bodies and can be converted to expression trees." },
+        { "id": "c", "text": "Anonymous methods are faster than lambdas at runtime." },
+        { "id": "d", "text": "Lambdas are only usable with LINQ; anonymous methods work everywhere." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q7",
+      "text": "What is the standard event pattern in C# and what is the signature of EventHandler<TEventArgs>?",
+      "options": [
+        { "id": "a", "text": "EventHandler<TEventArgs> has signature: void Handler(TEventArgs e)." },
+        { "id": "b", "text": "EventHandler<TEventArgs> has signature: void Handler(object sender, TEventArgs e), following the standard pattern where sender is the event source and TEventArgs derives from EventArgs." },
+        { "id": "c", "text": "EventHandler<TEventArgs> returns TEventArgs and takes no parameters." },
+        { "id": "d", "text": "EventHandler<TEventArgs> is a generic class, not a delegate." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q8",
+      "text": "How do you create a custom EventArgs class to pass data with an event?",
+      "options": [
+        { "id": "a", "text": "Inherit from Delegate and add properties for the event data." },
+        { "id": "b", "text": "Inherit from EventArgs and add properties for the data; use EventHandler<YourEventArgs> as the event's delegate type." },
+        { "id": "c", "text": "Implement IEventArgs interface with the required properties." },
+        { "id": "d", "text": "Pass a Dictionary<string,object> directly to the EventHandler." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q9",
+      "text": "What is a Memory<T> slice and how is it created from an existing Memory<T>?",
+      "options": [
+        { "id": "a", "text": "Memory<T> does not support slicing." },
+        { "id": "b", "text": "A Memory<T> slice is a view over a sub-range, created via memory.Slice(start) or memory.Slice(start, length), pointing to the same underlying data without copying." },
+        { "id": "c", "text": "Slicing a Memory<T> creates a new array with copied elements." },
+        { "id": "d", "text": "You create a Memory<T> slice using Array.Copy()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q10",
+      "text": "What is the performance advantage of using typeof(T).GetProperty().GetValue() vs a compiled expression for repeated property reads via reflection?",
+      "options": [
+        { "id": "a", "text": "Reflection GetValue is always faster due to JIT caching." },
+        { "id": "b", "text": "Compiling an Expression<Func<T,TProp>> into a delegate is significantly faster for repeated calls because it avoids per-call reflection overhead, while raw reflection involves boxing and metadata lookup each time." },
+        { "id": "c", "text": "Both have identical performance." },
+        { "id": "d", "text": "Dynamic keyword is always faster than both." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q11",
+      "text": "What does [Conditional(\"DEBUG\")] attribute do when applied to a method?",
+      "options": [
+        { "id": "a", "text": "It makes the method run only on debug builds of the runtime." },
+        { "id": "b", "text": "It causes the compiler to omit all call sites to that method when the specified symbol (e.g. DEBUG) is not defined, effectively making calls no-ops without removing the method itself." },
+        { "id": "c", "text": "It adds a breakpoint to every call of the method." },
+        { "id": "d", "text": "It converts the method to an inline call." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q12",
+      "text": "What is an Expression Tree in C# and how does it differ from a compiled lambda?",
+      "options": [
+        { "id": "a", "text": "An expression tree and a compiled lambda are identical at runtime." },
+        { "id": "b", "text": "An expression tree (Expression<Func<T>>) represents code as data (a tree of nodes) that can be inspected and translated (e.g., to SQL); a compiled lambda is executable IL code." },
+        { "id": "c", "text": "Expression trees are used only for event handling." },
+        { "id": "d", "text": "Expression trees can only represent boolean predicates." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q13",
+      "text": "How do LINQ query providers like Entity Framework use expression trees?",
+      "options": [
+        { "id": "a", "text": "They compile expression trees into IL and execute them in-process." },
+        { "id": "b", "text": "They traverse the expression tree to translate it into another language (such as SQL), enabling execution on a remote data source rather than in-memory." },
+        { "id": "c", "text": "They use expression trees solely for caching query results." },
+        { "id": "d", "text": "They convert expression trees into delegate chains automatically." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q14",
+      "text": "What is the Action<> delegate type in C# and how does it differ from Func<>?",
+      "options": [
+        { "id": "a", "text": "Action<> can return a value; Func<> cannot." },
+        { "id": "b", "text": "Action<> is a delegate that takes zero or more parameters and returns void; Func<> takes zero or more parameters and always returns a value (the last type parameter is the return type)." },
+        { "id": "c", "text": "Action<> is only used for event handlers; Func<> is for LINQ." },
+        { "id": "d", "text": "They are identical except for naming conventions." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q15",
+      "text": "How do you prevent a memory leak when a long-lived object subscribes to an event on a short-lived object?",
+      "options": [
+        { "id": "a", "text": "Use static events to avoid instance references." },
+        { "id": "b", "text": "Unsubscribe the event handler (using -=) when the subscriber is done, or use the weak event pattern so the publisher does not prevent the subscriber from being garbage collected." },
+        { "id": "c", "text": "Mark the subscriber class as sealed to prevent GC issues." },
+        { "id": "d", "text": "Call GC.Collect() after each event firing." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q16",
+      "text": "How can extension methods be used to build a fluent API for configuration?",
+      "options": [
+        { "id": "a", "text": "Extension methods cannot be used in fluent APIs because they are static." },
+        { "id": "b", "text": "Each extension method takes the configuration object as 'this' parameter, modifies it, and returns it, allowing chained calls like: config.SetHost(...).SetPort(...).EnableTLS()." },
+        { "id": "c", "text": "Fluent APIs require interface default implementations, not extension methods." },
+        { "id": "d", "text": "Extension methods in fluent APIs must return void." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q17",
+      "text": "What is the difference between Expression.Lambda() and Expression.Call() in the System.Linq.Expressions API?",
+      "options": [
+        { "id": "a", "text": "Expression.Lambda() creates a method call node; Expression.Call() creates a lambda node." },
+        { "id": "b", "text": "Expression.Lambda() creates a LambdaExpression that wraps a body and parameters into a callable delegate shape; Expression.Call() creates a node representing a method call within an expression tree." },
+        { "id": "c", "text": "They are interchangeable." },
+        { "id": "d", "text": "Expression.Call() can only call static methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q18",
+      "text": "What does the 'this' modifier do in an extension method parameter, and what class must contain the extension method?",
+      "options": [
+        { "id": "a", "text": "It makes the parameter optional; any class can contain extension methods." },
+        { "id": "b", "text": "It designates the parameter as the type being extended, allowing the method to be called as an instance method; the extension method must be in a non-generic, non-nested static class." },
+        { "id": "c", "text": "It marks the parameter as a ref parameter." },
+        { "id": "d", "text": "It allows the extension method to access private members of the extended type." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q19",
+      "text": "In the context of custom event args, why should TEventArgs inherit from EventArgs rather than being a plain class?",
+      "options": [
+        { "id": "a", "text": "The compiler requires EventArgs inheritance for all event delegates." },
+        { "id": "b", "text": "It follows the .NET event design guideline, enables compatibility with EventHandler<TEventArgs>, and allows the event args to be extended with additional properties while maintaining a consistent pattern." },
+        { "id": "c", "text": "EventArgs provides automatic thread-safety for event data." },
+        { "id": "d", "text": "Only EventArgs subclasses can be passed to event handlers." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q20",
+      "text": "What does the LINQ Distinct() method use to determine equality between elements?",
+      "options": [
+        { "id": "a", "text": "It always uses reference equality." },
+        { "id": "b", "text": "It uses the default equality comparer for the element type (EqualityComparer<T>.Default), or an IEqualityComparer<T> overload if provided." },
+        { "id": "c", "text": "It uses the == operator only." },
+        { "id": "d", "text": "It uses GetHashCode() but ignores Equals()." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q21",
+      "text": "What does a ref struct guarantee that a regular struct does not?",
+      "options": [
+        { "id": "a", "text": "A ref struct is always allocated on the heap." },
+        { "id": "b", "text": "A ref struct is guaranteed to live only on the stack; it cannot be boxed, stored in arrays, assigned to interfaces, or used as generic type arguments, providing safety guarantees for stack-only lifetime." },
+        { "id": "c", "text": "A ref struct cannot contain any reference-type fields." },
+        { "id": "d", "text": "A ref struct is thread-safe by default." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q22",
+      "text": "How would you use reflection to determine if a type implements a specific interface?",
+      "options": [
+        { "id": "a", "text": "typeof(MyType).HasInterface(typeof(IMyInterface))" },
+        { "id": "b", "text": "typeof(IMyInterface).IsAssignableFrom(typeof(MyType)) or typeof(MyType).GetInterfaces().Contains(typeof(IMyInterface))" },
+        { "id": "c", "text": "MyType is IMyInterface (this is not reflection)" },
+        { "id": "d", "text": "Assembly.Implements(typeof(MyType), typeof(IMyInterface))" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q23",
+      "text": "How can you build and compile an expression tree that represents the lambda x => x * 2?",
+      "options": [
+        { "id": "a", "text": "Expression.Lambda(x => x * 2).Compile()" },
+        { "id": "b", "text": "var param = Expression.Parameter(typeof(int), \"x\"); var body = Expression.Multiply(param, Expression.Constant(2)); var lambda = Expression.Lambda<Func<int,int>>(body, param); var fn = lambda.Compile();" },
+        { "id": "c", "text": "Expression.Create<Func<int,int>>(x => x * 2)" },
+        { "id": "d", "text": "ExpressionBuilder.Build(\"x * 2\").Compile<int>()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q24",
+      "text": "What is memoization as a functional pattern and how can it be implemented with a dictionary and Func<T,TResult>?",
+      "options": [
+        { "id": "a", "text": "Memoization is the same as lazy initialization." },
+        { "id": "b", "text": "Memoization caches the result of a function for a given input; it can be implemented by wrapping a Func<T,TResult> to check a dictionary for a cached result before calling the original function." },
+        { "id": "c", "text": "Memoization stores intermediate results in a stack." },
+        { "id": "d", "text": "Memoization is only applicable to void methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q25",
+      "text": "What is the purpose of the [Serializable] attribute in C#?",
+      "options": [
+        { "id": "a", "text": "It enables JSON serialization via System.Text.Json." },
+        { "id": "b", "text": "It marks a class so the .NET binary formatter can serialize/deserialize its instances; without it, BinaryFormatter will throw a SerializationException." },
+        { "id": "c", "text": "It makes all properties of the class auto-serializable to XML." },
+        { "id": "d", "text": "It is a compiler hint to optimize field layout." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q26",
+      "text": "In LINQ, what is the difference between IQueryable<T> and IEnumerable<T>?",
+      "options": [
+        { "id": "a", "text": "IQueryable<T> executes queries in-memory; IEnumerable<T> queries are translated to SQL." },
+        { "id": "b", "text": "IEnumerable<T> executes queries in-memory using delegates; IQueryable<T> holds an expression tree that can be translated and executed on a remote data source (e.g., database)." },
+        { "id": "c", "text": "They are identical and interchangeable." },
+        { "id": "d", "text": "IQueryable<T> does not support deferred execution." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q27",
+      "text": "What does the Delegate.Combine() method do, and how does it relate to the += operator on delegates?",
+      "options": [
+        { "id": "a", "text": "Delegate.Combine() removes a delegate from the invocation list; += adds one." },
+        { "id": "b", "text": "Delegate.Combine() merges two delegates into a new multicast delegate with both in its invocation list; the += operator on a delegate is syntactic sugar for Delegate.Combine()." },
+        { "id": "c", "text": "Delegate.Combine() compiles two delegates into one IL method." },
+        { "id": "d", "text": "Delegate.Combine() is only available for event types, not raw delegates." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q28",
+      "text": "What does the LINQ Take(n) operator do and what happens when n exceeds the sequence length?",
+      "options": [
+        { "id": "a", "text": "Take(n) returns exactly n elements, throwing an exception if fewer exist." },
+        { "id": "b", "text": "Take(n) returns up to n elements from the start of the sequence; if the sequence has fewer than n elements, it returns all available elements without throwing." },
+        { "id": "c", "text": "Take(n) removes the first n elements from the sequence." },
+        { "id": "d", "text": "Take(n) returns the last n elements." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q29",
+      "text": "How does the using declaration (C# 8+) differ from the traditional using statement?",
+      "options": [
+        { "id": "a", "text": "The using declaration wraps code in a try/finally block manually." },
+        { "id": "b", "text": "The using declaration (without braces) disposes the resource at the end of the enclosing scope rather than at the end of a block, reducing nesting." },
+        { "id": "c", "text": "The using declaration does not call Dispose(); it calls Close() instead." },
+        { "id": "d", "text": "The using declaration is only for async contexts." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a03_q30",
+      "text": "What is Span<T>.CopyTo() and how does it differ from Array.Copy()?",
+      "options": [
+        { "id": "a", "text": "Span<T>.CopyTo() requires the same type as the source; Array.Copy() allows type covariance." },
+        { "id": "b", "text": "Span<T>.CopyTo(destination) copies all elements to the destination Span<T>, working over any contiguous memory including stack-allocated memory; Array.Copy() is limited to managed arrays and performs bounds-checked copying." },
+        { "id": "c", "text": "They are functionally identical." },
+        { "id": "d", "text": "Array.Copy() is faster for all scenarios." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

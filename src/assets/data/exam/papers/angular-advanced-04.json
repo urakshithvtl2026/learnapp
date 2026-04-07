@@ -1,0 +1,339 @@
+{
+  "id": "qp_ng_a04",
+  "title": "Angular Advanced — Paper 4",
+  "description": "Advanced Angular concepts: reactive forms, custom validators, routing, guards, HTTP client, RxJS, change detection, custom directives/pipes, state management, and testing.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_ng_a04_q1",
+      "text": "Given this code:\n\nconst form = this.fb.group({\n  tags: this.fb.array([])\n});\nconst tagsArray = form.get('tags') as FormArray;\ntagsArray.push(this.fb.control('angular'));\ntagsArray.push(this.fb.control('rxjs'));\ntagsArray.removeAt(0);\n\nWhat is the value of tagsArray.value after all operations?",
+      "options": [
+        { "id": "a", "text": "['angular']" },
+        { "id": "b", "text": "['rxjs']" },
+        { "id": "c", "text": "[]" },
+        { "id": "d", "text": "['angular', 'rxjs']" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q2",
+      "text": "What does calling form.reset() do on a reactive form?",
+      "options": [
+        { "id": "a", "text": "Destroys and recreates the FormGroup" },
+        { "id": "b", "text": "Resets all control values to null (or a provided value), clears errors, and resets dirty/touched status" },
+        { "id": "c", "text": "Only clears validation errors but keeps values" },
+        { "id": "d", "text": "Removes all controls from the FormGroup" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q3",
+      "text": "In a reactive form, what does the emitEvent: false option do when calling setValue() or patchValue()?",
+      "options": [
+        { "id": "a", "text": "Prevents the control from being marked as dirty" },
+        { "id": "b", "text": "Prevents the valueChanges and statusChanges observables from emitting, avoiding triggering subscriptions during programmatic updates" },
+        { "id": "c", "text": "Skips validation when the value is set" },
+        { "id": "d", "text": "Prevents the form from being marked as touched" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q4",
+      "text": "Which of these correctly defines a ValidatorFn that ensures a control's value is a positive number?",
+      "options": [
+        { "id": "a", "text": "export function positiveNumber(c: AbstractControl) { return c.value > 0; }" },
+        { "id": "b", "text": "export function positiveNumber(c: AbstractControl): ValidationErrors | null { return c.value > 0 ? null : { notPositive: true }; }" },
+        { "id": "c", "text": "export function positiveNumber(c: AbstractControl) { return c.value > 0 ? true : false; }" },
+        { "id": "d", "text": "export function positiveNumber(c: AbstractControl) { return { notPositive: c.value <= 0 }; }" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q5",
+      "text": "In a custom async validator, what should you return if the server call fails and you want the control to be considered valid rather than in an error state?",
+      "options": [
+        { "id": "a", "text": "throwError(() => new Error('Server error'))" },
+        { "id": "b", "text": "catchError(() => of(null)) — returning null indicates no error" },
+        { "id": "c", "text": "of({ serverError: true })" },
+        { "id": "d", "text": "EMPTY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q6",
+      "text": "Given this routing configuration:\n{ path: '**', redirectTo: '/not-found' }\n\nWhere should this wildcard route be placed in the routes array?",
+      "options": [
+        { "id": "a", "text": "At the top of the routes array so it is checked first" },
+        { "id": "b", "text": "At the bottom of the routes array so it only matches when no other route matches" },
+        { "id": "c", "text": "In the forChild() module" },
+        { "id": "d", "text": "Position does not matter — Angular always checks it last" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q7",
+      "text": "What is the relativeTo option used for in Router.navigate()?",
+      "options": [
+        { "id": "a", "text": "To navigate relative to the root URL" },
+        { "id": "b", "text": "To navigate relative to the current ActivatedRoute, resolving the path from the current route's position in the tree" },
+        { "id": "c", "text": "To navigate to a parent route" },
+        { "id": "d", "text": "To pass query parameters relative to the current URL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q8",
+      "text": "A ResolveFn returns an observable. What happens if the observable throws an error during resolution?",
+      "options": [
+        { "id": "a", "text": "Angular retries the resolve automatically" },
+        { "id": "b", "text": "Navigation is cancelled and the router stays on the current route; the error can be caught in the effect or component" },
+        { "id": "c", "text": "The component renders with null data" },
+        { "id": "d", "text": "Angular redirects to the root route" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q9",
+      "text": "What is the role of the withComponentInputBinding() feature in Angular's provideRouter?",
+      "options": [
+        { "id": "a", "text": "Enables two-way binding for router-link directives" },
+        { "id": "b", "text": "Automatically binds route parameters, query params, and resolved data to @Input() properties of the routed component" },
+        { "id": "c", "text": "Lazy loads component inputs from an API" },
+        { "id": "d", "text": "Enables router animations between route changes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q10",
+      "text": "Given this interceptor:\n\nexport const loggingInterceptor: HttpInterceptorFn = (req, next) => {\n  console.log('Request:', req.url);\n  return next(req).pipe(\n    tap(event => {\n      if (event instanceof HttpResponse) {\n        console.log('Response:', event.status);\n      }\n    })\n  );\n};\n\nWhat does this interceptor do?",
+      "options": [
+        { "id": "a", "text": "Cancels requests that take too long" },
+        { "id": "b", "text": "Logs the request URL before sending and the response status code when the response arrives" },
+        { "id": "c", "text": "Adds an authorization header to all requests" },
+        { "id": "d", "text": "Retries failed requests and logs the retry count" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q11",
+      "text": "When using HttpClient with observe: 'response', what does the returned observable emit?",
+      "options": [
+        { "id": "a", "text": "Only the response body typed as the generic parameter" },
+        { "id": "b", "text": "The full HttpResponse<T> object including headers, status code, and body" },
+        { "id": "c", "text": "A stream of HttpEvent objects as the upload/download progresses" },
+        { "id": "d", "text": "The response as a raw text string" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q12",
+      "text": "Given this RxJS code:\n\nconst a$ = interval(1000).pipe(take(3));\nconst b$ = interval(500).pipe(take(3));\ncombineLatest([a$, b$]).subscribe(console.log);\n\nWhen does combineLatest first emit?",
+      "options": [
+        { "id": "a", "text": "Immediately when subscribed" },
+        { "id": "b", "text": "After both a$ and b$ have each emitted at least one value" },
+        { "id": "c", "text": "After both a$ and b$ complete" },
+        { "id": "d", "text": "After the faster observable (b$) completes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q13",
+      "text": "What is a ReplaySubject(1) and how does it differ from a BehaviorSubject?",
+      "options": [
+        { "id": "a", "text": "They are identical — ReplaySubject(1) is just an alias" },
+        { "id": "b", "text": "ReplaySubject(1) replays the last 1 emission to new subscribers but has no initial value requirement; BehaviorSubject requires an initial value" },
+        { "id": "c", "text": "BehaviorSubject replays all historical values; ReplaySubject only replays one" },
+        { "id": "d", "text": "ReplaySubject cannot complete; BehaviorSubject can" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q14",
+      "text": "What does the async pipe do automatically when a component is destroyed?",
+      "options": [
+        { "id": "a", "text": "Completes the observable" },
+        { "id": "b", "text": "Unsubscribes from the observable to prevent memory leaks" },
+        { "id": "c", "text": "Emits a final null value" },
+        { "id": "d", "text": "Saves the last emitted value to local storage" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q15",
+      "text": "Given this signal-based code:\n\nconst count = signal(0);\nconst doubled = computed(() => count() * 2);\ncount.set(5);\nconsole.log(doubled());\n\nWhat does doubled() return?",
+      "options": [
+        { "id": "a", "text": "0" },
+        { "id": "b", "text": "10" },
+        { "id": "c", "text": "5" },
+        { "id": "d", "text": "undefined" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q16",
+      "text": "What does the @HostBinding('class.active') decorator binding do on a directive?",
+      "options": [
+        { "id": "a", "text": "Adds a host listener for the 'active' event" },
+        { "id": "b", "text": "Conditionally adds or removes the 'active' CSS class on the host element based on the bound property value" },
+        { "id": "c", "text": "Creates a CSS variable named 'active'" },
+        { "id": "d", "text": "Emits an event named 'class.active'" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q17",
+      "text": "Given this pipe usage in a template:\n\n{{ largeList | filterByName:searchTerm }}\n\nIf filterByName is a pure pipe, when will it re-execute?",
+      "options": [
+        { "id": "a", "text": "On every change detection cycle" },
+        { "id": "b", "text": "Only when largeList or searchTerm references change (i.e., a new object/primitive value is assigned)" },
+        { "id": "c", "text": "Only when the component is first initialized" },
+        { "id": "d", "text": "Whenever an item is pushed to largeList" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q18",
+      "text": "In NgRx Entity, what is the EntityAdapter used for?",
+      "options": [
+        { "id": "a", "text": "Connecting the store to a database entity" },
+        { "id": "b", "text": "Providing pre-built reducers and selectors for managing collections of entities (CRUD operations) with normalized state" },
+        { "id": "c", "text": "Generating HTTP requests for REST entity endpoints" },
+        { "id": "d", "text": "Mapping API responses to TypeScript interfaces" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q19",
+      "text": "In Angular Signals, what does signal.update() do differently from signal.set()?",
+      "options": [
+        { "id": "a", "text": "update() creates a new signal; set() modifies an existing one" },
+        { "id": "b", "text": "update() takes a function that receives the current value and returns the new value; set() takes a direct new value" },
+        { "id": "c", "text": "update() is asynchronous; set() is synchronous" },
+        { "id": "d", "text": "They are identical in behavior" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q20",
+      "text": "Given this test:\n\nconst mockService = jasmine.createSpyObj('DataService', ['getData']);\nmockService.getData.and.returnValue(of([{ id: 1 }]));\n\nWhat does mockService.getData() return when called?",
+      "options": [
+        { "id": "a", "text": "undefined" },
+        { "id": "b", "text": "An observable that immediately emits [{ id: 1 }]" },
+        { "id": "c", "text": "A promise resolving to [{ id: 1 }]" },
+        { "id": "d", "text": "The array [{ id: 1 }] directly" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q21",
+      "text": "In an Angular component test, what is the purpose of NO_ERRORS_SCHEMA?",
+      "options": [
+        { "id": "a", "text": "Prevents all template errors from being thrown during testing" },
+        { "id": "b", "text": "Allows the compiler to ignore unknown elements and attributes in the template, useful for shallow testing without importing all child components" },
+        { "id": "c", "text": "Disables runtime error handling in the test" },
+        { "id": "d", "text": "Prevents Jasmine from catching errors in the component" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q22",
+      "text": "When using RouterTestingHarness in Angular tests, what does it provide over a plain TestBed setup?",
+      "options": [
+        { "id": "a", "text": "It mocks all HTTP calls made during routing" },
+        { "id": "b", "text": "It provides a testing environment with a real router and router outlet so you can navigate and test routed components with full routing lifecycle" },
+        { "id": "c", "text": "It replaces the component template with a test-only template" },
+        { "id": "d", "text": "It runs tests in a web worker" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q23",
+      "text": "What does the withInterceptors([myInterceptor]) function do in Angular's provideHttpClient?",
+      "options": [
+        { "id": "a", "text": "Registers legacy class-based interceptors" },
+        { "id": "b", "text": "Registers functional HttpInterceptorFn interceptors for the application" },
+        { "id": "c", "text": "Provides a testing override for HTTP calls" },
+        { "id": "d", "text": "Enables HTTP/2 for all outgoing requests" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q24",
+      "text": "What is the difference between ofType() in NgRx effects and filter() in RxJS when filtering actions?",
+      "options": [
+        { "id": "a", "text": "ofType() is asynchronous; filter() is synchronous" },
+        { "id": "b", "text": "ofType() filters by action type string AND narrows the TypeScript type of the action; filter() requires a manual type predicate for the same type narrowing" },
+        { "id": "c", "text": "filter() can only be used inside effects; ofType() works anywhere" },
+        { "id": "d", "text": "They are functionally identical" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q25",
+      "text": "Given this template:\n\n<cdk-virtual-scroll-viewport itemSize=\"50\" style=\"height: 400px\">\n  <div *cdkVirtualFor=\"let item of items\">{{ item.name }}</div>\n</cdk-virtual-scroll-viewport>\n\nWhat does itemSize=\"50\" represent?",
+      "options": [
+        { "id": "a", "text": "The maximum number of items to render" },
+        { "id": "b", "text": "The height in pixels of each item, required by the virtual scroll strategy to calculate which items are visible" },
+        { "id": "c", "text": "The font size of each item" },
+        { "id": "d", "text": "The number of items to buffer outside the viewport" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q26",
+      "text": "In Angular, what does the Renderer2.listen() method do?",
+      "options": [
+        { "id": "a", "text": "Attaches an Angular event binding to the host element" },
+        { "id": "b", "text": "Adds a DOM event listener in a platform-safe way and returns a cleanup function to remove it" },
+        { "id": "c", "text": "Creates a custom RxJS observable from a DOM event" },
+        { "id": "d", "text": "Subscribes to a BehaviorSubject inside a directive" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q27",
+      "text": "In Angular, what is the CSRF/XSRF protection mechanism HttpClientXsrfModule provides?",
+      "options": [
+        { "id": "a", "text": "It encrypts all outgoing HTTP request bodies" },
+        { "id": "b", "text": "It reads an XSRF token from a cookie and automatically attaches it to state-changing HTTP requests (POST/PUT/DELETE) as a header" },
+        { "id": "c", "text": "It validates incoming responses for CSRF tokens" },
+        { "id": "d", "text": "It blocks HTTP requests to cross-origin servers" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q28",
+      "text": "In Angular standalone components, how do you provide a service that should have a single instance for the whole application?",
+      "options": [
+        { "id": "a", "text": "Declare it in providers: [] of every standalone component" },
+        { "id": "b", "text": "Use providedIn: 'root' in the @Injectable decorator" },
+        { "id": "c", "text": "Add it to bootstrapApplication's providers array" },
+        { "id": "d", "text": "Both b and c are valid approaches" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_a04_q29",
+      "text": "What is the purpose of the FormControl's statusChanges observable?",
+      "options": [
+        { "id": "a", "text": "Emits the current value whenever the control changes" },
+        { "id": "b", "text": "Emits the control's validation status ('VALID', 'INVALID', 'PENDING', 'DISABLED') whenever it changes" },
+        { "id": "c", "text": "Emits true when the control is touched" },
+        { "id": "d", "text": "Emits the number of errors whenever validation runs" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a04_q30",
+      "text": "Given this code:\n\nconst clicks$ = fromEvent(document, 'click');\nconst result$ = clicks$.pipe(\n  debounceTime(300),\n  distinctUntilChanged()\n);\n\nWhat does distinctUntilChanged() do in this context?",
+      "options": [
+        { "id": "a", "text": "Removes duplicate click events based on event timestamp" },
+        { "id": "b", "text": "Filters out consecutive emissions where the value (click event object) is the same reference, preventing duplicate processing" },
+        { "id": "c", "text": "Limits the total number of emissions" },
+        { "id": "d", "text": "Delays each emission by 300ms" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

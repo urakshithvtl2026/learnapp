@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_01",
+  "title": "SQL Basics — SELECT & WHERE",
+  "description": "Core SQL querying: SELECT statements, WHERE filtering, NULL handling, and basic operators.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_01_q1",
+      "text": "Which SQL statement is used to retrieve data from a database?",
+      "options": [
+        { "id": "a", "text": "GET" },
+        { "id": "b", "text": "FETCH" },
+        { "id": "c", "text": "SELECT" },
+        { "id": "d", "text": "EXTRACT" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q2",
+      "text": "What does the following query return? SELECT * FROM Employees",
+      "options": [
+        { "id": "a", "text": "Only the first column of the Employees table" },
+        { "id": "b", "text": "All rows and all columns from the Employees table" },
+        { "id": "c", "text": "The number of rows in the Employees table" },
+        { "id": "d", "text": "Only the primary key column of the Employees table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q3",
+      "text": "Which clause is used to filter rows returned by a SELECT statement?",
+      "options": [
+        { "id": "a", "text": "HAVING" },
+        { "id": "b", "text": "FILTER" },
+        { "id": "c", "text": "WHERE" },
+        { "id": "d", "text": "LIMIT" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q4",
+      "text": "What is the correct syntax to select only the 'Name' and 'Salary' columns from a table called 'Staff'?",
+      "options": [
+        { "id": "a", "text": "SELECT Name, Salary FROM Staff" },
+        { "id": "b", "text": "SELECT (Name, Salary) FROM Staff" },
+        { "id": "c", "text": "GET Name, Salary FROM Staff" },
+        { "id": "d", "text": "SELECT Name AND Salary FROM Staff" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_01_q5",
+      "text": "Which keyword is used to give a column a temporary alias in a query result? Example: SELECT Salary AS MonthlySalary FROM Staff",
+      "options": [
+        { "id": "a", "text": "RENAME" },
+        { "id": "b", "text": "ALIAS" },
+        { "id": "c", "text": "LABEL" },
+        { "id": "d", "text": "AS" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_01_q6",
+      "text": "What does SELECT DISTINCT City FROM Customers return?",
+      "options": [
+        { "id": "a", "text": "All cities including duplicates" },
+        { "id": "b", "text": "Only unique city values" },
+        { "id": "c", "text": "The city that appears most often" },
+        { "id": "d", "text": "Cities sorted alphabetically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q7",
+      "text": "Which operator checks if two values are NOT equal in SQL?",
+      "options": [
+        { "id": "a", "text": "!=" },
+        { "id": "b", "text": "<>" },
+        { "id": "c", "text": "Both != and <>" },
+        { "id": "d", "text": "NOT =" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q8",
+      "text": "What does the following query return? SELECT * FROM Orders WHERE Amount > 500",
+      "options": [
+        { "id": "a", "text": "All orders where Amount is at least 500" },
+        { "id": "b", "text": "All orders where Amount is exactly 500" },
+        { "id": "c", "text": "All orders where Amount is greater than 500 (excluding 500)" },
+        { "id": "d", "text": "All orders where Amount is less than 500" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q9",
+      "text": "Which of the following correctly checks whether the column 'MiddleName' contains no value (is NULL)?",
+      "options": [
+        { "id": "a", "text": "WHERE MiddleName = NULL" },
+        { "id": "b", "text": "WHERE MiddleName == NULL" },
+        { "id": "c", "text": "WHERE MiddleName IS NULL" },
+        { "id": "d", "text": "WHERE MiddleName EQUALS NULL" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q10",
+      "text": "Which query finds all employees who DO have a value in the 'Email' column?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Employees WHERE Email != NULL" },
+        { "id": "b", "text": "SELECT * FROM Employees WHERE Email IS NOT NULL" },
+        { "id": "c", "text": "SELECT * FROM Employees WHERE Email <> NULL" },
+        { "id": "d", "text": "SELECT * FROM Employees WHERE NOT Email = NULL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q11",
+      "text": "What does the BETWEEN operator do? Example: WHERE Price BETWEEN 10 AND 50",
+      "options": [
+        { "id": "a", "text": "Returns rows where Price is strictly between 10 and 50 (exclusive)" },
+        { "id": "b", "text": "Returns rows where Price is between 10 and 50 (inclusive of both endpoints)" },
+        { "id": "c", "text": "Returns rows where Price is greater than 10 only" },
+        { "id": "d", "text": "Returns rows where Price equals either 10 or 50" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q12",
+      "text": "Which query selects all products with a CategoryID of 1, 2, or 3?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Products WHERE CategoryID = 1 OR 2 OR 3" },
+        { "id": "b", "text": "SELECT * FROM Products WHERE CategoryID IN (1, 2, 3)" },
+        { "id": "c", "text": "SELECT * FROM Products WHERE CategoryID BETWEEN 1 AND 3 INCLUSIVE" },
+        { "id": "d", "text": "SELECT * FROM Products WHERE CategoryID = (1, 2, 3)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q13",
+      "text": "Which query returns all customers whose name does NOT start with 'A'?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Customers WHERE Name NOT LIKE 'A%'" },
+        { "id": "b", "text": "SELECT * FROM Customers WHERE Name != 'A%'" },
+        { "id": "c", "text": "SELECT * FROM Customers WHERE Name <> 'A%'" },
+        { "id": "d", "text": "SELECT * FROM Customers WHERE Name NOT = 'A%'" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_01_q14",
+      "text": "In a LIKE pattern, what does the '%' wildcard represent?",
+      "options": [
+        { "id": "a", "text": "Exactly one character" },
+        { "id": "b", "text": "Any single digit" },
+        { "id": "c", "text": "Zero or more characters of any type" },
+        { "id": "d", "text": "A literal percent symbol" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q15",
+      "text": "In a LIKE pattern, what does the '_' (underscore) wildcard represent?",
+      "options": [
+        { "id": "a", "text": "Zero or more characters" },
+        { "id": "b", "text": "Exactly one character" },
+        { "id": "c", "text": "Any whitespace character" },
+        { "id": "d", "text": "A literal underscore character only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q16",
+      "text": "Which query finds all products with names that have exactly 5 characters?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Products WHERE Name LIKE '%%%%%'" },
+        { "id": "b", "text": "SELECT * FROM Products WHERE LEN(Name) = 5" },
+        { "id": "c", "text": "SELECT * FROM Products WHERE Name LIKE '_____'" },
+        { "id": "d", "text": "Both b and c are correct" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_01_q17",
+      "text": "How do you write a single-line comment in SQL?",
+      "options": [
+        { "id": "a", "text": "/* This is a comment */" },
+        { "id": "b", "text": "# This is a comment" },
+        { "id": "c", "text": "-- This is a comment" },
+        { "id": "d", "text": "// This is a comment" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q18",
+      "text": "How do you write a multi-line comment in SQL?",
+      "options": [
+        { "id": "a", "text": "/* This is a multi-line comment */" },
+        { "id": "b", "text": "-- This is line 1 -- This is line 2" },
+        { "id": "c", "text": "// This is a multi-line comment //" },
+        { "id": "d", "text": "## comment ##" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_01_q19",
+      "text": "What is wrong with this query? SELECT * FROM Employees WHERE Department = NULL",
+      "options": [
+        { "id": "a", "text": "Nothing is wrong; it will correctly find rows with NULL Department" },
+        { "id": "b", "text": "NULL cannot be compared with = ; use IS NULL instead" },
+        { "id": "c", "text": "The FROM clause is missing the schema name" },
+        { "id": "d", "text": "SELECT * cannot be used with WHERE" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q20",
+      "text": "Which keyword eliminates duplicate rows from a query result?",
+      "options": [
+        { "id": "a", "text": "UNIQUE" },
+        { "id": "b", "text": "NODUPLICATE" },
+        { "id": "c", "text": "DISTINCT" },
+        { "id": "d", "text": "DIFFERENT" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q21",
+      "text": "What does this query return? SELECT * FROM Products WHERE Price >= 100 AND Price <= 200",
+      "options": [
+        { "id": "a", "text": "Products where Price is less than 100 or greater than 200" },
+        { "id": "b", "text": "Products where Price is exactly 100 or exactly 200" },
+        { "id": "c", "text": "Products where Price is between 100 and 200 inclusive" },
+        { "id": "d", "text": "Products where Price is greater than 100 and less than 200 exclusive" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q22",
+      "text": "A column alias defined with AS in a SELECT list — can it be referenced in the WHERE clause of the same query?",
+      "options": [
+        { "id": "a", "text": "Yes, always" },
+        { "id": "b", "text": "No, aliases defined in SELECT cannot be used in the WHERE clause of the same query" },
+        { "id": "c", "text": "Only if the alias is in double quotes" },
+        { "id": "d", "text": "Yes, but only in MySQL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q23",
+      "text": "Which query selects employees NOT in departments 10, 20, or 30?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Employees WHERE DeptID NOT IN (10, 20, 30)" },
+        { "id": "b", "text": "SELECT * FROM Employees WHERE DeptID <> (10, 20, 30)" },
+        { "id": "c", "text": "SELECT * FROM Employees WHERE DeptID EXCLUDE (10, 20, 30)" },
+        { "id": "d", "text": "SELECT * FROM Employees WHERE DeptID != IN (10, 20, 30)" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_01_q24",
+      "text": "What does SELECT 1 + 1 return in standard SQL (without a FROM clause in databases that support it)?",
+      "options": [
+        { "id": "a", "text": "An error — you must always specify a FROM clause" },
+        { "id": "b", "text": "The string '1 + 1'" },
+        { "id": "c", "text": "The integer 2" },
+        { "id": "d", "text": "NULL" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_01_q25",
+      "text": "Which of the following LIKE patterns would match the string 'Smith'?",
+      "options": [
+        { "id": "a", "text": "LIKE 'S_ith'" },
+        { "id": "b", "text": "LIKE 'Sm%'" },
+        { "id": "c", "text": "LIKE '%mith'" },
+        { "id": "d", "text": "All of the above" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_01_q26",
+      "text": "What is the mandatory clause that must follow every SELECT in a standard SQL query targeting a table?",
+      "options": [
+        { "id": "a", "text": "WHERE" },
+        { "id": "b", "text": "FROM" },
+        { "id": "c", "text": "JOIN" },
+        { "id": "d", "text": "ORDER BY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q27",
+      "text": "If a column contains NULL, which comparison returns TRUE? WHERE Score = NULL",
+      "options": [
+        { "id": "a", "text": "TRUE — NULL equals NULL in SQL" },
+        { "id": "b", "text": "FALSE — NULL comparisons with = always return UNKNOWN/FALSE" },
+        { "id": "c", "text": "It depends on the database engine" },
+        { "id": "d", "text": "It returns 0" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q28",
+      "text": "Which query correctly uses a table alias? SELECT e.Name, e.Salary FROM Employees e WHERE e.Salary > 5000",
+      "options": [
+        { "id": "a", "text": "The query is invalid because aliases must use AS keyword" },
+        { "id": "b", "text": "The query is valid; 'e' is an alias for the Employees table" },
+        { "id": "c", "text": "The query is invalid because aliases can only be used on columns" },
+        { "id": "d", "text": "The query is valid but the alias 'e' is ignored" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q29",
+      "text": "What does NOT IN return when the sublist contains a NULL value? Example: WHERE ID NOT IN (1, 2, NULL)",
+      "options": [
+        { "id": "a", "text": "It works normally, ignoring the NULL" },
+        { "id": "b", "text": "It returns no rows because NOT IN with NULL always evaluates to UNKNOWN" },
+        { "id": "c", "text": "It returns all rows" },
+        { "id": "d", "text": "It returns an error" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_01_q30",
+      "text": "Which of the following is TRUE about SELECT * in production SQL code?",
+      "options": [
+        { "id": "a", "text": "SELECT * is always recommended for simplicity" },
+        { "id": "b", "text": "SELECT * is generally discouraged in production because it returns unnecessary columns and can break if schema changes" },
+        { "id": "c", "text": "SELECT * is faster than selecting named columns" },
+        { "id": "d", "text": "SELECT * is invalid SQL syntax" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

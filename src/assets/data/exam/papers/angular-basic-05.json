@@ -1,0 +1,339 @@
+{
+  "id": "qp_ng_b05",
+  "title": "Angular Basic — Paper 5",
+  "description": "Foundational Angular concepts: components, data binding, directives, component communication, lifecycle hooks, services, modules, template-driven forms, pipes, and CLI.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_ng_b05_q1",
+      "text": "Which property in the @Component decorator specifies inline CSS styles directly within the decorator (as opposed to a file)?",
+      "options": [
+        { "id": "a", "text": "styleUrls" },
+        { "id": "b", "text": "cssText" },
+        { "id": "c", "text": "styles" },
+        { "id": "d", "text": "inlineStyles" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q2",
+      "text": "In Angular, what does [attr.aria-label]=\"labelText\" demonstrate?",
+      "options": [
+        { "id": "a", "text": "Event binding to an aria label event" },
+        { "id": "b", "text": "Two-way binding of an ARIA attribute" },
+        { "id": "c", "text": "Attribute binding used to set an HTML attribute that has no corresponding DOM property" },
+        { "id": "d", "text": "Property binding to the aria label DOM property" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q3",
+      "text": "In the Angular 17+ control flow syntax, what is the equivalent of *ngIf with an else clause?",
+      "options": [
+        { "id": "a", "text": "@if (condition) { ... } @otherwise { ... }" },
+        { "id": "b", "text": "@if (condition) { ... } @else { ... }" },
+        { "id": "c", "text": "@condition (condition) { ... } @fallback { ... }" },
+        { "id": "d", "text": "@when (condition) { ... } @default { ... }" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q4",
+      "text": "Which Angular decorator queries all instances of a directive or component in the projected content (not the view)?",
+      "options": [
+        { "id": "a", "text": "@ViewChildren" },
+        { "id": "b", "text": "@ContentChildren" },
+        { "id": "c", "text": "@QueryList" },
+        { "id": "d", "text": "@ProjectedChildren" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q5",
+      "text": "What is the ngAfterContentChecked lifecycle hook used for?",
+      "options": [
+        { "id": "a", "text": "It is called once after the content is projected for the first time" },
+        { "id": "b", "text": "It is called after every check of the component's projected content by Angular's change detection" },
+        { "id": "c", "text": "It is called when the component's view is created" },
+        { "id": "d", "text": "It is called when the content projection fails validation" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q6",
+      "text": "What is the hierarchical injector in Angular?",
+      "options": [
+        { "id": "a", "text": "A list of services sorted by priority" },
+        { "id": "b", "text": "An injector that can only inject one service at a time" },
+        { "id": "c", "text": "A tree of injectors where child injectors can access parent injector services unless overridden locally" },
+        { "id": "d", "text": "An injector that inherits services from sibling components" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q7",
+      "text": "In Angular, what is a feature module?",
+      "options": [
+        { "id": "a", "text": "The main application module that bootstraps the app" },
+        { "id": "b", "text": "A module that groups related components, directives, and pipes for a specific application feature" },
+        { "id": "c", "text": "A module provided by the Angular framework itself" },
+        { "id": "d", "text": "A module that only contains service providers" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q8",
+      "text": "In a template-driven form, when is a control considered 'invalid'?",
+      "options": [
+        { "id": "a", "text": "When the user has not focused on it yet" },
+        { "id": "b", "text": "When its value fails one or more of its configured validators" },
+        { "id": "c", "text": "When the form has been submitted" },
+        { "id": "d", "text": "When the input element is disabled" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q9",
+      "text": "How do you set the locale for the 'currency' pipe to display British pounds in Angular?",
+      "options": [
+        { "id": "a", "text": "{{ price | currency:'GBP':'symbol':'1.2-2' }}" },
+        { "id": "b", "text": "{{ price | currency.GBP }}" },
+        { "id": "c", "text": "{{ price | currency:'British' }}" },
+        { "id": "d", "text": "{{ price | money:'GBP' }}" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b05_q10",
+      "text": "Which configuration file defines build targets, assets, styles, and scripts for an Angular project?",
+      "options": [
+        { "id": "a", "text": "tsconfig.json" },
+        { "id": "b", "text": "package.json" },
+        { "id": "c", "text": "angular.json" },
+        { "id": "d", "text": "karma.conf.js" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q11",
+      "text": "What does setting standalone: true in the @Component decorator indicate?",
+      "options": [
+        { "id": "a", "text": "The component cannot be used inside another component" },
+        { "id": "b", "text": "The component is self-contained and does not need to be declared in an NgModule" },
+        { "id": "c", "text": "The component runs outside of the Angular zone" },
+        { "id": "d", "text": "The component does not have a selector" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q12",
+      "text": "What is the result of using interpolation to bind a non-string value such as a boolean or object in the template?",
+      "options": [
+        { "id": "a", "text": "Angular throws a compilation error" },
+        { "id": "b", "text": "The value is automatically converted to its string representation via .toString()" },
+        { "id": "c", "text": "Angular ignores the binding and leaves the text blank" },
+        { "id": "d", "text": "The component crashes at runtime" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q13",
+      "text": "In Angular's @switch control flow block, what is the purpose of the @default block?",
+      "options": [
+        { "id": "a", "text": "It is the first case evaluated in the switch" },
+        { "id": "b", "text": "It sets the default value for the switch variable" },
+        { "id": "c", "text": "It renders when no @case expression matches the switch value" },
+        { "id": "d", "text": "It provides a loading state while cases are evaluated" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q14",
+      "text": "What is the purpose of the @Input() alias parameter, e.g. @Input('aliasName')?",
+      "options": [
+        { "id": "a", "text": "It renames the property inside the component class" },
+        { "id": "b", "text": "It allows the parent to bind using a different name than the component's internal property name" },
+        { "id": "c", "text": "It makes the input property optional" },
+        { "id": "d", "text": "It creates a computed property" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q15",
+      "text": "How should you unsubscribe from an Observable in the ngOnDestroy lifecycle hook to avoid memory leaks?",
+      "options": [
+        { "id": "a", "text": "Call observable.close() in ngOnDestroy" },
+        { "id": "b", "text": "Store the subscription and call subscription.unsubscribe() in ngOnDestroy" },
+        { "id": "c", "text": "Angular automatically unsubscribes when the component is destroyed" },
+        { "id": "d", "text": "Set the observable to null in ngOnDestroy" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q16",
+      "text": "Which approach allows you to provide a different implementation of a service for testing purposes in Angular?",
+      "options": [
+        { "id": "a", "text": "Changing the @Injectable decorator" },
+        { "id": "b", "text": "Overriding the service using the providers array with useClass or useValue in the test module" },
+        { "id": "c", "text": "Editing the original service class" },
+        { "id": "d", "text": "Setting a global override flag in angular.json" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q17",
+      "text": "What does the app.config.ts file configure in a standalone Angular application?",
+      "options": [
+        { "id": "a", "text": "It sets up the application's CSS theme" },
+        { "id": "b", "text": "It defines route guards and interceptors only" },
+        { "id": "c", "text": "It configures application-level providers, such as routing and HTTP client, passed to bootstrapApplication()" },
+        { "id": "d", "text": "It declares all standalone components used in the application" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q18",
+      "text": "In a template-driven form, how do you display an error message only when a specific field is both invalid and touched?",
+      "options": [
+        { "id": "a", "text": "Using *ngIf=\"fieldRef.invalid\" without any condition" },
+        { "id": "b", "text": "Using *ngIf=\"fieldRef.invalid && fieldRef.touched\"" },
+        { "id": "c", "text": "Using *ngIf=\"form.submitted\"" },
+        { "id": "d", "text": "Using *ngIf=\"fieldRef.errors\"" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q19",
+      "text": "Which of the following correctly demonstrates using the 'async' pipe in a template?",
+      "options": [
+        { "id": "a", "text": "{{ myObservable.subscribe() | async }}" },
+        { "id": "b", "text": "{{ await myObservable | display }}" },
+        { "id": "c", "text": "{{ myObservable | async }}" },
+        { "id": "d", "text": "{{ myObservable | subscribe }}" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q20",
+      "text": "What does the ng build --configuration=production flag do differently from a default build?",
+      "options": [
+        { "id": "a", "text": "It skips TypeScript compilation" },
+        { "id": "b", "text": "It applies optimizations like minification, tree-shaking, and AOT compilation using production environment settings" },
+        { "id": "c", "text": "It generates only HTML and CSS files" },
+        { "id": "d", "text": "It runs the application without a web server" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q21",
+      "text": "Which of the following correctly creates a standalone component that imports Angular's CommonModule?",
+      "options": [
+        { "id": "a", "text": "@Component({ standalone: true, declarations: [CommonModule], ... })" },
+        { "id": "b", "text": "@Component({ standalone: true, imports: [CommonModule], ... })" },
+        { "id": "c", "text": "@Component({ imports: [CommonModule], standalone: false, ... })" },
+        { "id": "d", "text": "@NgModule({ imports: [CommonModule], standalone: true })" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q22",
+      "text": "Which style binding syntax would you use to conditionally set only the 'font-size' style of an element in Angular?",
+      "options": [
+        { "id": "a", "text": "[class.font-size]=\"fontSize + 'px'\"" },
+        { "id": "b", "text": "[ngStyle]=\"{ fontSize: fontSize }\"" },
+        { "id": "c", "text": "[style.font-size]=\"fontSize + 'px'\"" },
+        { "id": "d", "text": "(style)=\"font-size: fontSize\"" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q23",
+      "text": "In the Angular @for control flow block, which expression is mandatory for performance optimization (similar to trackBy)?",
+      "options": [
+        { "id": "a", "text": "limit expression" },
+        { "id": "b", "text": "sort expression" },
+        { "id": "c", "text": "key expression" },
+        { "id": "d", "text": "track expression" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b05_q24",
+      "text": "What does the Output() alias allow you to do in a child component?",
+      "options": [
+        { "id": "a", "text": "Bind the output to multiple parent components simultaneously" },
+        { "id": "b", "text": "Allow the parent to listen using a different event name than the component's internal EventEmitter property name" },
+        { "id": "c", "text": "Make the output emit synchronously instead of asynchronously" },
+        { "id": "d", "text": "Prevent the event from bubbling up to grandparent components" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q25",
+      "text": "Which lifecycle hook is called after Angular has checked the component's view and its child views following the initial render?",
+      "options": [
+        { "id": "a", "text": "ngAfterContentChecked" },
+        { "id": "b", "text": "ngAfterViewChecked" },
+        { "id": "c", "text": "ngDoCheck" },
+        { "id": "d", "text": "ngOnInit" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q26",
+      "text": "What is tree-shaking in the context of Angular and services?",
+      "options": [
+        { "id": "a", "text": "A process that removes duplicate DOM nodes from the template" },
+        { "id": "b", "text": "A build optimization that removes unused code (including unused services) from the final bundle" },
+        { "id": "c", "text": "A runtime optimization that reduces injector hierarchy depth" },
+        { "id": "d", "text": "A way to remove circular dependencies between services" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q27",
+      "text": "In Angular, what is a shared module?",
+      "options": [
+        { "id": "a", "text": "A module that can only be used once across the application" },
+        { "id": "b", "text": "The root application module" },
+        { "id": "c", "text": "A module containing reusable components, directives, and pipes that are exported for use in multiple feature modules" },
+        { "id": "d", "text": "A module that shares state between components using a store" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q28",
+      "text": "What Angular CSS class is added to a template-driven form control when it fails validation?",
+      "options": [
+        { "id": "a", "text": "ng-dirty" },
+        { "id": "b", "text": "ng-invalid" },
+        { "id": "c", "text": "ng-error" },
+        { "id": "d", "text": "ng-untouched" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b05_q29",
+      "text": "When should you prefer using the 'async' pipe over manually subscribing to an Observable in a component?",
+      "options": [
+        { "id": "a", "text": "When you need to transform the Observable's data before displaying it" },
+        { "id": "b", "text": "When working with HTTP requests that never complete" },
+        { "id": "c", "text": "When you want Angular to automatically handle subscription and unsubscription, reducing the risk of memory leaks" },
+        { "id": "d", "text": "Only when the Observable emits a single value" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b05_q30",
+      "text": "What is the purpose of the 'main.ts' file in an Angular standalone application?",
+      "options": [
+        { "id": "a", "text": "It declares all standalone components used in the app" },
+        { "id": "b", "text": "It defines all the application routes" },
+        { "id": "c", "text": "It is the entry point that calls bootstrapApplication() to start the Angular application" },
+        { "id": "d", "text": "It configures the TypeScript compiler options" }
+      ],
+      "correctOptionId": "c"
+    }
+  ]
+}

@@ -1,0 +1,339 @@
+{
+  "id": "qp_ng_a03",
+  "title": "Angular Advanced — Paper 3",
+  "description": "Advanced Angular concepts: reactive forms, custom validators, routing, guards, HTTP client, RxJS, change detection, custom directives/pipes, state management, and testing.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_ng_a03_q1",
+      "text": "Given this code:\n\nconst ctrl = new FormControl({ value: 'locked', disabled: true });\nconsole.log(ctrl.value);\nconsole.log(ctrl.getRawValue());\n\nWhat are the two outputs?",
+      "options": [
+        { "id": "a", "text": "'locked' and 'locked'" },
+        { "id": "b", "text": "null and 'locked'" },
+        { "id": "c", "text": "undefined and 'locked'" },
+        { "id": "d", "text": "'locked' and null" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_a03_q2",
+      "text": "Which FormBuilder method creates a FormGroup with shorthand syntax — passing an array where the first element is the value and subsequent elements are validators?",
+      "options": [
+        { "id": "a", "text": "this.fb.group({ name: new FormControl('', Validators.required) })" },
+        { "id": "b", "text": "this.fb.group({ name: ['', Validators.required] })" },
+        { "id": "c", "text": "this.fb.control(['name', Validators.required])" },
+        { "id": "d", "text": "this.fb.array({ name: '', validators: [Validators.required] })" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q3",
+      "text": "What is a nested FormGroup and why would you use one?",
+      "options": [
+        { "id": "a", "text": "A FormGroup inside a FormArray — used to repeat sets of related fields" },
+        { "id": "b", "text": "A FormGroup nested inside another FormGroup — used to logically group related controls such as an address with street, city, and zip" },
+        { "id": "c", "text": "A FormGroup that uses lazy validation" },
+        { "id": "d", "text": "A FormGroup created with fb.nested() for hierarchical data" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q4",
+      "text": "Given this validator factory:\n\nexport function matchValues(controlName: string, matchingControlName: string): ValidatorFn {\n  return (group: AbstractControl): ValidationErrors | null => {\n    const control = group.get(controlName);\n    const matching = group.get(matchingControlName);\n    if (control?.value !== matching?.value) {\n      return { mismatch: true };\n    }\n    return null;\n  };\n}\n\nWhat type should the group parameter's type be declared as for correct usage?",
+      "options": [
+        { "id": "a", "text": "FormControl" },
+        { "id": "b", "text": "AbstractControl (which can be a FormGroup in practice)" },
+        { "id": "c", "text": "FormArray" },
+        { "id": "d", "text": "ValidatorFn" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q5",
+      "text": "When an async validator is pending, what is the control's status property value?",
+      "options": [
+        { "id": "a", "text": "'INVALID'" },
+        { "id": "b", "text": "'PENDING'" },
+        { "id": "c", "text": "'LOADING'" },
+        { "id": "d", "text": "'ASYNC'" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q6",
+      "text": "Given these routes:\n[\n  { path: 'users', component: UsersComponent,\n    children: [\n      { path: ':id', component: UserDetailComponent }\n    ]\n  }\n]\n\nWhat URL pattern renders UserDetailComponent inside UsersComponent?",
+      "options": [
+        { "id": "a", "text": "/users-:id" },
+        { "id": "b", "text": "/users/:id (e.g. /users/42)" },
+        { "id": "c", "text": "/:id/users" },
+        { "id": "d", "text": "/users?id=42" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q7",
+      "text": "What is the purpose of a named router-outlet in Angular?",
+      "options": [
+        { "id": "a", "text": "To restrict which components can be loaded into it" },
+        { "id": "b", "text": "To allow multiple independent router outlets in the same template, each rendering a different route simultaneously" },
+        { "id": "c", "text": "To give the outlet a CSS class for styling" },
+        { "id": "d", "text": "To make the outlet lazy-loaded" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q8",
+      "text": "In a CanDeactivateFn guard, the guard receives the component instance. What would you typically check before allowing navigation away?",
+      "options": [
+        { "id": "a", "text": "Whether the user is authenticated" },
+        { "id": "b", "text": "Whether the component has unsaved changes by calling a method like component.hasUnsavedChanges()" },
+        { "id": "c", "text": "Whether the target route exists" },
+        { "id": "d", "text": "Whether the route has a resolver" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q9",
+      "text": "What does CanMatchFn do that is different from CanActivateFn?",
+      "options": [
+        { "id": "a", "text": "CanMatchFn runs after the component is loaded; CanActivateFn runs before" },
+        { "id": "b", "text": "CanMatchFn prevents the route from being matched at all (the router tries the next route); CanActivateFn prevents navigation but the route is still matched" },
+        { "id": "c", "text": "CanMatchFn is used for child routes; CanActivateFn is for top-level routes" },
+        { "id": "d", "text": "They are identical functional guards" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q10",
+      "text": "Given this code:\n\nthis.http.get<Product>('/api/product/1').pipe(\n  map(p => ({ ...p, price: p.price * 1.2 })),\n  tap(p => console.log('Transformed:', p))\n);\n\nWhat does the map operator do here?",
+      "options": [
+        { "id": "a", "text": "Filters products where price > 1.2" },
+        { "id": "b", "text": "Transforms each emitted Product by increasing its price by 20% and returns a new object" },
+        { "id": "c", "text": "Logs the product to console" },
+        { "id": "d", "text": "Retries the HTTP call 1.2 times" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q11",
+      "text": "In an HttpInterceptorFn, how do you modify a response before it reaches the component?",
+      "options": [
+        { "id": "a", "text": "Intercept the request and return a modified req object" },
+        { "id": "b", "text": "Call next(req) and pipe operators like map() on the returned observable to transform the HttpEvent" },
+        { "id": "c", "text": "Use res.clone() after calling next()" },
+        { "id": "d", "text": "Angular does not support response modification in interceptors" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q12",
+      "text": "Given this RxJS code:\n\nfromEvent(button, 'click').pipe(\n  exhaustMap(() => this.http.get('/api/data'))\n).subscribe();\n\nWhat happens if the user clicks the button while a request is still in flight?",
+      "options": [
+        { "id": "a", "text": "The previous request is cancelled and a new one starts" },
+        { "id": "b", "text": "The new click is ignored and no new request is made until the current one completes" },
+        { "id": "c", "text": "Both requests run concurrently" },
+        { "id": "d", "text": "The requests are queued and run one after another" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q13",
+      "text": "Which RxJS operator would you use to listen for type-ahead search and cancel previous HTTP requests when the user types again?",
+      "options": [
+        { "id": "a", "text": "concatMap" },
+        { "id": "b", "text": "switchMap" },
+        { "id": "c", "text": "mergeMap" },
+        { "id": "d", "text": "exhaustMap" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q14",
+      "text": "What is the difference between detach() and reattach() on ChangeDetectorRef?",
+      "options": [
+        { "id": "a", "text": "detach() removes the component from the DOM; reattach() inserts it back" },
+        { "id": "b", "text": "detach() removes the component from Angular's change detection tree so it is never checked; reattach() re-adds it so it is checked again" },
+        { "id": "c", "text": "detach() clears the component's bindings; reattach() restores them" },
+        { "id": "d", "text": "They are used for lazy-loading component trees" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q15",
+      "text": "In Angular, what are signals and how do they differ from traditional observables for state management?",
+      "options": [
+        { "id": "a", "text": "Signals are components; observables are services" },
+        { "id": "b", "text": "Signals are synchronous reactive primitives that hold a value and notify dependents when it changes without needing subscriptions; observables are push-based streams that require subscription management" },
+        { "id": "c", "text": "Signals are only for HTTP responses; observables are for UI events" },
+        { "id": "d", "text": "Signals replace NgRx; observables are used only in effects" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q16",
+      "text": "Given this directive:\n\n@Directive({ selector: '[appPermission]' })\nexport class PermissionDirective {\n  @Input() set appPermission(role: string) {\n    if (!this.authService.hasRole(role)) {\n      this.viewContainer.clear();\n    }\n  }\n  constructor(private viewContainer: ViewContainerRef, private authService: AuthService) {}\n}\n\nWhat type of directive pattern is this?",
+      "options": [
+        { "id": "a", "text": "Attribute directive that changes the element's style" },
+        { "id": "b", "text": "Structural-like directive that controls whether a view is rendered based on permissions" },
+        { "id": "c", "text": "Component directive that injects a template" },
+        { "id": "d", "text": "Pipe that transforms permission strings" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q17",
+      "text": "What does select: 'header' on ng-content do?",
+      "options": [
+        { "id": "a", "text": "Projects only header elements from CSS" },
+        { "id": "b", "text": "Projects only child content matching the CSS selector 'header' into that specific ng-content slot" },
+        { "id": "c", "text": "Creates a named slot called 'header'" },
+        { "id": "d", "text": "Selects a template from the parent component" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q18",
+      "text": "In NgRx, given this selector:\n\nexport const selectUsers = createSelector(\n  selectUsersState,\n  (state: UsersState) => state.users\n);\n\nWhy does createSelector provide performance benefits?",
+      "options": [
+        { "id": "a", "text": "It caches the store reference permanently" },
+        { "id": "b", "text": "It memoizes the result and only recomputes when the input state slice changes, preventing unnecessary recalculation" },
+        { "id": "c", "text": "It parallelizes state computations" },
+        { "id": "d", "text": "It prevents components from subscribing to the store" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q19",
+      "text": "What does toObservable() do in Angular Signals?",
+      "options": [
+        { "id": "a", "text": "Converts an observable to a signal" },
+        { "id": "b", "text": "Converts a signal into an observable so it can be used with RxJS operators and async pipe" },
+        { "id": "c", "text": "Creates a computed observable from multiple signals" },
+        { "id": "d", "text": "Schedules signal updates as asynchronous events" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q20",
+      "text": "Given this test:\n\nit('should display user name', () => {\n  component.user = { name: 'Alice' };\n  fixture.detectChanges();\n  const el = fixture.nativeElement.querySelector('.user-name');\n  expect(el.textContent).toBe('Alice');\n});\n\nWhy is fixture.detectChanges() called before querying the DOM?",
+      "options": [
+        { "id": "a", "text": "To reset the component" },
+        { "id": "b", "text": "To trigger Angular's change detection so the template reflects the updated component property before the DOM is queried" },
+        { "id": "c", "text": "To compile the template" },
+        { "id": "d", "text": "To initialize the TestBed" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q21",
+      "text": "What is the purpose of fakeAsync() in Angular testing?",
+      "options": [
+        { "id": "a", "text": "It replaces real HTTP calls with mock responses" },
+        { "id": "b", "text": "It wraps the test in a zone that allows controlling asynchronous operations (setTimeout, Promises) synchronously with tick()" },
+        { "id": "c", "text": "It creates a fake component fixture" },
+        { "id": "d", "text": "It disables change detection during the test" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q22",
+      "text": "Which lazy loading strategy delays loading until the user navigates close to a lazy-loaded route, rather than loading everything upfront or on demand?",
+      "options": [
+        { "id": "a", "text": "PreloadAllModules" },
+        { "id": "b", "text": "QuicklinkStrategy (from ngx-quicklink)" },
+        { "id": "c", "text": "NoPreloading" },
+        { "id": "d", "text": "OnDemandStrategy" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q23",
+      "text": "In RxJS, what does the Subject class allow that a regular Observable does not?",
+      "options": [
+        { "id": "a", "text": "Subscribing to multiple sources simultaneously" },
+        { "id": "b", "text": "Being both an Observable (can be subscribed to) and an Observer (can emit values by calling next/error/complete)" },
+        { "id": "c", "text": "Automatically completing after one emission" },
+        { "id": "d", "text": "Replaying the last N values to new subscribers" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q24",
+      "text": "In Angular forms, what is the updateOn option in FormControl and what does it control?",
+      "options": [
+        { "id": "a", "text": "When the control renders in the DOM" },
+        { "id": "b", "text": "The event that triggers value and validity updates — can be 'change' (default), 'blur', or 'submit'" },
+        { "id": "c", "text": "Whether the control value is emitted to the parent form" },
+        { "id": "d", "text": "The animation trigger for validation messages" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q25",
+      "text": "In Angular security, what is the risk of using [innerHTML]=\"userContent\" and how does Angular mitigate it?",
+      "options": [
+        { "id": "a", "text": "innerHTML can expose CSRF tokens; Angular encrypts them" },
+        { "id": "b", "text": "innerHTML can inject malicious scripts (XSS); Angular sanitizes the HTML before binding, stripping dangerous tags and attributes" },
+        { "id": "c", "text": "innerHTML causes memory leaks; Angular runs a garbage collector" },
+        { "id": "d", "text": "innerHTML overrides styles; Angular re-applies view encapsulation" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q26",
+      "text": "What does detectChanges() on ChangeDetectorRef do compared to ApplicationRef.tick()?",
+      "options": [
+        { "id": "a", "text": "They are identical" },
+        { "id": "b", "text": "detectChanges() runs change detection only for the specific component and its children; ApplicationRef.tick() runs it for the entire application tree" },
+        { "id": "c", "text": "detectChanges() is used for OnPush; ApplicationRef.tick() is for Default strategy" },
+        { "id": "d", "text": "detectChanges() is synchronous; ApplicationRef.tick() is always asynchronous" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q27",
+      "text": "Given this NgRx effect:\n\nloadUsers$ = createEffect(() =>\n  this.actions$.pipe(\n    ofType(UserActions.loadUsers),\n    switchMap(() =>\n      this.userService.getAll().pipe(\n        map(users => UserActions.loadUsersSuccess({ users })),\n        catchError(err => of(UserActions.loadUsersFailure({ error: err })))\n      )\n    )\n  )\n);\n\nWhy is switchMap used instead of mergeMap here?",
+      "options": [
+        { "id": "a", "text": "switchMap is required by NgRx effects" },
+        { "id": "b", "text": "switchMap cancels any in-flight request if loadUsers is dispatched again, preventing stale responses from overwriting newer ones" },
+        { "id": "c", "text": "mergeMap cannot be used with HTTP observables" },
+        { "id": "d", "text": "switchMap provides automatic retry logic" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q28",
+      "text": "What does the Angular @Pipe decorator's standalone: true option enable?",
+      "options": [
+        { "id": "a", "text": "The pipe can be used without declaring it in any module or component" },
+        { "id": "b", "text": "The pipe can be imported directly into standalone components or other modules without being declared in a shared NgModule" },
+        { "id": "c", "text": "The pipe runs outside the Angular zone" },
+        { "id": "d", "text": "The pipe is compiled ahead-of-time only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q29",
+      "text": "In HTTP interceptors, how do you pass metadata to an interceptor from a specific HTTP call?",
+      "options": [
+        { "id": "a", "text": "Using HttpHeaders with a custom header" },
+        { "id": "b", "text": "Using HttpContext with a HttpContextToken to attach arbitrary data to the request" },
+        { "id": "c", "text": "Adding a custom query parameter" },
+        { "id": "d", "text": "Using the interceptor's constructor injection" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a03_q30",
+      "text": "What is the purpose of Validators.compose() in Angular reactive forms?",
+      "options": [
+        { "id": "a", "text": "Combines multiple validators and runs them in parallel, returning all errors" },
+        { "id": "b", "text": "Combines an array of validator functions into a single validator that runs them in order and merges all validation errors" },
+        { "id": "c", "text": "Creates an async validator from sync validators" },
+        { "id": "d", "text": "Composes a form group from a list of controls" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

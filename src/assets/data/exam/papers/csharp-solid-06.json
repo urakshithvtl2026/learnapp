@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s06",
+  "title": "C# SOLID — Paper 6",
+  "description": "Covers LSP refactoring, ISP concepts, ISP refactoring, DIP concepts, DIP implementation, Repository Pattern, Code Smells & SOLID Violations, Refactoring Techniques, Unit Testing & SOLID, and SOLID Real C# Scenarios.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s06_q1",
+      "text": "ST10-1: Constructor injection in C# DIP implementation means:",
+      "options": [
+        { "id": "a", "text": "The class creates its own dependencies inside the constructor using `new`." },
+        { "id": "b", "text": "Dependencies are provided to a class through its constructor parameters as abstractions (interfaces)." },
+        { "id": "c", "text": "The constructor calls a static factory to resolve dependencies." },
+        { "id": "d", "text": "Dependencies are injected after construction using setter properties." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q2",
+      "text": "ST20-1: Given the code snippet: `public class OrderService { private readonly EmailService _email = new EmailService(); }` — which SOLID principle is violated?",
+      "options": [
+        { "id": "a", "text": "SRP — OrderService should not have any fields." },
+        { "id": "b", "text": "DIP — OrderService depends directly on a concrete EmailService rather than an abstraction." },
+        { "id": "c", "text": "OCP — EmailService cannot be extended." },
+        { "id": "d", "text": "ISP — EmailService has too many methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q3",
+      "text": "ST16-12: When implementing the Repository pattern with Entity Framework Core, which statement is most accurate?",
+      "options": [
+        { "id": "a", "text": "DbContext already acts as a repository, so adding a separate repository layer is always unnecessary." },
+        { "id": "b", "text": "Wrapping DbContext in a repository interface allows swapping EF Core for a different ORM or a fake in tests without changing business logic." },
+        { "id": "c", "text": "Repositories should include DbContext as a public property." },
+        { "id": "d", "text": "Repository methods should always return IQueryable<T> to push all query logic to callers." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q4",
+      "text": "ST08-7: In C#, explicit interface implementation is used to:",
+      "options": [
+        { "id": "a", "text": "Make all interface methods public on the class." },
+        { "id": "b", "text": "Implement an interface method without exposing it publicly on the class, so it is only accessible via the interface reference." },
+        { "id": "c", "text": "Allow the class to implement the same method name for two interfaces with different signatures simultaneously." },
+        { "id": "d", "text": "Both b and c." }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_s06_q5",
+      "text": "ST09-5: Which of the following is a direct consequence of violating DIP by instantiating concrete classes inside high-level modules?",
+      "options": [
+        { "id": "a", "text": "The code compiles faster." },
+        { "id": "b", "text": "High-level modules become tightly coupled to low-level details, making substitution and unit testing difficult." },
+        { "id": "c", "text": "The program uses less memory at runtime." },
+        { "id": "d", "text": "The high-level module gains extra capabilities from the low-level module." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q6",
+      "text": "ST19-5: When SOLID principles are followed, why does mocking become easier?",
+      "options": [
+        { "id": "a", "text": "Because mock frameworks only work with sealed classes." },
+        { "id": "b", "text": "Because dependencies are represented as interfaces or abstract types, which mocking frameworks can substitute easily." },
+        { "id": "c", "text": "Because SOLID-compliant classes always have public setters." },
+        { "id": "d", "text": "Because mocking is not needed when SOLID principles are applied." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q7",
+      "text": "ST06-14: When a derived class raises an exception type that the base class does not declare, this can violate LSP because:",
+      "options": [
+        { "id": "a", "text": "Callers expect only the exceptions defined by the base class contract; unexpected exceptions break substitutability." },
+        { "id": "b", "text": "Exceptions are always LSP violations regardless of context." },
+        { "id": "c", "text": "The derived class should never throw any exceptions." },
+        { "id": "d", "text": "This is not an LSP issue; exception types are irrelevant to substitutability." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s06_q8",
+      "text": "ST20-2: A `Logger` class has methods: `LogInfo()`, `LogWarning()`, `LogError()`, `SendEmail()`, `WriteToDatabase()`. Which principle is most clearly violated?",
+      "options": [
+        { "id": "a", "text": "OCP" },
+        { "id": "b", "text": "SRP — Logger has more than one reason to change (logging format, email transport, database schema)." },
+        { "id": "c", "text": "LSP" },
+        { "id": "d", "text": "ISP" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q9",
+      "text": "ST07-11: Which of the following correctly refactors a fat `IVehicle` interface (Drive, Fly, Sail) following ISP?",
+      "options": [
+        { "id": "a", "text": "Add default implementations for Fly and Sail in IVehicle." },
+        { "id": "b", "text": "Split into IDriveable, IFlyable, and ISailable; a Car implements only IDriveable." },
+        { "id": "c", "text": "Mark Fly and Sail as optional using attributes." },
+        { "id": "d", "text": "Create a Vehicle base class with virtual methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q10",
+      "text": "ST17-11: 'Message Chains' (a.b().c().d()) is a code smell related to which principle?",
+      "options": [
+        { "id": "a", "text": "DIP — too many concrete dependencies." },
+        { "id": "b", "text": "Law of Demeter — a class should only talk to its immediate collaborators, not navigate deep object graphs." },
+        { "id": "c", "text": "LSP — the chain may break substitutability." },
+        { "id": "d", "text": "OCP — the chain cannot be extended." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q11",
+      "text": "ST10-2: The `IServiceCollection` extension method `AddTransient<TService, TImplementation>()` in ASP.NET Core registers a service so that:",
+      "options": [
+        { "id": "a", "text": "One instance is shared for the lifetime of the application." },
+        { "id": "b", "text": "A new instance is created every time the service is requested." },
+        { "id": "c", "text": "One instance is shared per HTTP request." },
+        { "id": "d", "text": "The implementation is resolved lazily on first use only." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q12",
+      "text": "ST18-9: 'Decompose Conditional' refactoring involves:",
+      "options": [
+        { "id": "a", "text": "Removing all if-statements from a class." },
+        { "id": "b", "text": "Extracting the condition, then-part, and else-part of a complex if-else into well-named methods to improve clarity." },
+        { "id": "c", "text": "Combining multiple conditions into a single boolean expression." },
+        { "id": "d", "text": "Replacing conditions with try-catch blocks." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q13",
+      "text": "ST09-6: A 'Service Locator' is sometimes contrasted with DIP-based injection. What is the key criticism of Service Locator?",
+      "options": [
+        { "id": "a", "text": "It is too slow at runtime." },
+        { "id": "b", "text": "It hides dependencies inside method bodies rather than declaring them explicitly, making them harder to discover and test." },
+        { "id": "c", "text": "It only supports singleton lifetimes." },
+        { "id": "d", "text": "It cannot work with interfaces." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q14",
+      "text": "ST19-6: A 'Spy' test double differs from a Mock in that:",
+      "options": [
+        { "id": "a", "text": "A Spy provides canned responses, while a Mock throws exceptions." },
+        { "id": "b", "text": "A Spy wraps a real object and records calls made to it, while a Mock is entirely fabricated." },
+        { "id": "c", "text": "A Spy is set up before the test; a Mock is set up after." },
+        { "id": "d", "text": "A Spy can only be used with static methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q15",
+      "text": "ST20-3: A `ShapeRenderer` class has a method with `if (shape is Circle) { ... } else if (shape is Rectangle) { ... }`. Which principle does this violate?",
+      "options": [
+        { "id": "a", "text": "DIP" },
+        { "id": "b", "text": "OCP — adding a new shape requires modifying ShapeRenderer." },
+        { "id": "c", "text": "LSP" },
+        { "id": "d", "text": "ISP" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q16",
+      "text": "ST06-15: Which of the following statements about LSP and interfaces is correct?",
+      "options": [
+        { "id": "a", "text": "Interfaces cannot be involved in LSP violations because they have no implementation." },
+        { "id": "b", "text": "Implementations of an interface must honour the behavioral contract implied by the interface, not just its method signatures." },
+        { "id": "c", "text": "Any class that compiles with an interface is automatically LSP compliant." },
+        { "id": "d", "text": "LSP only applies to abstract class hierarchies, not interface hierarchies." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q17",
+      "text": "ST10-3: In ASP.NET Core, when a service is registered with `AddSingleton<T>()`, its instance is:",
+      "options": [
+        { "id": "a", "text": "Created once per HTTP request and shared within that request." },
+        { "id": "b", "text": "Created once for the application lifetime and shared across all requests and users." },
+        { "id": "c", "text": "Created every time it is requested." },
+        { "id": "d", "text": "Created only on the first HTTP request." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q18",
+      "text": "ST17-12: 'Parallel Inheritance Hierarchies' is a code smell where:",
+      "options": [
+        { "id": "a", "text": "Two completely independent inheritance trees exist in the same project." },
+        { "id": "b", "text": "Every time you add a subclass in one hierarchy, you must add a corresponding subclass in another hierarchy, indicating tight coupling." },
+        { "id": "c", "text": "Two classes inherit from the same base class." },
+        { "id": "d", "text": "A hierarchy has more than five levels of inheritance." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q19",
+      "text": "ST08-8: A `IRepository<T>` interface includes `GetById`, `GetAll`, `Add`, `Update`, `Delete`, and `ExecuteRawSql`. A reporting service only needs `GetAll`. ISP suggests:",
+      "options": [
+        { "id": "a", "text": "The reporting service implements all methods, throwing exceptions for unused ones." },
+        { "id": "b", "text": "Split off an IReadRepository<T> with just GetById and GetAll so read-only consumers depend on a narrower contract." },
+        { "id": "c", "text": "Add an IsReadOnly flag to IRepository<T>." },
+        { "id": "d", "text": "Make all write methods optional using attributes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q20",
+      "text": "ST19-7: What does 'Arrange, Act, Assert' (AAA) mean in the context of unit testing?",
+      "options": [
+        { "id": "a", "text": "Authenticate, Authorize, Audit." },
+        { "id": "b", "text": "Set up the test conditions (Arrange), execute the unit under test (Act), then verify the outcome (Assert)." },
+        { "id": "c", "text": "Add, Apply, Assess code changes." },
+        { "id": "d", "text": "Abstract, Aggregate, Annotate test cases." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q21",
+      "text": "ST20-4: A class `EmailSender` has a public method `Send()` that constructs an `SmtpClient` internally. What is the DIP-compliant refactoring?",
+      "options": [
+        { "id": "a", "text": "Make SmtpClient a static field of EmailSender." },
+        { "id": "b", "text": "Introduce an IEmailTransport interface and inject it into EmailSender's constructor so the transport mechanism can be swapped or mocked." },
+        { "id": "c", "text": "Subclass SmtpClient inside EmailSender." },
+        { "id": "d", "text": "Move the SmtpClient construction into a separate private method." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q22",
+      "text": "ST09-7: In a DIP-compliant architecture, which layer typically defines the interfaces (abstractions)?",
+      "options": [
+        { "id": "a", "text": "The infrastructure layer (e.g., data access)." },
+        { "id": "b", "text": "The high-level domain/application layer, so that low-level infrastructure depends on the domain's abstractions." },
+        { "id": "c", "text": "The presentation layer." },
+        { "id": "d", "text": "A shared utilities library." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q23",
+      "text": "ST10-4: Which of the following is a valid way to implement DIP without a DI container in C#?",
+      "options": [
+        { "id": "a", "text": "Using `new` inside every class that needs a dependency." },
+        { "id": "b", "text": "Manually constructing the object graph at the application's composition root, passing abstractions via constructors." },
+        { "id": "c", "text": "Using static factory methods within each dependency class." },
+        { "id": "d", "text": "Using reflection to discover and instantiate all dependencies at startup." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q24",
+      "text": "ST16-13: In the Repository pattern, what is the preferred return type for a method that might or might not find an entity?",
+      "options": [
+        { "id": "a", "text": "Always returning a default-constructed entity to avoid null." },
+        { "id": "b", "text": "Returning `T?` (nullable reference type) or a Result<T> type to explicitly communicate the absence of a value." },
+        { "id": "c", "text": "Throwing a NotFoundException if the entity is not found." },
+        { "id": "d", "text": "Returning an empty List<T> even for single-entity queries." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q25",
+      "text": "ST07-12: Which of the following statements about ISP and cohesion is correct?",
+      "options": [
+        { "id": "a", "text": "ISP reduces cohesion by splitting methods across too many interfaces." },
+        { "id": "b", "text": "ISP promotes high cohesion by ensuring each interface groups only closely related methods that a specific type of client needs." },
+        { "id": "c", "text": "ISP and cohesion are unrelated concerns." },
+        { "id": "d", "text": "High cohesion leads to fat interfaces that violate ISP." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q26",
+      "text": "ST20-5: A `UserController` directly instantiates `new UserRepository()` and `new EmailService()`. Which principles are violated?",
+      "options": [
+        { "id": "a", "text": "OCP and LSP" },
+        { "id": "b", "text": "DIP and SRP — it depends on concrete types and mixes controller and service-creation concerns." },
+        { "id": "c", "text": "ISP and LSP" },
+        { "id": "d", "text": "OCP and ISP" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q27",
+      "text": "ST19-8: Why does a class that violates SRP tend to have low unit testability?",
+      "options": [
+        { "id": "a", "text": "SRP violations cause compilation errors that prevent testing." },
+        { "id": "b", "text": "Mixed concerns mean the class has many hard-coded dependencies, making it hard to isolate and test any single behavior." },
+        { "id": "c", "text": "SRP violations always cause NullReferenceExceptions in test environments." },
+        { "id": "d", "text": "SRP-violating classes cannot be mocked." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q28",
+      "text": "ST18-10: 'Introduce Null Object' refactoring replaces null checks with:",
+      "options": [
+        { "id": "a", "text": "Throwing ArgumentNullException everywhere null was expected." },
+        { "id": "b", "text": "A special object implementing the interface with do-nothing or default behavior, eliminating null reference checks." },
+        { "id": "c", "text": "A nullable wrapper type such as Nullable<T>." },
+        { "id": "d", "text": "An optional parameter with a default value of null." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q29",
+      "text": "ST06-16: An abstract class `Animal` has method `MakeSound()`. A `Fish` subclass inherits `Animal` and throws `NotSupportedException` from `MakeSound()`. The best LSP fix is:",
+      "options": [
+        { "id": "a", "text": "Wrap the call in a try-catch in all callers." },
+        { "id": "b", "text": "Remove Fish from the Animal hierarchy; use composition or a separate ISoundMaker interface implemented only by sound-making animals." },
+        { "id": "c", "text": "Make Animal sealed so Fish cannot inherit from it." },
+        { "id": "d", "text": "Add an CanMakeSound boolean property to Animal." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s06_q30",
+      "text": "ST20-6: In C#, which code pattern indicates a violation of both OCP and SRP in a single method?",
+      "options": [
+        { "id": "a", "text": "A method that delegates to an injected strategy object." },
+        { "id": "b", "text": "A method that both validates input AND applies business rules AND formats output using a chain of if-else statements that grow with every new feature." },
+        { "id": "c", "text": "A method that returns a result from an injected repository." },
+        { "id": "d", "text": "A method that calls two collaborating services injected via DI." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

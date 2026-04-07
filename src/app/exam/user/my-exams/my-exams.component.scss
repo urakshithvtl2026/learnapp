@@ -1,0 +1,41 @@
+.page {
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 0 16px;
+
+  h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 20px; }
+}
+
+table { width: 100%; }
+
+.chip {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.chip-grey  { background: #f0f0f0; color: #555; }
+.chip-blue  { background: #e3f2fd; color: #1565c0; }
+.chip-green { background: #e8f5e9; color: #2e7d32; }
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #777;
+}
+
+@media (max-width: 600px) {
+  .page {
+    margin: 16px auto;
+  }
+
+  mat-card {
+    overflow-x: auto;
+
+    table {
+      min-width: 380px;
+    }
+  }
+}

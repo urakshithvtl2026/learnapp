@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_d02",
+  "title": "SQL Developer — Paper 2",
+  "description": "Developer-focused SQL scenarios covering query writing, joins, filtering, aggregations, CTEs, indexes, transactions, window functions, stored procedures, and data safety.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_d02_q1",
+      "text": "A developer rewrites SELECT * FROM Invoices to SELECT InvoiceId, CustomerId, Amount, InvoiceDate FROM Invoices. Which benefit is NOT directly gained by this change?",
+      "options": [
+        { "id": "a", "text": "The query can now benefit from a covering index that includes exactly those four columns" },
+        { "id": "b", "text": "Less data is transferred over the network to the application" },
+        { "id": "c", "text": "The query automatically runs in parallel across multiple CPU cores" },
+        { "id": "d", "text": "Adding a new column to Invoices will not break application code that expects a fixed column set" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d02_q2",
+      "text": "A developer is asked to list all products that have never been ordered. The Products table has a ProductId primary key and the OrderItems table has a ProductId foreign key. Which approach most efficiently finds products with no orders when OrderItems is very large?",
+      "options": [
+        { "id": "a", "text": "SELECT p.ProductId FROM Products p WHERE p.ProductId NOT IN (SELECT ProductId FROM OrderItems)" },
+        { "id": "b", "text": "SELECT p.ProductId FROM Products p WHERE NOT EXISTS (SELECT 1 FROM OrderItems oi WHERE oi.ProductId = p.ProductId)" },
+        { "id": "c", "text": "SELECT p.ProductId FROM Products p INNER JOIN OrderItems oi ON p.ProductId = oi.ProductId WHERE oi.ProductId IS NULL" },
+        { "id": "d", "text": "SELECT ProductId FROM Products EXCEPT ALL SELECT ProductId FROM OrderItems" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q3",
+      "text": "A developer writes: SELECT DeptName, AVG(Salary) AS AvgSalary FROM Employees GROUP BY DeptName HAVING AVG(Salary) > 60000 ORDER BY AvgSalary DESC. A colleague asks why AVG(Salary) is repeated in HAVING rather than using the alias. What is the correct explanation?",
+      "options": [
+        { "id": "a", "text": "HAVING does not support aggregate functions; only column references are allowed" },
+        { "id": "b", "text": "Column aliases defined in SELECT are not available in HAVING because HAVING is logically evaluated before SELECT in the SQL processing order" },
+        { "id": "c", "text": "Using an alias in HAVING would produce a different result than repeating the aggregate" },
+        { "id": "d", "text": "SQL Server does not permit aliases in any clause other than SELECT" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q4",
+      "text": "A developer needs to number rows for pagination: page 3 with 20 rows per page. They write: SELECT * FROM (SELECT *, ROW_NUMBER() OVER (ORDER BY CreatedAt DESC) AS RN FROM Articles) t WHERE t.RN BETWEEN 41 AND 60. What is the main drawback of this approach on a large dataset?",
+      "options": [
+        { "id": "a", "text": "ROW_NUMBER() is not supported in subqueries" },
+        { "id": "b", "text": "BETWEEN cannot be used with window function results" },
+        { "id": "c", "text": "SQL Server must scan and number all preceding rows before returning the requested page, making later pages increasingly expensive" },
+        { "id": "d", "text": "SELECT * inside a subquery causes a syntax error" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d02_q5",
+      "text": "A developer builds a stored procedure that accepts a table name as a parameter and constructs dynamic SQL: EXEC('SELECT * FROM ' + @TableName). Beyond SQL injection, what additional risk exists with this pattern?",
+      "options": [
+        { "id": "a", "text": "EXEC cannot run SELECT statements" },
+        { "id": "b", "text": "The procedure execution plan cannot be cached and reused, and any caller with EXECUTE permission on the SP gains implicit access to any table they can name" },
+        { "id": "c", "text": "Dynamic SQL inside a stored procedure is automatically encrypted" },
+        { "id": "d", "text": "Table names passed as parameters are automatically validated against sys.tables" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q6",
+      "text": "A developer notices that the following query performs a full table scan despite an index on OrderDate: SELECT OrderId, CustomerId FROM Orders WHERE YEAR(OrderDate) = 2024. How should the WHERE clause be rewritten to use the index?",
+      "options": [
+        { "id": "a", "text": "WHERE OrderDate LIKE '2024%'" },
+        { "id": "b", "text": "WHERE OrderDate >= '2024-01-01' AND OrderDate < '2025-01-01'" },
+        { "id": "c", "text": "WHERE CAST(OrderDate AS VARCHAR) LIKE '2024%'" },
+        { "id": "d", "text": "WHERE DATEPART(YEAR, OrderDate) = 2024" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q7",
+      "text": "A developer sets SET XACT_ABORT ON at the top of a stored procedure that contains a multi-statement transaction. During execution a constraint violation occurs. What does SET XACT_ABORT ON guarantee?",
+      "options": [
+        { "id": "a", "text": "The violating statement is silently skipped and execution continues" },
+        { "id": "b", "text": "SQL Server automatically terminates and rolls back the entire transaction when any statement raises a runtime error, even if no explicit ROLLBACK is coded" },
+        { "id": "c", "text": "Only the current statement is rolled back; previous statements remain committed" },
+        { "id": "d", "text": "SET XACT_ABORT ON only applies to DDL statements inside transactions" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q8",
+      "text": "A developer writes: SELECT COUNT(ManagerId) FROM Employees. The ManagerId column is NULL for the CEO row. What value does COUNT(ManagerId) return compared to COUNT(*)?",
+      "options": [
+        { "id": "a", "text": "Both return the same value because COUNT ignores NULLs in all forms" },
+        { "id": "b", "text": "COUNT(ManagerId) excludes NULL rows and returns one less than COUNT(*) in this case" },
+        { "id": "c", "text": "COUNT(ManagerId) returns NULL because one of the values is NULL" },
+        { "id": "d", "text": "COUNT(*) excludes NULL rows; COUNT(ManagerId) includes them" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q9",
+      "text": "A developer wants to use a recursive CTE to traverse an employee hierarchy starting from a given manager and returning all subordinates at any depth. Which part of the recursive CTE syntax is essential to prevent infinite recursion?",
+      "options": [
+        { "id": "a", "text": "The anchor member must SELECT from the recursive member" },
+        { "id": "b", "text": "A MAXRECURSION option or a WHERE condition in the recursive member that ensures rows are eventually excluded, terminating the recursion" },
+        { "id": "c", "text": "The CTE must use UNION instead of UNION ALL" },
+        { "id": "d", "text": "Recursive CTEs must always have an ORDER BY clause" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q10",
+      "text": "A developer creates a non-clustered index on a Transactions table: CREATE INDEX IX_Trans_Status ON Transactions(Status). The column Status has only 3 distinct values: 'Pending', 'Complete', 'Cancelled'. After 2 million rows, the index is rarely chosen by the query optimiser. Why?",
+      "options": [
+        { "id": "a", "text": "Non-clustered indexes require at least 10 distinct values to be effective" },
+        { "id": "b", "text": "Low cardinality columns make an index ineffective because each value matches a large fraction of rows, making a table scan cheaper than random index lookups" },
+        { "id": "c", "text": "The index should have been created as a clustered index to work on low-cardinality columns" },
+        { "id": "d", "text": "SQL Server does not create indexes on columns with fewer than 10 distinct values" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q11",
+      "text": "A developer uses DENSE_RANK() instead of RANK() for a leaderboard query. Two players have the same top score. What is the key difference in the rank assigned to the third-highest score?",
+      "options": [
+        { "id": "a", "text": "DENSE_RANK assigns 3 to the third-highest; RANK also assigns 3" },
+        { "id": "b", "text": "DENSE_RANK assigns 2 to the third-highest (no gap); RANK assigns 3 (skips rank 2 because two rows tied at rank 1)" },
+        { "id": "c", "text": "DENSE_RANK and RANK produce identical results when there is only one tie" },
+        { "id": "d", "text": "DENSE_RANK assigns 1 to all tied rows and 2 to all subsequent rows" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q12",
+      "text": "Before running a large UPDATE on a production table, a developer wants to verify which rows will be affected without making any changes. What is the safest technique?",
+      "options": [
+        { "id": "a", "text": "Run the UPDATE with NOLOCK to preview changes without locking" },
+        { "id": "b", "text": "Wrap the UPDATE in BEGIN TRANSACTION, run SELECT with the same WHERE clause to confirm affected rows, then ROLLBACK" },
+        { "id": "c", "text": "Use UPDATE with OUTPUT clause to see affected rows before committing" },
+        { "id": "d", "text": "Run the UPDATE in a stored procedure with TRY...CATCH so errors auto-rollback" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q13",
+      "text": "A developer joins three tables: Orders, OrderItems, and Products. They notice the result has far more rows than expected. After investigation, they find that one OrderItems record has a NULL ProductId. How does this affect an INNER JOIN between OrderItems and Products?",
+      "options": [
+        { "id": "a", "text": "The NULL row causes a Cartesian product with all Products rows" },
+        { "id": "b", "text": "The row with NULL ProductId is excluded from the INNER JOIN result because NULL does not match any ProductId value" },
+        { "id": "c", "text": "SQL Server replaces NULL with 0 for JOIN evaluation" },
+        { "id": "d", "text": "The JOIN raises a foreign key violation error" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q14",
+      "text": "A developer is debating whether to use a subquery or a JOIN to retrieve the most recent order date for each customer alongside their profile data. Which statement accurately reflects the trade-off?",
+      "options": [
+        { "id": "a", "text": "Subqueries are always faster than JOINs for aggregation tasks" },
+        { "id": "b", "text": "A correlated subquery in SELECT runs once per customer row which can be slow; joining to a derived table or CTE that pre-aggregates MAX(OrderDate) per customer is usually more efficient" },
+        { "id": "c", "text": "JOINs cannot be used with aggregate functions" },
+        { "id": "d", "text": "Subqueries cannot reference outer query columns in SQL Server" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q15",
+      "text": "A developer needs to prevent phantom reads in a financial reporting transaction where the same range query must return identical results if run multiple times within one transaction. Which isolation level guarantees this?",
+      "options": [
+        { "id": "a", "text": "READ UNCOMMITTED" },
+        { "id": "b", "text": "READ COMMITTED" },
+        { "id": "c", "text": "REPEATABLE READ" },
+        { "id": "d", "text": "SERIALIZABLE" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_d02_q16",
+      "text": "A developer writes: SELECT ProductId, ProductName FROM Products WHERE Category = NULL. The query returns 0 rows even though there are products with no category. What is wrong?",
+      "options": [
+        { "id": "a", "text": "NULL values are stored differently and require the ISNULL() function to detect" },
+        { "id": "b", "text": "Comparing any value to NULL using = always returns UNKNOWN, which is treated as false; the correct syntax is WHERE Category IS NULL" },
+        { "id": "c", "text": "The column Category must be cast to VARCHAR before comparing to NULL" },
+        { "id": "d", "text": "NULL comparison works fine; the products simply have an empty string not NULL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q17",
+      "text": "A developer is designing a table to store financial transaction amounts and is choosing between FLOAT and DECIMAL(18,4). Which should they choose for monetary values and why?",
+      "options": [
+        { "id": "a", "text": "FLOAT because it supports a larger range of values" },
+        { "id": "b", "text": "DECIMAL(18,4) because it stores exact values; FLOAT is an approximate type that can introduce rounding errors in calculations like summing thousands of transactions" },
+        { "id": "c", "text": "Either type works because SQL Server rounds results automatically" },
+        { "id": "d", "text": "FLOAT because monetary amounts always have exactly 2 decimal places" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q18",
+      "text": "A stored procedure has an OUTPUT parameter @NewId INT. Inside the procedure, an INSERT is performed and the new identity value is captured. Which statement correctly retrieves the newly inserted identity value into @NewId?",
+      "options": [
+        { "id": "a", "text": "SET @NewId = @@IDENTITY" },
+        { "id": "b", "text": "SET @NewId = SCOPE_IDENTITY()" },
+        { "id": "c", "text": "SET @NewId = IDENT_CURRENT('TableName')" },
+        { "id": "d", "text": "SET @NewId = LAST_INSERT_ID()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q19",
+      "text": "A developer uses LEAD() to compare the current month's sales with the next month's sales in a report. For December (the last row), there is no next month. What value does LEAD() return by default for the last row?",
+      "options": [
+        { "id": "a", "text": "0" },
+        { "id": "b", "text": "The same value as the current row" },
+        { "id": "c", "text": "NULL, unless a default value is specified as the third argument to LEAD()" },
+        { "id": "d", "text": "An error is raised for the last row" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d02_q20",
+      "text": "A developer is deciding whether to add an index to a column used only in SELECT queries that run once per day, while the table receives 50,000 inserts per hour. What is the right decision?",
+      "options": [
+        { "id": "a", "text": "Always add an index to every column used in a WHERE clause" },
+        { "id": "b", "text": "The index would degrade high-frequency insert performance significantly for minimal read gain; it should only be added if the once-daily query has demonstrably unacceptable performance" },
+        { "id": "c", "text": "Indexes have no impact on INSERT performance" },
+        { "id": "d", "text": "Add the index and also add FILLFACTOR=100 to minimise overhead" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q21",
+      "text": "A developer writes the following WHERE clause: WHERE Status = 'Active' OR Department = 'Sales' AND StartDate > '2024-01-01'. A bug report says too many rows are returned. What is the operator precedence issue?",
+      "options": [
+        { "id": "a", "text": "OR has higher precedence than AND, so the condition is evaluated as (Status = 'Active' OR Department = 'Sales') AND StartDate > '2024-01-01'" },
+        { "id": "b", "text": "AND has higher precedence than OR, so the condition is evaluated as Status = 'Active' OR (Department = 'Sales' AND StartDate > '2024-01-01'), returning all Active rows regardless of department or date" },
+        { "id": "c", "text": "AND and OR have equal precedence and are evaluated left to right" },
+        { "id": "d", "text": "String comparisons are evaluated before boolean operators" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q22",
+      "text": "A developer needs to avoid repeating a complex filtered dataset across multiple aggregations in the same query. They consider a CTE vs an inline subquery. What does a CTE improve in this scenario beyond just performance?",
+      "options": [
+        { "id": "a", "text": "CTEs are always faster than inline subqueries" },
+        { "id": "b", "text": "A CTE improves readability by naming the intermediate result set and separating it from the main aggregation logic, making the query easier to understand and maintain" },
+        { "id": "c", "text": "CTEs automatically create a temporary index on the result set" },
+        { "id": "d", "text": "Inline subqueries cannot be used alongside GROUP BY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q23",
+      "text": "A developer adds a FK constraint: FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId). An attempt to INSERT an employee with a DepartmentId that does not exist in Departments fails. What is the benefit of this enforcement at the database level compared to enforcing it only in application code?",
+      "options": [
+        { "id": "a", "text": "FK constraints are optional and only matter during migrations" },
+        { "id": "b", "text": "Enforcement in the database ensures referential integrity regardless of which application, script, or direct connection accesses the data, not just through the main application path" },
+        { "id": "c", "text": "Application code enforcement is always faster than database constraint enforcement" },
+        { "id": "d", "text": "FK constraints prevent NULLs in the foreign key column automatically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q24",
+      "text": "A developer is asked to query an employee table and join it to itself to display each employee's manager name. The Employees table has EmployeeId and ManagerId columns. Which JOIN type should be used so that the CEO (who has NULL ManagerId) is also included in results?",
+      "options": [
+        { "id": "a", "text": "INNER JOIN — emp e JOIN Employees m ON e.ManagerId = m.EmployeeId" },
+        { "id": "b", "text": "LEFT JOIN — emp e LEFT JOIN Employees m ON e.ManagerId = m.EmployeeId" },
+        { "id": "c", "text": "RIGHT JOIN — emp e RIGHT JOIN Employees m ON e.ManagerId = m.EmployeeId" },
+        { "id": "d", "text": "FULL OUTER JOIN to include unmatched rows from both sides" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q25",
+      "text": "A developer uses SELECT DISTINCT ProductId, CategoryId FROM OrderItems. The query is slow on 10 million rows. An index on (ProductId, CategoryId) exists. Why might DISTINCT still cause a performance issue?",
+      "options": [
+        { "id": "a", "text": "DISTINCT cannot use non-clustered indexes" },
+        { "id": "b", "text": "DISTINCT requires SQL Server to sort or hash all rows to identify duplicates, which is expensive even with an index when the combination of ProductId and CategoryId has high cardinality" },
+        { "id": "c", "text": "DISTINCT is only slow when used with JOINs" },
+        { "id": "d", "text": "The index on (ProductId, CategoryId) would be used only if those columns appear in a WHERE clause" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q26",
+      "text": "A developer uses READ COMMITTED SNAPSHOT ISOLATION (RCSI) on a database. How does this differ from standard READ COMMITTED in terms of reader-writer blocking?",
+      "options": [
+        { "id": "a", "text": "RCSI increases locking and blocking compared to standard READ COMMITTED" },
+        { "id": "b", "text": "Under RCSI, readers do not block writers and writers do not block readers because readers access a row version from tempdb instead of waiting for a write lock to be released" },
+        { "id": "c", "text": "RCSI eliminates all anomalies including phantom reads" },
+        { "id": "d", "text": "RCSI is a query hint applied per statement, not a database-level setting" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q27",
+      "text": "A developer applies SUM(Sales) OVER (PARTITION BY Region ORDER BY SaleMonth ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) in a report. What does this expression compute?",
+      "options": [
+        { "id": "a", "text": "The total sales for the entire region regardless of month" },
+        { "id": "b", "text": "A cumulative (running) total of sales within each region, accumulating from the first month up to and including the current month" },
+        { "id": "c", "text": "The average sales per region per month" },
+        { "id": "d", "text": "The sales difference between the current month and the previous month" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d02_q28",
+      "text": "A developer discovers that a column storing UK postcodes is defined as VARCHAR(10), but some application paths can insert 20-character strings. What data integrity mechanism at the database level would silently prevent this?",
+      "options": [
+        { "id": "a", "text": "A CHECK constraint: CHECK (LEN(Postcode) <= 8)" },
+        { "id": "b", "text": "Changing the column to VARCHAR(10) truncates values at the database level when ANSI warnings are off, but this can cause silent data corruption; a CHECK constraint on length is safer" },
+        { "id": "c", "text": "A UNIQUE constraint on Postcode" },
+        { "id": "d", "text": "Defining the column as CHAR(10) automatically trims excess characters" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_d02_q29",
+      "text": "A developer has two queries: Query A uses IN with a subquery returning 500k rows; Query B uses EXISTS with the same subquery. On a large table, which typically performs better and why?",
+      "options": [
+        { "id": "a", "text": "IN always outperforms EXISTS because IN evaluates the full result once" },
+        { "id": "b", "text": "They always produce identical query plans in SQL Server 2019 and later" },
+        { "id": "c", "text": "EXISTS often performs better because it stops evaluating the subquery as soon as one matching row is found; IN may require materialising the full subquery result, especially when it contains NULLs which can cause IN to behave unexpectedly" },
+        { "id": "d", "text": "EXISTS cannot be used with subqueries that return more than 1000 rows" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d02_q30",
+      "text": "A developer needs to assign sequential page numbers within each chapter of a document stored in a Documents table (ChapterId, PageContent, InsertedAt). Which query correctly numbers pages starting at 1 for each chapter?",
+      "options": [
+        { "id": "a", "text": "SELECT ChapterId, ROW_NUMBER() OVER (ORDER BY InsertedAt) AS PageNum FROM Documents" },
+        { "id": "b", "text": "SELECT ChapterId, ROW_NUMBER() OVER (PARTITION BY ChapterId ORDER BY InsertedAt) AS PageNum FROM Documents" },
+        { "id": "c", "text": "SELECT ChapterId, RANK() OVER (ORDER BY InsertedAt) AS PageNum FROM Documents" },
+        { "id": "d", "text": "SELECT ChapterId, COUNT(*) OVER (PARTITION BY ChapterId) AS PageNum FROM Documents" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

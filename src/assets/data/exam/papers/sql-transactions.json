@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_07",
+  "title": "SQL Transactions & ACID Properties",
+  "description": "Transaction management, ACID properties, isolation levels, and concurrency control.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_07_q1",
+      "text": "Which SQL statement marks the beginning of an explicit transaction?",
+      "options": [
+        { "id": "a", "text": "START WORK" },
+        { "id": "b", "text": "BEGIN TRANSACTION" },
+        { "id": "c", "text": "OPEN TRANSACTION" },
+        { "id": "d", "text": "INIT TRANSACTION" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q2",
+      "text": "What does COMMIT do in a transaction?",
+      "options": [
+        { "id": "a", "text": "Undoes all changes made in the current transaction" },
+        { "id": "b", "text": "Permanently saves all changes made in the current transaction to the database" },
+        { "id": "c", "text": "Pauses the transaction" },
+        { "id": "d", "text": "Creates a savepoint in the transaction" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q3",
+      "text": "What does ROLLBACK do?",
+      "options": [
+        { "id": "a", "text": "Saves all changes permanently" },
+        { "id": "b", "text": "Undoes all changes made since the last COMMIT or BEGIN TRANSACTION" },
+        { "id": "c", "text": "Starts a new transaction" },
+        { "id": "d", "text": "Locks a table" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q4",
+      "text": "What does ACID stand for in database transactions?",
+      "options": [
+        { "id": "a", "text": "Accuracy, Concurrency, Isolation, Durability" },
+        { "id": "b", "text": "Atomicity, Consistency, Isolation, Durability" },
+        { "id": "c", "text": "Atomicity, Concurrency, Integrity, Durability" },
+        { "id": "d", "text": "Availability, Consistency, Isolation, Durability" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q5",
+      "text": "What does Atomicity in ACID mean?",
+      "options": [
+        { "id": "a", "text": "The transaction runs on a single CPU core" },
+        { "id": "b", "text": "All operations in a transaction are treated as a single unit — either all succeed or all are rolled back" },
+        { "id": "c", "text": "The database stores data in atomic units of storage" },
+        { "id": "d", "text": "The transaction cannot be split into smaller transactions" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q6",
+      "text": "What does Consistency in ACID mean?",
+      "options": [
+        { "id": "a", "text": "All transactions run at the same speed" },
+        { "id": "b", "text": "A transaction brings the database from one valid state to another, preserving all defined rules and constraints" },
+        { "id": "c", "text": "Data is consistent across all replicas" },
+        { "id": "d", "text": "Queries always return the same results" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q7",
+      "text": "What does Durability in ACID guarantee?",
+      "options": [
+        { "id": "a", "text": "The transaction will complete in a fixed time" },
+        { "id": "b", "text": "Once committed, the transaction's changes are permanently saved even in case of system failure" },
+        { "id": "c", "text": "The database will never go offline" },
+        { "id": "d", "text": "Transactions will always succeed" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q8",
+      "text": "Which isolation level allows a transaction to read data that has been modified but not yet committed by another transaction?",
+      "options": [
+        { "id": "a", "text": "READ COMMITTED" },
+        { "id": "b", "text": "REPEATABLE READ" },
+        { "id": "c", "text": "READ UNCOMMITTED" },
+        { "id": "d", "text": "SERIALIZABLE" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_07_q9",
+      "text": "What is a dirty read?",
+      "options": [
+        { "id": "a", "text": "Reading data from a corrupted table" },
+        { "id": "b", "text": "Reading uncommitted data from another transaction that may later be rolled back" },
+        { "id": "c", "text": "Reading NULL values from a column" },
+        { "id": "d", "text": "Reading data without proper permissions" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q10",
+      "text": "What is a non-repeatable read?",
+      "options": [
+        { "id": "a", "text": "When the same query returns different results within the same transaction due to another transaction modifying the data" },
+        { "id": "b", "text": "When a query returns no results" },
+        { "id": "c", "text": "When a query cannot be executed due to a lock" },
+        { "id": "d", "text": "When a transaction reads its own uncommitted changes" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_07_q11",
+      "text": "What is a phantom read?",
+      "options": [
+        { "id": "a", "text": "When a read sees data that has been physically deleted" },
+        { "id": "b", "text": "When a transaction re-executes a query and finds new rows that were inserted by another committed transaction" },
+        { "id": "c", "text": "When a read returns NULL for all columns" },
+        { "id": "d", "text": "When a query sees its own uncommitted inserts" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q12",
+      "text": "Which isolation level prevents dirty reads, non-repeatable reads, AND phantom reads?",
+      "options": [
+        { "id": "a", "text": "READ UNCOMMITTED" },
+        { "id": "b", "text": "READ COMMITTED" },
+        { "id": "c", "text": "REPEATABLE READ" },
+        { "id": "d", "text": "SERIALIZABLE" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_07_q13",
+      "text": "What is the default isolation level in SQL Server?",
+      "options": [
+        { "id": "a", "text": "READ UNCOMMITTED" },
+        { "id": "b", "text": "READ COMMITTED" },
+        { "id": "c", "text": "REPEATABLE READ" },
+        { "id": "d", "text": "SERIALIZABLE" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q14",
+      "text": "What is a deadlock in SQL?",
+      "options": [
+        { "id": "a", "text": "When a query runs indefinitely due to a missing index" },
+        { "id": "b", "text": "When two or more transactions each hold a lock the other needs, creating a circular wait that can never resolve" },
+        { "id": "c", "text": "When a transaction is waiting for a lock for more than 30 seconds" },
+        { "id": "d", "text": "When too many connections are open simultaneously" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q15",
+      "text": "How does SQL Server resolve a deadlock?",
+      "options": [
+        { "id": "a", "text": "It waits indefinitely until one transaction completes" },
+        { "id": "b", "text": "It automatically selects one transaction as the deadlock victim, rolls it back, and allows the other to proceed" },
+        { "id": "c", "text": "It terminates both transactions" },
+        { "id": "d", "text": "It escalates to a table lock" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q16",
+      "text": "What does a SAVEPOINT allow in a transaction?",
+      "options": [
+        { "id": "a", "text": "Committing part of the transaction" },
+        { "id": "b", "text": "Rolling back to a specific point within the transaction without rolling back the entire transaction" },
+        { "id": "c", "text": "Saving the transaction to disk immediately" },
+        { "id": "d", "text": "Starting a nested transaction" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q17",
+      "text": "What is the correct syntax to create a savepoint in SQL Server?",
+      "options": [
+        { "id": "a", "text": "SAVEPOINT MySavepoint" },
+        { "id": "b", "text": "SAVE TRANSACTION MySavepoint" },
+        { "id": "c", "text": "CREATE SAVEPOINT MySavepoint" },
+        { "id": "d", "text": "MARK TRANSACTION MySavepoint" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q18",
+      "text": "What is the difference between optimistic and pessimistic locking?",
+      "options": [
+        { "id": "a", "text": "Optimistic locks data immediately; pessimistic checks for conflicts at commit time" },
+        { "id": "b", "text": "Optimistic assumes no conflicts and checks at commit time; pessimistic locks data immediately to prevent conflicts" },
+        { "id": "c", "text": "They are the same strategy with different names" },
+        { "id": "d", "text": "Optimistic locking is only for reads; pessimistic only for writes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q19",
+      "text": "What does the NOLOCK hint do in SQL Server? Example: SELECT * FROM Orders WITH (NOLOCK)",
+      "options": [
+        { "id": "a", "text": "Prevents any locks from being taken, allowing dirty reads (READ UNCOMMITTED)" },
+        { "id": "b", "text": "Prevents other transactions from reading the data" },
+        { "id": "c", "text": "Acquires an exclusive lock on the table" },
+        { "id": "d", "text": "Disables all locking for the entire session" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_07_q20",
+      "text": "What does SET XACT_ABORT ON do?",
+      "options": [
+        { "id": "a", "text": "Prevents transactions from starting" },
+        { "id": "b", "text": "Automatically rolls back the current transaction when a statement raises an error" },
+        { "id": "c", "text": "Aborts the connection when a transaction fails" },
+        { "id": "d", "text": "Commits the transaction automatically after each statement" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q21",
+      "text": "What is an implicit transaction?",
+      "options": [
+        { "id": "a", "text": "A transaction that is explicitly started with BEGIN TRANSACTION" },
+        { "id": "b", "text": "A transaction automatically started by the database when executing a DML statement, committed or rolled back automatically" },
+        { "id": "c", "text": "A transaction that spans multiple sessions" },
+        { "id": "d", "text": "A transaction that cannot be rolled back" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q22",
+      "text": "Which strategy helps avoid deadlocks?",
+      "options": [
+        { "id": "a", "text": "Always access tables in a different order in each transaction" },
+        { "id": "b", "text": "Access tables in the same consistent order in all transactions and keep transactions short" },
+        { "id": "c", "text": "Use READ UNCOMMITTED for all queries" },
+        { "id": "d", "text": "Avoid using transactions altogether" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q23",
+      "text": "What does the Isolation property in ACID guarantee?",
+      "options": [
+        { "id": "a", "text": "Transactions are always committed in the order they started" },
+        { "id": "b", "text": "Concurrent transactions execute as if they were serial — intermediate states are not visible to other transactions" },
+        { "id": "c", "text": "Each transaction runs on isolated hardware" },
+        { "id": "d", "text": "Transactions cannot read each other's data under any circumstances" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q24",
+      "text": "In SQL Server, what does @@TRANCOUNT represent?",
+      "options": [
+        { "id": "a", "text": "The number of rows affected by the last transaction" },
+        { "id": "b", "text": "The number of active (open) transactions in the current session" },
+        { "id": "c", "text": "The total number of committed transactions" },
+        { "id": "d", "text": "The transaction isolation level as a number" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q25",
+      "text": "Which isolation level prevents dirty reads but still allows non-repeatable reads?",
+      "options": [
+        { "id": "a", "text": "READ UNCOMMITTED" },
+        { "id": "b", "text": "READ COMMITTED" },
+        { "id": "c", "text": "REPEATABLE READ" },
+        { "id": "d", "text": "SERIALIZABLE" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q26",
+      "text": "What happens when you issue ROLLBACK TO SAVEPOINT (or ROLLBACK TRANSACTION savepointname in SQL Server)?",
+      "options": [
+        { "id": "a", "text": "The entire transaction is rolled back" },
+        { "id": "b", "text": "Only the work done after the savepoint is undone; work before the savepoint remains" },
+        { "id": "c", "text": "The savepoint is committed" },
+        { "id": "d", "text": "A new transaction is started" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q27",
+      "text": "What type of lock does a SELECT statement typically acquire under READ COMMITTED?",
+      "options": [
+        { "id": "a", "text": "Exclusive (X) lock" },
+        { "id": "b", "text": "Shared (S) lock, released after each row/page is read" },
+        { "id": "c", "text": "Update (U) lock" },
+        { "id": "d", "text": "No lock at all" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q28",
+      "text": "READ COMMITTED SNAPSHOT ISOLATION (RCSI) in SQL Server — what does it use instead of locks for reads?",
+      "options": [
+        { "id": "a", "text": "Exclusive locks on all pages" },
+        { "id": "b", "text": "Row versioning stored in tempdb to provide consistent reads without locking" },
+        { "id": "c", "text": "Cached query results" },
+        { "id": "d", "text": "A shadow copy of the database" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q29",
+      "text": "Which statement is TRUE about nested transactions in SQL Server?",
+      "options": [
+        { "id": "a", "text": "SQL Server supports true nested transactions where inner COMMITs are independent" },
+        { "id": "b", "text": "SQL Server does not support true nested transactions — only the outermost COMMIT saves data; inner COMMITs only decrease @@TRANCOUNT" },
+        { "id": "c", "text": "Nested transactions always cause deadlocks" },
+        { "id": "d", "text": "Each BEGIN TRANSACTION creates a completely independent transaction" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_07_q30",
+      "text": "What is the purpose of using TRY...CATCH with transactions?",
+      "options": [
+        { "id": "a", "text": "To speed up transaction commit" },
+        { "id": "b", "text": "To catch errors and roll back the transaction gracefully instead of leaving it in an open, inconsistent state" },
+        { "id": "c", "text": "To enable automatic commits after each statement" },
+        { "id": "d", "text": "To log the transaction to a file" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

@@ -1,0 +1,339 @@
+{
+  "id": "qp_ng_b04",
+  "title": "Angular Basic — Paper 4",
+  "description": "Foundational Angular concepts: components, data binding, directives, component communication, lifecycle hooks, services, modules, template-driven forms, pipes, and CLI.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_ng_b04_q1",
+      "text": "In a @Component decorator, what is the 'styleUrls' property used for?",
+      "options": [
+        { "id": "a", "text": "To link external CDN stylesheets" },
+        { "id": "b", "text": "To specify an array of paths to the component's CSS or SCSS style files" },
+        { "id": "c", "text": "To define URL patterns for routing" },
+        { "id": "d", "text": "To list style dependencies from node_modules" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q2",
+      "text": "What is the $event object in Angular event binding?",
+      "options": [
+        { "id": "a", "text": "A custom Angular object that replaces native browser events" },
+        { "id": "b", "text": "An Angular service for managing events" },
+        { "id": "c", "text": "The native DOM event object or the value emitted by a custom EventEmitter" },
+        { "id": "d", "text": "A template variable that holds form validation state" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b04_q3",
+      "text": "Which Angular directive is used to apply a set of CSS classes conditionally to an element, and accepts an object where keys are class names and values are boolean expressions?",
+      "options": [
+        { "id": "a", "text": "ngStyle" },
+        { "id": "b", "text": "ngClass" },
+        { "id": "c", "text": "ngIf" },
+        { "id": "d", "text": "ngFor" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q4",
+      "text": "What type must an @Output() property be in an Angular component?",
+      "options": [
+        { "id": "a", "text": "Observable" },
+        { "id": "b", "text": "Subject" },
+        { "id": "c", "text": "BehaviorSubject" },
+        { "id": "d", "text": "EventEmitter" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b04_q5",
+      "text": "Which lifecycle hook is the best place to fetch data from an API when a component loads?",
+      "options": [
+        { "id": "a", "text": "ngOnChanges" },
+        { "id": "b", "text": "ngOnInit" },
+        { "id": "c", "text": "Constructor" },
+        { "id": "d", "text": "ngAfterViewInit" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q6",
+      "text": "How does Angular's dependency injection system determine which service instance to provide when a component requests one?",
+      "options": [
+        { "id": "a", "text": "It checks the component's template for service usage" },
+        { "id": "b", "text": "It looks up the injector hierarchy from the component upward until it finds a provider" },
+        { "id": "c", "text": "It always creates a new instance for each component" },
+        { "id": "d", "text": "It reads the service from the browser's local storage" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q7",
+      "text": "In an Angular NgModule, how does FormsModule differ from ReactiveFormsModule?",
+      "options": [
+        { "id": "a", "text": "FormsModule supports template-driven forms with ngModel; ReactiveFormsModule supports model-driven forms with FormGroup and FormControl" },
+        { "id": "b", "text": "FormsModule is for reactive programming; ReactiveFormsModule is for templates" },
+        { "id": "c", "text": "They are interchangeable and provide the same directives" },
+        { "id": "d", "text": "FormsModule only works for login forms" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b04_q8",
+      "text": "Which template-driven form validator ensures that an input value matches a given regular expression?",
+      "options": [
+        { "id": "a", "text": "minlength" },
+        { "id": "b", "text": "required" },
+        { "id": "c", "text": "max" },
+        { "id": "d", "text": "pattern" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b04_q9",
+      "text": "Which Angular built-in pipe converts a string to all lowercase letters?",
+      "options": [
+        { "id": "a", "text": "lowercase" },
+        { "id": "b", "text": "small" },
+        { "id": "c", "text": "downcase" },
+        { "id": "d", "text": "lower" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b04_q10",
+      "text": "Which Angular CLI command generates a new pipe?",
+      "options": [
+        { "id": "a", "text": "ng create pipe" },
+        { "id": "b", "text": "ng add pipe" },
+        { "id": "c", "text": "ng generate pipe" },
+        { "id": "d", "text": "ng new pipe" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b04_q11",
+      "text": "In Angular, can a component's selector be used as an attribute instead of a custom HTML element tag?",
+      "options": [
+        { "id": "a", "text": "No, selectors can only be element tags" },
+        { "id": "b", "text": "Yes, by wrapping the selector in square brackets: selector: '[mySelector]'" },
+        { "id": "c", "text": "Yes, but only for directives, not components" },
+        { "id": "d", "text": "No, only CSS class selectors are supported" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q12",
+      "text": "If you bind [disabled]=\"isDisabled\" on a button, what kind of binding is this?",
+      "options": [
+        { "id": "a", "text": "Event binding" },
+        { "id": "b", "text": "Two-way binding" },
+        { "id": "c", "text": "Attribute binding" },
+        { "id": "d", "text": "Property binding" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_ng_b04_q13",
+      "text": "In Angular's *ngFor, which local variable provides the zero-based index of the current item?",
+      "options": [
+        { "id": "a", "text": "let i = position" },
+        { "id": "b", "text": "let i = index" },
+        { "id": "c", "text": "let i = count" },
+        { "id": "d", "text": "let i = rank" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q14",
+      "text": "Which Angular decorator is used to query multiple child elements or components in the view (not just one)?",
+      "options": [
+        { "id": "a", "text": "@ViewChildren" },
+        { "id": "b", "text": "@ContentChild" },
+        { "id": "c", "text": "@ViewChild" },
+        { "id": "d", "text": "@Children" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b04_q15",
+      "text": "What is a use case for the ngOnChanges lifecycle hook?",
+      "options": [
+        { "id": "a", "text": "Running one-time initialization logic" },
+        { "id": "b", "text": "Reacting to changes in @Input() property values and updating component state accordingly" },
+        { "id": "c", "text": "Cleaning up subscriptions on component destroy" },
+        { "id": "d", "text": "Accessing child view elements after rendering" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q16",
+      "text": "What is the purpose of using @Injectable() without any arguments on a service class?",
+      "options": [
+        { "id": "a", "text": "It registers the service in the root injector automatically" },
+        { "id": "b", "text": "It marks the class as injectable so that it can receive constructor injection, but does NOT automatically provide it" },
+        { "id": "c", "text": "It creates a singleton service" },
+        { "id": "d", "text": "It prevents the service from being used outside its module" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q17",
+      "text": "What is 'lazy loading' in the context of Angular modules?",
+      "options": [
+        { "id": "a", "text": "Deferring template compilation until runtime" },
+        { "id": "b", "text": "Loading images only when visible" },
+        { "id": "c", "text": "Loading feature modules on demand when their route is accessed rather than at startup" },
+        { "id": "d", "text": "Delaying service initialization until it is first used" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b04_q18",
+      "text": "In template-driven forms, what does the 'minlength' validator do?",
+      "options": [
+        { "id": "a", "text": "It sets the visual length of the input field" },
+        { "id": "b", "text": "It limits how many characters can be typed" },
+        { "id": "c", "text": "It validates that the input value has at least the specified number of characters" },
+        { "id": "d", "text": "It validates numeric values above a minimum" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b04_q19",
+      "text": "How do you pass a format string to the 'date' pipe in an Angular template?",
+      "options": [
+        { "id": "a", "text": "{{ myDate | date.format('MM/dd/yyyy') }}" },
+        { "id": "b", "text": "{{ myDate | date:'MM/dd/yyyy' }}" },
+        { "id": "c", "text": "{{ myDate | date(format='MM/dd/yyyy') }}" },
+        { "id": "d", "text": "{{ myDate | date, 'MM/dd/yyyy' }}" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q20",
+      "text": "What does the --standalone flag do when used with ng generate component?",
+      "options": [
+        { "id": "a", "text": "Creates a component without a CSS file" },
+        { "id": "b", "text": "Creates a component that does not require an NgModule declaration" },
+        { "id": "c", "text": "Creates a component outside the src folder" },
+        { "id": "d", "text": "Generates the component without a spec file" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q21",
+      "text": "What happens to a component's styles when ViewEncapsulation.Emulated is used (the default)?",
+      "options": [
+        { "id": "a", "text": "Styles are applied globally to all elements" },
+        { "id": "b", "text": "No styles are generated at all" },
+        { "id": "c", "text": "Styles are scoped to the component by Angular adding unique attribute selectors" },
+        { "id": "d", "text": "Styles are placed in a Shadow DOM" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b04_q22",
+      "text": "What is a class binding in Angular, and what is its syntax?",
+      "options": [
+        { "id": "a", "text": "A binding that applies a CSS class using [class.className]=\"booleanExpression\"" },
+        { "id": "b", "text": "A binding that attaches a TypeScript class to an element" },
+        { "id": "c", "text": "A binding that applies styles using [style.property]=\"value\"" },
+        { "id": "d", "text": "A binding that imports a CSS class from a file" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b04_q23",
+      "text": "In Angular's *ngFor, which exported local variable is true for the last item in the iteration?",
+      "options": [
+        { "id": "a", "text": "let isLast = terminal" },
+        { "id": "b", "text": "let isLast = last" },
+        { "id": "c", "text": "let isLast = end" },
+        { "id": "d", "text": "let isLast = final" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q24",
+      "text": "What is the purpose of @ContentChild in Angular?",
+      "options": [
+        { "id": "a", "text": "To get a reference to a component declared in the same module" },
+        { "id": "b", "text": "To query elements that are projected into the component via ng-content" },
+        { "id": "c", "text": "To get a child component reference from the view template" },
+        { "id": "d", "text": "To access the parent component's properties" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q25",
+      "text": "What parameter does the ngOnChanges lifecycle hook receive?",
+      "options": [
+        { "id": "a", "text": "The component's current state object" },
+        { "id": "b", "text": "The previous and current values of all @Input() properties via a SimpleChanges object" },
+        { "id": "c", "text": "A list of all changed DOM elements" },
+        { "id": "d", "text": "The current route parameters" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q26",
+      "text": "Which of the following correctly demonstrates using the inject() function inside a component field initializer?",
+      "options": [
+        { "id": "a", "text": "private myService = inject(MyService);" },
+        { "id": "b", "text": "@Inject(MyService) private myService;" },
+        { "id": "c", "text": "private myService = new MyService();" },
+        { "id": "d", "text": "private myService = DI.get(MyService);" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_b04_q27",
+      "text": "What is the AppModule typically responsible for in a traditional Angular application?",
+      "options": [
+        { "id": "a", "text": "Managing all HTTP requests" },
+        { "id": "b", "text": "Bootstrapping the application and declaring the root component and core modules" },
+        { "id": "c", "text": "Handling all routing logic" },
+        { "id": "d", "text": "Defining global CSS styles" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_b04_q28",
+      "text": "What does the 'valid' property of a form control in a template-driven form indicate?",
+      "options": [
+        { "id": "a", "text": "The user has typed in the field" },
+        { "id": "b", "text": "The form was submitted successfully" },
+        { "id": "c", "text": "All validators for that control have passed" },
+        { "id": "d", "text": "The field has been touched by the user" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b04_q29",
+      "text": "How do you apply the 'number' pipe to format a value with exactly 2 decimal places?",
+      "options": [
+        { "id": "a", "text": "{{ value | number:'2' }}" },
+        { "id": "b", "text": "{{ value | number.toFixed(2) }}" },
+        { "id": "c", "text": "{{ value | number:'1.2-2' }}" },
+        { "id": "d", "text": "{{ value | decimal:2 }}" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_ng_b04_q30",
+      "text": "Which file in an Angular 17+ standalone application typically contains the application's providers configuration (previously in AppModule)?",
+      "options": [
+        { "id": "a", "text": "app.module.ts" },
+        { "id": "b", "text": "main.ts" },
+        { "id": "c", "text": "angular.json" },
+        { "id": "d", "text": "app.config.ts" }
+      ],
+      "correctOptionId": "d"
+    }
+  ]
+}

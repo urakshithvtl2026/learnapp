@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_04",
+  "title": "SQL Aggregations & GROUP BY",
+  "description": "Aggregate functions, grouping data, HAVING clause, and advanced grouping operations.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_04_q1",
+      "text": "Which aggregate function counts the total number of rows in a result set?",
+      "options": [
+        { "id": "a", "text": "SUM()" },
+        { "id": "b", "text": "TOTAL()" },
+        { "id": "c", "text": "COUNT()" },
+        { "id": "d", "text": "NUMBER()" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_04_q2",
+      "text": "What is the difference between COUNT(*) and COUNT(ColumnName)?",
+      "options": [
+        { "id": "a", "text": "COUNT(*) counts all rows including NULLs; COUNT(ColumnName) counts only non-NULL values in that column" },
+        { "id": "b", "text": "COUNT(*) is slower; COUNT(ColumnName) is faster" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "COUNT(*) counts distinct values; COUNT(ColumnName) counts all values" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_04_q3",
+      "text": "Which function returns the total sum of a numeric column?",
+      "options": [
+        { "id": "a", "text": "TOTAL()" },
+        { "id": "b", "text": "ADD()" },
+        { "id": "c", "text": "SUM()" },
+        { "id": "d", "text": "ACCUMULATE()" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_04_q4",
+      "text": "What does AVG(Salary) return?",
+      "options": [
+        { "id": "a", "text": "The median salary" },
+        { "id": "b", "text": "The arithmetic average of non-NULL Salary values" },
+        { "id": "c", "text": "The sum of all salaries" },
+        { "id": "d", "text": "The most common salary value" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q5",
+      "text": "Which query finds the highest salary in the Employees table?",
+      "options": [
+        { "id": "a", "text": "SELECT HIGHEST(Salary) FROM Employees" },
+        { "id": "b", "text": "SELECT TOP(Salary) FROM Employees" },
+        { "id": "c", "text": "SELECT MAX(Salary) FROM Employees" },
+        { "id": "d", "text": "SELECT GREATEST(Salary) FROM Employees" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_04_q6",
+      "text": "Which query counts the number of employees in each department?",
+      "options": [
+        { "id": "a", "text": "SELECT Department, COUNT(*) FROM Employees WHERE Department" },
+        { "id": "b", "text": "SELECT Department, COUNT(*) FROM Employees GROUP BY Department" },
+        { "id": "c", "text": "SELECT COUNT(*) BY Department FROM Employees" },
+        { "id": "d", "text": "SELECT COUNT(Department) FROM Employees" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q7",
+      "text": "When using GROUP BY with multiple columns, what does it group by?",
+      "options": [
+        { "id": "a", "text": "Only the first column listed" },
+        { "id": "b", "text": "Each unique combination of values across all listed columns" },
+        { "id": "c", "text": "All columns independently" },
+        { "id": "d", "text": "It is invalid to group by more than one column" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q8",
+      "text": "What is the purpose of the HAVING clause?",
+      "options": [
+        { "id": "a", "text": "To filter individual rows before grouping, similar to WHERE" },
+        { "id": "b", "text": "To filter groups after aggregation has been applied" },
+        { "id": "c", "text": "To define which columns appear in the GROUP BY" },
+        { "id": "d", "text": "To replace the WHERE clause when using joins" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q9",
+      "text": "Which query finds departments where the average salary exceeds 60000?",
+      "options": [
+        { "id": "a", "text": "SELECT Department FROM Employees WHERE AVG(Salary) > 60000" },
+        { "id": "b", "text": "SELECT Department, AVG(Salary) FROM Employees GROUP BY Department HAVING AVG(Salary) > 60000" },
+        { "id": "c", "text": "SELECT Department FROM Employees GROUP BY Department WHERE AVG(Salary) > 60000" },
+        { "id": "d", "text": "SELECT Department FROM Employees HAVING AVG(Salary) > 60000" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q10",
+      "text": "What is the key difference between WHERE and HAVING?",
+      "options": [
+        { "id": "a", "text": "WHERE filters rows before grouping; HAVING filters groups after aggregation" },
+        { "id": "b", "text": "HAVING filters rows before grouping; WHERE filters after" },
+        { "id": "c", "text": "WHERE can use aggregate functions; HAVING cannot" },
+        { "id": "d", "text": "They are interchangeable when using GROUP BY" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_04_q11",
+      "text": "How does GROUP BY treat NULL values?",
+      "options": [
+        { "id": "a", "text": "NULL values are ignored and excluded from grouping" },
+        { "id": "b", "text": "NULLs in the GROUP BY column are grouped together into a single NULL group" },
+        { "id": "c", "text": "An error is raised if any GROUP BY column contains NULL" },
+        { "id": "d", "text": "Each NULL is treated as a separate unique group" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q12",
+      "text": "What does ROLLUP do in a GROUP BY clause?",
+      "options": [
+        { "id": "a", "text": "Returns all possible combinations of grouping columns" },
+        { "id": "b", "text": "Generates subtotals and grand totals along a hierarchy of grouping columns" },
+        { "id": "c", "text": "Sorts the result by the aggregated values" },
+        { "id": "d", "text": "Filters out NULL groups" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q13",
+      "text": "What is the difference between ROLLUP and CUBE?",
+      "options": [
+        { "id": "a", "text": "ROLLUP generates hierarchical subtotals; CUBE generates all possible combinations of subtotals" },
+        { "id": "b", "text": "CUBE generates hierarchical subtotals; ROLLUP generates all combinations" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "ROLLUP only works with two columns; CUBE works with any number" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_04_q14",
+      "text": "What does GROUPING SETS allow you to do?",
+      "options": [
+        { "id": "a", "text": "Group by all columns simultaneously" },
+        { "id": "b", "text": "Specify multiple individual grouping combinations in a single query" },
+        { "id": "c", "text": "Create a new table from group results" },
+        { "id": "d", "text": "Apply different aggregate functions to each group" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q15",
+      "text": "What does SELECT COUNT(DISTINCT Department) FROM Employees return?",
+      "options": [
+        { "id": "a", "text": "The total number of employees" },
+        { "id": "b", "text": "The number of employees per department" },
+        { "id": "c", "text": "The number of unique department values" },
+        { "id": "d", "text": "An error — DISTINCT cannot be used inside COUNT" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_04_q16",
+      "text": "Which of the following correctly uses SUM with a JOIN to get total order amounts per customer?",
+      "options": [
+        { "id": "a", "text": "SELECT c.Name, SUM(o.Amount) FROM Customers c JOIN Orders o ON c.ID = o.CustomerID GROUP BY c.Name" },
+        { "id": "b", "text": "SELECT c.Name, SUM(o.Amount) FROM Customers c JOIN Orders o ON c.ID = o.CustomerID" },
+        { "id": "c", "text": "SELECT c.Name, SUM(o.Amount) FROM Customers c JOIN Orders o GROUP BY SUM(o.Amount)" },
+        { "id": "d", "text": "SELECT SUM(o.Amount) GROUP BY c.Name FROM Customers c JOIN Orders o" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_04_q17",
+      "text": "What is wrong with this query? SELECT Department, Name, COUNT(*) FROM Employees GROUP BY Department",
+      "options": [
+        { "id": "a", "text": "COUNT(*) cannot be used with GROUP BY" },
+        { "id": "b", "text": "'Name' is not in the GROUP BY clause and is not inside an aggregate function, making it invalid" },
+        { "id": "c", "text": "Nothing is wrong; it will work correctly" },
+        { "id": "d", "text": "You cannot SELECT the grouped column in SQL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q18",
+      "text": "Does AVG() include NULL values in its calculation?",
+      "options": [
+        { "id": "a", "text": "Yes, NULLs are treated as 0 in AVG()" },
+        { "id": "b", "text": "No, AVG() ignores NULL values" },
+        { "id": "c", "text": "Yes, NULLs cause AVG() to return NULL" },
+        { "id": "d", "text": "It depends on the database" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q19",
+      "text": "What does MIN() return when applied to a text column?",
+      "options": [
+        { "id": "a", "text": "An error — MIN() only works on numbers" },
+        { "id": "b", "text": "The shortest string" },
+        { "id": "c", "text": "The alphabetically first value" },
+        { "id": "d", "text": "NULL always" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_04_q20",
+      "text": "Which query is correct for finding customers with more than 5 orders?",
+      "options": [
+        { "id": "a", "text": "SELECT CustomerID, COUNT(*) AS OrderCount FROM Orders WHERE COUNT(*) > 5 GROUP BY CustomerID" },
+        { "id": "b", "text": "SELECT CustomerID, COUNT(*) AS OrderCount FROM Orders GROUP BY CustomerID HAVING COUNT(*) > 5" },
+        { "id": "c", "text": "SELECT CustomerID FROM Orders GROUP BY CustomerID WHERE OrderCount > 5" },
+        { "id": "d", "text": "SELECT CustomerID FROM Orders HAVING COUNT(*) > 5" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q21",
+      "text": "Can you GROUP BY an expression rather than a column name?",
+      "options": [
+        { "id": "a", "text": "No, only column names are allowed in GROUP BY" },
+        { "id": "b", "text": "Yes — for example: GROUP BY YEAR(OrderDate) groups results by year" },
+        { "id": "c", "text": "Only if the expression is already in a WHERE clause" },
+        { "id": "d", "text": "Only aggregate expressions are allowed" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q22",
+      "text": "What does SUM(DISTINCT Amount) do?",
+      "options": [
+        { "id": "a", "text": "Sums all Amount values including duplicates" },
+        { "id": "b", "text": "Sums only distinct (unique) Amount values, ignoring duplicates" },
+        { "id": "c", "text": "Returns an error" },
+        { "id": "d", "text": "Counts distinct Amount values" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q23",
+      "text": "In what order are these SQL clauses executed by the database engine? SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY",
+      "options": [
+        { "id": "a", "text": "SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY" },
+        { "id": "b", "text": "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY" },
+        { "id": "c", "text": "WHERE → FROM → GROUP BY → SELECT → HAVING → ORDER BY" },
+        { "id": "d", "text": "FROM → SELECT → WHERE → GROUP BY → HAVING → ORDER BY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q24",
+      "text": "Which aggregate function would you use to find the earliest order date?",
+      "options": [
+        { "id": "a", "text": "FIRST(OrderDate)" },
+        { "id": "b", "text": "BOTTOM(OrderDate)" },
+        { "id": "c", "text": "MIN(OrderDate)" },
+        { "id": "d", "text": "EARLIEST(OrderDate)" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_04_q25",
+      "text": "What does GROUP BY ROLLUP(Region, City) produce compared to GROUP BY Region, City?",
+      "options": [
+        { "id": "a", "text": "The same result" },
+        { "id": "b", "text": "ROLLUP also includes subtotals per Region and a grand total, in addition to the Region-City grouping" },
+        { "id": "c", "text": "ROLLUP only returns the grand total" },
+        { "id": "d", "text": "ROLLUP excludes the Region-City combination" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q26",
+      "text": "Can you use a column alias from SELECT in the HAVING clause?",
+      "options": [
+        { "id": "a", "text": "Yes, always" },
+        { "id": "b", "text": "No — in standard SQL, HAVING cannot reference SELECT aliases; you must repeat the expression" },
+        { "id": "c", "text": "Only if the alias is numeric" },
+        { "id": "d", "text": "Only in PostgreSQL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q27",
+      "text": "What does this query return? SELECT COUNT(*) FROM Employees WHERE Department = 'Sales'",
+      "options": [
+        { "id": "a", "text": "A list of all Sales employees" },
+        { "id": "b", "text": "The number of employees in the Sales department" },
+        { "id": "c", "text": "The sum of salaries in the Sales department" },
+        { "id": "d", "text": "An error because COUNT requires GROUP BY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q28",
+      "text": "Which query returns the average salary for each job title, only including titles with at least 3 employees?",
+      "options": [
+        { "id": "a", "text": "SELECT JobTitle, AVG(Salary) FROM Employees WHERE COUNT(*) >= 3 GROUP BY JobTitle" },
+        { "id": "b", "text": "SELECT JobTitle, AVG(Salary) FROM Employees GROUP BY JobTitle HAVING COUNT(*) >= 3" },
+        { "id": "c", "text": "SELECT JobTitle, AVG(Salary) FROM Employees GROUP BY JobTitle WHERE AVG(Salary) > 0 AND COUNT >= 3" },
+        { "id": "d", "text": "SELECT JobTitle, AVG(Salary) FROM Employees HAVING COUNT(*) >= 3" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q29",
+      "text": "If a GROUP BY query produces NULL in an aggregated column from ROLLUP, what does that NULL represent?",
+      "options": [
+        { "id": "a", "text": "A missing value in the data" },
+        { "id": "b", "text": "A subtotal or grand total row generated by ROLLUP" },
+        { "id": "c", "text": "An error in the grouping" },
+        { "id": "d", "text": "An empty group with no rows" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_04_q30",
+      "text": "Which aggregate function is NOT affected by NULL values (it always includes NULLs in its count)?",
+      "options": [
+        { "id": "a", "text": "SUM()" },
+        { "id": "b", "text": "AVG()" },
+        { "id": "c", "text": "COUNT(*)" },
+        { "id": "d", "text": "MIN()" }
+      ],
+      "correctOptionId": "c"
+    }
+  ]
+}

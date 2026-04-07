@@ -1,0 +1,95 @@
+@if (loading) {
+  <div class="center"><p>Loading exam…</p></div>
+} @else if (error) {
+  <div class="center"><p class="error">{{ error }}</p></div>
+} @else {
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="exam-header">
+    <div>
+      <h2>{{ paper!.title }}</h2>
+      <span class="q-counter">Question {{ currentIndex() + 1 }} of {{ questions.length }}</span>
+    </div>
+
+    @if (paper!.timer.enabled) {
+      <div class="timer" [ngClass]="'timer-' + timerColor">
+        <mat-icon>timer</mat-icon>
+        <span>{{ timerFormatted }} remaining</span>
+      </div>
+    }
+  </div>
+
+  <!-- Timeout warning (autoSubmit=false) -->
+  @if (timeoutWarning) {
+    <div class="banner banner-warn">
+      <mat-icon>warning</mat-icon>
+      Time's up! You can still submit your answers manually.
+    </div>
+  }
+
+  <!-- Question card -->
+  @if (currentQuestion) {
+    <mat-card class="question-card">
+      <mat-card-content>
+        <p class="question-text">{{ currentQuestion.text }}</p>
+
+        <mat-radio-group
+          [ngModel]="selectedOption(currentQuestion.id)"
+          (ngModelChange)="selectOption(currentQuestion.id, $event)"
+          class="options">
+          @for (opt of currentQuestion.options; track opt.id) {
+            <mat-radio-button [value]="opt.id" class="option">
+              <span class="opt-label">{{ opt.id | uppercase }}</span>
+              {{ opt.text }}
+            </mat-radio-button>
+          }
+        </mat-radio-group>
+      </mat-card-content>
+    </mat-card>
+  }
+
+  <!-- Navigation -->
+  <div class="nav-row">
+    <button mat-stroked-button [disabled]="currentIndex() === 0" (click)="prev()">
+      <mat-icon>arrow_back</mat-icon> Previous
+    </button>
+
+    <!-- Question dots -->
+    <div class="dots">
+      @for (q of questions; track q.id; let i = $index) {
+        <button
+          class="dot"
+          [class.dot-current]="i === currentIndex()"
+          [class.dot-answered]="isAnswered(q.id)"
+          (click)="currentIndex.set(i)">
+        </button>
+      }
+    </div>
+
+    <button mat-stroked-button [disabled]="currentIndex() === questions.length - 1" (click)="next()">
+      Next <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+
+  <!-- Progress & submit -->
+  <div class="progress-row">
+    <span class="progress-label">{{ answeredCount }} / {{ questions.length }} answered</span>
+    <mat-progress-bar mode="determinate" [value]="progress" class="progress-bar"></mat-progress-bar>
+  </div>
+
+  <div class="submit-row">
+    <button
+      mat-flat-button color="primary"
+      [disabled]="!allAnswered && !timer.expired()"
+      (click)="submit()">
+      <mat-icon>send</mat-icon> Submit Exam
+    </button>
+    @if (!allAnswered && !timer.expired()) {
+      <span class="hint">Answer all questions to submit.</span>
+    }
+  </div>
+
+</div>
+}

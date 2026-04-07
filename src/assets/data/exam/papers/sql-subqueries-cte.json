@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_05",
+  "title": "SQL Subqueries & CTEs",
+  "description": "Subqueries, correlated subqueries, CTEs, recursive queries, and set operations.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_05_q1",
+      "text": "What is a scalar subquery?",
+      "options": [
+        { "id": "a", "text": "A subquery that returns multiple rows and columns" },
+        { "id": "b", "text": "A subquery that returns exactly one row and one column (a single value)" },
+        { "id": "c", "text": "A subquery in the FROM clause" },
+        { "id": "d", "text": "A subquery that uses aggregate functions only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q2",
+      "text": "Which query uses a scalar subquery to find employees who earn more than the company average?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Employees WHERE Salary > AVG(Salary)" },
+        { "id": "b", "text": "SELECT * FROM Employees WHERE Salary > (SELECT AVG(Salary) FROM Employees)" },
+        { "id": "c", "text": "SELECT * FROM Employees HAVING Salary > AVG(Salary)" },
+        { "id": "d", "text": "SELECT * FROM Employees WHERE Salary > AVERAGE" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q3",
+      "text": "What is a correlated subquery?",
+      "options": [
+        { "id": "a", "text": "A subquery that is executed once and its result is reused for all outer rows" },
+        { "id": "b", "text": "A subquery that references a column from the outer query and is re-evaluated for each outer row" },
+        { "id": "c", "text": "A subquery with multiple SELECT statements" },
+        { "id": "d", "text": "A subquery that returns multiple columns" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q4",
+      "text": "What does EXISTS check in SQL?",
+      "options": [
+        { "id": "a", "text": "Whether a column contains any non-NULL values" },
+        { "id": "b", "text": "Whether a subquery returns at least one row" },
+        { "id": "c", "text": "Whether a table exists in the database" },
+        { "id": "d", "text": "Whether all rows in the subquery match a condition" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q5",
+      "text": "Which query finds customers who have placed at least one order using EXISTS?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Customers c WHERE EXISTS (SELECT 1 FROM Orders o WHERE o.CustomerID = c.ID)" },
+        { "id": "b", "text": "SELECT * FROM Customers WHERE EXISTS Orders" },
+        { "id": "c", "text": "SELECT * FROM Customers c WHERE c.ID EXISTS IN Orders" },
+        { "id": "d", "text": "SELECT * FROM Customers WHERE EXISTS (SELECT * FROM Orders)" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_05_q6",
+      "text": "What does NOT EXISTS return?",
+      "options": [
+        { "id": "a", "text": "TRUE when the subquery returns one or more rows" },
+        { "id": "b", "text": "TRUE when the subquery returns no rows" },
+        { "id": "c", "text": "It always returns NULL" },
+        { "id": "d", "text": "The same as NOT IN in all cases" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q7",
+      "text": "How does IN with a subquery work? Example: WHERE ID IN (SELECT CustomerID FROM Orders)",
+      "options": [
+        { "id": "a", "text": "Returns rows where ID matches any value returned by the subquery" },
+        { "id": "b", "text": "Returns rows where ID matches all values returned by the subquery" },
+        { "id": "c", "text": "Returns rows where ID does not match any subquery value" },
+        { "id": "d", "text": "This syntax is not valid" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_05_q8",
+      "text": "What is a derived table (inline view)?",
+      "options": [
+        { "id": "a", "text": "A permanent table created from a SELECT statement" },
+        { "id": "b", "text": "A subquery used in the FROM clause that acts as a temporary named result set" },
+        { "id": "c", "text": "A table that is created from a view" },
+        { "id": "d", "text": "A table with computed columns" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q9",
+      "text": "Which is a valid example of a derived table?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM (SELECT ID, Name FROM Employees WHERE Active = 1) AS ActiveEmp" },
+        { "id": "b", "text": "SELECT * DERIVED FROM Employees" },
+        { "id": "c", "text": "FROM (SELECT ID, Name FROM Employees) JOIN Orders" },
+        { "id": "d", "text": "CREATE DERIVED TABLE ActiveEmp AS SELECT ID FROM Employees" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_05_q10",
+      "text": "What does the WITH keyword introduce in SQL?",
+      "options": [
+        { "id": "a", "text": "A transaction block" },
+        { "id": "b", "text": "A Common Table Expression (CTE)" },
+        { "id": "c", "text": "A stored procedure" },
+        { "id": "d", "text": "A database connection setting" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q11",
+      "text": "Which of the following is the correct syntax for a CTE?",
+      "options": [
+        { "id": "a", "text": "CTE MyCTE AS (SELECT ID, Name FROM Employees)" },
+        { "id": "b", "text": "WITH MyCTE AS (SELECT ID, Name FROM Employees) SELECT * FROM MyCTE" },
+        { "id": "c", "text": "CREATE CTE MyCTE AS SELECT ID, Name FROM Employees" },
+        { "id": "d", "text": "SELECT * INTO CTE MyCTE FROM Employees" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q12",
+      "text": "What is the main advantage of a CTE over a subquery?",
+      "options": [
+        { "id": "a", "text": "CTEs are always faster than subqueries" },
+        { "id": "b", "text": "CTEs improve readability and can be referenced multiple times in the same query" },
+        { "id": "c", "text": "CTEs persist after the query completes" },
+        { "id": "d", "text": "CTEs allow the use of aggregate functions" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q13",
+      "text": "What makes a CTE recursive?",
+      "options": [
+        { "id": "a", "text": "It references itself using UNION ALL within the CTE definition" },
+        { "id": "b", "text": "It calls an external stored procedure" },
+        { "id": "c", "text": "It uses a loop inside the WITH block" },
+        { "id": "d", "text": "It is nested inside another CTE" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_05_q14",
+      "text": "A recursive CTE has two parts — what are they called?",
+      "options": [
+        { "id": "a", "text": "Base case and loop body" },
+        { "id": "b", "text": "Anchor member and recursive member" },
+        { "id": "c", "text": "Root query and branch query" },
+        { "id": "d", "text": "Initial select and repeat select" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q15",
+      "text": "Can you define multiple CTEs in a single WITH clause?",
+      "options": [
+        { "id": "a", "text": "No, only one CTE is allowed per query" },
+        { "id": "b", "text": "Yes — separate multiple CTEs with commas inside a single WITH clause" },
+        { "id": "c", "text": "Yes, but you need a separate WITH keyword for each" },
+        { "id": "d", "text": "Only if they are not related to each other" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q16",
+      "text": "In which clause must the final query that uses a CTE appear?",
+      "options": [
+        { "id": "a", "text": "Inside the WITH block itself" },
+        { "id": "b", "text": "Immediately after the WITH...AS(...) definition" },
+        { "id": "c", "text": "In a separate batch" },
+        { "id": "d", "text": "Inside a stored procedure only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q17",
+      "text": "What does EXCEPT return?",
+      "options": [
+        { "id": "a", "text": "Rows that exist in both queries" },
+        { "id": "b", "text": "Rows from the first query that are NOT present in the second query" },
+        { "id": "c", "text": "Rows from the second query that are NOT present in the first query" },
+        { "id": "d", "text": "All rows from both queries combined" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q18",
+      "text": "What does INTERSECT return?",
+      "options": [
+        { "id": "a", "text": "All rows from both queries including duplicates" },
+        { "id": "b", "text": "Rows that appear in both result sets" },
+        { "id": "c", "text": "Rows that appear in only one of the result sets" },
+        { "id": "d", "text": "An error if the two queries have different columns" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q19",
+      "text": "Which set operation is equivalent to a JOIN-based approach of finding rows in one table but not another?",
+      "options": [
+        { "id": "a", "text": "UNION" },
+        { "id": "b", "text": "INTERSECT" },
+        { "id": "c", "text": "EXCEPT (or MINUS in Oracle)" },
+        { "id": "d", "text": "CROSS JOIN" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_05_q20",
+      "text": "What is the key performance difference between a correlated subquery and a non-correlated subquery?",
+      "options": [
+        { "id": "a", "text": "They always have identical performance" },
+        { "id": "b", "text": "A correlated subquery is re-executed for each outer row; a non-correlated subquery executes once" },
+        { "id": "c", "text": "Non-correlated subqueries are always slower" },
+        { "id": "d", "text": "Correlated subqueries cannot use indexes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q21",
+      "text": "What is the difference between EXISTS and IN when using a subquery?",
+      "options": [
+        { "id": "a", "text": "EXISTS checks for row existence and stops at first match; IN compares against a complete list of values" },
+        { "id": "b", "text": "IN is faster than EXISTS in all cases" },
+        { "id": "c", "text": "EXISTS returns a value; IN returns a boolean" },
+        { "id": "d", "text": "There is no difference" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_05_q22",
+      "text": "Can a CTE be used with INSERT, UPDATE, or DELETE statements?",
+      "options": [
+        { "id": "a", "text": "No, CTEs can only be used with SELECT" },
+        { "id": "b", "text": "Yes — CTEs can precede and be referenced by DML statements" },
+        { "id": "c", "text": "Only with INSERT, not UPDATE or DELETE" },
+        { "id": "d", "text": "Only in Oracle, not SQL Server" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q23",
+      "text": "Which query finds the second highest salary using a subquery?",
+      "options": [
+        { "id": "a", "text": "SELECT MAX(Salary) FROM Employees WHERE Salary < (SELECT MAX(Salary) FROM Employees)" },
+        { "id": "b", "text": "SELECT SECOND MAX(Salary) FROM Employees" },
+        { "id": "c", "text": "SELECT TOP 2 Salary FROM Employees ORDER BY Salary DESC" },
+        { "id": "d", "text": "SELECT MAX(Salary) - 1 FROM Employees" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_05_q24",
+      "text": "What is a common use case for recursive CTEs?",
+      "options": [
+        { "id": "a", "text": "Performing aggregate calculations" },
+        { "id": "b", "text": "Traversing hierarchical data such as org charts or bill of materials" },
+        { "id": "c", "text": "Generating random numbers" },
+        { "id": "d", "text": "Replacing GROUP BY operations" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q25",
+      "text": "What happens if a subquery used with IN returns a NULL value?",
+      "options": [
+        { "id": "a", "text": "NULL is ignored in the comparison" },
+        { "id": "b", "text": "Rows that should match may not be returned as expected due to NULL comparison logic" },
+        { "id": "c", "text": "An error is raised" },
+        { "id": "d", "text": "NULL is treated as 0" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q26",
+      "text": "What requirement must both queries meet when using UNION, INTERSECT, or EXCEPT?",
+      "options": [
+        { "id": "a", "text": "They must reference the same table" },
+        { "id": "b", "text": "They must return the same number of columns with compatible data types" },
+        { "id": "c", "text": "They must have the same WHERE conditions" },
+        { "id": "d", "text": "They must both use GROUP BY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q27",
+      "text": "In a chained CTE (WITH cte1 AS (...), cte2 AS (...)), can cte2 reference cte1?",
+      "options": [
+        { "id": "a", "text": "No, each CTE is independent" },
+        { "id": "b", "text": "Yes — a later CTE in the WITH clause can reference an earlier one" },
+        { "id": "c", "text": "Only if they are in separate WITH clauses" },
+        { "id": "d", "text": "Only if cte1 is recursive" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_05_q28",
+      "text": "What does the query: SELECT * FROM A WHERE ID IN (SELECT ID FROM B) — return?",
+      "options": [
+        { "id": "a", "text": "All rows from A where the ID also exists in B" },
+        { "id": "b", "text": "All rows from B where the ID also exists in A" },
+        { "id": "c", "text": "All rows from both A and B" },
+        { "id": "d", "text": "Rows from A that are NOT in B" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_05_q29",
+      "text": "How is a subquery in the SELECT list (scalar subquery) different from one in the WHERE clause?",
+      "options": [
+        { "id": "a", "text": "A SELECT-list subquery computes a value per row for display; a WHERE-clause subquery filters rows" },
+        { "id": "b", "text": "SELECT-list subqueries can return multiple rows" },
+        { "id": "c", "text": "WHERE-clause subqueries return a single value for display" },
+        { "id": "d", "text": "There is no difference in behavior" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_05_q30",
+      "text": "Which keyword prevents a recursive CTE from running infinitely in SQL Server?",
+      "options": [
+        { "id": "a", "text": "LIMIT RECURSION" },
+        { "id": "b", "text": "STOP RECURSION" },
+        { "id": "c", "text": "OPTION (MAXRECURSION n) — defaults to 100 in SQL Server" },
+        { "id": "d", "text": "RECURSIVE LIMIT n" }
+      ],
+      "correctOptionId": "c"
+    }
+  ]
+}

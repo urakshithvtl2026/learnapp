@@ -1,0 +1,79 @@
+@if (error) {
+  <div class="center"><p class="err">{{ error }}</p></div>
+} @else if (!result) {
+  <div class="center"><p>Loading…</p></div>
+} @else {
+
+<div class="page">
+
+  <!-- Timed-out banner -->
+  @if (result.timedOut) {
+    <div class="banner banner-warn">
+      <mat-icon>warning</mat-icon>
+      Time Expired — Exam Auto-Submitted
+    </div>
+  }
+
+  <!-- Score card -->
+  <mat-card class="score-card">
+    <mat-card-content>
+      <h1>Exam Complete!</h1>
+      <p class="paper-name">{{ paper?.title }}</p>
+
+      <div [class]="'score ' + scoreClass">{{ result.score }}%</div>
+
+      <div class="stats">
+        <div class="stat">
+          <mat-icon class="icon-ok">check_circle</mat-icon>
+          <span>{{ result.correct }} Correct</span>
+        </div>
+        <div class="stat">
+          <mat-icon class="icon-err">cancel</mat-icon>
+          <span>{{ result.wrong }} Wrong</span>
+        </div>
+        <div class="stat">
+          <mat-icon>quiz</mat-icon>
+          <span>{{ result.totalQuestions }} Total</span>
+        </div>
+        <div class="stat">
+          <mat-icon>timer</mat-icon>
+          <span>{{ formatTime(result.timeTakenSeconds) }} taken</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Breakdown -->
+  <mat-card class="breakdown-card">
+    <mat-card-header><mat-card-title>Question Breakdown</mat-card-title></mat-card-header>
+    <mat-card-content>
+      @for (a of result.answers; track a.questionId; let i = $index) {
+        <div class="answer-row" [class.correct]="a.isCorrect" [class.wrong]="!a.isCorrect">
+          <div class="answer-icon">
+            @if (a.isCorrect) {
+              <mat-icon class="icon-ok">check_circle</mat-icon>
+            } @else {
+              <mat-icon class="icon-err">cancel</mat-icon>
+            }
+          </div>
+          <div class="answer-details">
+            <p class="q-text">Q{{ i + 1 }}: {{ questionText(a.questionId) }}</p>
+            <p class="a-text">
+              Your answer: <strong>{{ a.selectedOptionId | uppercase }}</strong>
+              — {{ selectedOptionText(a) }}
+            </p>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      }
+    </mat-card-content>
+  </mat-card>
+
+  <div class="actions">
+    <button mat-flat-button color="primary" (click)="backToExams()">
+      <mat-icon>arrow_back</mat-icon> Back to My Exams
+    </button>
+  </div>
+
+</div>
+}

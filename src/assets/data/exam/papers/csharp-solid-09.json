@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s09",
+  "title": "C# SOLID — Paper 9",
+  "description": "Covers DIP concepts, DIP implementation, SRP concepts, SRP refactoring, OCP concepts, Unit Testing & SOLID, SOLID Real C# Scenarios, Dependency Injection Patterns, Strategy Pattern, and Factory & Abstract Factory.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s09_q1",
+      "text": "ST11-11: In Microsoft.Extensions.DependencyInjection, which method allows you to provide a factory delegate for creating a service?",
+      "options": [
+        { "id": "a", "text": "services.AddFactory<T>()" },
+        { "id": "b", "text": "services.AddTransient<T>(sp => new T(sp.GetRequiredService<IDep>()))" },
+        { "id": "c", "text": "services.AddCreator<T>()" },
+        { "id": "d", "text": "services.RegisterFactory<T>()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q2",
+      "text": "ST20-15: An ASP.NET Core controller has 15 injected constructor parameters. Which SOLID principle does this most violate?",
+      "options": [
+        { "id": "a", "text": "OCP — the controller is not open for extension." },
+        { "id": "b", "text": "SRP — the controller is handling too many concerns; it should delegate to focused services." },
+        { "id": "c", "text": "ISP — each parameter should be a narrower interface." },
+        { "id": "d", "text": "DIP — the controller should not use constructor injection." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q3",
+      "text": "ST13-10: A `ConnectionFactory` class creates either a `SqlConnection` or a `MySqlConnection` based on a config value. Which pattern does this implement?",
+      "options": [
+        { "id": "a", "text": "Abstract Factory — it creates related families of objects." },
+        { "id": "b", "text": "Factory Method — a single factory method returns one of several product implementations based on configuration." },
+        { "id": "c", "text": "Builder — it constructs a connection step by step." },
+        { "id": "d", "text": "Prototype — it clones an existing connection." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q4",
+      "text": "ST01-10: Which of the following demonstrates SRP applied to a C# controller in ASP.NET Core?",
+      "options": [
+        { "id": "a", "text": "A controller that contains all business logic, data access, and validation for an entity." },
+        { "id": "b", "text": "A thin controller that delegates to injected services for business logic, validation, and data access." },
+        { "id": "c", "text": "A controller with over 20 action methods for all CRUD operations." },
+        { "id": "d", "text": "A controller that directly queries a database using SqlConnection." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q5",
+      "text": "ST19-16: Which NuGet package is the most widely used mocking framework for C# unit tests?",
+      "options": [
+        { "id": "a", "text": "NUnit.Mocks" },
+        { "id": "b", "text": "Moq" },
+        { "id": "c", "text": "xUnit.Fakes" },
+        { "id": "d", "text": "MSTest.Stubs" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q6",
+      "text": "ST09-14: In a Clean Architecture design, the dependency rule states that:",
+      "options": [
+        { "id": "a", "text": "Outer layers (infrastructure) can depend on inner layers (domain), but inner layers cannot depend on outer layers." },
+        { "id": "b", "text": "Inner layers (domain/application) can depend on outer layers (infrastructure)." },
+        { "id": "c", "text": "All layers must depend on the infrastructure layer." },
+        { "id": "d", "text": "Dependencies must flow from domain to infrastructure and back." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s09_q7",
+      "text": "ST03-10: When is it acceptable to modify an existing class without violating OCP?",
+      "options": [
+        { "id": "a", "text": "Never — OCP says classes must never change." },
+        { "id": "b", "text": "When fixing a bug in the existing behavior (not adding new behavior), or when the class has not yet been published/used by clients." },
+        { "id": "c", "text": "Whenever the class is private." },
+        { "id": "d", "text": "When the modification is backward compatible." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q8",
+      "text": "ST02-10: After identifying that `UserService` has SRP violations, you extract `UserNotifier`. What is the next step?",
+      "options": [
+        { "id": "a", "text": "Delete UserService and replace it with UserNotifier." },
+        { "id": "b", "text": "Define an IUserNotifier interface, implement it in UserNotifier, and inject IUserNotifier into UserService via its constructor." },
+        { "id": "c", "text": "Make UserNotifier a static class." },
+        { "id": "d", "text": "Have UserService inherit from UserNotifier." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q9",
+      "text": "ST12-10: When implementing Strategy pattern in C#, where should the strategy selection logic reside?",
+      "options": [
+        { "id": "a", "text": "Inside each concrete strategy class." },
+        { "id": "b", "text": "In a factory or the composition root, not inside the context class itself, to keep the context SRP-compliant." },
+        { "id": "c", "text": "In the base interface." },
+        { "id": "d", "text": "It does not matter where the selection logic resides." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q10",
+      "text": "ST20-16: A C# class `ReportManager` depends on `new PdfExporter()`, `new CsvExporter()`, and `new EmailSender()` — all concretions. Which refactoring resolves the DIP violations?",
+      "options": [
+        { "id": "a", "text": "Add abstract keyword to ReportManager." },
+        { "id": "b", "text": "Introduce IExporter and IEmailSender interfaces; inject implementations via constructor; register in DI container." },
+        { "id": "c", "text": "Make all three concretions singletons." },
+        { "id": "d", "text": "Use the Service Locator pattern inside ReportManager." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q11",
+      "text": "ST09-15: Which of the following is a correct statement about DIP and interfaces defined in the domain layer?",
+      "options": [
+        { "id": "a", "text": "Domain interfaces should reference infrastructure types." },
+        { "id": "b", "text": "Domain interfaces represent abstractions owned by the domain; infrastructure classes implement them, making infrastructure depend on domain, not vice versa." },
+        { "id": "c", "text": "Domain layer should have no interfaces; only abstract classes." },
+        { "id": "d", "text": "DIP does not apply to domain-layer design." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q12",
+      "text": "ST10-10: In Microsoft.Extensions.DependencyInjection, `IServiceScope` is used to:",
+      "options": [
+        { "id": "a", "text": "Register services with a singleton lifetime." },
+        { "id": "b", "text": "Create a child scope so that scoped services can be resolved outside of an HTTP request context (e.g., in a background service)." },
+        { "id": "c", "text": "Validate the service registrations at startup." },
+        { "id": "d", "text": "Dispose of transient services manually." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q13",
+      "text": "ST01-11: Which refactoring tool in Visual Studio/Rider most directly helps identify SRP violations?",
+      "options": [
+        { "id": "a", "text": "Rename Symbol" },
+        { "id": "b", "text": "Code metrics / dependency analysis — high coupling count and low cohesion highlight multi-responsibility classes." },
+        { "id": "c", "text": "Generate Unit Tests" },
+        { "id": "d", "text": "Format Document" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q14",
+      "text": "ST11-12: In ASP.NET Core, `IOptions<T>` is used to:",
+      "options": [
+        { "id": "a", "text": "Register a service with multiple implementations." },
+        { "id": "b", "text": "Inject strongly-typed configuration sections into classes via the DI system, following DIP by depending on an abstraction over configuration." },
+        { "id": "c", "text": "Provide optional constructor parameters." },
+        { "id": "d", "text": "Enable lazy initialization of singleton services." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q15",
+      "text": "ST19-17: Which of the following is the best definition of 'code coverage' in unit testing?",
+      "options": [
+        { "id": "a", "text": "The number of lines of code in the test project." },
+        { "id": "b", "text": "A measure of what percentage of production code is executed by the test suite, indicating how much of the code has been exercised." },
+        { "id": "c", "text": "Whether the test assertions pass or fail." },
+        { "id": "d", "text": "The number of test methods in a test class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q16",
+      "text": "ST03-11: OCP is described as the 'most important' principle by some authors. Why?",
+      "options": [
+        { "id": "a", "text": "It makes code compile faster." },
+        { "id": "b", "text": "It aims to make a system robust against change — new functionality is added without touching (and risking breaking) stable, tested code." },
+        { "id": "c", "text": "It eliminates all bugs." },
+        { "id": "d", "text": "It minimizes the number of classes in a system." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q17",
+      "text": "ST13-11: A `LoggerFactory` in C# creates different logger implementations (ConsoleLogger, FileLogger, CloudLogger) based on configuration. This is an example of:",
+      "options": [
+        { "id": "a", "text": "Abstract Factory — it creates families of related objects." },
+        { "id": "b", "text": "Factory Method — the factory encapsulates the creation logic and returns the appropriate ILogger implementation." },
+        { "id": "c", "text": "Builder — it constructs loggers step by step." },
+        { "id": "d", "text": "Singleton — only one logger instance is created." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q18",
+      "text": "ST20-17: A developer notices that every time a new report type is needed, they edit `ReportService`, `ReportController`, `ReportViewModel`, and `ReportRepository`. This is which code smell?",
+      "options": [
+        { "id": "a", "text": "Divergent Change — ReportService changes for many reasons." },
+        { "id": "b", "text": "Shotgun Surgery — one change ripples across many classes." },
+        { "id": "c", "text": "Feature Envy — the classes envy each other's data." },
+        { "id": "d", "text": "God Class — one class does everything." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q19",
+      "text": "ST02-11: In Domain-Driven Design, 'domain services' are created when:",
+      "options": [
+        { "id": "a", "text": "A controller becomes too large." },
+        { "id": "b", "text": "Business logic doesn't naturally belong to a single entity or value object — it represents a cross-cutting domain concern extracted per SRP." },
+        { "id": "c", "text": "Infrastructure services need to be hidden from the domain." },
+        { "id": "d", "text": "You want to avoid using interfaces in the domain." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q20",
+      "text": "ST12-11: The Strategy pattern is most commonly used to replace which C# antipattern?",
+      "options": [
+        { "id": "a", "text": "Circular dependency between services." },
+        { "id": "b", "text": "A large switch statement or if-else chain that selects behavior based on a type or mode." },
+        { "id": "c", "text": "A singleton service that holds global state." },
+        { "id": "d", "text": "Deep inheritance hierarchies with many levels." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q21",
+      "text": "ST09-16: 'Stable' and 'volatile' dependencies in DIP refer to:",
+      "options": [
+        { "id": "a", "text": "The performance characteristics of each dependency." },
+        { "id": "b", "text": "Stable dependencies (e.g., core .NET libraries) can be depended on directly; volatile ones (e.g., databases, email services) should be accessed through abstractions to ease substitution." },
+        { "id": "c", "text": "Whether the dependency uses async/await." },
+        { "id": "d", "text": "The memory allocation behavior of each dependency." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q22",
+      "text": "ST10-11: When using Scrutor (a popular .NET library), what does `services.Scan(...)` do?",
+      "options": [
+        { "id": "a", "text": "Scans assemblies for security vulnerabilities." },
+        { "id": "b", "text": "Automatically discovers and registers service implementations by convention (e.g., all classes implementing their own interface), reducing manual DI registration boilerplate." },
+        { "id": "c", "text": "Scans for unused services and removes them." },
+        { "id": "d", "text": "Validates that all registered services can be resolved." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q23",
+      "text": "ST01-12: An SRP-compliant class should ideally have:",
+      "options": [
+        { "id": "a", "text": "Exactly one public method." },
+        { "id": "b", "text": "All its methods and fields related to a single, well-defined purpose — not necessarily just one method." },
+        { "id": "c", "text": "No more than five fields." },
+        { "id": "d", "text": "Only static members." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q24",
+      "text": "ST19-18: In the context of SOLID and testing, what is 'seam'?",
+      "options": [
+        { "id": "a", "text": "A CSS styling concept used in test reports." },
+        { "id": "b", "text": "A place in code where behavior can be altered without editing the code itself — e.g., an interface injection point where a test double can be inserted." },
+        { "id": "c", "text": "A test that runs at the boundary of two systems." },
+        { "id": "d", "text": "A merge conflict in a test file." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q25",
+      "text": "ST11-13: Which of the following is an advantage of constructor injection over property injection for mandatory dependencies?",
+      "options": [
+        { "id": "a", "text": "Constructor injection allows the dependency to be changed after construction." },
+        { "id": "b", "text": "Constructor injection guarantees the dependency is provided at object creation time, making the object always valid after construction." },
+        { "id": "c", "text": "Constructor injection is only available in .NET 6+." },
+        { "id": "d", "text": "Constructor injection allows injecting more than three dependencies." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q26",
+      "text": "ST13-12: In C#, the IHttpClientFactory pattern (creating HttpClient instances via a factory) addresses which design concern related to factory patterns?",
+      "options": [
+        { "id": "a", "text": "It uses the Abstract Factory to create different HTTP client families." },
+        { "id": "b", "text": "It centralises and manages HttpClient instance creation and lifetime (avoiding socket exhaustion), applying factory pattern principles with DIP." },
+        { "id": "c", "text": "It implements the Singleton pattern for HttpClient." },
+        { "id": "d", "text": "It creates HttpClient via reflection for dynamic endpoint support." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q27",
+      "text": "ST03-12: Which of the following is an example of OCP being violated in configuration code?",
+      "options": [
+        { "id": "a", "text": "Reading a connection string from appsettings.json." },
+        { "id": "b", "text": "Hardcoding provider-specific logic inside a class so that supporting a new provider requires editing the class's source code." },
+        { "id": "c", "text": "Using an IOptions<T> abstraction to read configuration." },
+        { "id": "d", "text": "Registering multiple implementations of the same interface." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q28",
+      "text": "ST20-18: A method `CalculateShipping(Order o)` accesses `o.Customer.Address.Country.TaxRate`. This chain violates:",
+      "options": [
+        { "id": "a", "text": "OCP — the method cannot be extended." },
+        { "id": "b", "text": "Law of Demeter (and indirectly SRP) — the method is navigating deeply into an object graph, becoming tightly coupled to many classes." },
+        { "id": "c", "text": "ISP — too many types are accessed." },
+        { "id": "d", "text": "DIP — the method depends on concrete classes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q29",
+      "text": "ST02-12: A `PaymentService` class has methods for credit card, PayPal, and bank transfer processing — each with 50+ lines. What SRP + OCP combined refactoring resolves this?",
+      "options": [
+        { "id": "a", "text": "Break the methods into smaller private methods within PaymentService." },
+        { "id": "b", "text": "Extract each payment method into a separate class implementing IPaymentProcessor, inject them via DI, and remove the conditional logic from PaymentService." },
+        { "id": "c", "text": "Add a PaymentType enum and use a switch expression." },
+        { "id": "d", "text": "Create three subclasses: CreditCardPaymentService, PayPalPaymentService, BankTransferPaymentService." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s09_q30",
+      "text": "ST12-12: Which of the following best describes the relationship between the Strategy pattern and unit testing?",
+      "options": [
+        { "id": "a", "text": "Strategy makes testing harder because there are more classes." },
+        { "id": "b", "text": "Each strategy class can be unit tested independently with focused tests, and the context class can be tested with a stub strategy." },
+        { "id": "c", "text": "Strategy eliminates the need for unit tests." },
+        { "id": "d", "text": "Strategies cannot be mocked." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s08",
+  "title": "C# SOLID — Paper 8",
+  "description": "Covers ISP refactoring, DIP concepts, DIP implementation, SRP concepts, SRP refactoring, Refactoring Techniques, Unit Testing & SOLID, SOLID Real C# Scenarios, Dependency Injection Patterns, and Strategy Pattern.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s08_q1",
+      "text": "ST12-7: A `SortContext` class holds a reference to an `ISortStrategy` interface. At runtime, the user selects QuickSort. The correct way to change strategy in C# is:",
+      "options": [
+        { "id": "a", "text": "Instantiate a new SortContext with QuickSortStrategy." },
+        { "id": "b", "text": "Call `context.SetStrategy(new QuickSortStrategy())` or pass it via a property/method to swap strategies dynamically." },
+        { "id": "c", "text": "Subclass SortContext as QuickSortContext." },
+        { "id": "d", "text": "Use reflection to change the private strategy field." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q2",
+      "text": "ST01-7: According to SRP, a class with a high 'lack of cohesion of methods' (LCOM) metric suggests:",
+      "options": [
+        { "id": "a", "text": "The class has too few methods." },
+        { "id": "b", "text": "Methods in the class do not share instance variables or concerns, indicating the class likely has multiple responsibilities." },
+        { "id": "c", "text": "The class is well-designed and focused." },
+        { "id": "d", "text": "The class should be made abstract." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q3",
+      "text": "ST19-12: Why does a class that uses `new ConcreteService()` internally tend to have poor unit test coverage?",
+      "options": [
+        { "id": "a", "text": "The compiler refuses to compile it without a test." },
+        { "id": "b", "text": "The concrete instantiation cannot be replaced with a test double, so tests exercise the real dependency (e.g., a real database or network)." },
+        { "id": "c", "text": "Tests cannot import classes that use `new`." },
+        { "id": "d", "text": "The DI container rejects it at startup." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q4",
+      "text": "ST09-11: Which of the following is a violation of DIP in a repository pattern context?",
+      "options": [
+        { "id": "a", "text": "An application service accepting ICustomerRepository in its constructor." },
+        { "id": "b", "text": "An application service directly referencing `EFCoreCustomerRepository` and calling `new EFCoreCustomerRepository(connectionString)` internally." },
+        { "id": "c", "text": "Registering EFCoreCustomerRepository as the implementation of ICustomerRepository in the DI container." },
+        { "id": "d", "text": "Defining ICustomerRepository in the domain layer." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q5",
+      "text": "ST20-11: A `switch` statement in a method switches on an enum representing shape types to calculate area. A new shape is added and the developer must update the switch. Which principle is violated?",
+      "options": [
+        { "id": "a", "text": "SRP — the method has too many responsibilities." },
+        { "id": "b", "text": "OCP — the method must be modified every time a new type is added." },
+        { "id": "c", "text": "DIP — the method depends on a concrete enum." },
+        { "id": "d", "text": "ISP — the method has too many parameters." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q6",
+      "text": "ST08-12: In C#, how does the `IEnumerable<T>` (read-only iteration) vs `IList<T>` (read-write) distinction illustrate ISP?",
+      "options": [
+        { "id": "a", "text": "Both expose the same surface; they are identical from an ISP perspective." },
+        { "id": "b", "text": "Methods that only need to iterate should accept IEnumerable<T>, not IList<T>, so callers are not forced to depend on mutation methods they don't use." },
+        { "id": "c", "text": "IList<T> should always be used because it is the richer interface." },
+        { "id": "d", "text": "IEnumerable<T> violates ISP because it has only one method." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q7",
+      "text": "ST11-8: In Microsoft.Extensions.DependencyInjection, a 'captive dependency' occurs when:",
+      "options": [
+        { "id": "a", "text": "A singleton service depends on a transient service, potentially holding it alive for the application lifetime." },
+        { "id": "b", "text": "A transient service depends on another transient service." },
+        { "id": "c", "text": "Two services form a circular dependency." },
+        { "id": "d", "text": "A scoped service is not disposed at end of request." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s08_q8",
+      "text": "ST18-13: 'Rename Method' refactoring is primarily about:",
+      "options": [
+        { "id": "a", "text": "Changing the method signature to accept different parameter types." },
+        { "id": "b", "text": "Improving code readability by giving a method a name that better communicates its intent." },
+        { "id": "c", "text": "Splitting a method into two methods with the original name retained." },
+        { "id": "d", "text": "Moving a method to a different class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q9",
+      "text": "ST02-7: A class `CustomerService` has three groups of private methods: one group for validation, one for CRUD, and one for notifications. The SRP-appropriate refactoring is to:",
+      "options": [
+        { "id": "a", "text": "Keep all methods in CustomerService but prefix them by responsibility." },
+        { "id": "b", "text": "Extract CustomerValidator, CustomerRepository, and CustomerNotifier as separate classes and inject them into CustomerService." },
+        { "id": "c", "text": "Make all private methods public so they can be tested independently." },
+        { "id": "d", "text": "Create a single CustomerServiceHelper class for the private methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q10",
+      "text": "ST10-8: Which of the following describes the key difference between DI via a container vs. manual DI (Poor Man's DI)?",
+      "options": [
+        { "id": "a", "text": "Containers use reflection; manual DI uses source generators." },
+        { "id": "b", "text": "A DI container automates the construction and lifetime management of the object graph; manual DI requires wiring dependencies explicitly in code at the composition root." },
+        { "id": "c", "text": "Manual DI is always better because it avoids reflection overhead." },
+        { "id": "d", "text": "DI containers enforce SOLID principles; manual DI does not." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q11",
+      "text": "ST19-13: When using Moq in C# to verify that a method was called, which syntax is correct?",
+      "options": [
+        { "id": "a", "text": "mock.Assert(m => m.Send(It.IsAny<string>()))" },
+        { "id": "b", "text": "mock.Verify(m => m.Send(It.IsAny<string>()), Times.Once())" },
+        { "id": "c", "text": "mock.Expect(m => m.Send(It.IsAny<string>()))" },
+        { "id": "d", "text": "mock.Check(m => m.Send(It.IsAny<string>()))" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q12",
+      "text": "ST20-12: A C# class `DataExporter` has methods `ExportToCsv()`, `ExportToJson()`, `ExportToXml()`. Each method is 80 lines long. Which SOLID refactoring applies?",
+      "options": [
+        { "id": "a", "text": "Apply DIP — inject the format as an interface." },
+        { "id": "b", "text": "Apply OCP via Strategy — create ICsvExporter, IJsonExporter, IXmlExporter (or a single IExporter) and move logic into separate classes." },
+        { "id": "c", "text": "Apply ISP — split DataExporter into three interfaces." },
+        { "id": "d", "text": "Apply LSP — subclass DataExporter for each format." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q13",
+      "text": "ST01-8: Which of the following class names suggests an SRP violation by naming convention alone?",
+      "options": [
+        { "id": "a", "text": "OrderRepository" },
+        { "id": "b", "text": "UserManagerAndEmailerAndLogger" },
+        { "id": "c", "text": "InvoiceValidator" },
+        { "id": "d", "text": "PaymentGateway" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q14",
+      "text": "ST12-8: The Strategy pattern aligns with SRP because:",
+      "options": [
+        { "id": "a", "text": "Each strategy class has a single algorithm responsibility, keeping each class focused and testable." },
+        { "id": "b", "text": "The context class handles all algorithm selection logic." },
+        { "id": "c", "text": "Strategies eliminate the need for inheritance." },
+        { "id": "d", "text": "SRP and Strategy are unrelated." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s08_q15",
+      "text": "ST09-12: Which of the following correctly implements DIP with constructor injection in C#?",
+      "options": [
+        { "id": "a", "text": "public class OrderService { private SqlRepository _repo = new SqlRepository(); }" },
+        { "id": "b", "text": "public class OrderService { private readonly IOrderRepository _repo; public OrderService(IOrderRepository repo) { _repo = repo; } }" },
+        { "id": "c", "text": "public class OrderService { public SqlRepository Repo { get; set; } }" },
+        { "id": "d", "text": "public class OrderService { private IOrderRepository _repo => ServiceLocator.Get<IOrderRepository>(); }" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q16",
+      "text": "ST18-14: 'Replace Type Code with Subclasses' refactoring is appropriate when:",
+      "options": [
+        { "id": "a", "text": "An enum has too many values." },
+        { "id": "b", "text": "A class uses an integer or enum field to switch behavior in many places; behavior differences can be encoded in subclasses or strategy implementations." },
+        { "id": "c", "text": "A type parameter is used only once." },
+        { "id": "d", "text": "A class inherits from too many base classes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q17",
+      "text": "ST02-8: 'Separation of concerns' as applied by SRP means:",
+      "options": [
+        { "id": "a", "text": "Each class should be in a separate assembly." },
+        { "id": "b", "text": "Different aspects of a problem (e.g., business logic, persistence, UI) should be handled by separate classes, each responsible for its own concern." },
+        { "id": "c", "text": "A class should have only one method." },
+        { "id": "d", "text": "Concerns should be hidden behind abstract base classes only." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q18",
+      "text": "ST11-9: In C#, which interface must a custom DI container's service provider implement to be compatible with ASP.NET Core?",
+      "options": [
+        { "id": "a", "text": "IServiceFactory" },
+        { "id": "b", "text": "IServiceProvider" },
+        { "id": "c", "text": "IServiceCollection" },
+        { "id": "d", "text": "IDependencyResolver" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q19",
+      "text": "ST20-13: Consider: `public void Save(object data) { if (data is Customer c) { SaveCustomer(c); } else if (data is Order o) { SaveOrder(o); } }`. What SOLID issue is present?",
+      "options": [
+        { "id": "a", "text": "LSP — Save substitutes the wrong type." },
+        { "id": "b", "text": "OCP — the method must be modified every time a new data type needs saving; use IStorable interface or overloads instead." },
+        { "id": "c", "text": "ISP — the method accepts too broad a type." },
+        { "id": "d", "text": "DIP — object is a concrete type." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q20",
+      "text": "ST19-14: 'Test isolation' means that a unit test should:",
+      "options": [
+        { "id": "a", "text": "Only be run on an isolated machine." },
+        { "id": "b", "text": "Verify one behavior in isolation, using test doubles to remove all external dependencies so failures pinpoint the unit under test." },
+        { "id": "c", "text": "Avoid using mock objects." },
+        { "id": "d", "text": "Always test the entire system end to end." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q21",
+      "text": "ST08-13: ISP and the Facade pattern relate in that:",
+      "options": [
+        { "id": "a", "text": "Facade eliminates the need for ISP by exposing all methods through one object." },
+        { "id": "b", "text": "A Facade can present a simplified, role-specific interface to a client while hiding a complex subsystem, serving the same goal as ISP." },
+        { "id": "c", "text": "ISP is only applicable when a Facade is present." },
+        { "id": "d", "text": "Facade and ISP contradict each other." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q22",
+      "text": "ST10-9: Which of the following correctly describes how to register an open generic type in Microsoft.Extensions.DependencyInjection?",
+      "options": [
+        { "id": "a", "text": "services.AddTransient(typeof(IRepository), typeof(EFRepository))" },
+        { "id": "b", "text": "services.AddTransient(typeof(IRepository<>), typeof(EFRepository<>))" },
+        { "id": "c", "text": "services.AddTransient<IRepository<>, EFRepository<>>()" },
+        { "id": "d", "text": "services.AddGeneric<IRepository, EFRepository>()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q23",
+      "text": "ST12-9: In C#, which of the following is a clean way to implement strategy selection based on runtime input?",
+      "options": [
+        { "id": "a", "text": "A long if-else chain checking a string input for the strategy name." },
+        { "id": "b", "text": "A Dictionary<string, IStrategy> keyed by strategy name, returning the appropriate strategy instance for injection." },
+        { "id": "c", "text": "Reflection to find all types implementing IStrategy and instantiate them all." },
+        { "id": "d", "text": "A switch expression hardcoded to three strategy types." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q24",
+      "text": "ST01-9: The SRP principle originated in which broader software engineering concept?",
+      "options": [
+        { "id": "a", "text": "DRY (Don't Repeat Yourself)" },
+        { "id": "b", "text": "Cohesion — specifically the idea of high cohesion within a module, attributed to Larry Constantine and later formalized by Robert C. Martin." },
+        { "id": "c", "text": "YAGNI (You Aren't Gonna Need It)" },
+        { "id": "d", "text": "CAP theorem" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q25",
+      "text": "ST20-14: A developer adds logging to 15 different service classes by copying the same Logger.Log() call. Which code smell and SOLID violation does this represent?",
+      "options": [
+        { "id": "a", "text": "Feature Envy and ISP." },
+        { "id": "b", "text": "Duplicate Code and OCP/SRP — logging should be extracted (e.g., as a Decorator or via AOP), not duplicated across classes." },
+        { "id": "c", "text": "Shotgun Surgery and DIP." },
+        { "id": "d", "text": "Long Method and LSP." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q26",
+      "text": "ST18-15: 'Hide Delegate' refactoring is used to:",
+      "options": [
+        { "id": "a", "text": "Make a delegate private." },
+        { "id": "b", "text": "Reduce message chains by having a class expose a method that wraps a call to a collaborator, hiding the delegate from the client." },
+        { "id": "c", "text": "Replace a delegate with an event." },
+        { "id": "d", "text": "Move a delegate field to a base class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q27",
+      "text": "ST09-13: The 'Stable Abstractions Principle' (related to DIP) states that:",
+      "options": [
+        { "id": "a", "text": "A package should be as abstract as it is stable; highly stable packages should be highly abstract." },
+        { "id": "b", "text": "Abstract classes should never change once released." },
+        { "id": "c", "text": "All interfaces should be in the most stable assembly." },
+        { "id": "d", "text": "Abstractions should depend on concrete implementations for stability." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s08_q28",
+      "text": "ST02-9: A `ProductService` class contains: `CalculatePrice()`, `GenerateInvoice()`, `SendConfirmationEmail()`, `SaveToDatabase()`. After SRP refactoring, the correct architecture is:",
+      "options": [
+        { "id": "a", "text": "Move all methods into a ProductHelper static class." },
+        { "id": "b", "text": "Extract PricingService, InvoiceService, NotificationService, and ProductRepository, then inject them into a thin orchestrating ProductService." },
+        { "id": "c", "text": "Keep ProductService but make all methods virtual for easy overriding." },
+        { "id": "d", "text": "Split ProductService into ProductServiceA and ProductServiceB arbitrarily." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q29",
+      "text": "ST11-10: In C# ASP.NET Core, `IHttpContextAccessor` is typically registered as which lifetime, and why?",
+      "options": [
+        { "id": "a", "text": "Transient — because HTTP context changes every millisecond." },
+        { "id": "b", "text": "Singleton — because the accessor is stateless; only the HttpContext it accesses is per-request." },
+        { "id": "c", "text": "Scoped — because it is tied to a specific HTTP request scope." },
+        { "id": "d", "text": "Transient — because each service needing it gets a fresh instance." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s08_q30",
+      "text": "ST19-15: What is 'test pyramid' and how does SOLID support it?",
+      "options": [
+        { "id": "a", "text": "A pyramid-shaped class hierarchy used in test frameworks." },
+        { "id": "b", "text": "A model advocating many fast unit tests at the base, fewer integration tests in the middle, and fewest UI/end-to-end tests at the top; SOLID supports this by making units small, isolated, and mockable." },
+        { "id": "c", "text": "A diagram showing code coverage targets." },
+        { "id": "d", "text": "A pyramid of abstract base classes used only in test projects." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

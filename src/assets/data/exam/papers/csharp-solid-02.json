@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s02",
+  "title": "C# SOLID — Paper 2",
+  "description": "Covers SRP refactoring, OCP concepts, OCP refactoring, LSP concepts, LSP refactoring, Strategy Pattern, Factory & Abstract Factory, Decorator Pattern, Observer Pattern, and Repository Pattern.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s02_q1",
+      "text": "ST06-1: When fixing an LSP violation, which of the following is the correct approach to postconditions in a subclass?",
+      "options": [
+        { "id": "a", "text": "The subclass may weaken postconditions to give callers more flexibility." },
+        { "id": "b", "text": "The subclass must strengthen or maintain postconditions to ensure promises made by the base class are kept." },
+        { "id": "c", "text": "Postconditions in subclasses are optional and can be ignored." },
+        { "id": "d", "text": "The subclass may remove postconditions if the new logic is simpler." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q2",
+      "text": "ST15-4: In the Observer pattern, what is the term for an object that wants to be notified of changes?",
+      "options": [
+        { "id": "a", "text": "Publisher" },
+        { "id": "b", "text": "Subject" },
+        { "id": "c", "text": "Observer (subscriber)" },
+        { "id": "d", "text": "Mediator" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s02_q3",
+      "text": "ST02-4: Which refactoring technique is most appropriate when a method in a class is primarily concerned with data from another class?",
+      "options": [
+        { "id": "a", "text": "Extract Class" },
+        { "id": "b", "text": "Move Method" },
+        { "id": "c", "text": "Inline Method" },
+        { "id": "d", "text": "Introduce Parameter Object" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q4",
+      "text": "ST13-4: In C#, the Factory Method pattern is commonly implemented using:",
+      "options": [
+        { "id": "a", "text": "A static class with a single Create() method." },
+        { "id": "b", "text": "An abstract base class declaring a factory method that subclasses override to produce specific products." },
+        { "id": "c", "text": "A sealed class that uses reflection to instantiate types." },
+        { "id": "d", "text": "An enum-based switch to choose a concrete class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q5",
+      "text": "ST03-4: Which of the following code structures best demonstrates adherence to OCP?",
+      "options": [
+        { "id": "a", "text": "A single method with switch-case statements for each supported format." },
+        { "id": "b", "text": "A set of classes each implementing an IExporter interface, registered via a factory." },
+        { "id": "c", "text": "A God class that handles all export logic internally." },
+        { "id": "d", "text": "A static utility class with overloaded export methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q6",
+      "text": "ST16-1: What is the primary goal of the Repository pattern?",
+      "options": [
+        { "id": "a", "text": "To cache database query results in memory." },
+        { "id": "b", "text": "To abstract the data access layer behind an interface, decoupling domain logic from persistence concerns." },
+        { "id": "c", "text": "To enforce referential integrity in the database." },
+        { "id": "d", "text": "To provide a direct connection to a specific ORM framework." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q7",
+      "text": "ST12-4: Which of the following best describes the 'context' class in the Strategy pattern?",
+      "options": [
+        { "id": "a", "text": "The abstract interface that all strategies must implement." },
+        { "id": "b", "text": "The class that holds a reference to a strategy and delegates algorithm execution to it." },
+        { "id": "c", "text": "The class that decides which strategy to choose at compile time." },
+        { "id": "d", "text": "A concrete algorithm implementation." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q8",
+      "text": "ST05-4: A `FlyingBird` base class has a `Fly()` method. A `Penguin` subclass inherits from it and throws `NotSupportedException` in `Fly()`. This is a violation of:",
+      "options": [
+        { "id": "a", "text": "The Single Responsibility Principle" },
+        { "id": "b", "text": "The Open/Closed Principle" },
+        { "id": "c", "text": "The Liskov Substitution Principle" },
+        { "id": "d", "text": "The Interface Segregation Principle" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s02_q9",
+      "text": "ST04-4: In C#, which of the following patterns allows adding new tax rules to a tax engine without modifying existing tax classes?",
+      "options": [
+        { "id": "a", "text": "Modify the existing TaxEngine.Calculate() method each time." },
+        { "id": "b", "text": "Define an ITaxRule interface and add new ITaxRule implementations, composing them in the engine." },
+        { "id": "c", "text": "Add a new public property to the TaxEngine class for each new rule." },
+        { "id": "d", "text": "Derive a new TaxEngine subclass for every new tax rule." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q10",
+      "text": "ST14-4: Which of the following best illustrates using the Decorator pattern in C# for logging?",
+      "options": [
+        { "id": "a", "text": "Adding a log statement inside every existing service method." },
+        { "id": "b", "text": "Creating a LoggingOrderService class that implements IOrderService, wraps a real OrderService, and logs before/after each call." },
+        { "id": "c", "text": "Inheriting from OrderService and overriding every method." },
+        { "id": "d", "text": "Using a static Logger.Log() call inside the OrderService class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q11",
+      "text": "ST02-5: In SRP refactoring, 'Extract Class' is used when:",
+      "options": [
+        { "id": "a", "text": "A class is too small and should merge with another." },
+        { "id": "b", "text": "Part of a class's behaviour is cohesive enough to stand on its own as a separate class." },
+        { "id": "c", "text": "A method is too long and should be split into overloads." },
+        { "id": "d", "text": "An interface has too many methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q12",
+      "text": "ST06-2: A `Rectangle` has virtual properties `Width` and `Height`. A `Square` subclass overrides both setters so that setting Width also sets Height. What LSP fix is most appropriate?",
+      "options": [
+        { "id": "a", "text": "Make Rectangle a sealed class." },
+        { "id": "b", "text": "Remove the Width and Height properties from Rectangle." },
+        { "id": "c", "text": "Remove the inheritance relationship and treat Square and Rectangle as separate classes sharing an IShape interface." },
+        { "id": "d", "text": "Add a flag property IsSquare to Rectangle." }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s02_q13",
+      "text": "ST05-5: According to LSP, which of the following is a valid behaviour for a subclass method?",
+      "options": [
+        { "id": "a", "text": "Throwing a new exception type not documented by the base class method." },
+        { "id": "b", "text": "Accepting a wider range of input values than the base class method." },
+        { "id": "c", "text": "Returning a narrower range of output values than the base class method." },
+        { "id": "d", "text": "Requiring more conditions to be satisfied before it can be called." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q14",
+      "text": "ST03-5: A developer must add a new payment provider to a checkout system. The system currently has a `ProcessPayment(string providerName)` method with a switch statement. What is the OCP-compliant fix?",
+      "options": [
+        { "id": "a", "text": "Add the new case to the existing switch statement." },
+        { "id": "b", "text": "Refactor to use an IPaymentProvider interface and register the new provider without touching existing code." },
+        { "id": "c", "text": "Create a new ProcessPaymentV2 method alongside the old one." },
+        { "id": "d", "text": "Use reflection to discover and call the new provider class automatically." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q15",
+      "text": "ST16-2: How does the Repository pattern support the Dependency Inversion Principle?",
+      "options": [
+        { "id": "a", "text": "By coupling domain services directly to Entity Framework DbContext." },
+        { "id": "b", "text": "By defining an IRepository interface that domain services depend on, allowing the actual storage mechanism to be swapped." },
+        { "id": "c", "text": "By storing domain logic inside repository methods." },
+        { "id": "d", "text": "By making all repository methods static." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q16",
+      "text": "ST12-5: In a C# Strategy pattern, replacing a large if-else block with strategies relates most directly to which refactoring technique?",
+      "options": [
+        { "id": "a", "text": "Extract Method" },
+        { "id": "b", "text": "Introduce Null Object" },
+        { "id": "c", "text": "Replace Conditional with Polymorphism" },
+        { "id": "d", "text": "Collapse Hierarchy" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s02_q17",
+      "text": "ST04-5: Which keyword in C# prevents a class from being further subclassed, effectively closing it for extension via inheritance?",
+      "options": [
+        { "id": "a", "text": "abstract" },
+        { "id": "b", "text": "virtual" },
+        { "id": "c", "text": "sealed" },
+        { "id": "d", "text": "readonly" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s02_q18",
+      "text": "ST13-5: An Abstract Factory is used in a cross-platform UI toolkit. When adding support for a new OS, what change is needed?",
+      "options": [
+        { "id": "a", "text": "Modify every existing factory class to add OS-specific conditions." },
+        { "id": "b", "text": "Create a new concrete factory class implementing the abstract factory interface for the new OS." },
+        { "id": "c", "text": "Add a new OS parameter to every existing product creation method." },
+        { "id": "d", "text": "Change the interface to include the new OS type as a concrete method." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q19",
+      "text": "ST06-3: Which of the following best describes an LSP-compliant inheritance hierarchy?",
+      "options": [
+        { "id": "a", "text": "Every subclass adds at least five new methods not present in the base class." },
+        { "id": "b", "text": "Subclasses can be used wherever the base class is expected, without callers needing to know the difference." },
+        { "id": "c", "text": "Subclasses may throw new unchecked exceptions from any overridden method." },
+        { "id": "d", "text": "Subclasses always use `new` (hiding) rather than `override`." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q20",
+      "text": "ST15-5: Which C# feature allows subscribing to an event without being able to raise it or unsubscribe other handlers?",
+      "options": [
+        { "id": "a", "text": "A public delegate field." },
+        { "id": "b", "text": "The event keyword with += subscription syntax." },
+        { "id": "c", "text": "A public Action property." },
+        { "id": "d", "text": "A static event declared in an interface." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q21",
+      "text": "ST02-6: When should you apply the 'Separate concerns into services' SRP refactoring?",
+      "options": [
+        { "id": "a", "text": "When a class has too many private helper methods." },
+        { "id": "b", "text": "When a class mixes domain logic with infrastructure concerns such as database calls or file I/O." },
+        { "id": "c", "text": "When a class has only one public method." },
+        { "id": "d", "text": "When two classes share the same base class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q22",
+      "text": "ST16-3: When unit testing with a Repository pattern, which test double is typically used in place of the real repository?",
+      "options": [
+        { "id": "a", "text": "A spy that records database calls." },
+        { "id": "b", "text": "An in-memory fake or mock implementing the IRepository interface." },
+        { "id": "c", "text": "The real database with a test schema." },
+        { "id": "d", "text": "A stub that always returns null." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q23",
+      "text": "ST03-6: Bertrand Meyer's original formulation of OCP described classes as:",
+      "options": [
+        { "id": "a", "text": "Open for modification once per release cycle." },
+        { "id": "b", "text": "Open (for extension) and closed (for modification) simultaneously." },
+        { "id": "c", "text": "Closed for extension until all tests pass." },
+        { "id": "d", "text": "Open only to internal modifications by the owning team." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q24",
+      "text": "ST04-6: Which design level OCP approach does Robert C. Martin associate with polymorphism in object-oriented languages?",
+      "options": [
+        { "id": "a", "text": "Using global configuration flags to enable or disable features." },
+        { "id": "b", "text": "Closing modules against change through abstract interfaces that clients depend on." },
+        { "id": "c", "text": "Recompiling the entire application for each new feature." },
+        { "id": "d", "text": "Using compile-time generics exclusively for extension points." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q25",
+      "text": "ST05-6: In C#, which of the following inheritance scenarios does NOT violate LSP?",
+      "options": [
+        { "id": "a", "text": "A subclass that overrides a method and always throws NotImplementedException." },
+        { "id": "b", "text": "A subclass that overrides a method but returns a more specific (covariant) type that still fulfils the base contract." },
+        { "id": "c", "text": "A subclass that ignores the base class method and uses a completely different algorithm with different observable side effects." },
+        { "id": "d", "text": "A subclass that strengthens a precondition by requiring a non-null parameter when the base accepts null." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q26",
+      "text": "ST12-6: A shipping cost calculator uses if-else chains to handle Standard, Express, and Overnight shipping. Applying the Strategy pattern, what represents a 'strategy' here?",
+      "options": [
+        { "id": "a", "text": "The ShippingCostCalculator class itself." },
+        { "id": "b", "text": "Each shipping mode (Standard, Express, Overnight) implemented as a separate class behind an IShippingStrategy interface." },
+        { "id": "c", "text": "The if-else chain refactored into a switch expression." },
+        { "id": "d", "text": "A dictionary mapping shipping type strings to cost multipliers." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q27",
+      "text": "ST13-6: In a game engine, a MonsterFactory creates different monster types. Each monster type requires different weapons and armor created together. Which pattern best supports this?",
+      "options": [
+        { "id": "a", "text": "Factory Method — one factory per monster." },
+        { "id": "b", "text": "Abstract Factory — one factory interface creating related weapon+armor pairs per monster type." },
+        { "id": "c", "text": "Singleton — a single global factory for all monsters." },
+        { "id": "d", "text": "Builder — constructing each monster step by step." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q28",
+      "text": "ST06-4: An overridden method in a subclass silently does nothing (empty body) where the base class performs an important operation. This violates LSP because:",
+      "options": [
+        { "id": "a", "text": "The subclass adds too many new methods." },
+        { "id": "b", "text": "The subclass weakens the postcondition, breaking the behaviour contract expected by callers of the base type." },
+        { "id": "c", "text": "The subclass does not have enough methods." },
+        { "id": "d", "text": "The empty method speeds up execution, which is always desirable." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q29",
+      "text": "ST14-5: The Decorator pattern uses composition rather than inheritance. What is the primary benefit of this choice?",
+      "options": [
+        { "id": "a", "text": "It reduces the number of interfaces needed in the system." },
+        { "id": "b", "text": "Decorators can be stacked flexibly at runtime without creating an explosion of subclass combinations." },
+        { "id": "c", "text": "Composition is faster than inheritance at runtime." },
+        { "id": "d", "text": "It ensures the decorated object is always a singleton." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s02_q30",
+      "text": "ST15-6: IObservable<T> and IObserver<T> in .NET are part of which library and represent which pattern?",
+      "options": [
+        { "id": "a", "text": "LINQ; Query pattern" },
+        { "id": "b", "text": "Reactive Extensions (Rx.NET); Observer/Push-based pattern" },
+        { "id": "c", "text": "TPL Dataflow; Pipeline pattern" },
+        { "id": "d", "text": "ASP.NET Core; Middleware pattern" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>Assign Exam</h2>
+
+<mat-dialog-content>
+
+  <!-- Paper selector — only shown when no paper was pre-selected -->
+  @if (!fixedPaper) {
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Paper</mat-label>
+      <mat-select [(ngModel)]="selectedPaperId">
+        @for (p of papers; track p.id) {
+          <mat-option [value]="p.id">{{ p.title }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  } @else {
+    <p class="paper-title">{{ fixedPaper.title }}</p>
+  }
+
+  <!-- Timer info (shown when a paper is selected) -->
+  @if (selectedPaper) {
+    <p class="timer-info">
+      <mat-icon>timer</mat-icon> {{ timerLabel }}
+    </p>
+  }
+
+  
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Select Users</mat-label>
+    <mat-select [(ngModel)]="selectedUserIds" multiple>
+      @for (user of users; track user.id) {
+        <mat-option [value]="user.id">{{ user.name }}</mat-option>
+      }
+    </mat-select>
+    <mat-hint>You can select multiple users</mat-hint>
+  </mat-form-field>
+
+  <!-- Skipped users warning (shown after a partial assign attempt) -->
+  @if (skipped.length) {
+    <div class="skipped-warn">
+      <mat-icon>warning</mat-icon>
+      <span>
+        Already had an active assignment — skipped:
+        <strong>{{ skipped.join(', ') }}</strong>
+      </span>
+    </div>
+  }
+
+  @if (error) {
+    <p class="error-msg">{{ error }}</p>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close(false)">Cancel</button>
+  <button mat-flat-button color="primary" (click)="assign()">
+    <mat-icon>assignment_ind</mat-icon> Assign
+  </button>
+</mat-dialog-actions>
+
+<style>
+  .paper-title  { font-weight: 600; font-size: 1rem; margin: 0 0 4px; }
+  .timer-info   { display: flex; align-items: center; gap: 6px; color: #555; font-size: 0.88rem; margin: 0 0 16px; }
+  .full-width   { width: 100%; }
+  .error-msg    { color: #d32f2f; font-size: 0.85rem; margin-top: 4px; }
+  .skipped-warn {
+    display: flex; align-items: flex-start; gap: 8px;
+    background: #fff8e1; color: #e65100;
+    border-radius: 8px; padding: 8px 12px;
+    font-size: 0.83rem; margin-top: 4px;
+    mat-icon { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+  }
+</style>

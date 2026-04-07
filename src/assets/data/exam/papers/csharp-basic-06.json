@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_b06",
+  "title": "C# Basic — Paper 6",
+  "description": "C# concepts: conditionals, switch expressions, loops, loop control, arrays, constructors, access modifiers, properties, static members, and inheritance basics.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 1800, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_b06_q1",
+      "text": "What is a ternary operator (`? :`) in C# equivalent to?",
+      "options": [
+        { "id": "a", "text": "A switch expression" },
+        { "id": "b", "text": "An if-else statement that returns a value" },
+        { "id": "c", "text": "A null-coalescing expression" },
+        { "id": "d", "text": "A loop that iterates twice" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q2",
+      "text": "What is the output of `Console.WriteLine(x > 0 ? \"pos\" : \"non-pos\")` when `x = -3`?",
+      "options": [
+        { "id": "a", "text": "pos" },
+        { "id": "b", "text": "non-pos" },
+        { "id": "c", "text": "Compile error" },
+        { "id": "d", "text": "0" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q3",
+      "text": "In C#, can a `switch` statement match on enum values?",
+      "options": [
+        { "id": "a", "text": "No, switch only works with integers and strings" },
+        { "id": "b", "text": "Yes, enum values are valid switch expressions in C#" },
+        { "id": "c", "text": "Only if the enum has the [Flags] attribute" },
+        { "id": "d", "text": "Only if the enum is cast to int first" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q4",
+      "text": "What does a `switch` expression with property pattern `obj is { Name: \"Alice\" }` check?",
+      "options": [
+        { "id": "a", "text": "Whether obj has a field called Name" },
+        { "id": "b", "text": "Whether the Name property of obj equals \"Alice\"" },
+        { "id": "c", "text": "Whether obj is null" },
+        { "id": "d", "text": "Whether obj's type is Alice" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q5",
+      "text": "Which pattern combines multiple conditions in a switch expression arm in C#?",
+      "options": [
+        { "id": "a", "text": "or, and, not patterns (e.g., `< 0 or > 100`)" },
+        { "id": "b", "text": "|| and && operators inside the arm" },
+        { "id": "c", "text": "Multiple `when` clauses" },
+        { "id": "d", "text": "C# does not support combined patterns" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b06_q6",
+      "text": "What is an infinite `while` loop in C#?",
+      "options": [
+        { "id": "a", "text": "while (1) { }" },
+        { "id": "b", "text": "while (true) { }" },
+        { "id": "c", "text": "while (false) { }" },
+        { "id": "d", "text": "while { }" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q7",
+      "text": "What is the correct syntax for a nested for loop to print a 3x3 grid in C#?",
+      "options": [
+        { "id": "a", "text": "for (int i=0;i<3;i++) for (int j=0;j<3;j++) Console.Write($\"{i},{j} \");" },
+        { "id": "b", "text": "for (int i,j=0;i<3 && j<3;i++,j++) Console.Write(i);" },
+        { "id": "c", "text": "foreach (int i in 3) foreach (int j in 3) Console.Write(i);" },
+        { "id": "d", "text": "for 3 loop { for 3 loop { print; } }" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b06_q8",
+      "text": "What does `break` do inside a `while` loop when a condition is met midway?",
+      "options": [
+        { "id": "a", "text": "Skips to the next iteration" },
+        { "id": "b", "text": "Restarts the loop" },
+        { "id": "c", "text": "Exits the while loop immediately" },
+        { "id": "d", "text": "Throws a BreakException" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b06_q9",
+      "text": "What is the effect of `continue` in a `for` loop in C#?",
+      "options": [
+        { "id": "a", "text": "Exits the loop" },
+        { "id": "b", "text": "Skips remaining statements in the body and proceeds to the iterator expression" },
+        { "id": "c", "text": "Moves to the outer loop if nested" },
+        { "id": "d", "text": "Re-evaluates the initialization" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q10",
+      "text": "How do you declare a `goto` label and jump to it in C#?",
+      "options": [
+        { "id": "a", "text": "label: and jump label;" },
+        { "id": "b", "text": "@label: and go label;" },
+        { "id": "c", "text": "myLabel: and goto myLabel;" },
+        { "id": "d", "text": "#label and goto #label;" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b06_q11",
+      "text": "What does `return` do inside a `foreach` loop that is inside a method?",
+      "options": [
+        { "id": "a", "text": "Exits only the foreach loop" },
+        { "id": "b", "text": "Exits the entire method" },
+        { "id": "c", "text": "Continues to the next iteration" },
+        { "id": "d", "text": "Throws an InvalidOperationException" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q12",
+      "text": "How do you declare a one-dimensional array of 5 integers in C#?",
+      "options": [
+        { "id": "a", "text": "int[] arr = new int[5];" },
+        { "id": "b", "text": "int arr[5];" },
+        { "id": "c", "text": "array int arr = 5;" },
+        { "id": "d", "text": "int arr = new int{5};" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b06_q13",
+      "text": "How do you declare a 2D array of 3 rows and 4 columns in C#?",
+      "options": [
+        { "id": "a", "text": "int[][] arr = new int[3][4];" },
+        { "id": "b", "text": "int[,] arr = new int[3, 4];" },
+        { "id": "c", "text": "int arr[3,4] = new int;" },
+        { "id": "d", "text": "int[3][4] arr;" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q14",
+      "text": "What is a jagged array in C#?",
+      "options": [
+        { "id": "a", "text": "A 2D array with all rows having the same length" },
+        { "id": "b", "text": "An array where each row is an independent array that can have different lengths" },
+        { "id": "c", "text": "An array of nullable elements" },
+        { "id": "d", "text": "An array that supports only strings" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q15",
+      "text": "What does `Array.Sort(arr)` do in C#?",
+      "options": [
+        { "id": "a", "text": "Returns a new sorted copy of the array" },
+        { "id": "b", "text": "Sorts the array in descending order" },
+        { "id": "c", "text": "Sorts the array in ascending order in place" },
+        { "id": "d", "text": "Throws NotSupportedException for integer arrays" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b06_q16",
+      "text": "What does `Array.Copy(source, dest, length)` do in C#?",
+      "options": [
+        { "id": "a", "text": "Creates a new array that is a copy of source" },
+        { "id": "b", "text": "Copies `length` elements from source into dest starting at index 0" },
+        { "id": "c", "text": "Copies dest into source" },
+        { "id": "d", "text": "Merges source and dest into a new array" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q17",
+      "text": "What is the purpose of a default constructor in C#?",
+      "options": [
+        { "id": "a", "text": "It sets all fields to their maximum values" },
+        { "id": "b", "text": "It is a parameterless constructor that initializes an object to a default state" },
+        { "id": "c", "text": "It is called automatically to destroy an object" },
+        { "id": "d", "text": "It cannot be overridden" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q18",
+      "text": "In constructor chaining, what is `:base(args)` used for in C#?",
+      "options": [
+        { "id": "a", "text": "Calling another constructor in the same class" },
+        { "id": "b", "text": "Calling the parent class constructor from a derived class constructor" },
+        { "id": "c", "text": "Accessing the base class's static members" },
+        { "id": "d", "text": "Creating a copy of the base class" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q19",
+      "text": "Can a static constructor have access modifiers in C#?",
+      "options": [
+        { "id": "a", "text": "Yes, it is typically public" },
+        { "id": "b", "text": "Yes, it can be public or private" },
+        { "id": "c", "text": "No, static constructors cannot have access modifiers" },
+        { "id": "d", "text": "Yes, it must be protected" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b06_q20",
+      "text": "What does the `internal` modifier ensure in a C# multi-project solution?",
+      "options": [
+        { "id": "a", "text": "The member is accessible to all projects" },
+        { "id": "b", "text": "The member is accessible only within the assembly (project) it is declared in" },
+        { "id": "c", "text": "The member is accessible only within the class" },
+        { "id": "d", "text": "The member is accessible to derived classes only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q21",
+      "text": "What does `private protected` restrict access to compared to `protected` alone in C#?",
+      "options": [
+        { "id": "a", "text": "`private protected` is more restrictive: accessible only within the same assembly AND by derived classes in the same assembly" },
+        { "id": "b", "text": "`private protected` is less restrictive: accessible by any derived class" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "`private protected` allows access from the same file only" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b06_q22",
+      "text": "What is the purpose of the `value` keyword in a property setter in C#?",
+      "options": [
+        { "id": "a", "text": "It refers to the existing value of the property" },
+        { "id": "b", "text": "It represents the value being assigned to the property" },
+        { "id": "c", "text": "It is a built-in constant equal to 0" },
+        { "id": "d", "text": "It marks the field as immutable" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q23",
+      "text": "What does `public string Name { get; private set; }` allow?",
+      "options": [
+        { "id": "a", "text": "Reading from anywhere; writing only from within the class" },
+        { "id": "b", "text": "Reading and writing from anywhere" },
+        { "id": "c", "text": "Reading only from within the class; writing from anywhere" },
+        { "id": "d", "text": "Writing only; no reading allowed" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_b06_q24",
+      "text": "Can a property's `get` accessor be more restrictive than its `set` accessor in C#?",
+      "options": [
+        { "id": "a", "text": "Yes, always" },
+        { "id": "b", "text": "Yes, but only if both are explicitly declared" },
+        { "id": "c", "text": "No, C# requires the `set` to be at least as restrictive as the `get`" },
+        { "id": "d", "text": "No, and this causes a compile-time error" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_b06_q25",
+      "text": "What is the static constructor syntax in C#?",
+      "options": [
+        { "id": "a", "text": "public static MyClass() { }" },
+        { "id": "b", "text": "static MyClass() { }" },
+        { "id": "c", "text": "MyClass.static() { }" },
+        { "id": "d", "text": "private static MyClass() { }" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q26",
+      "text": "What is `Math.PI` in C# an example of?",
+      "options": [
+        { "id": "a", "text": "An instance field" },
+        { "id": "b", "text": "A const in a static class" },
+        { "id": "c", "text": "A static method" },
+        { "id": "d", "text": "An extension method" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q27",
+      "text": "Can a static class in C# have instance constructors?",
+      "options": [
+        { "id": "a", "text": "Yes, one instance constructor is allowed" },
+        { "id": "b", "text": "Yes, unlimited instance constructors" },
+        { "id": "c", "text": "No, static classes cannot have instance constructors" },
+        { "id": "d", "text": "Only protected instance constructors are allowed" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_b06_q28",
+      "text": "What does the `virtual` keyword allow in a C# base class method?",
+      "options": [
+        { "id": "a", "text": "It prevents the method from being overridden" },
+        { "id": "b", "text": "It allows derived classes to override the method with their own implementation" },
+        { "id": "c", "text": "It makes the method static" },
+        { "id": "d", "text": "It hides the method from derived classes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q29",
+      "text": "What does the `override` keyword do in a derived class in C#?",
+      "options": [
+        { "id": "a", "text": "Creates a new version of a method, hiding the base class version" },
+        { "id": "b", "text": "Provides a new implementation for a `virtual` or `abstract` method from the base class" },
+        { "id": "c", "text": "Makes the method inaccessible from outside the class" },
+        { "id": "d", "text": "Prevents further overriding in derived classes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_b06_q30",
+      "text": "What is an interface in C#?",
+      "options": [
+        { "id": "a", "text": "A class that cannot be instantiated" },
+        { "id": "b", "text": "A contract defining a set of members that implementing classes must provide" },
+        { "id": "c", "text": "An abstract class with only one abstract method" },
+        { "id": "d", "text": "A sealed class that prevents inheritance" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

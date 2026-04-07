@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a04",
+  "title": "C# Advanced — Paper 4",
+  "description": "Advanced C# covering LINQ Advanced Operators, Lambda & Functional Patterns, Delegates, Events, Async/Await & Task Basics, Reflection, Attributes, Extension Methods, Expression Trees, and Dynamic Types.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a04_q1",
+      "text": "What does async/await do to a method in C#?",
+      "options": [
+        { "id": "a", "text": "It creates a new thread for each awaited operation." },
+        { "id": "b", "text": "It transforms the method into a state machine that suspends execution at each 'await' point, freeing the current thread while waiting, then resuming when the awaited task completes." },
+        { "id": "c", "text": "It makes the method execute synchronously on a background thread." },
+        { "id": "d", "text": "It blocks the calling thread until the operation completes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q2",
+      "text": "What is the purpose of ConfigureAwait(false) in async methods?",
+      "options": [
+        { "id": "a", "text": "It disables the async/await pattern for a specific call." },
+        { "id": "b", "text": "It tells the awaiter not to capture the current synchronization context, allowing the continuation to run on any thread pool thread, which avoids deadlocks in library code and improves performance." },
+        { "id": "c", "text": "It ensures the continuation always runs on the UI thread." },
+        { "id": "d", "text": "It configures the task to not throw exceptions." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q3",
+      "text": "What is the difference between LINQ's SelectMany with a collection selector vs a result selector overload?",
+      "options": [
+        { "id": "a", "text": "They produce identical output regardless of overload." },
+        { "id": "b", "text": "The collection selector overload flattens sub-sequences into one; the result selector overload additionally projects each (outer, inner) pair through a result function before returning." },
+        { "id": "c", "text": "The result selector overload only works with IQueryable<T>." },
+        { "id": "d", "text": "The collection selector overload returns a dictionary." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q4",
+      "text": "How is a pure function defined in functional programming, and why is it valuable in C# lambdas?",
+      "options": [
+        { "id": "a", "text": "A pure function must be declared static." },
+        { "id": "b", "text": "A pure function always returns the same output for the same input and has no side effects, making lambdas that are pure predictable, testable, and safe to compose or parallelize." },
+        { "id": "c", "text": "A pure function cannot capture any variables." },
+        { "id": "d", "text": "A pure function runs in a sandboxed context with no access to the runtime." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q5",
+      "text": "What is delegate covariance in C# return type variance?",
+      "options": [
+        { "id": "a", "text": "A delegate can accept a method returning a more derived type than declared in the delegate signature." },
+        { "id": "b", "text": "A delegate can be assigned a method whose return type is a derived class of the delegate's declared return type (covariant return type), since the returned value can always be used as the base type." },
+        { "id": "c", "text": "Delegates do not support covariance in any form." },
+        { "id": "d", "text": "Covariance applies only to generic delegates, not named delegates." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q6",
+      "text": "In C#, what is an event accessor (add/remove), and when would you implement custom accessors?",
+      "options": [
+        { "id": "a", "text": "Event accessors are properties of the EventArgs class." },
+        { "id": "b", "text": "Custom add/remove accessors let you control subscription logic (e.g., using a dictionary of handlers, thread-safe locking, or filtering subscriptions) instead of the auto-generated backing delegate field." },
+        { "id": "c", "text": "add/remove accessors are required for all events in C#." },
+        { "id": "d", "text": "They are used to serialize event handlers to XML." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q7",
+      "text": "What does Task.WhenAll() do and how does it differ from awaiting tasks sequentially?",
+      "options": [
+        { "id": "a", "text": "Task.WhenAll() runs tasks one at a time and awaits each." },
+        { "id": "b", "text": "Task.WhenAll() returns a task that completes when all supplied tasks complete, allowing all tasks to run concurrently rather than one-after-another, reducing total elapsed time." },
+        { "id": "c", "text": "Task.WhenAll() cancels all tasks if one fails." },
+        { "id": "d", "text": "Task.WhenAll() returns as soon as the first task completes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q8",
+      "text": "How do you handle exceptions from multiple tasks when using Task.WhenAll()?",
+      "options": [
+        { "id": "a", "text": "Each task's exception must be caught with an individual try/catch." },
+        { "id": "b", "text": "Awaiting Task.WhenAll() throws an AggregateException (unwrapped by await to the first inner exception); to inspect all exceptions, examine the Task.Exception.InnerExceptions collection on the awaited task." },
+        { "id": "c", "text": "Task.WhenAll() swallows all exceptions unless you use .Result." },
+        { "id": "d", "text": "You must pass a CancellationToken to capture exceptions from WhenAll." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q9",
+      "text": "What is the 'dynamic' keyword in C# and how does it differ from 'object'?",
+      "options": [
+        { "id": "a", "text": "dynamic and object are identical; only the name differs." },
+        { "id": "b", "text": "dynamic bypasses static type checking and resolves member access at runtime via the DLR; object requires explicit casting and all member access is checked at compile time." },
+        { "id": "c", "text": "dynamic is only available in .NET Framework, not .NET Core." },
+        { "id": "d", "text": "dynamic forces boxing of all value types; object does not." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q10",
+      "text": "What are expression-bodied members in C# and how do they relate to expression trees?",
+      "options": [
+        { "id": "a", "text": "Expression-bodied members create expression trees automatically." },
+        { "id": "b", "text": "Expression-bodied members use '=>' syntax to provide a single-expression body for methods/properties (compiled to IL). Expression trees (Expression<Func<T>>) represent code as data. They use similar syntax but serve different purposes." },
+        { "id": "c", "text": "They are the same concept and interchangeable." },
+        { "id": "d", "text": "Expression-bodied members are only for read-only properties." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q11",
+      "text": "What does the [StructLayout(LayoutKind.Sequential)] attribute control?",
+      "options": [
+        { "id": "a", "text": "It makes a class behave like a struct." },
+        { "id": "b", "text": "It instructs the runtime to lay out struct or class fields in memory in declaration order, which is important for P/Invoke interop with native code." },
+        { "id": "c", "text": "It enables automatic struct packing to the smallest alignment." },
+        { "id": "d", "text": "It prevents the JIT from reordering struct fields." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q12",
+      "text": "What extension method pattern enables type-safe 'Is' and 'As' operations without reflection?",
+      "options": [
+        { "id": "a", "text": "Using dynamic dispatch to test types at runtime." },
+        { "id": "b", "text": "Defining extension methods with generic constraints: public static bool Is<T>(this object o) => o is T; and public static T As<T>(this object o) where T : class => o as T;." },
+        { "id": "c", "text": "Using Activator.CreateInstance for type testing." },
+        { "id": "d", "text": "Extension methods cannot implement type-testing patterns." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q13",
+      "text": "How do you use an Expression<Func<T, bool>> as a predicate in Entity Framework LINQ queries?",
+      "options": [
+        { "id": "a", "text": "You must call .Compile() first to convert it to a delegate." },
+        { "id": "b", "text": "Pass it directly to .Where(), since IQueryable<T>.Where() accepts Expression<Func<T,bool>>, allowing the expression tree to be translated to SQL by the EF provider." },
+        { "id": "c", "text": "Expression predicates cannot be used with Entity Framework." },
+        { "id": "d", "text": "Call .AsEnumerable() first, then pass the compiled delegate." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q14",
+      "text": "What is ExpandoObject in C# and what interface does it implement?",
+      "options": [
+        { "id": "a", "text": "ExpandoObject is a static dictionary class; it implements IDictionary." },
+        { "id": "b", "text": "ExpandoObject is a dynamic object that allows adding and removing members at runtime; it implements IDynamicMetaObjectProvider and IDictionary<string,object>." },
+        { "id": "c", "text": "ExpandoObject is a value type; it implements IStruct." },
+        { "id": "d", "text": "ExpandoObject only supports string-typed properties." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q15",
+      "text": "What does [CallerMemberName] attribute do when applied to an optional string parameter?",
+      "options": [
+        { "id": "a", "text": "It captures the assembly name at compile time." },
+        { "id": "b", "text": "It causes the compiler to automatically supply the name of the calling member (method, property, etc.) as the argument, enabling logging or INotifyPropertyChanged without hard-coded string names." },
+        { "id": "c", "text": "It retrieves the member name via reflection at runtime." },
+        { "id": "d", "text": "It restricts the method to being called only from class members." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q16",
+      "text": "When using LINQ's Zip with three sequences (C# 9+), what happens if sequences have different lengths?",
+      "options": [
+        { "id": "a", "text": "It throws an ArgumentException if lengths differ." },
+        { "id": "b", "text": "Zip stops producing elements when the shortest sequence is exhausted; remaining elements of longer sequences are ignored." },
+        { "id": "c", "text": "It pads shorter sequences with default values." },
+        { "id": "d", "text": "Zip requires all sequences to have the same length." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q17",
+      "text": "What is the role of the Dynamic Language Runtime (DLR) in C#?",
+      "options": [
+        { "id": "a", "text": "The DLR replaces the CLR for interpreted languages." },
+        { "id": "b", "text": "The DLR is a runtime layer that provides dynamic dispatch, late binding, and expression tree evaluation, enabling the 'dynamic' keyword and hosting dynamic languages like IronPython on .NET." },
+        { "id": "c", "text": "The DLR compiles C# source code at runtime." },
+        { "id": "d", "text": "The DLR handles only COM interop scenarios." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q18",
+      "text": "What does reflection's Type.GetGenericArguments() return?",
+      "options": [
+        { "id": "a", "text": "The generic constraints applied to the type parameters." },
+        { "id": "b", "text": "An array of Type objects representing the type arguments of a constructed generic type (e.g., for List<int>, it returns [typeof(int)])." },
+        { "id": "c", "text": "The names of the generic parameters as strings." },
+        { "id": "d", "text": "The base type of each generic argument." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q19",
+      "text": "What is lazy evaluation in LINQ and how can it lead to unexpected re-execution?",
+      "options": [
+        { "id": "a", "text": "LINQ queries are evaluated once and cached." },
+        { "id": "b", "text": "LINQ queries are deferred (lazy) and re-executed every time they are enumerated; if the source data changes between enumerations, different results are returned." },
+        { "id": "c", "text": "LINQ queries evaluate eagerly when any operator is appended." },
+        { "id": "d", "text": "Lazy evaluation only applies to GroupBy and OrderBy." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q20",
+      "text": "What is the Delegate.Remove() method used for?",
+      "options": [
+        { "id": "a", "text": "It removes all delegates from a multicast invocation list." },
+        { "id": "b", "text": "It removes the last occurrence of a specified delegate from a multicast delegate's invocation list, returning a new delegate; the -= operator on events uses this." },
+        { "id": "c", "text": "It unregisters a delegate from the DLR." },
+        { "id": "d", "text": "It disposes the delegate and frees its memory." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q21",
+      "text": "What is function composition in C# functional programming?",
+      "options": [
+        { "id": "a", "text": "Calling multiple functions in sequence inside a single method." },
+        { "id": "b", "text": "Creating a new function by combining two functions f and g such that compose(f,g)(x) = f(g(x)); each function's output becomes the next function's input." },
+        { "id": "c", "text": "Combining method groups into a single multicast delegate." },
+        { "id": "d", "text": "Using Aggregate to chain function calls over a collection." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q22",
+      "text": "What does Task.WhenAny() return and in what scenario is it most useful?",
+      "options": [
+        { "id": "a", "text": "Task.WhenAny() returns a Task<Task> that completes when all tasks finish." },
+        { "id": "b", "text": "Task.WhenAny() returns a Task<Task> that completes as soon as any one of the supplied tasks completes; useful for timeouts, racing multiple operations, or processing results as they arrive." },
+        { "id": "c", "text": "Task.WhenAny() cancels remaining tasks after the first completes." },
+        { "id": "d", "text": "Task.WhenAny() throws if the first completing task has faulted." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q23",
+      "text": "What is an event memory leak in C# and which common pattern causes it?",
+      "options": [
+        { "id": "a", "text": "Event memory leaks are caused by raising events with no subscribers." },
+        { "id": "b", "text": "A long-lived publisher holds a reference to subscribers via its event delegate; if a short-lived subscriber subscribes but never unsubscribes, the publisher prevents GC of the subscriber, causing a memory leak." },
+        { "id": "c", "text": "Events leak memory when declared as static fields." },
+        { "id": "d", "text": "Event memory leaks occur only in .NET Framework, not .NET 6+." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q24",
+      "text": "Which overload of Expression.Constant() is used to create a typed constant node?",
+      "options": [
+        { "id": "a", "text": "Expression.Constant(value) always infers the type." },
+        { "id": "b", "text": "Expression.Constant(value, type) lets you specify the type explicitly, which is important when the value is null or needs to be treated as an interface/base type rather than the concrete type." },
+        { "id": "c", "text": "Expression.Literal(value) is the correct method for constants." },
+        { "id": "d", "text": "Constants are always inlined; Expression.Constant is never needed." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q25",
+      "text": "How do you add a new property to an ExpandoObject and read it back dynamically?",
+      "options": [
+        { "id": "a", "text": "expando.AddProperty(\"Name\", \"Alice\"); var name = expando.GetProperty(\"Name\");" },
+        { "id": "b", "text": "dynamic expando = new ExpandoObject(); expando.Name = \"Alice\"; string name = expando.Name;" },
+        { "id": "c", "text": "ExpandoObject.Declare(\"Name\"); expando[\"Name\"] = \"Alice\";" },
+        { "id": "d", "text": "ExpandoObject requires a schema to be defined before setting properties." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q26",
+      "text": "What is the purpose of [InternalsVisibleTo] attribute?",
+      "options": [
+        { "id": "a", "text": "It makes all internal members public in the declaring assembly." },
+        { "id": "b", "text": "It grants a specified friend assembly access to the declaring assembly's internal types and members, commonly used to expose internals to unit test projects." },
+        { "id": "c", "text": "It controls which namespaces are visible within the assembly." },
+        { "id": "d", "text": "It merges two assemblies at link time." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q27",
+      "text": "What is the Liskov Substitution Principle's implication for delegate parameter variance (contravariance)?",
+      "options": [
+        { "id": "a", "text": "A delegate expecting a Base parameter cannot accept a method taking a Derived parameter." },
+        { "id": "b", "text": "A delegate declared as Action<Base> can reference a method that takes Action<Derived> is invalid; it's the reverse — Action<object> can be used where Action<string> is expected (contravariance), because a handler for any object can handle a string." },
+        { "id": "c", "text": "Contravariance means a derived type can be used where a base type is expected." },
+        { "id": "d", "text": "Delegate variance is not related to the Liskov Substitution Principle." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q28",
+      "text": "How can reflection be used to find all types in an assembly that implement a specific interface?",
+      "options": [
+        { "id": "a", "text": "Assembly.GetTypes().Where(t => t.Name.Contains(\"IMyInterface\"))" },
+        { "id": "b", "text": "Assembly.GetTypes().Where(t => typeof(IMyInterface).IsAssignableFrom(t) && !t.IsInterface)" },
+        { "id": "c", "text": "Assembly.Scan(typeof(IMyInterface))" },
+        { "id": "d", "text": "You cannot scan an assembly for interface implementations via reflection." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q29",
+      "text": "What is a thread-safe event invocation pattern in C# to avoid the 'null check race condition'?",
+      "options": [
+        { "id": "a", "text": "Always invoke events inside a lock statement." },
+        { "id": "b", "text": "Copy the event delegate to a local variable before null-checking and invoking: var handler = MyEvent; handler?.Invoke(this, args); This avoids a race where the event becomes null between the check and invocation." },
+        { "id": "c", "text": "Use Interlocked.Exchange to null the event before invoking." },
+        { "id": "d", "text": "Events are inherently thread-safe; no special pattern is needed." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a04_q30",
+      "text": "What is the difference between Func<T, TResult> and Expression<Func<T, TResult>>?",
+      "options": [
+        { "id": "a", "text": "They are interchangeable; you can use either in any context." },
+        { "id": "b", "text": "Func<T,TResult> is a compiled, directly-invokable delegate; Expression<Func<T,TResult>> is a data structure representing the code as a tree that can be inspected, modified, or translated (e.g., to SQL) before optionally being compiled." },
+        { "id": "c", "text": "Expression<Func<T,TResult>> executes faster than Func<T,TResult>." },
+        { "id": "d", "text": "Func<T,TResult> can hold expression trees internally." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

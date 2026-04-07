@@ -1,0 +1,51 @@
+<main class="dashboard">
+  <!-- Hero -->
+  <div class="hero">
+    <mat-icon class="hero-icon">menu_book</mat-icon>
+    <h1>Language Learn</h1>
+    <p class="subtitle">Expand your vocabulary one word at a time</p>
+  </div>
+
+  <!-- Stats -->
+  @if (wordService.loaded()) {
+    <div class="stats-grid">
+      <mat-card class="stat-card">
+        <mat-card-content>
+          <mat-icon>library_books</mat-icon>
+          <span class="stat-value">{{ stats.total }}</span>
+          <span class="stat-label">Total Words</span>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="stat-card remaining">
+        <mat-card-content>
+          <mat-icon>hourglass_empty</mat-icon>
+          <span class="stat-value">{{ stats.remaining }}</span>
+          <span class="stat-label">Remaining</span>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="stat-card learnt">
+        <mat-card-content>
+          <mat-icon>check_circle</mat-icon>
+          <span class="stat-value">{{ stats.learnt }}</span>
+          <span class="stat-label">Learnt</span>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="stat-card skipped">
+        <mat-card-content>
+          <mat-icon>skip_next</mat-icon>
+          <span class="stat-value">{{ stats.skipped }}</span>
+          <span class="stat-label">Skipped</span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  }
+
+  <!-- CTA -->
+  <a mat-raised-button color="primary" routerLink="/learn" class="start-btn">
+    <mat-icon>play_arrow</mat-icon>
+    {{ stats.remaining < stats.total ? 'Continue Learning' : 'Start Learning' }}
+  </a>
+</main>

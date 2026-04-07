@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s07",
+  "title": "C# SOLID — Paper 7",
+  "description": "Covers ISP concepts, ISP refactoring, DIP concepts, DIP implementation, SRP concepts, Code Smells & SOLID Violations, Refactoring Techniques, Unit Testing & SOLID, SOLID Real C# Scenarios, and Dependency Injection Patterns.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s07_q1",
+      "text": "ST01-4: A class `InvoiceManager` handles invoice creation, PDF generation, and database persistence. According to SRP, what is the 'reason to change' analysis?",
+      "options": [
+        { "id": "a", "text": "Only one — the invoice domain." },
+        { "id": "b", "text": "Three — changes to invoice rules, to PDF library, or to persistence mechanism each require editing InvoiceManager." },
+        { "id": "c", "text": "Two — business logic and technical concerns." },
+        { "id": "d", "text": "Zero — the class is small enough to be SRP compliant." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q2",
+      "text": "ST11-4: Which form of dependency injection is best for dependencies that are only needed by a single method, not the whole class?",
+      "options": [
+        { "id": "a", "text": "Constructor injection" },
+        { "id": "b", "text": "Method injection — passing the dependency as a method parameter." },
+        { "id": "c", "text": "Property injection" },
+        { "id": "d", "text": "Service locator" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q3",
+      "text": "ST19-9: In a SOLID-compliant codebase, which of the following most accurately describes why interfaces improve unit testability?",
+      "options": [
+        { "id": "a", "text": "Interfaces cause the compiler to enforce test coverage." },
+        { "id": "b", "text": "Interfaces allow mocking frameworks to substitute test doubles for real implementations, isolating the unit under test." },
+        { "id": "c", "text": "Interfaces reduce the number of test cases needed." },
+        { "id": "d", "text": "Interfaces automatically generate unit tests." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q4",
+      "text": "ST08-9: The CQRS (Command Query Responsibility Segregation) pattern is a high-level application of which SOLID principle?",
+      "options": [
+        { "id": "a", "text": "LSP — substituting queries with commands." },
+        { "id": "b", "text": "ISP — separating read (query) and write (command) interfaces so consumers depend only on what they use." },
+        { "id": "c", "text": "OCP — commands cannot be modified." },
+        { "id": "d", "text": "DIP — commands depend on abstractions." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q5",
+      "text": "ST09-8: Which of the following is a correct description of the 'Dependency Inversion' aspect of DIP, as distinct from Dependency Injection?",
+      "options": [
+        { "id": "a", "text": "Dependency Inversion is a tool (DI container); Dependency Injection is the principle." },
+        { "id": "b", "text": "Dependency Inversion is the principle of depending on abstractions; Dependency Injection is a technique for fulfilling that principle at runtime." },
+        { "id": "c", "text": "They are the same concept." },
+        { "id": "d", "text": "Dependency Inversion reverses the call order of methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q6",
+      "text": "ST20-7: The following interface is defined: `interface IWorker { void Work(); void Eat(); void Sleep(); }` A `RobotWorker` class throws exceptions on `Eat()` and `Sleep()`. Which principle is violated?",
+      "options": [
+        { "id": "a", "text": "OCP" },
+        { "id": "b", "text": "ISP — RobotWorker is forced to implement methods irrelevant to its role." },
+        { "id": "c", "text": "DIP" },
+        { "id": "d", "text": "LSP" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q7",
+      "text": "ST17-13: 'Inappropriate Intimacy' is a code smell where:",
+      "options": [
+        { "id": "a", "text": "A class is too tightly coupled to a framework." },
+        { "id": "b", "text": "Two classes depend on each other's private internals, creating high coupling and fragile design." },
+        { "id": "c", "text": "A class has too many public methods." },
+        { "id": "d", "text": "A method has too many side effects." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q8",
+      "text": "ST10-5: In the Microsoft.Extensions.DependencyInjection framework, the `IServiceProvider` interface is used to:",
+      "options": [
+        { "id": "a", "text": "Define which services should be registered." },
+        { "id": "b", "text": "Resolve services from the container at runtime, either directly or via constructor injection." },
+        { "id": "c", "text": "Register services with their lifetimes." },
+        { "id": "d", "text": "Validate that all registered services can be constructed." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q9",
+      "text": "ST18-11: 'Collapse Hierarchy' refactoring is appropriate when:",
+      "options": [
+        { "id": "a", "text": "A class hierarchy has too many levels and some levels add no distinct behavior." },
+        { "id": "b", "text": "Two sibling classes should be merged into one larger class." },
+        { "id": "c", "text": "An abstract class should become a concrete class." },
+        { "id": "d", "text": "An interface should be replaced with an abstract class." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s07_q10",
+      "text": "ST07-13: A developer must refactor an `IAnimal` interface that has grown too large. The correct ISP approach is to:",
+      "options": [
+        { "id": "a", "text": "Mark optional methods with [Optional] attribute." },
+        { "id": "b", "text": "Identify client-specific roles and create a separate interface per role, allowing classes to implement only what is relevant." },
+        { "id": "c", "text": "Make all unneeded methods return default values." },
+        { "id": "d", "text": "Create a single abstract base class instead." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q11",
+      "text": "ST01-5: Which of the following code metrics most directly indicates a potential SRP violation?",
+      "options": [
+        { "id": "a", "text": "High cyclomatic complexity in one class." },
+        { "id": "b", "text": "A class with many dependencies and a large number of methods spanning multiple business domains." },
+        { "id": "c", "text": "Low code coverage." },
+        { "id": "d", "text": "A class that uses inheritance." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q12",
+      "text": "ST11-5: Which of the following represents a problem with 'constructor over-injection' (too many constructor parameters)?",
+      "options": [
+        { "id": "a", "text": "The DI container cannot resolve classes with more than two parameters." },
+        { "id": "b", "text": "Too many constructor parameters is a code smell indicating the class has too many responsibilities (SRP violation)." },
+        { "id": "c", "text": "It prevents property injection from being used." },
+        { "id": "d", "text": "It causes circular dependency exceptions at compile time." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q13",
+      "text": "ST20-8: A class `FileProcessor` reads a file, parses its content, validates data, and writes results to a database in a single `Process()` method. Which principles are violated?",
+      "options": [
+        { "id": "a", "text": "OCP and ISP" },
+        { "id": "b", "text": "SRP and DIP — multiple responsibilities and direct dependency on file system and database." },
+        { "id": "c", "text": "LSP and OCP" },
+        { "id": "d", "text": "ISP and LSP" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q14",
+      "text": "ST09-9: An application layer class `OrderService` depends on `IEmailSender` (interface). The `SmtpEmailSender` class implements `IEmailSender`. This demonstrates DIP because:",
+      "options": [
+        { "id": "a", "text": "OrderService (high-level) depends on IEmailSender (abstraction), and SmtpEmailSender (low-level) also depends on IEmailSender (abstraction)." },
+        { "id": "b", "text": "SmtpEmailSender depends on OrderService." },
+        { "id": "c", "text": "IEmailSender depends on SmtpEmailSender's concrete methods." },
+        { "id": "d", "text": "OrderService creates SmtpEmailSender internally." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s07_q15",
+      "text": "ST19-10: In TDD (Test-Driven Development), how do SOLID principles emerge naturally?",
+      "options": [
+        { "id": "a", "text": "Tests enforce SOLID compliance at compile time." },
+        { "id": "b", "text": "Writing tests first forces you to design loosely-coupled, single-responsibility classes that are easy to construct and verify in isolation." },
+        { "id": "c", "text": "TDD generates SOLID-compliant code automatically." },
+        { "id": "d", "text": "TDD requires classes to implement many interfaces, naturally enforcing ISP." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q16",
+      "text": "ST08-10: An `INotificationService` interface has methods: `SendEmail()`, `SendSms()`, `SendPush()`, `SendFax()`. A client only needs to send emails. ISP-compliant refactoring would:",
+      "options": [
+        { "id": "a", "text": "Create an IEmailNotification interface with only SendEmail(), letting the client depend on it." },
+        { "id": "b", "text": "Add an EmailOnly flag to INotificationService." },
+        { "id": "c", "text": "Mark unused methods with [Obsolete]." },
+        { "id": "d", "text": "Move SendEmail() to a static helper class." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s07_q17",
+      "text": "ST17-14: 'Comments' can be a code smell when they are used to:",
+      "options": [
+        { "id": "a", "text": "Explain why a non-obvious decision was made." },
+        { "id": "b", "text": "Compensate for poorly named variables, methods, or classes — indicating the code itself is unclear." },
+        { "id": "c", "text": "Document public API methods." },
+        { "id": "d", "text": "Add copyright notices to source files." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q18",
+      "text": "ST10-6: The `IServiceCollection.AddScoped<T>()` method in ASP.NET Core creates one instance per:",
+      "options": [
+        { "id": "a", "text": "Application lifetime." },
+        { "id": "b", "text": "HTTP request (or DI scope)." },
+        { "id": "c", "text": "Method call." },
+        { "id": "d", "text": "Thread." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q19",
+      "text": "ST20-9: A `PaymentProcessor` class has a method `Process(string type)` containing `if (type == \"PayPal\") ... else if (type == \"Stripe\") ...`. Which refactoring applies OCP?",
+      "options": [
+        { "id": "a", "text": "Add more else-if branches and add comments explaining each." },
+        { "id": "b", "text": "Introduce an IPaymentStrategy interface with PayPalStrategy and StripeStrategy implementations; inject the chosen strategy." },
+        { "id": "c", "text": "Move the if-else into a switch expression." },
+        { "id": "d", "text": "Create a PaymentProcessorV2 class for each new provider." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q20",
+      "text": "ST11-6: Which of the following is a risk of property injection compared to constructor injection?",
+      "options": [
+        { "id": "a", "text": "Property injection is not supported by DI containers." },
+        { "id": "b", "text": "Property injection allows the object to be in an invalid state if the property is not set before use, as the dependency is not guaranteed at construction time." },
+        { "id": "c", "text": "Property injection is slower than constructor injection." },
+        { "id": "d", "text": "Property injection cannot be used with interfaces." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q21",
+      "text": "ST01-6: In SRP, 'cohesion' refers to:",
+      "options": [
+        { "id": "a", "text": "The number of classes in a module." },
+        { "id": "b", "text": "How strongly related and focused the responsibilities of a class or module are." },
+        { "id": "c", "text": "The degree to which classes depend on each other." },
+        { "id": "d", "text": "The number of public methods a class exposes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q22",
+      "text": "ST18-12: 'Remove Middle Man' refactoring is used when:",
+      "options": [
+        { "id": "a", "text": "A class has too many responsibilities and should be split." },
+        { "id": "b", "text": "A class does little but delegate every call to another object, adding no value; clients can call the target directly." },
+        { "id": "c", "text": "An interface is used only once and should be removed." },
+        { "id": "d", "text": "A base class delegates all work to subclasses." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q23",
+      "text": "ST07-14: Which of the following best explains why fat interfaces increase coupling?",
+      "options": [
+        { "id": "a", "text": "Fat interfaces use generics, which increases compile time." },
+        { "id": "b", "text": "Clients that implement or depend on a fat interface are coupled to methods they never use, meaning changes to unused methods still affect them." },
+        { "id": "c", "text": "Fat interfaces cannot be registered in a DI container." },
+        { "id": "d", "text": "Fat interfaces prevent polymorphism." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q24",
+      "text": "ST19-11: What is the difference between unit tests and integration tests in a SOLID codebase?",
+      "options": [
+        { "id": "a", "text": "Unit tests test multiple classes; integration tests test one class." },
+        { "id": "b", "text": "Unit tests isolate a single unit (class/method) using test doubles; integration tests verify that multiple real components work together correctly." },
+        { "id": "c", "text": "Integration tests are always slower and less reliable than unit tests." },
+        { "id": "d", "text": "SOLID-compliant code only needs integration tests." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q25",
+      "text": "ST09-10: A `ReportService` depends on `IDataSource` (interface) instead of `SqlDataSource` (class). If a new `CsvDataSource` is introduced, the `ReportService`:",
+      "options": [
+        { "id": "a", "text": "Must be modified to support CsvDataSource." },
+        { "id": "b", "text": "Requires no changes — CsvDataSource implements IDataSource and can be injected without altering ReportService." },
+        { "id": "c", "text": "Must be recompiled even though it requires no source changes." },
+        { "id": "d", "text": "Cannot use CsvDataSource because it was not anticipated at design time." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q26",
+      "text": "ST20-10: A `Product` class exposes 20 public properties and handles pricing, inventory, display, and serialization. Which principle does this most violate?",
+      "options": [
+        { "id": "a", "text": "ISP — the product interface is too large." },
+        { "id": "b", "text": "SRP — a single class handles too many distinct concerns." },
+        { "id": "c", "text": "OCP — the product class cannot be extended." },
+        { "id": "d", "text": "DIP — the product depends on too many concrete types." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q27",
+      "text": "ST10-7: What does 'composition root' mean in the context of dependency injection?",
+      "options": [
+        { "id": "a", "text": "The base class from which all composable services derive." },
+        { "id": "b", "text": "The single place in an application (e.g., Program.cs or Startup.cs) where the entire dependency graph is assembled and registered." },
+        { "id": "c", "text": "A root interface that all DI-injectable classes must implement." },
+        { "id": "d", "text": "The first object created when the application starts." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q28",
+      "text": "ST17-15: 'Refused Bequest' is a code smell where:",
+      "options": [
+        { "id": "a", "text": "A class refuses to inherit from a base class." },
+        { "id": "b", "text": "A subclass inherits from a parent but ignores or overrides most of the inherited methods, suggesting the inheritance relationship is wrong." },
+        { "id": "c", "text": "A class refuses to implement an interface method." },
+        { "id": "d", "text": "A class refuses to be injected into other classes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q29",
+      "text": "ST08-11: Which of the following demonstrates a correct ISP application in C# for a payment system?",
+      "options": [
+        { "id": "a", "text": "A single IPayment interface with Charge(), Refund(), Dispute(), Subscribe(), and Unsubscribe() methods for all consumers." },
+        { "id": "b", "text": "Separate IChargeable, IRefundable, and ISubscribable interfaces so different consumers depend only on the payments they initiate." },
+        { "id": "c", "text": "An abstract PaymentBase class with virtual methods for all payment operations." },
+        { "id": "d", "text": "A static PaymentHelper class with all payment methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s07_q30",
+      "text": "ST11-7: Which ASP.NET Core middleware feature is a real-world example of the Chain of Responsibility pattern, related to DI?",
+      "options": [
+        { "id": "a", "text": "DbContext lifecycle management." },
+        { "id": "b", "text": "The middleware pipeline where each middleware is injected with IApplicationBuilder and can call the next component." },
+        { "id": "c", "text": "The appsettings.json configuration system." },
+        { "id": "d", "text": "The ILogger factory." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

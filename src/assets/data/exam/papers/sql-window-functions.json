@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_09",
+  "title": "SQL Window Functions",
+  "description": "Window functions, partitioning, ranking, lag/lead, running totals, and frame specifications.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_09_q1",
+      "text": "What does the OVER() clause do in SQL?",
+      "options": [
+        { "id": "a", "text": "Defines the table to scan" },
+        { "id": "b", "text": "Defines the window (set of rows) over which the window function operates" },
+        { "id": "c", "text": "Overrides the WHERE clause filter" },
+        { "id": "d", "text": "Applies an aggregate function to the entire result set only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q2",
+      "text": "What does PARTITION BY do inside an OVER() clause?",
+      "options": [
+        { "id": "a", "text": "Sorts the rows within the window" },
+        { "id": "b", "text": "Divides the result set into partitions (groups) so the window function is applied independently to each partition" },
+        { "id": "c", "text": "Limits the number of rows in the result" },
+        { "id": "d", "text": "Joins rows from multiple tables" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q3",
+      "text": "What is the key difference between window functions and GROUP BY?",
+      "options": [
+        { "id": "a", "text": "Window functions collapse rows into groups; GROUP BY does not" },
+        { "id": "b", "text": "Window functions compute values across related rows while KEEPING all individual rows; GROUP BY reduces rows to one per group" },
+        { "id": "c", "text": "GROUP BY can use OVER(); window functions cannot" },
+        { "id": "d", "text": "Window functions are always faster than GROUP BY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q4",
+      "text": "What does ROW_NUMBER() OVER (ORDER BY Salary DESC) assign?",
+      "options": [
+        { "id": "a", "text": "A rank with gaps for tied values" },
+        { "id": "b", "text": "A unique sequential integer to each row in the specified order, with no gaps or ties" },
+        { "id": "c", "text": "The same number to rows with equal salary" },
+        { "id": "d", "text": "A random number" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q5",
+      "text": "Employees have salaries: 5000, 5000, 3000. What does RANK() OVER (ORDER BY Salary DESC) assign?",
+      "options": [
+        { "id": "a", "text": "1, 2, 3" },
+        { "id": "b", "text": "1, 1, 2" },
+        { "id": "c", "text": "1, 1, 3" },
+        { "id": "d", "text": "1, 2, 2" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_09_q6",
+      "text": "What does DENSE_RANK() OVER (ORDER BY Salary DESC) assign for salaries 5000, 5000, 3000?",
+      "options": [
+        { "id": "a", "text": "1, 1, 3" },
+        { "id": "b", "text": "1, 2, 3" },
+        { "id": "c", "text": "1, 1, 2" },
+        { "id": "d", "text": "0, 0, 1" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_09_q7",
+      "text": "What is the difference between RANK() and DENSE_RANK()?",
+      "options": [
+        { "id": "a", "text": "RANK() assigns unique integers; DENSE_RANK() allows ties" },
+        { "id": "b", "text": "RANK() skips numbers after a tie; DENSE_RANK() does not skip numbers" },
+        { "id": "c", "text": "DENSE_RANK() skips numbers; RANK() does not" },
+        { "id": "d", "text": "They are identical" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q8",
+      "text": "What does NTILE(4) OVER (ORDER BY Salary) do?",
+      "options": [
+        { "id": "a", "text": "Returns the 4th highest salary" },
+        { "id": "b", "text": "Divides the result set into 4 equal buckets (quartiles) and assigns each row a bucket number" },
+        { "id": "c", "text": "Returns the top 4 rows" },
+        { "id": "d", "text": "Assigns a tile number from 1 to 4 randomly" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q9",
+      "text": "What does LAG(Salary, 1) OVER (ORDER BY HireDate) return?",
+      "options": [
+        { "id": "a", "text": "The next row's salary in the ordered window" },
+        { "id": "b", "text": "The previous row's salary (1 row behind) in the ordered window" },
+        { "id": "c", "text": "The salary lagged by 1 second in time" },
+        { "id": "d", "text": "A cumulative lag calculation" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q10",
+      "text": "What does LEAD(Salary, 1) OVER (ORDER BY HireDate) return?",
+      "options": [
+        { "id": "a", "text": "The previous row's salary" },
+        { "id": "b", "text": "The next row's salary (1 row ahead) in the ordered window" },
+        { "id": "c", "text": "The leading (maximum) salary" },
+        { "id": "d", "text": "NULL always" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q11",
+      "text": "What does FIRST_VALUE(Salary) OVER (PARTITION BY DeptID ORDER BY Salary DESC) return?",
+      "options": [
+        { "id": "a", "text": "The minimum salary in the department" },
+        { "id": "b", "text": "The salary of the first row in the ordered partition — the highest salary in each department" },
+        { "id": "c", "text": "The first salary value inserted into the table" },
+        { "id": "d", "text": "Always NULL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q12",
+      "text": "What does LAST_VALUE() return and why might it behave unexpectedly without a frame specification?",
+      "options": [
+        { "id": "a", "text": "It always returns the last row of the entire table" },
+        { "id": "b", "text": "Without a ROWS/RANGE frame, the default frame ends at the current row, so LAST_VALUE returns the current row's value, not the partition's last row" },
+        { "id": "c", "text": "It returns NULL for all rows except the last" },
+        { "id": "d", "text": "It only works with PARTITION BY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q13",
+      "text": "Which query computes a running total of sales ordered by SaleDate?",
+      "options": [
+        { "id": "a", "text": "SELECT SaleDate, Amount, SUM(Amount) OVER (ORDER BY SaleDate) AS RunningTotal FROM Sales" },
+        { "id": "b", "text": "SELECT SaleDate, Amount, RUNNING_SUM(Amount) FROM Sales ORDER BY SaleDate" },
+        { "id": "c", "text": "SELECT SaleDate, SUM(Amount) FROM Sales GROUP BY SaleDate" },
+        { "id": "d", "text": "SELECT SaleDate, CUMSUM(Amount) OVER SaleDate FROM Sales" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_09_q14",
+      "text": "What does AVG(Salary) OVER (PARTITION BY DeptID) compute?",
+      "options": [
+        { "id": "a", "text": "The overall average salary across the entire table" },
+        { "id": "b", "text": "The average salary within each department, displayed on every row (without reducing rows)" },
+        { "id": "c", "text": "The cumulative average salary" },
+        { "id": "d", "text": "The average salary for each row individually" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q15",
+      "text": "What does the frame specification ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW define?",
+      "options": [
+        { "id": "a", "text": "A window covering all rows after the current row" },
+        { "id": "b", "text": "A window from the first row of the partition to the current row — used for running totals" },
+        { "id": "c", "text": "A window covering only the current row" },
+        { "id": "d", "text": "A window covering a fixed number of rows before the current row" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q16",
+      "text": "What is the difference between ROWS and RANGE frame specifications?",
+      "options": [
+        { "id": "a", "text": "ROWS operates on a physical number of rows; RANGE operates on logical value ranges (all rows with the same ORDER BY value are included in the same peer group)" },
+        { "id": "b", "text": "RANGE operates on physical rows; ROWS on logical groups" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "ROWS allows UNBOUNDED; RANGE does not" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_09_q17",
+      "text": "Can you filter results based on a window function result directly in the WHERE clause?",
+      "options": [
+        { "id": "a", "text": "Yes, you can use WHERE ROW_NUMBER() OVER(...) = 1 directly" },
+        { "id": "b", "text": "No — window functions cannot be in WHERE; wrap the query in a subquery or CTE and filter there" },
+        { "id": "c", "text": "Yes, but only with RANK() and DENSE_RANK()" },
+        { "id": "d", "text": "Yes, in the HAVING clause only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q18",
+      "text": "How do you use ROW_NUMBER() to return only the top 1 salary per department?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Employees WHERE ROW_NUMBER() OVER (PARTITION BY DeptID ORDER BY Salary DESC) = 1" },
+        { "id": "b", "text": "WITH ranked AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY DeptID ORDER BY Salary DESC) AS rn FROM Employees) SELECT * FROM ranked WHERE rn = 1" },
+        { "id": "c", "text": "SELECT TOP 1 * FROM Employees GROUP BY DeptID ORDER BY Salary DESC" },
+        { "id": "d", "text": "SELECT MAX(Salary) OVER (PARTITION BY DeptID) FROM Employees" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q19",
+      "text": "What does LAG(Salary, 1, 0) OVER (ORDER BY HireDate) return for the first row where there is no previous row?",
+      "options": [
+        { "id": "a", "text": "NULL" },
+        { "id": "b", "text": "An error" },
+        { "id": "c", "text": "0 — the third argument is the default value when there is no previous row" },
+        { "id": "d", "text": "The first row's salary" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_09_q20",
+      "text": "What does ROWS BETWEEN 2 PRECEDING AND CURRENT ROW define in a window frame?",
+      "options": [
+        { "id": "a", "text": "A window covering the current row and all rows after it" },
+        { "id": "b", "text": "A sliding window of 3 rows — the 2 rows before the current row plus the current row" },
+        { "id": "c", "text": "A window covering 2 rows after the current row" },
+        { "id": "d", "text": "The current row only" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q21",
+      "text": "What is a practical use case for NTILE()?",
+      "options": [
+        { "id": "a", "text": "Generating sequential row numbers" },
+        { "id": "b", "text": "Dividing data into quartiles, deciles, or percentiles for reporting and analysis" },
+        { "id": "c", "text": "Finding the previous row's value" },
+        { "id": "d", "text": "Computing cumulative sums" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q22",
+      "text": "Can a query contain multiple different window functions each with its own OVER() clause?",
+      "options": [
+        { "id": "a", "text": "No, only one OVER() clause is allowed per query" },
+        { "id": "b", "text": "Yes — multiple window functions with different OVER() definitions can exist in the same SELECT" },
+        { "id": "c", "text": "Yes, but all must share the same PARTITION BY" },
+        { "id": "d", "text": "Only if they use the same ORDER BY" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q23",
+      "text": "What does ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING define?",
+      "options": [
+        { "id": "a", "text": "A window from the start of the partition to the current row" },
+        { "id": "b", "text": "A window from the current row to the last row of the partition" },
+        { "id": "c", "text": "A window covering only the current row" },
+        { "id": "d", "text": "An invalid frame specification" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q24",
+      "text": "Which window function would you use to implement pagination (e.g., page 2 of sorted results)?",
+      "options": [
+        { "id": "a", "text": "RANK()" },
+        { "id": "b", "text": "NTILE()" },
+        { "id": "c", "text": "ROW_NUMBER()" },
+        { "id": "d", "text": "DENSE_RANK()" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_09_q25",
+      "text": "What does SUM(Amount) OVER (PARTITION BY CustomerID ORDER BY OrderDate ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) compute?",
+      "options": [
+        { "id": "a", "text": "Total amount for the entire table" },
+        { "id": "b", "text": "A running total of Amount for each customer, ordered by date" },
+        { "id": "c", "text": "Total amount per customer in a single value" },
+        { "id": "d", "text": "Average amount per customer" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q26",
+      "text": "What does PERCENT_RANK() compute?",
+      "options": [
+        { "id": "a", "text": "The number of rows as a percentage of the total" },
+        { "id": "b", "text": "The relative rank of a row as a value between 0 and 1, calculated as (rank - 1) / (total rows - 1)" },
+        { "id": "c", "text": "The row's value as a percentage of the partition sum" },
+        { "id": "d", "text": "The NTILE bucket number as a percentage" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q27",
+      "text": "In what order does SQL Server process window functions relative to WHERE, GROUP BY, and HAVING?",
+      "options": [
+        { "id": "a", "text": "Window functions are evaluated before WHERE" },
+        { "id": "b", "text": "Window functions are evaluated after FROM, WHERE, GROUP BY, and HAVING — they see the final filtered/grouped result set" },
+        { "id": "c", "text": "Window functions are evaluated before GROUP BY" },
+        { "id": "d", "text": "Window functions are evaluated at the same time as WHERE" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_09_q28",
+      "text": "What does CUME_DIST() compute?",
+      "options": [
+        { "id": "a", "text": "A cumulative distribution value between 0 and 1, representing the fraction of partition rows with values less than or equal to the current row" },
+        { "id": "b", "text": "The distance between the current row and the last row" },
+        { "id": "c", "text": "A cumulative sum divided by the total count" },
+        { "id": "d", "text": "The cumulative distinct count" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_09_q29",
+      "text": "Which is the correct way to compute a moving average of the last 3 rows including the current row?",
+      "options": [
+        { "id": "a", "text": "AVG(Amount) OVER (ORDER BY SaleDate ROWS BETWEEN 2 PRECEDING AND CURRENT ROW)" },
+        { "id": "b", "text": "AVG(Amount) OVER (ORDER BY SaleDate RANGE BETWEEN 2 PRECEDING AND CURRENT ROW)" },
+        { "id": "c", "text": "MOVING_AVG(Amount, 3) OVER (ORDER BY SaleDate)" },
+        { "id": "d", "text": "AVG(Amount) OVER (ORDER BY SaleDate LIMIT 3)" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_09_q30",
+      "text": "When should you use DENSE_RANK() instead of RANK()?",
+      "options": [
+        { "id": "a", "text": "When you want gaps in ranking after ties" },
+        { "id": "b", "text": "When you need consecutive rank numbers with no gaps after tied values" },
+        { "id": "c", "text": "When the data has no ties" },
+        { "id": "d", "text": "When you need unique row numbers regardless of ties" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

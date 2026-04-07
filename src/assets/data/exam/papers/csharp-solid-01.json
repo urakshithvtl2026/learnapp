@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s01",
+  "title": "C# SOLID — Paper 1",
+  "description": "Covers SRP concepts, SRP refactoring, OCP concepts, OCP refactoring, LSP concepts, Dependency Injection Patterns, Strategy Pattern, Factory & Abstract Factory, Decorator Pattern, and Observer Pattern.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s01_q1",
+      "text": "ST01-1: Which statement best defines the Single Responsibility Principle (SRP)?",
+      "options": [
+        { "id": "a", "text": "A class should have at most two distinct areas of responsibility." },
+        { "id": "b", "text": "A class should have only one reason to change." },
+        { "id": "c", "text": "A class should depend on abstractions rather than concretions." },
+        { "id": "d", "text": "A class should be open for modification but closed for extension." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q2",
+      "text": "ST12-1: What is the primary intent of the Strategy design pattern?",
+      "options": [
+        { "id": "a", "text": "To ensure only one instance of a class is created." },
+        { "id": "b", "text": "To define a family of algorithms, encapsulate each one, and make them interchangeable." },
+        { "id": "c", "text": "To provide a simplified interface to a complex subsystem." },
+        { "id": "d", "text": "To attach additional responsibilities to an object dynamically." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q3",
+      "text": "ST03-1: Which of the following best describes the Open/Closed Principle (OCP)?",
+      "options": [
+        { "id": "a", "text": "Software entities should be open for modification and closed for extension." },
+        { "id": "b", "text": "Software entities should be open for extension and closed for modification." },
+        { "id": "c", "text": "Software entities should be open for both modification and extension." },
+        { "id": "d", "text": "Software entities should be closed for both modification and extension." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q4",
+      "text": "ST14-1: Which design pattern allows behavior to be added to individual objects dynamically without affecting other objects of the same class?",
+      "options": [
+        { "id": "a", "text": "Composite" },
+        { "id": "b", "text": "Proxy" },
+        { "id": "c", "text": "Decorator" },
+        { "id": "d", "text": "Adapter" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s01_q5",
+      "text": "ST05-1: The Liskov Substitution Principle states that:",
+      "options": [
+        { "id": "a", "text": "Derived classes should extend base class behavior by adding new methods only." },
+        { "id": "b", "text": "Objects of a superclass should be replaceable with objects of a subclass without altering the correctness of the program." },
+        { "id": "c", "text": "A subclass must override every method defined in the base class." },
+        { "id": "d", "text": "High-level modules should not depend on low-level modules." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q6",
+      "text": "ST11-1: Which of the following is the most commonly recommended form of dependency injection in modern C#?",
+      "options": [
+        { "id": "a", "text": "Property injection" },
+        { "id": "b", "text": "Method injection" },
+        { "id": "c", "text": "Constructor injection" },
+        { "id": "d", "text": "Service locator injection" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s01_q7",
+      "text": "ST02-1: A class named `OrderProcessor` handles order validation, tax calculation, and email notification. Which SRP-compliant refactoring approach is most appropriate?",
+      "options": [
+        { "id": "a", "text": "Move all logic into static helper methods within the same class." },
+        { "id": "b", "text": "Extract each concern into its own class: OrderValidator, TaxCalculator, and EmailNotifier." },
+        { "id": "c", "text": "Create a single base class and derive OrderProcessor from it." },
+        { "id": "d", "text": "Add more overloaded constructors to separate initialization concerns." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q8",
+      "text": "ST13-1: The Factory Method pattern primarily aims to:",
+      "options": [
+        { "id": "a", "text": "Ensure that only one object is created from a given class." },
+        { "id": "b", "text": "Define an interface for creating an object, but let subclasses decide which class to instantiate." },
+        { "id": "c", "text": "Build complex objects step by step using a director." },
+        { "id": "d", "text": "Provide a global point of access to a shared resource." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q9",
+      "text": "ST15-1: In C#, which built-in mechanism most naturally implements the Observer pattern?",
+      "options": [
+        { "id": "a", "text": "Abstract classes and virtual methods" },
+        { "id": "b", "text": "Extension methods" },
+        { "id": "c", "text": "Events and delegates (EventHandler)" },
+        { "id": "d", "text": "Reflection and attributes" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s01_q10",
+      "text": "ST04-1: Which technique best supports OCP when adding new report types to a reporting system?",
+      "options": [
+        { "id": "a", "text": "Adding a new if/else branch inside the existing GenerateReport() method." },
+        { "id": "b", "text": "Rewriting the GenerateReport() method each time a new report type is required." },
+        { "id": "c", "text": "Defining an abstract IReport interface and implementing a new class for each report type." },
+        { "id": "d", "text": "Using a switch statement with an enum for each report type." }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s01_q11",
+      "text": "ST01-2: Which of the following is a clear violation of the Single Responsibility Principle?",
+      "options": [
+        { "id": "a", "text": "A class that handles both user authentication and audit logging." },
+        { "id": "b", "text": "A class that exposes only CRUD operations for a single entity." },
+        { "id": "c", "text": "A class that implements a single well-defined algorithm." },
+        { "id": "d", "text": "A class that wraps a third-party API with a unified interface." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s01_q12",
+      "text": "ST11-2: In Microsoft.Extensions.DependencyInjection, which method registers a service such that a new instance is created for every HTTP request?",
+      "options": [
+        { "id": "a", "text": "services.AddSingleton<T>()" },
+        { "id": "b", "text": "services.AddTransient<T>()" },
+        { "id": "c", "text": "services.AddScoped<T>()" },
+        { "id": "d", "text": "services.AddInstance<T>()" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s01_q13",
+      "text": "ST03-2: A `DiscountCalculator` class uses a long if-else chain checking customer type to apply discounts. This most directly violates:",
+      "options": [
+        { "id": "a", "text": "The Single Responsibility Principle" },
+        { "id": "b", "text": "The Liskov Substitution Principle" },
+        { "id": "c", "text": "The Open/Closed Principle" },
+        { "id": "d", "text": "The Interface Segregation Principle" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s01_q14",
+      "text": "ST02-2: Which of the following refactoring actions best separates concerns in an SRP violation where a `UserService` class also sends emails?",
+      "options": [
+        { "id": "a", "text": "Move the email-sending code into a private method within UserService." },
+        { "id": "b", "text": "Extract an IEmailService interface and inject its implementation into UserService." },
+        { "id": "c", "text": "Make UserService inherit from an EmailBase abstract class." },
+        { "id": "d", "text": "Use a static EmailHelper class called directly from UserService." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q15",
+      "text": "ST14-2: In C#, the Decorator pattern is best implemented by:",
+      "options": [
+        { "id": "a", "text": "Inheriting from the component class and overriding all methods." },
+        { "id": "b", "text": "Creating a wrapper class that holds a reference to the component via a shared interface and delegates calls to it." },
+        { "id": "c", "text": "Using a static extension method to add behavior to the class." },
+        { "id": "d", "text": "Modifying the existing component class to add the new feature." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q16",
+      "text": "ST05-2: Which of the following scenarios is a classic violation of the Liskov Substitution Principle?",
+      "options": [
+        { "id": "a", "text": "A Square class overrides the SetWidth method of a Rectangle class and also sets the height, breaking Rectangle's behavior." },
+        { "id": "b", "text": "A Circle class that does not inherit from Rectangle." },
+        { "id": "c", "text": "A Shape interface implemented by both Circle and Rectangle." },
+        { "id": "d", "text": "A Triangle class that adds a new CalculateAngles() method not in the base class." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s01_q17",
+      "text": "ST12-2: How does the Strategy pattern relate to the Open/Closed Principle?",
+      "options": [
+        { "id": "a", "text": "It violates OCP because switching strategies requires modifying the context class." },
+        { "id": "b", "text": "It supports OCP by allowing new algorithms to be added as new strategy classes without changing the context." },
+        { "id": "c", "text": "It has no relationship to OCP." },
+        { "id": "d", "text": "It only supports SRP, not OCP." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q18",
+      "text": "ST04-2: The Plug-in pattern is an example of OCP in action. What is its core mechanism?",
+      "options": [
+        { "id": "a", "text": "Hardcoding all plug-in types in the core assembly." },
+        { "id": "b", "text": "Loading implementations at runtime via a shared abstraction, allowing new behaviour without touching the core." },
+        { "id": "c", "text": "Requiring the core system to be recompiled for each new plug-in." },
+        { "id": "d", "text": "Using reflection to modify existing classes at runtime." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q19",
+      "text": "ST13-2: The Abstract Factory pattern differs from the Factory Method pattern primarily in that:",
+      "options": [
+        { "id": "a", "text": "Abstract Factory creates a single object, while Factory Method creates families of objects." },
+        { "id": "b", "text": "Abstract Factory provides an interface for creating families of related objects, while Factory Method creates one product." },
+        { "id": "c", "text": "Factory Method uses composition; Abstract Factory uses inheritance." },
+        { "id": "d", "text": "Abstract Factory is only used for UI components." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q20",
+      "text": "ST15-2: In the Observer pattern, what role does the 'publisher' (subject) play?",
+      "options": [
+        { "id": "a", "text": "It pulls data from subscribers on a schedule." },
+        { "id": "b", "text": "It maintains a list of subscribers and notifies them when its state changes." },
+        { "id": "c", "text": "It delegates all state changes to the subscribers." },
+        { "id": "d", "text": "It acts as a message broker between multiple publishers." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q21",
+      "text": "ST01-3: Robert C. Martin defines 'a reason to change' in SRP as:",
+      "options": [
+        { "id": "a", "text": "A user story that references the class." },
+        { "id": "b", "text": "A stakeholder or actor whose requirements may drive a change in the class." },
+        { "id": "c", "text": "A method inside the class that could be refactored." },
+        { "id": "d", "text": "A dependency that the class relies on." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q22",
+      "text": "ST11-3: Property injection in C# dependency injection is best suited for:",
+      "options": [
+        { "id": "a", "text": "Mandatory dependencies that must be present for the class to function." },
+        { "id": "b", "text": "Optional dependencies where a default implementation is acceptable if none is provided." },
+        { "id": "c", "text": "Dependencies injected only during a specific method call." },
+        { "id": "d", "text": "Singleton services shared across the entire application." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q23",
+      "text": "ST03-3: Which of the following code changes would be considered a violation of OCP?",
+      "options": [
+        { "id": "a", "text": "Adding a new class that implements an existing interface." },
+        { "id": "b", "text": "Creating a new subclass that overrides a virtual method." },
+        { "id": "c", "text": "Editing an existing, published method to add a new conditional branch for a new feature." },
+        { "id": "d", "text": "Registering a new implementation in a dependency injection container." }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s01_q24",
+      "text": "ST02-3: A `ReportGenerator` class reads data from a database, formats it as HTML, and saves it to a file. After SRP refactoring, how many classes should ideally exist?",
+      "options": [
+        { "id": "a", "text": "One class with clearly named private methods." },
+        { "id": "b", "text": "Two classes splitting data access from presentation." },
+        { "id": "c", "text": "Three classes: one for data access, one for formatting, one for persistence." },
+        { "id": "d", "text": "Four classes plus an orchestrator." }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s01_q25",
+      "text": "ST14-3: Which SOLID principles does the Decorator pattern most directly support?",
+      "options": [
+        { "id": "a", "text": "LSP and ISP" },
+        { "id": "b", "text": "SRP and OCP" },
+        { "id": "c", "text": "DIP and LSP" },
+        { "id": "d", "text": "OCP and DIP" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q26",
+      "text": "ST05-3: Which of the following represents a correct statement about preconditions in the context of LSP?",
+      "options": [
+        { "id": "a", "text": "A subclass may strengthen preconditions to ensure better validation." },
+        { "id": "b", "text": "A subclass must not strengthen preconditions; it may only weaken them." },
+        { "id": "c", "text": "Preconditions in subclasses must be identical to those in the base class." },
+        { "id": "d", "text": "Preconditions are irrelevant to LSP compliance." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q27",
+      "text": "ST12-3: In C#, which of the following best represents a Strategy pattern implementation?",
+      "options": [
+        { "id": "a", "text": "A sealed class with a large switch statement selecting sorting logic." },
+        { "id": "b", "text": "An ISortStrategy interface with BubbleSortStrategy and QuickSortStrategy classes, injected into a Sorter context." },
+        { "id": "c", "text": "A base Sorter class that all sorting algorithms inherit from using virtual methods." },
+        { "id": "d", "text": "A static SortHelper class with overloaded Sort() methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q28",
+      "text": "ST04-3: When applying OCP with abstract base classes in C#, which keyword enables a subclass to provide its own implementation of a base class method?",
+      "options": [
+        { "id": "a", "text": "new" },
+        { "id": "b", "text": "static" },
+        { "id": "c", "text": "override" },
+        { "id": "d", "text": "sealed" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_s01_q29",
+      "text": "ST13-3: Which of the following scenarios best justifies using an Abstract Factory pattern over a simple Factory Method?",
+      "options": [
+        { "id": "a", "text": "You need to create one type of object in many ways." },
+        { "id": "b", "text": "You need to create families of related objects (e.g., UI controls for Windows vs. Mac) that must be used together." },
+        { "id": "c", "text": "You want to cache previously created objects." },
+        { "id": "d", "text": "You need to build a single complex object step by step." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s01_q30",
+      "text": "ST15-3: When a C# `event` is used to implement the Observer pattern, what prevents external code from raising the event directly?",
+      "options": [
+        { "id": "a", "text": "The private access modifier on the event field." },
+        { "id": "b", "text": "The event keyword itself, which restricts invocation to the declaring class." },
+        { "id": "c", "text": "Using a sealed class for the publisher." },
+        { "id": "d", "text": "The delegate type must be marked internal." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

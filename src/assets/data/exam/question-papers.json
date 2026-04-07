@@ -1,0 +1,642 @@
+[
+  {
+    "id": "qp_001",
+    "title": "Basic Vocabulary",
+    "description": "Everyday English words — meanings and usage.",
+    "createdAt": "2026-02-26T08:00:00Z",
+    "timer": { "enabled": true, "durationSeconds": 600, "autoSubmit": true },
+    "questions": [
+      {
+        "id": "qp001_q1",
+        "text": "What does 'Benevolent' mean?",
+        "options": [
+          { "id": "a", "text": "Cruel and harsh" },
+          { "id": "b", "text": "Well-meaning and kindly" },
+          { "id": "c", "text": "Extremely loud" },
+          { "id": "d", "text": "Easily broken" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp001_q2",
+        "text": "Which word means 'to make something worse'?",
+        "options": [
+          { "id": "a", "text": "Ameliorate" },
+          { "id": "b", "text": "Alleviate" },
+          { "id": "c", "text": "Exacerbate" },
+          { "id": "d", "text": "Mitigate" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp001_q3",
+        "text": "What does 'Candid' mean?",
+        "options": [
+          { "id": "a", "text": "Secretive and hidden" },
+          { "id": "b", "text": "Bright and colourful" },
+          { "id": "c", "text": "Slow and careful" },
+          { "id": "d", "text": "Truthful and straightforward" }
+        ],
+        "correctOptionId": "d"
+      },
+      {
+        "id": "qp001_q4",
+        "text": "Which word means 'short-lived or brief'?",
+        "options": [
+          { "id": "a", "text": "Eternal" },
+          { "id": "b", "text": "Transient" },
+          { "id": "c", "text": "Perpetual" },
+          { "id": "d", "text": "Enduring" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp001_q5",
+        "text": "What does 'Diligent' mean?",
+        "options": [
+          { "id": "a", "text": "Lazy and careless" },
+          { "id": "b", "text": "Confused and lost" },
+          { "id": "c", "text": "Hardworking and persistent" },
+          { "id": "d", "text": "Loud and noisy" }
+        ],
+        "correctOptionId": "c"
+      }
+    ]
+  },
+  {
+    "id": "qp_002",
+    "title": "Intermediate Vocabulary",
+    "description": "Step up your vocabulary with less-common English words.",
+    "createdAt": "2026-02-26T08:30:00Z",
+    "timer": { "enabled": false, "durationSeconds": null, "autoSubmit": false },
+    "questions": [
+      {
+        "id": "qp002_q1",
+        "text": "What does 'Ephemeral' mean?",
+        "options": [
+          { "id": "a", "text": "Lasting forever" },
+          { "id": "b", "text": "Lasting for a very short time" },
+          { "id": "c", "text": "Very large in size" },
+          { "id": "d", "text": "Relating to water" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp002_q2",
+        "text": "Which word means 'present everywhere at the same time'?",
+        "options": [
+          { "id": "a", "text": "Eloquent" },
+          { "id": "b", "text": "Tenacious" },
+          { "id": "c", "text": "Serendipitous" },
+          { "id": "d", "text": "Ubiquitous" }
+        ],
+        "correctOptionId": "d"
+      },
+      {
+        "id": "qp002_q3",
+        "text": "What does 'Pragmatic' mean?",
+        "options": [
+          { "id": "a", "text": "Dealing with things sensibly and realistically" },
+          { "id": "b", "text": "Relating to a religious practice" },
+          { "id": "c", "text": "Excessively proud or self-centred" },
+          { "id": "d", "text": "Open and transparent" }
+        ],
+        "correctOptionId": "a"
+      },
+      {
+        "id": "qp002_q4",
+        "text": "Which word means 'to absorb or take in'?",
+        "options": [
+          { "id": "a", "text": "Emanate" },
+          { "id": "b", "text": "Assimilate" },
+          { "id": "c", "text": "Dissipate" },
+          { "id": "d", "text": "Propagate" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp002_q5",
+        "text": "What does 'Ambiguous' mean?",
+        "options": [
+          { "id": "a", "text": "Very clear and precise" },
+          { "id": "b", "text": "Open to more than one interpretation" },
+          { "id": "c", "text": "Impossible to achieve" },
+          { "id": "d", "text": "Extremely large" }
+        ],
+        "correctOptionId": "b"
+      }
+    ]
+  },
+  {
+    "id": "qp_003",
+    "title": "Advanced Vocabulary",
+    "description": "Sophisticated and academic English vocabulary.",
+    "createdAt": "2026-02-26T09:00:00Z",
+    "timer": { "enabled": true, "durationSeconds": 900, "autoSubmit": true },
+    "questions": [
+      {
+        "id": "qp003_q1",
+        "text": "What does 'Sycophant' mean?",
+        "options": [
+          { "id": "a", "text": "A brave warrior" },
+          { "id": "b", "text": "A person who acts obsequiously for personal gain" },
+          { "id": "c", "text": "A highly intelligent person" },
+          { "id": "d", "text": "A musical instrument" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp003_q2",
+        "text": "Which word means 'logically inconsistent or self-contradictory'?",
+        "options": [
+          { "id": "a", "text": "Paradoxical" },
+          { "id": "b", "text": "Tautological" },
+          { "id": "c", "text": "Sophistic" },
+          { "id": "d", "text": "Incongruous" }
+        ],
+        "correctOptionId": "a"
+      },
+      {
+        "id": "qp003_q3",
+        "text": "What does 'Loquacious' mean?",
+        "options": [
+          { "id": "a", "text": "Reluctant to speak" },
+          { "id": "b", "text": "Relating to logic" },
+          { "id": "c", "text": "Tending to talk a great deal" },
+          { "id": "d", "text": "Physically strong" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp003_q4",
+        "text": "Which word means 'hatred of humankind'?",
+        "options": [
+          { "id": "a", "text": "Philology" },
+          { "id": "b", "text": "Misanthropy" },
+          { "id": "c", "text": "Philanthropy" },
+          { "id": "d", "text": "Theology" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp003_q5",
+        "text": "What does 'Perfidious' mean?",
+        "options": [
+          { "id": "a", "text": "Extremely perfect" },
+          { "id": "b", "text": "Deceitful and untrustworthy" },
+          { "id": "c", "text": "Overly cautious" },
+          { "id": "d", "text": "Intensely fragrant" }
+        ],
+        "correctOptionId": "b"
+      }
+    ]
+  },
+  {
+    "id": "qp_004",
+    "title": "English Grammar — Tenses",
+    "description": "Test your understanding of past, present and future tenses.",
+    "createdAt": "2026-02-26T09:30:00Z",
+    "timer": { "enabled": true, "durationSeconds": 600, "autoSubmit": false },
+    "questions": [
+      {
+        "id": "qp004_q1",
+        "text": "Which sentence is in the Past Perfect tense?",
+        "options": [
+          { "id": "a", "text": "She will have finished by noon." },
+          { "id": "b", "text": "She had finished before he arrived." },
+          { "id": "c", "text": "She has finished the report." },
+          { "id": "d", "text": "She finished the report yesterday." }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp004_q2",
+        "text": "Choose the correct Future Continuous form: 'They ______ by 8 PM.'",
+        "options": [
+          { "id": "a", "text": "will be working" },
+          { "id": "b", "text": "are working" },
+          { "id": "c", "text": "have been working" },
+          { "id": "d", "text": "were working" }
+        ],
+        "correctOptionId": "a"
+      },
+      {
+        "id": "qp004_q3",
+        "text": "Which tense is used for an action that started in the past and continues now?",
+        "options": [
+          { "id": "a", "text": "Simple Past" },
+          { "id": "b", "text": "Past Perfect" },
+          { "id": "c", "text": "Present Perfect Continuous" },
+          { "id": "d", "text": "Future Perfect" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp004_q4",
+        "text": "Identify the tense: 'By next year, I will have lived here for a decade.'",
+        "options": [
+          { "id": "a", "text": "Future Perfect" },
+          { "id": "b", "text": "Future Continuous" },
+          { "id": "c", "text": "Present Perfect" },
+          { "id": "d", "text": "Simple Future" }
+        ],
+        "correctOptionId": "a"
+      },
+      {
+        "id": "qp004_q5",
+        "text": "Which sentence uses the Present Simple correctly?",
+        "options": [
+          { "id": "a", "text": "She is going to school every day." },
+          { "id": "b", "text": "She went to school every day." },
+          { "id": "c", "text": "She goes to school every day." },
+          { "id": "d", "text": "She was going to school every day." }
+        ],
+        "correctOptionId": "c"
+      }
+    ]
+  },
+  {
+    "id": "qp_005",
+    "title": "Parts of Speech",
+    "description": "Identify nouns, verbs, adjectives, adverbs and more.",
+    "createdAt": "2026-02-26T10:00:00Z",
+    "timer": { "enabled": false, "durationSeconds": null, "autoSubmit": false },
+    "questions": [
+      {
+        "id": "qp005_q1",
+        "text": "In 'The quick brown fox jumps', what part of speech is 'quickly'?",
+        "options": [
+          { "id": "a", "text": "Adjective" },
+          { "id": "b", "text": "Noun" },
+          { "id": "c", "text": "Adverb" },
+          { "id": "d", "text": "Verb" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp005_q2",
+        "text": "Which word is a proper noun?",
+        "options": [
+          { "id": "a", "text": "city" },
+          { "id": "b", "text": "London" },
+          { "id": "c", "text": "beautiful" },
+          { "id": "d", "text": "run" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp005_q3",
+        "text": "In the sentence 'She sings beautifully', what is the verb?",
+        "options": [
+          { "id": "a", "text": "She" },
+          { "id": "b", "text": "beautifully" },
+          { "id": "c", "text": "sings" },
+          { "id": "d", "text": "None of the above" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp005_q4",
+        "text": "Which sentence contains a conjunction?",
+        "options": [
+          { "id": "a", "text": "He ran quickly." },
+          { "id": "b", "text": "She sings and dances." },
+          { "id": "c", "text": "The cat slept." },
+          { "id": "d", "text": "Birds fly high." }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp005_q5",
+        "text": "What part of speech is the word 'ouch' in 'Ouch! That hurt!'?",
+        "options": [
+          { "id": "a", "text": "Interjection" },
+          { "id": "b", "text": "Adverb" },
+          { "id": "c", "text": "Preposition" },
+          { "id": "d", "text": "Conjunction" }
+        ],
+        "correctOptionId": "a"
+      }
+    ]
+  },
+  {
+    "id": "qp_006",
+    "title": "Idioms & Expressions",
+    "description": "Common English idioms and their meanings.",
+    "createdAt": "2026-02-26T10:30:00Z",
+    "timer": { "enabled": true, "durationSeconds": 720, "autoSubmit": true },
+    "questions": [
+      {
+        "id": "qp006_q1",
+        "text": "What does the idiom 'kick the bucket' mean?",
+        "options": [
+          { "id": "a", "text": "To start a new project" },
+          { "id": "b", "text": "To die" },
+          { "id": "c", "text": "To celebrate a victory" },
+          { "id": "d", "text": "To make a mistake" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp006_q2",
+        "text": "What does 'under the weather' mean?",
+        "options": [
+          { "id": "a", "text": "Outdoors during a storm" },
+          { "id": "b", "text": "Feeling ill or unwell" },
+          { "id": "c", "text": "Very cold" },
+          { "id": "d", "text": "Depressed about the climate" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp006_q3",
+        "text": "What does 'hit the nail on the head' mean?",
+        "options": [
+          { "id": "a", "text": "To cause a headache" },
+          { "id": "b", "text": "To be exactly right" },
+          { "id": "c", "text": "To perform physical work" },
+          { "id": "d", "text": "To fail spectacularly" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp006_q4",
+        "text": "What does 'spill the beans' mean?",
+        "options": [
+          { "id": "a", "text": "To cook a meal" },
+          { "id": "b", "text": "To make a mess" },
+          { "id": "c", "text": "To reveal a secret" },
+          { "id": "d", "text": "To waste food" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp006_q5",
+        "text": "What does 'once in a blue moon' mean?",
+        "options": [
+          { "id": "a", "text": "Every month" },
+          { "id": "b", "text": "During a full moon only" },
+          { "id": "c", "text": "Very rarely" },
+          { "id": "d", "text": "At nighttime" }
+        ],
+        "correctOptionId": "c"
+      }
+    ]
+  },
+  {
+    "id": "qp_007",
+    "title": "Word Origins & Etymology",
+    "description": "Explore Greek and Latin roots behind common English words.",
+    "createdAt": "2026-02-26T11:00:00Z",
+    "timer": { "enabled": true, "durationSeconds": 900, "autoSubmit": false },
+    "questions": [
+      {
+        "id": "qp007_q1",
+        "text": "The word 'chronological' comes from the Greek 'chronos'. What does 'chronos' mean?",
+        "options": [
+          { "id": "a", "text": "Space" },
+          { "id": "b", "text": "Time" },
+          { "id": "c", "text": "Order" },
+          { "id": "d", "text": "History" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp007_q2",
+        "text": "Which Latin root means 'to carry'?",
+        "options": [
+          { "id": "a", "text": "scrib" },
+          { "id": "b", "text": "port" },
+          { "id": "c", "text": "aud" },
+          { "id": "d", "text": "vis" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp007_q3",
+        "text": "The prefix 'mis-' (as in mistake) means:",
+        "options": [
+          { "id": "a", "text": "Before" },
+          { "id": "b", "text": "Again" },
+          { "id": "c", "text": "Wrongly or badly" },
+          { "id": "d", "text": "Together" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp007_q4",
+        "text": "The Greek root 'graph' means:",
+        "options": [
+          { "id": "a", "text": "To write" },
+          { "id": "b", "text": "To see" },
+          { "id": "c", "text": "To hear" },
+          { "id": "d", "text": "To speak" }
+        ],
+        "correctOptionId": "a"
+      },
+      {
+        "id": "qp007_q5",
+        "text": "Which word contains the Latin root 'aud' (meaning 'to hear')?",
+        "options": [
+          { "id": "a", "text": "Visualise" },
+          { "id": "b", "text": "Auditorium" },
+          { "id": "c", "text": "Scribble" },
+          { "id": "d", "text": "Portable" }
+        ],
+        "correctOptionId": "b"
+      }
+    ]
+  },
+  {
+    "id": "qp_008",
+    "title": "Synonyms & Antonyms",
+    "description": "Find similar and opposite meanings for common words.",
+    "createdAt": "2026-02-26T11:30:00Z",
+    "timer": { "enabled": true, "durationSeconds": 480, "autoSubmit": true },
+    "questions": [
+      {
+        "id": "qp008_q1",
+        "text": "What is a synonym for 'Brave'?",
+        "options": [
+          { "id": "a", "text": "Cowardly" },
+          { "id": "b", "text": "Timid" },
+          { "id": "c", "text": "Valiant" },
+          { "id": "d", "text": "Fearful" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp008_q2",
+        "text": "What is the antonym of 'Generous'?",
+        "options": [
+          { "id": "a", "text": "Kind" },
+          { "id": "b", "text": "Charitable" },
+          { "id": "c", "text": "Liberal" },
+          { "id": "d", "text": "Miserly" }
+        ],
+        "correctOptionId": "d"
+      },
+      {
+        "id": "qp008_q3",
+        "text": "Choose the synonym for 'Verbose':",
+        "options": [
+          { "id": "a", "text": "Concise" },
+          { "id": "b", "text": "Wordy" },
+          { "id": "c", "text": "Silent" },
+          { "id": "d", "text": "Brief" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp008_q4",
+        "text": "What is the antonym of 'Transparent'?",
+        "options": [
+          { "id": "a", "text": "Clear" },
+          { "id": "b", "text": "Open" },
+          { "id": "c", "text": "Opaque" },
+          { "id": "d", "text": "Visible" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp008_q5",
+        "text": "Which is a synonym for 'Melancholy'?",
+        "options": [
+          { "id": "a", "text": "Joyful" },
+          { "id": "b", "text": "Elated" },
+          { "id": "c", "text": "Despondent" },
+          { "id": "d", "text": "Cheerful" }
+        ],
+        "correctOptionId": "c"
+      }
+    ]
+  },
+  {
+    "id": "qp_009",
+    "title": "Spelling Challenge",
+    "description": "Identify the correctly spelled word in each question.",
+    "createdAt": "2026-02-26T12:00:00Z",
+    "timer": { "enabled": true, "durationSeconds": 600, "autoSubmit": true },
+    "questions": [
+      {
+        "id": "qp009_q1",
+        "text": "Which is the correct spelling?",
+        "options": [
+          { "id": "a", "text": "Accomodate" },
+          { "id": "b", "text": "Accommodate" },
+          { "id": "c", "text": "Acommodate" },
+          { "id": "d", "text": "Accommoddate" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp009_q2",
+        "text": "Which is the correct spelling?",
+        "options": [
+          { "id": "a", "text": "Seperate" },
+          { "id": "b", "text": "Seprate" },
+          { "id": "c", "text": "Separate" },
+          { "id": "d", "text": "Seperrate" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp009_q3",
+        "text": "Which is the correct spelling?",
+        "options": [
+          { "id": "a", "text": "Occurance" },
+          { "id": "b", "text": "Occurence" },
+          { "id": "c", "text": "Ocurrence" },
+          { "id": "d", "text": "Occurrence" }
+        ],
+        "correctOptionId": "d"
+      },
+      {
+        "id": "qp009_q4",
+        "text": "Which is the correct spelling?",
+        "options": [
+          { "id": "a", "text": "Conscientious" },
+          { "id": "b", "text": "Consientious" },
+          { "id": "c", "text": "Conscientous" },
+          { "id": "d", "text": "Concientious" }
+        ],
+        "correctOptionId": "a"
+      },
+      {
+        "id": "qp009_q5",
+        "text": "Which is the correct spelling?",
+        "options": [
+          { "id": "a", "text": "Neccessary" },
+          { "id": "b", "text": "Necesary" },
+          { "id": "c", "text": "Necessary" },
+          { "id": "d", "text": "Neccesary" }
+        ],
+        "correctOptionId": "c"
+      }
+    ]
+  },
+  {
+    "id": "qp_010",
+    "title": "Reading Comprehension",
+    "description": "Read the passage and answer questions about it.",
+    "createdAt": "2026-02-26T12:30:00Z",
+    "timer": { "enabled": true, "durationSeconds": 1200, "autoSubmit": false },
+    "questions": [
+      {
+        "id": "qp010_q1",
+        "text": "Passage: 'The industrial revolution transformed society by shifting labour from farms to factories, enabling mass production and urbanisation.' — What was the PRIMARY effect described?",
+        "options": [
+          { "id": "a", "text": "A decrease in population" },
+          { "id": "b", "text": "A shift from agricultural to industrial labour" },
+          { "id": "c", "text": "The invention of the internet" },
+          { "id": "d", "text": "Increased rural farming" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp010_q2",
+        "text": "From the same passage, which concept is mentioned alongside mass production?",
+        "options": [
+          { "id": "a", "text": "Globalisation" },
+          { "id": "b", "text": "Urbanisation" },
+          { "id": "c", "text": "Digitalisation" },
+          { "id": "d", "text": "Automation" }
+        ],
+        "correctOptionId": "b"
+      },
+      {
+        "id": "qp010_q3",
+        "text": "Passage: 'Photosynthesis is the process by which green plants convert sunlight into glucose using carbon dioxide and water.' — What do plants produce?",
+        "options": [
+          { "id": "a", "text": "Oxygen and nitrogen" },
+          { "id": "b", "text": "Carbon dioxide" },
+          { "id": "c", "text": "Glucose" },
+          { "id": "d", "text": "Water vapour only" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp010_q4",
+        "text": "From the photosynthesis passage, what two inputs does the process use?",
+        "options": [
+          { "id": "a", "text": "Oxygen and nitrogen" },
+          { "id": "b", "text": "Sunlight and glucose" },
+          { "id": "c", "text": "Carbon dioxide and water" },
+          { "id": "d", "text": "Nitrogen and minerals" }
+        ],
+        "correctOptionId": "c"
+      },
+      {
+        "id": "qp010_q5",
+        "text": "Passage: 'Shakespeare wrote 37 plays and 154 sonnets, becoming the most influential writer in the English language.' — How many sonnets did Shakespeare write?",
+        "options": [
+          { "id": "a", "text": "37" },
+          { "id": "b", "text": "100" },
+          { "id": "c", "text": "154" },
+          { "id": "d", "text": "200" }
+        ],
+        "correctOptionId": "c"
+      }
+    ]
+  }
+]

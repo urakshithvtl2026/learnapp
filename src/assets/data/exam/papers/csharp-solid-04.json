@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_s04",
+  "title": "C# SOLID — Paper 4",
+  "description": "Covers OCP refactoring, LSP concepts, LSP refactoring, ISP concepts, ISP refactoring, Decorator Pattern, Observer Pattern, Repository Pattern, Code Smells & SOLID Violations, and Refactoring Techniques.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_s04_q1",
+      "text": "ST08-1: Which of the following best describes the ISP refactoring approach of 'splitting interfaces'?",
+      "options": [
+        { "id": "a", "text": "Merging two small interfaces into one larger interface for simplicity." },
+        { "id": "b", "text": "Breaking a fat interface into multiple smaller, role-specific interfaces so clients only depend on what they use." },
+        { "id": "c", "text": "Removing all interface abstractions and using concrete classes directly." },
+        { "id": "d", "text": "Replacing interfaces with abstract classes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q2",
+      "text": "ST15-9: In C#, which syntax is used to subscribe a method to an event?",
+      "options": [
+        { "id": "a", "text": "event.Subscribe(handler)" },
+        { "id": "b", "text": "event += handler" },
+        { "id": "c", "text": "event.Add(handler)" },
+        { "id": "d", "text": "event.Attach(handler)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q3",
+      "text": "ST04-10: A notification system must support Email, SMS, and Push notifications. Applying OCP, what is the best design?",
+      "options": [
+        { "id": "a", "text": "A NotificationService class with methods SendEmail(), SendSms(), and SendPush(), updated each time a new type appears." },
+        { "id": "b", "text": "An INotificationChannel interface implemented by EmailChannel, SmsChannel, and PushChannel, with new channels added as new classes." },
+        { "id": "c", "text": "A single SendNotification(string type, string message) method with a switch on type." },
+        { "id": "d", "text": "An enum NotificationType with values for each channel type." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q4",
+      "text": "ST18-1: The 'Extract Method' refactoring technique is used to:",
+      "options": [
+        { "id": "a", "text": "Move a method from one class to another." },
+        { "id": "b", "text": "Turn a code fragment in a long method into a separate named method." },
+        { "id": "c", "text": "Replace a method body with a call to a strategy object." },
+        { "id": "d", "text": "Remove a method that is no longer needed." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q5",
+      "text": "ST16-7: A repository method `GetOrdersByCustomer(int customerId)` returns a `List<Order>`. Which concern does this violate if business rules are also placed inside the repository method?",
+      "options": [
+        { "id": "a", "text": "ISP — the repository interface has too many methods." },
+        { "id": "b", "text": "SRP — the repository mixes data-access logic with business logic." },
+        { "id": "c", "text": "OCP — the repository cannot be extended." },
+        { "id": "d", "text": "LSP — the return type is too specific." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q6",
+      "text": "ST06-8: Which of the following is a valid technique for fixing an LSP violation caused by an incorrect inheritance hierarchy?",
+      "options": [
+        { "id": "a", "text": "Add null checks throughout the codebase that uses the base type." },
+        { "id": "b", "text": "Flatten the hierarchy and use composition instead of inheriting from the problematic base class." },
+        { "id": "c", "text": "Mark the violating override method as sealed." },
+        { "id": "d", "text": "Add a type-check (is/as) before each polymorphic call." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q7",
+      "text": "ST17-5: A 'Long Method' code smell indicates a violation of which SOLID principle?",
+      "options": [
+        { "id": "a", "text": "OCP — the method cannot be extended." },
+        { "id": "b", "text": "SRP — the method is doing too many things and should be broken up." },
+        { "id": "c", "text": "DIP — the method depends on concrete types." },
+        { "id": "d", "text": "ISP — the method is part of a fat interface." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q8",
+      "text": "ST05-10: Which of the following statements about LSP and type hierarchies is correct?",
+      "options": [
+        { "id": "a", "text": "An 'is-a' relationship in domain terms always guarantees LSP compliance in code." },
+        { "id": "b", "text": "An 'is-a' relationship in domain terms does not guarantee LSP compliance; behavioral substitutability must also hold." },
+        { "id": "c", "text": "LSP only applies to abstract classes, not interfaces." },
+        { "id": "d", "text": "LSP compliance is only required for sealed classes." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q9",
+      "text": "ST07-5: An `IMultiFunctionDevice` interface declares Print(), Scan(), Fax(), and Copy(). A SimplePrinter class implements it but throws NotSupportedException for Scan(), Fax(), and Copy(). Which principle is violated?",
+      "options": [
+        { "id": "a", "text": "SRP" },
+        { "id": "b", "text": "OCP" },
+        { "id": "c", "text": "LSP" },
+        { "id": "d", "text": "ISP" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_s04_q10",
+      "text": "ST14-8: A `CachingRepository` wraps a real `IRepository` and returns cached results. This is an example of which pattern?",
+      "options": [
+        { "id": "a", "text": "Proxy (or Decorator)" },
+        { "id": "b", "text": "Singleton" },
+        { "id": "c", "text": "Adapter" },
+        { "id": "d", "text": "Facade" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s04_q11",
+      "text": "ST08-2: After splitting a fat IWorker interface into ITaskWorker and IBreakWorker, a Robot class should:",
+      "options": [
+        { "id": "a", "text": "Implement both ITaskWorker and IBreakWorker regardless of capability." },
+        { "id": "b", "text": "Implement only ITaskWorker, since robots do not take breaks." },
+        { "id": "c", "text": "Implement neither interface and use a concrete base class." },
+        { "id": "d", "text": "Implement ITaskWorker and throw an exception in IBreakWorker methods." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q12",
+      "text": "ST18-2: 'Replace Conditional with Polymorphism' is a refactoring that:",
+      "options": [
+        { "id": "a", "text": "Removes all if/else and switch statements from a codebase." },
+        { "id": "b", "text": "Replaces type-checking conditional branches with overridden methods in subclasses or strategy implementations." },
+        { "id": "c", "text": "Converts all enum-based logic into lambda expressions." },
+        { "id": "d", "text": "Merges multiple conditional methods into one large method." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q13",
+      "text": "ST04-11: OCP is often said to be achieved 'parameterically' in functional programming through:",
+      "options": [
+        { "id": "a", "text": "Switch expressions" },
+        { "id": "b", "text": "Higher-order functions (passing behaviour as parameters)" },
+        { "id": "c", "text": "Immutable data structures" },
+        { "id": "d", "text": "Pattern matching" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q14",
+      "text": "ST05-11: A unit test expects that calling `Calculate(animal)` returns a positive number for any `Animal`. A `VirtualAnimal` subclass always returns -1. This test failure demonstrates:",
+      "options": [
+        { "id": "a", "text": "A DIP violation — the test depends on a concrete type." },
+        { "id": "b", "text": "An LSP violation — VirtualAnimal breaks the behavioral contract of Animal." },
+        { "id": "c", "text": "An SRP violation — the test tests two things at once." },
+        { "id": "d", "text": "An OCP violation — the test was not extended for VirtualAnimal." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q15",
+      "text": "ST07-6: Which of the following is an ISP-compliant refactoring of a fat IAnimal interface?",
+      "options": [
+        { "id": "a", "text": "Combine IAnimal with IVehicle for maximum reuse." },
+        { "id": "b", "text": "Split IAnimal into IFlyable, ISwimmable, and IWalkable, each implemented only by animals that perform those actions." },
+        { "id": "c", "text": "Add default implementations to IAnimal so implementors don't need to override everything." },
+        { "id": "d", "text": "Replace IAnimal with an abstract class Animal." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q16",
+      "text": "ST16-8: In a Domain-Driven Design context, which layer is responsible for calling repository methods?",
+      "options": [
+        { "id": "a", "text": "The presentation layer (controllers/views)." },
+        { "id": "b", "text": "The application/domain service layer." },
+        { "id": "c", "text": "The infrastructure layer directly." },
+        { "id": "d", "text": "The database migration scripts." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q17",
+      "text": "ST06-9: In C#, the `IEnumerable<T>` and `ICollection<T>` hierarchy is an example of a partial LSP concern. Why might code passing `IEnumerable<T>` be safer than passing `ICollection<T>`?",
+      "options": [
+        { "id": "a", "text": "IEnumerable<T> has more methods, giving callers more options." },
+        { "id": "b", "text": "IEnumerable<T> is read-only; passing it avoids mutations that callers may not expect." },
+        { "id": "c", "text": "ICollection<T> implementations always violate LSP." },
+        { "id": "d", "text": "IEnumerable<T> is always faster at runtime." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q18",
+      "text": "ST17-6: Which of the following refactoring patterns directly addresses a 'God Class' code smell?",
+      "options": [
+        { "id": "a", "text": "Inline Class" },
+        { "id": "b", "text": "Extract Class and Move Method to redistribute responsibilities" },
+        { "id": "c", "text": "Introduce Explaining Variable" },
+        { "id": "d", "text": "Replace Magic Number with Symbolic Constant" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q19",
+      "text": "ST18-3: 'Extract Class' is appropriate when:",
+      "options": [
+        { "id": "a", "text": "A class is too small and has fewer than three fields." },
+        { "id": "b", "text": "A subset of a class's fields and methods naturally cluster together and form a cohesive concept of their own." },
+        { "id": "c", "text": "A class has too many tests." },
+        { "id": "d", "text": "Two classes share an identical method that should be centralised." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q20",
+      "text": "ST15-10: When using EventHandler in C#, what is the purpose of the `sender` parameter?",
+      "options": [
+        { "id": "a", "text": "It holds the event data payload." },
+        { "id": "b", "text": "It provides a reference to the object that raised the event, allowing subscribers to act on or query the publisher." },
+        { "id": "c", "text": "It determines the priority of the event handler." },
+        { "id": "d", "text": "It specifies whether the event is synchronous or asynchronous." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q21",
+      "text": "ST08-3: In C#, a class may implement multiple interfaces. How does this support ISP?",
+      "options": [
+        { "id": "a", "text": "It allows the class to be registered as multiple service types in a DI container." },
+        { "id": "b", "text": "It enables a class to satisfy multiple role-specific contracts without forcing clients to depend on a single fat interface." },
+        { "id": "c", "text": "It causes C# to generate efficient vtable entries for each interface." },
+        { "id": "d", "text": "It reduces the number of assemblies needed." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q22",
+      "text": "ST14-9: Applying the Decorator pattern to a stream in .NET — e.g., `new GZipStream(new BufferedStream(new FileStream(...)))` — demonstrates:",
+      "options": [
+        { "id": "a", "text": "The Composite pattern, because streams form a tree structure." },
+        { "id": "b", "text": "The Decorator pattern, where each stream wraps another to add behaviour (buffering, compression) without modifying Stream." },
+        { "id": "c", "text": "The Builder pattern, constructing a complex stream step by step." },
+        { "id": "d", "text": "The Adapter pattern, converting one stream interface to another." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q23",
+      "text": "ST04-12: Robert Martin's OCP states that a module should be both 'open' and 'closed' simultaneously. How is this paradox resolved?",
+      "options": [
+        { "id": "a", "text": "By having two versions of each class: an open version and a closed version." },
+        { "id": "b", "text": "By separating the stable abstraction (interface/abstract class) that is closed from the extension points (implementations) that are open." },
+        { "id": "c", "text": "By using feature flags to enable or disable behavior at runtime." },
+        { "id": "d", "text": "By keeping source code private and only distributing compiled binaries." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q24",
+      "text": "ST06-10: The Design by Contract concept of 'class invariant' in the context of LSP means:",
+      "options": [
+        { "id": "a", "text": "The class must never change at runtime." },
+        { "id": "b", "text": "Conditions that must hold true for all instances of a class throughout their lifetime; subclasses must preserve base class invariants." },
+        { "id": "c", "text": "The class must have an invariant number of properties." },
+        { "id": "d", "text": "Constants defined within the class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q25",
+      "text": "ST17-7: 'Primitive Obsession' is a code smell describing:",
+      "options": [
+        { "id": "a", "text": "Using too many loops in a single method." },
+        { "id": "b", "text": "Overusing primitive types (int, string) for domain concepts that should be represented as small value objects or classes." },
+        { "id": "c", "text": "A class that has only primitive fields." },
+        { "id": "d", "text": "Using bitwise operations for business logic." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q26",
+      "text": "ST07-7: Which principle is most directly supported by ISP?",
+      "options": [
+        { "id": "a", "text": "High cohesion — interfaces should group only related operations that clients actually need." },
+        { "id": "b", "text": "Low coupling — every class should depend on every other class." },
+        { "id": "c", "text": "High coupling — interfaces should aggregate all possible operations." },
+        { "id": "d", "text": "Low cohesion — interfaces should group unrelated operations for convenience." }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_s04_q27",
+      "text": "ST16-9: Which of the following is a disadvantage of the Repository pattern?",
+      "options": [
+        { "id": "a", "text": "It couples domain logic directly to the ORM." },
+        { "id": "b", "text": "It can add unnecessary abstraction layers for simple CRUD applications, increasing boilerplate code." },
+        { "id": "c", "text": "It prevents the use of dependency injection." },
+        { "id": "d", "text": "It makes unit testing harder." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q28",
+      "text": "ST18-4: 'Move Method' refactoring is appropriate when:",
+      "options": [
+        { "id": "a", "text": "A method is called from many different classes." },
+        { "id": "b", "text": "A method uses more features of another class than it does of its own class, suggesting it belongs there." },
+        { "id": "c", "text": "A method is too long and needs to be split." },
+        { "id": "d", "text": "A method has too many parameters." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q29",
+      "text": "ST08-4: In C#, the ISP is often applied when defining service contracts. Which approach best applies ISP to a command/query split?",
+      "options": [
+        { "id": "a", "text": "One IService interface with all read and write methods." },
+        { "id": "b", "text": "Separate IReadRepository<T> and IWriteRepository<T> interfaces so read-only consumers don't depend on mutation methods." },
+        { "id": "c", "text": "A single abstract class with virtual read and write methods." },
+        { "id": "d", "text": "An enum-based service locator choosing read or write operations." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_s04_q30",
+      "text": "ST05-12: An interface `IShape` defines `Area()`. A class `Line` implements `IShape` and returns 0 for `Area()`. Is this LSP compliant?",
+      "options": [
+        { "id": "a", "text": "No — returning 0 is always an LSP violation." },
+        { "id": "b", "text": "Yes — if the contract of Area() allows returning 0 for degenerate shapes and callers are prepared for this." },
+        { "id": "c", "text": "Yes — but only if Line is a sealed class." },
+        { "id": "d", "text": "No — Line should not implement IShape because it is not a 2D shape." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a01",
+  "title": "C# Advanced — Paper 1",
+  "description": "Advanced C# covering Generics, Generic Variance, LINQ Core & Advanced Operators, Lambda & Functional Patterns, Advanced Exception Handling, Memory Management, Span<T>/Memory<T>, Reflection, and Attributes.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a01_q1",
+      "text": "Which constraint syntax ensures a generic type parameter T is a reference type and has a public parameterless constructor?",
+      "options": [
+        { "id": "a", "text": "where T : struct, new()" },
+        { "id": "b", "text": "where T : class, new()" },
+        { "id": "c", "text": "where T : class" },
+        { "id": "d", "text": "where T : new(), object" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q2",
+      "text": "What is the primary purpose of the 'out' keyword on a generic type parameter in C#?",
+      "options": [
+        { "id": "a", "text": "It allows the type to be used only as a method output parameter." },
+        { "id": "b", "text": "It marks the parameter as contravariant so it can appear only in input positions." },
+        { "id": "c", "text": "It marks the parameter as covariant so it can appear only in output positions, enabling assignment of IFoo<Derived> to IFoo<Base>." },
+        { "id": "d", "text": "It allows boxing of value types within the generic type." }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_a01_q3",
+      "text": "What does the LINQ operator GroupBy return when applied to a sequence?",
+      "options": [
+        { "id": "a", "text": "IEnumerable<TElement> with elements sorted by key" },
+        { "id": "b", "text": "IEnumerable<IGrouping<TKey, TElement>> where each IGrouping represents elements sharing the same key" },
+        { "id": "c", "text": "ILookup<TKey, TElement> directly" },
+        { "id": "d", "text": "Dictionary<TKey, List<TElement>>" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q4",
+      "text": "Which LINQ method flattens a sequence of sequences into a single sequence?",
+      "options": [
+        { "id": "a", "text": "SelectMany" },
+        { "id": "b", "text": "Flatten" },
+        { "id": "c", "text": "Merge" },
+        { "id": "d", "text": "Concat" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_a01_q5",
+      "text": "What is a closure in C# lambda expressions?",
+      "options": [
+        { "id": "a", "text": "A lambda that cannot capture any variables from its enclosing scope" },
+        { "id": "b", "text": "A lambda that captures and retains references to variables from its enclosing scope, even after the scope exits" },
+        { "id": "c", "text": "A sealed class that wraps a delegate" },
+        { "id": "d", "text": "A lambda expression that is immediately invoked upon declaration" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q6",
+      "text": "What exception type wraps multiple exceptions thrown during parallel or async operations in .NET?",
+      "options": [
+        { "id": "a", "text": "MultiException" },
+        { "id": "b", "text": "CompositeException" },
+        { "id": "c", "text": "AggregateException" },
+        { "id": "d", "text": "ParallelException" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_a01_q7",
+      "text": "Which interface should a class implement to properly release unmanaged resources in C#?",
+      "options": [
+        { "id": "a", "text": "IReleasable" },
+        { "id": "b", "text": "IDisposable" },
+        { "id": "c", "text": "ICleanup" },
+        { "id": "d", "text": "IFinalizable" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q8",
+      "text": "What is a key characteristic of Span<T> that distinguishes it from arrays?",
+      "options": [
+        { "id": "a", "text": "Span<T> can be stored on the heap as a class field." },
+        { "id": "b", "text": "Span<T> is a ref struct restricted to stack allocation, providing safe slice views of contiguous memory without additional heap allocation." },
+        { "id": "c", "text": "Span<T> automatically resizes when elements are added." },
+        { "id": "d", "text": "Span<T> supports asynchronous enumeration natively." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q9",
+      "text": "Which class in the System.Reflection namespace is used to dynamically create an instance of a type given its Type object?",
+      "options": [
+        { "id": "a", "text": "TypeBuilder" },
+        { "id": "b", "text": "Activator" },
+        { "id": "c", "text": "RuntimeHelper" },
+        { "id": "d", "text": "InstanceFactory" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q10",
+      "text": "Which built-in attribute instructs the compiler to mark a method as obsolete and generate a warning when it is called?",
+      "options": [
+        { "id": "a", "text": "[Deprecated]" },
+        { "id": "b", "text": "[Removed]" },
+        { "id": "c", "text": "[Obsolete]" },
+        { "id": "d", "text": "[Legacy]" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_cs_a01_q11",
+      "text": "In C# generics, which constraint is used to restrict a type parameter to value types only?",
+      "options": [
+        { "id": "a", "text": "where T : value" },
+        { "id": "b", "text": "where T : struct" },
+        { "id": "c", "text": "where T : ValueType" },
+        { "id": "d", "text": "where T : unmanaged" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q12",
+      "text": "Why can IEnumerable<string> be assigned to IEnumerable<object> in C#, but List<string> cannot be assigned to List<object>?",
+      "options": [
+        { "id": "a", "text": "List<T> is sealed, preventing such assignments." },
+        { "id": "b", "text": "IEnumerable<T> is covariant (out T), while List<T> is invariant because it supports both reading and writing." },
+        { "id": "c", "text": "IEnumerable<T> implements an implicit cast operator." },
+        { "id": "d", "text": "List<T> uses contravariance (in T) which blocks the assignment." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q13",
+      "text": "Which LINQ method syntax is equivalent to 'from x in source where x > 5 select x'?",
+      "options": [
+        { "id": "a", "text": "source.Filter(x => x > 5)" },
+        { "id": "b", "text": "source.Where(x => x > 5).Select(x => x)" },
+        { "id": "c", "text": "source.Select(x => x > 5)" },
+        { "id": "d", "text": "source.Query(x => x > 5)" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q14",
+      "text": "What is deferred execution in LINQ?",
+      "options": [
+        { "id": "a", "text": "LINQ queries execute immediately when defined and cache results." },
+        { "id": "b", "text": "LINQ queries define a pipeline that executes only when the result is enumerated, not when the query is declared." },
+        { "id": "c", "text": "LINQ queries run in a background thread automatically." },
+        { "id": "d", "text": "LINQ queries are compiled at runtime for deferred JIT optimization." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q15",
+      "text": "In the context of closures, what happens when a loop variable is captured by a lambda?",
+      "options": [
+        { "id": "a", "text": "Each iteration's lambda captures its own independent copy of the loop variable." },
+        { "id": "b", "text": "All lambdas share the same reference to the loop variable, so they all see its final value after the loop ends." },
+        { "id": "c", "text": "The compiler automatically copies the loop variable into each lambda." },
+        { "id": "d", "text": "Capturing a loop variable is a compile-time error in C#." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q16",
+      "text": "What does ExceptionDispatchInfo.Capture() allow you to do in C#?",
+      "options": [
+        { "id": "a", "text": "It logs exception details to the event log automatically." },
+        { "id": "b", "text": "It captures an exception including its stack trace and allows rethrowing it later while preserving the original stack trace." },
+        { "id": "c", "text": "It converts checked exceptions to unchecked exceptions." },
+        { "id": "d", "text": "It prevents exceptions from propagating across thread boundaries." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q17",
+      "text": "In the Dispose pattern, when should GC.SuppressFinalize(this) be called?",
+      "options": [
+        { "id": "a", "text": "In the finalizer to prevent double disposal" },
+        { "id": "b", "text": "In the Dispose() method to tell the GC not to call the finalizer since resources are already cleaned up" },
+        { "id": "c", "text": "In the constructor to skip finalization entirely" },
+        { "id": "d", "text": "Only when the object holds managed resources" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q18",
+      "text": "What does stackalloc do in C#?",
+      "options": [
+        { "id": "a", "text": "It allocates an array on the managed heap with pinning." },
+        { "id": "b", "text": "It allocates a block of memory on the stack, which is automatically freed when the method returns, usable with Span<T>." },
+        { "id": "c", "text": "It increases the thread stack size dynamically at runtime." },
+        { "id": "d", "text": "It allocates memory in the large object heap." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q19",
+      "text": "How do you retrieve all public instance methods of a type using reflection?",
+      "options": [
+        { "id": "a", "text": "typeof(MyType).GetMethods(BindingFlags.Public | BindingFlags.Instance)" },
+        { "id": "b", "text": "typeof(MyType).GetPublicMethods()" },
+        { "id": "c", "text": "MyType.Methods.Where(m => m.IsPublic)" },
+        { "id": "d", "text": "Assembly.GetMethods(typeof(MyType))" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_a01_q20",
+      "text": "What does the AttributeUsage attribute control when applied to a custom attribute class?",
+      "options": [
+        { "id": "a", "text": "It controls the access modifier of the attribute class." },
+        { "id": "b", "text": "It specifies where the attribute can be applied (e.g., classes, methods), whether it can appear multiple times, and whether it is inherited." },
+        { "id": "c", "text": "It determines the serialization format of the attribute." },
+        { "id": "d", "text": "It marks which assembly the attribute belongs to." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q21",
+      "text": "Which of the following correctly declares a generic method that returns the larger of two IComparable<T> values?",
+      "options": [
+        { "id": "a", "text": "T Max<T>(T a, T b) where T : IComparable<T> => a.CompareTo(b) >= 0 ? a : b;" },
+        { "id": "b", "text": "T Max(T a, T b) => a > b ? a : b;" },
+        { "id": "c", "text": "T Max<T>(T a, T b) => a.CompareTo(b);" },
+        { "id": "d", "text": "object Max<T>(T a, T b) where T : struct => a;" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_cs_a01_q22",
+      "text": "Which of the following demonstrates contravariance in C# generics?",
+      "options": [
+        { "id": "a", "text": "IEnumerable<string> assigned to IEnumerable<object>" },
+        { "id": "b", "text": "Action<object> assigned to Action<string> because Action<T> is contravariant (in T)" },
+        { "id": "c", "text": "Func<string> assigned to Func<object>" },
+        { "id": "d", "text": "List<int> assigned to List<object>" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q23",
+      "text": "What does the LINQ Aggregate method do?",
+      "options": [
+        { "id": "a", "text": "It groups elements by a key and returns IGrouping<TKey,T>." },
+        { "id": "b", "text": "It applies an accumulator function over a sequence, reducing it to a single result." },
+        { "id": "c", "text": "It merges two sequences by index." },
+        { "id": "d", "text": "It counts distinct elements in a sequence." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q24",
+      "text": "In a lambda expression, what does capturing a variable 'by reference' (via closure) mean in practice?",
+      "options": [
+        { "id": "a", "text": "The lambda creates a value copy of the variable at the time of creation." },
+        { "id": "b", "text": "The lambda holds a reference to the variable's storage location, so changes to it inside or outside the lambda are visible to both." },
+        { "id": "c", "text": "The variable is passed using the ref keyword explicitly." },
+        { "id": "d", "text": "The lambda pins the variable in memory to prevent GC collection." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q25",
+      "text": "What is the purpose of the 'checked' keyword in C# exception handling contexts?",
+      "options": [
+        { "id": "a", "text": "It marks a code block where null reference exceptions are automatically caught." },
+        { "id": "b", "text": "It enables overflow checking for arithmetic operations, causing an OverflowException to be thrown on integer overflow instead of silent wrapping." },
+        { "id": "c", "text": "It verifies that all variables are initialized before use." },
+        { "id": "d", "text": "It checks that all interface members are implemented at runtime." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q26",
+      "text": "What is the difference between a finalizer and Dispose() in C#?",
+      "options": [
+        { "id": "a", "text": "Finalizers are called deterministically; Dispose() is called by the GC." },
+        { "id": "b", "text": "Dispose() is called deterministically by developer code or 'using'; finalizers are called non-deterministically by the GC to clean up unmanaged resources if Dispose was not called." },
+        { "id": "c", "text": "Both finalizers and Dispose() are called at the same time by the GC." },
+        { "id": "d", "text": "Finalizers can only clean up managed resources; Dispose() handles unmanaged resources." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q27",
+      "text": "What is the difference between Span<T> and Memory<T> in C#?",
+      "options": [
+        { "id": "a", "text": "Memory<T> is stack-only while Span<T> can be stored on the heap." },
+        { "id": "b", "text": "Span<T> is a ref struct restricted to the stack; Memory<T> is a regular struct that can be stored on the heap and used with async methods." },
+        { "id": "c", "text": "They are interchangeable and have identical restrictions." },
+        { "id": "d", "text": "Memory<T> only works with unmanaged types; Span<T> works with all types." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q28",
+      "text": "How can you use reflection to invoke a private method named 'Calculate' on an object instance?",
+      "options": [
+        { "id": "a", "text": "obj.Calculate() directly, since reflection bypasses access modifiers automatically." },
+        { "id": "b", "text": "var method = obj.GetType().GetMethod(\"Calculate\", BindingFlags.NonPublic | BindingFlags.Instance); method.Invoke(obj, null);" },
+        { "id": "c", "text": "Activator.InvokePrivate(obj, \"Calculate\");" },
+        { "id": "d", "text": "dynamic d = obj; d.Calculate();" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q29",
+      "text": "How do you read a custom attribute of type MyAttr from a class MyClass at runtime using reflection?",
+      "options": [
+        { "id": "a", "text": "MyClass.GetAttribute<MyAttr>()" },
+        { "id": "b", "text": "typeof(MyClass).GetCustomAttribute<MyAttr>()" },
+        { "id": "c", "text": "Attribute.Find(typeof(MyClass), typeof(MyAttr))" },
+        { "id": "d", "text": "MyClass.Attributes.OfType<MyAttr>().First()" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a01_q30",
+      "text": "Which of the following correctly defines a generic class Stack<T> that constrains T to be a reference type?",
+      "options": [
+        { "id": "a", "text": "class Stack<T> where T : object { }" },
+        { "id": "b", "text": "class Stack<T> where T : class { }" },
+        { "id": "c", "text": "class Stack<T> where T : reference { }" },
+        { "id": "d", "text": "class Stack<T> where T : IClass { }" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

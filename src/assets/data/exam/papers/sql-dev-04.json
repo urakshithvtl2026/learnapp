@@ -1,0 +1,339 @@
+{
+  "id": "qp_sql_d04",
+  "title": "SQL Developer — Paper 4",
+  "description": "Developer-focused SQL scenarios covering query writing, joins, filtering, aggregations, CTEs, indexes, transactions, window functions, stored procedures, and data safety.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 2700, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_sql_d04_q1",
+      "text": "A developer writes a query that joins Customers, Orders, OrderItems, Products, and Inventory. The result is used to populate a dashboard. The query takes 8 seconds. A senior developer recommends splitting it into two queries. Which query-writing principle supports this advice?",
+      "options": [
+        { "id": "a", "text": "SQL Server limits the number of JOINs to four per query" },
+        { "id": "b", "text": "Complex multi-join queries produce larger intermediate result sets; breaking into smaller, targeted queries each returning only the columns needed can improve plan quality and reduce total data movement" },
+        { "id": "c", "text": "Two queries always run faster than one because they use parallel threads" },
+        { "id": "d", "text": "Dashboard queries must always use stored procedures, not inline SQL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q2",
+      "text": "A developer writes: SELECT o.OrderId, COUNT(oi.ItemId) AS ItemCount FROM Orders o LEFT JOIN OrderItems oi ON o.OrderId = oi.OrderId GROUP BY o.OrderId. For an order with no items, what does COUNT(oi.ItemId) return?",
+      "options": [
+        { "id": "a", "text": "NULL" },
+        { "id": "b", "text": "1, because the LEFT JOIN produces one row for the order even with no items" },
+        { "id": "c", "text": "0, because COUNT(column) excludes NULL values, so the NULL from the unmatched LEFT JOIN is not counted" },
+        { "id": "d", "text": "An error because COUNT cannot be used on a LEFT JOIN result" }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "qp_sql_d04_q3",
+      "text": "A developer writes: WHERE Region IN ('North', 'South') AND Revenue > 5000 OR Category = 'Premium'. A bug is filed that Premium products from all regions are included. What is the fix?",
+      "options": [
+        { "id": "a", "text": "Replace OR with AND NOT" },
+        { "id": "b", "text": "Add parentheses: WHERE (Region IN ('North', 'South') AND Revenue > 5000) OR (Category = 'Premium' AND Region IN ('North', 'South')) to restrict premium to the desired regions as well" },
+        { "id": "c", "text": "Add parentheses: WHERE Region IN ('North', 'South') AND (Revenue > 5000 OR Category = 'Premium')" },
+        { "id": "d", "text": "Both b and c could be correct depending on the intended business logic; the developer must clarify the requirement before changing the parentheses" }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_sql_d04_q4",
+      "text": "A developer uses PERCENT_RANK() OVER (ORDER BY TestScore DESC) AS PctRank to show where each student stands. A student has PERCENT_RANK = 0. What does this mean?",
+      "options": [
+        { "id": "a", "text": "The student scored 0 on the test" },
+        { "id": "b", "text": "The student has the highest score — PERCENT_RANK is 0 for the first row and 1 for the last row in the ordered set" },
+        { "id": "c", "text": "PERCENT_RANK = 0 means the student is at the 50th percentile" },
+        { "id": "d", "text": "It means the student's score could not be ranked due to NULL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q5",
+      "text": "A stored procedure accepts @SearchTerm NVARCHAR(100) and runs: SELECT * FROM Products WHERE ProductName LIKE @SearchTerm. A developer passes '%' + @SearchTerm + '%' from the application layer. Is there a SQL injection risk?",
+      "options": [
+        { "id": "a", "text": "Yes, because LIKE with parameters always allows injection" },
+        { "id": "b", "text": "No — the value is passed as a parameter, not concatenated into the SQL string; the user input is treated as a data value, not executable SQL, so injection is not possible through the parameter itself" },
+        { "id": "c", "text": "Yes, because % characters in the parameter bypass parameterisation" },
+        { "id": "d", "text": "Yes, because LIKE patterns are parsed by the SQL engine and can inject commands" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q6",
+      "text": "A developer reviews an execution plan and sees a Clustered Index Scan on a 10M-row table despite a WHERE clause that filters on CustomerId. The CustomerId column is the primary key. What is likely causing the scan instead of a seek?",
+      "options": [
+        { "id": "a", "text": "Clustered index scans are always used for primary key lookups" },
+        { "id": "b", "text": "The WHERE clause likely uses an expression or implicit conversion on CustomerId — for example, WHERE CustomerId = '12345' when CustomerId is INT causes an implicit cast that prevents a seek" },
+        { "id": "c", "text": "Primary key clustered indexes cannot be used for seeks in SQL Server" },
+        { "id": "d", "text": "The table statistics are up to date so SQL Server chose a scan intentionally" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q7",
+      "text": "A developer writes a transaction that updates a customer balance and then inserts an audit log entry. The procedure uses TRY...CATCH with ROLLBACK in the CATCH block. What should be checked before issuing ROLLBACK in the CATCH block to avoid an error when no transaction is active?",
+      "options": [
+        { "id": "a", "text": "Check @@ERROR > 0 before rolling back" },
+        { "id": "b", "text": "Check @@TRANCOUNT > 0 before issuing ROLLBACK; if @@TRANCOUNT is 0, there is no active transaction and calling ROLLBACK would raise an error" },
+        { "id": "c", "text": "Check XACT_STATE() = 1 and only rollback if exactly equal to 1" },
+        { "id": "d", "text": "Check SET XACT_ABORT is ON before rolling back" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q8",
+      "text": "A developer groups sales data by SalesRepId and Year, and a manager asks why some reps appear with NULL in the Year column in the GROUP BY output. The query uses: GROUP BY SalesRepId, YEAR(SaleDate). What is the cause?",
+      "options": [
+        { "id": "a", "text": "YEAR() returns NULL when SaleDate is NULL because applying any function to NULL returns NULL, and these NULL groups appear as a separate group" },
+        { "id": "b", "text": "GROUP BY ignores NULL values and they are dropped from results" },
+        { "id": "c", "text": "NULL in SaleDate causes a GROUP BY error in SQL Server" },
+        { "id": "d", "text": "YEAR() converts NULL to 0, not NULL" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_d04_q9",
+      "text": "A developer uses EXCEPT to find customer IDs in Table A that are not in Table B. Table B has a column with some NULL CustomerIds. Will the EXCEPT correctly exclude rows where CustomerIds in A match non-NULL rows in B?",
+      "options": [
+        { "id": "a", "text": "No, EXCEPT cannot handle NULL values and returns an error" },
+        { "id": "b", "text": "Yes — EXCEPT treats NULL as equal to NULL for comparison purposes (unlike standard equality), so it correctly identifies rows absent from B, and NULL CustomerIds in B match NULL CustomerIds in A" },
+        { "id": "c", "text": "EXCEPT ignores NULL rows in both tables" },
+        { "id": "d", "text": "EXCEPT and NOT IN behave identically with NULLs" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q10",
+      "text": "A developer drops and recreates an index every night as part of a maintenance job, claiming this refreshes the statistics. A DBA objects. What is the correct approach and why?",
+      "options": [
+        { "id": "a", "text": "Dropping and recreating indexes is the only way to update statistics" },
+        { "id": "b", "text": "Dropping and recreating indexes is unnecessary and risks data availability; the correct approach is to use ALTER INDEX ... REBUILD or REORGANIZE for fragmentation, and UPDATE STATISTICS for statistics — these operations are less disruptive" },
+        { "id": "c", "text": "Index statistics update automatically after every INSERT and never need manual updates" },
+        { "id": "d", "text": "Dropping indexes before nightly batch jobs and recreating them afterwards is a recommended best practice" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q11",
+      "text": "A developer applies CUME_DIST() OVER (ORDER BY Salary) to an employee list. An employee with salary 50000 gets a value of 0.6. What does this mean?",
+      "options": [
+        { "id": "a", "text": "60% of employees have a higher salary than this employee" },
+        { "id": "b", "text": "60% of employees have a salary less than or equal to this employee's salary of 50000" },
+        { "id": "c", "text": "This employee earns 60% of the maximum salary" },
+        { "id": "d", "text": "The employee is in the 40th percentile" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q12",
+      "text": "A developer needs to soft-delete a record by setting DeletedAt = GETUTCDATE() rather than removing it. Later, a report accidentally includes these soft-deleted rows. What is the root cause and correct preventive measure?",
+      "options": [
+        { "id": "a", "text": "Soft delete should use a BIT column, not a DATETIME column" },
+        { "id": "b", "text": "The report query lacks a WHERE DeletedAt IS NULL filter; this can be systematically prevented by creating filtered views that always exclude soft-deleted rows and having all queries use the view" },
+        { "id": "c", "text": "Soft delete is incompatible with reporting queries" },
+        { "id": "d", "text": "The report should use a LEFT JOIN to the deleted records table instead" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q13",
+      "text": "A developer writes: SELECT p.ProductId, p.Name, s.SupplierName FROM Products p FULL OUTER JOIN Suppliers s ON p.SupplierId = s.SupplierId. What rows appear in the result that would NOT appear in an INNER JOIN?",
+      "options": [
+        { "id": "a", "text": "Rows where both sides have matching values" },
+        { "id": "b", "text": "Products with no supplier (SupplierId is NULL or unmatched) AND suppliers with no products — unmatched rows from both sides, with NULLs for the missing side's columns" },
+        { "id": "c", "text": "Only suppliers with no matching products" },
+        { "id": "d", "text": "FULL OUTER JOIN produces the same result as INNER JOIN plus an extra NULL row" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q14",
+      "text": "A developer wants to return the total order count and the count of orders over $1000 in a single query, without using subqueries or CTEs. Which technique achieves this efficiently?",
+      "options": [
+        { "id": "a", "text": "Use two separate GROUP BY queries joined with UNION ALL" },
+        { "id": "b", "text": "Use conditional aggregation: SELECT COUNT(*) AS TotalOrders, COUNT(CASE WHEN Amount > 1000 THEN 1 END) AS HighValueOrders FROM Orders" },
+        { "id": "c", "text": "Use PIVOT to transform the order amounts into columns" },
+        { "id": "d", "text": "Use a CROSS JOIN to the same table filtered differently" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q15",
+      "text": "A developer uses REPEATABLE READ isolation for a stock reservation transaction. Between two reads of the same row, another session tries to INSERT a new row for the same product in a related table. Can the new INSERT succeed?",
+      "options": [
+        { "id": "a", "text": "No — REPEATABLE READ blocks all INSERTs from other sessions" },
+        { "id": "b", "text": "Yes — REPEATABLE READ only prevents modification of rows already read; it does not prevent new rows from being inserted, which means phantom reads are still possible at this level" },
+        { "id": "c", "text": "Yes — REPEATABLE READ allows all concurrent operations without restriction" },
+        { "id": "d", "text": "No — INSERTs are blocked by shared locks held under REPEATABLE READ" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q16",
+      "text": "A developer stores international phone numbers in a column defined as INT. A phone number starting with +44 is rejected by the application. What is the data type issue and correct fix?",
+      "options": [
+        { "id": "a", "text": "INT supports + prefix when ANSI_PADDING is enabled" },
+        { "id": "b", "text": "INT cannot store leading zeros, plus signs, or country code prefixes; phone numbers should be stored as VARCHAR(20) or NVARCHAR(20) to preserve formatting and international formats" },
+        { "id": "c", "text": "Use BIGINT to support longer phone numbers with country codes" },
+        { "id": "d", "text": "Store phone numbers as DECIMAL(15,0) to allow numeric-only international numbers" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q17",
+      "text": "A developer is designing a stored procedure that accepts a list of OrderIds to process. SQL Server does not natively support array parameters. What is the recommended pattern to pass multiple values to a stored procedure?",
+      "options": [
+        { "id": "a", "text": "Pass values as a comma-separated NVARCHAR and split with STRING_SPLIT() inside the procedure, or use a User-Defined Table Type parameter (table-valued parameter)" },
+        { "id": "b", "text": "Create a separate stored procedure for each OrderId and call them in a loop from the application" },
+        { "id": "c", "text": "Use a global temp table ##Orders to pass data between the application and procedure" },
+        { "id": "d", "text": "Encode values in JSON and parse with OPENJSON inside the procedure" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_d04_q18",
+      "text": "A developer writes a stored procedure that calculates year-end bonuses and updates an Employees table. The procedure is called by a scheduled job. A bug causes some employees to receive double updates. Which coding pattern would make the procedure idempotent (safe to run multiple times)?",
+      "options": [
+        { "id": "a", "text": "Add a TRY...CATCH to ignore duplicate updates" },
+        { "id": "b", "text": "Add a condition to only update employees where BonusAppliedYear <> YEAR(GETDATE()), preventing the same year's bonus being applied again" },
+        { "id": "c", "text": "Use a UNIQUE constraint on EmployeeId" },
+        { "id": "d", "text": "Use SET NOCOUNT ON at the top of the procedure" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q19",
+      "text": "A developer needs to calculate a 3-month moving average of sales. Which window frame clause achieves this?",
+      "options": [
+        { "id": "a", "text": "AVG(Sales) OVER (ORDER BY SaleMonth ROWS BETWEEN 2 PRECEDING AND CURRENT ROW)" },
+        { "id": "b", "text": "AVG(Sales) OVER (PARTITION BY SaleMonth)" },
+        { "id": "c", "text": "AVG(Sales) OVER (ORDER BY SaleMonth RANGE BETWEEN INTERVAL '3' MONTH PRECEDING AND CURRENT ROW)" },
+        { "id": "d", "text": "AVG(Sales) OVER (ORDER BY SaleMonth ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_d04_q20",
+      "text": "A developer creates a filtered index: CREATE INDEX IX_ActiveUsers ON Users(LastLogin) WHERE IsActive = 1. Which query will benefit most from this index?",
+      "options": [
+        { "id": "a", "text": "SELECT * FROM Users WHERE IsActive = 0 ORDER BY LastLogin" },
+        { "id": "b", "text": "SELECT UserId, LastLogin FROM Users WHERE IsActive = 1 AND LastLogin > '2025-01-01'" },
+        { "id": "c", "text": "SELECT COUNT(*) FROM Users" },
+        { "id": "d", "text": "SELECT * FROM Users WHERE LastLogin IS NOT NULL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q21",
+      "text": "A developer writes a query using NOT IN with a subquery: WHERE ProductId NOT IN (SELECT ProductId FROM Discontinued). The Discontinued table has one row where ProductId is NULL. What unexpected result occurs?",
+      "options": [
+        { "id": "a", "text": "The query returns all products because NULL means the subquery is empty" },
+        { "id": "b", "text": "The query returns no rows because NOT IN with a NULL in the subquery causes every comparison to return UNKNOWN, making the WHERE condition UNKNOWN for all rows" },
+        { "id": "c", "text": "The NULL row is ignored and NOT IN works correctly for non-NULL values" },
+        { "id": "d", "text": "SQL Server raises an error when NOT IN encounters a NULL" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q22",
+      "text": "A developer writes a CTE that builds a date series using a recursive query. The CTE generates one row per day for a year (365 iterations). By default, SQL Server limits recursion to how many levels, and how is this changed?",
+      "options": [
+        { "id": "a", "text": "Default limit is 100 levels; it can be increased with OPTION (MAXRECURSION n) where n can be up to 32767 or 0 for unlimited" },
+        { "id": "b", "text": "Default limit is 1000 levels; it cannot be changed" },
+        { "id": "c", "text": "Default limit is 32767 levels; lower values improve performance" },
+        { "id": "d", "text": "There is no default recursion limit in SQL Server CTEs" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_sql_d04_q23",
+      "text": "A developer adds a UNIQUE constraint to the Email column in a Users table that already has data. The constraint creation fails. What is the most likely cause and resolution?",
+      "options": [
+        { "id": "a", "text": "UNIQUE constraints cannot be applied to columns that already contain data" },
+        { "id": "b", "text": "The existing data contains duplicate email values or NULLs in multiple rows (SQL Server allows one NULL in a UNIQUE constraint, but multiple NULLs violate it); duplicates must be resolved before the constraint can be added" },
+        { "id": "c", "text": "UNIQUE constraints require the column to be a primary key first" },
+        { "id": "d", "text": "The Email column must be NOT NULL before a UNIQUE constraint can be applied" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q24",
+      "text": "A developer needs to return products along with their category name, where some products have no category (NULL CategoryId). The requirement says uncategorised products must appear in results with 'Uncategorised' shown in the CategoryName column. Which JOIN and expression achieves this?",
+      "options": [
+        { "id": "a", "text": "INNER JOIN Categories c ON p.CategoryId = c.CategoryId; SELECT ISNULL(c.CategoryName, 'Uncategorised')" },
+        { "id": "b", "text": "LEFT JOIN Categories c ON p.CategoryId = c.CategoryId; SELECT COALESCE(c.CategoryName, 'Uncategorised') AS CategoryName" },
+        { "id": "c", "text": "RIGHT JOIN Categories c ON p.CategoryId = c.CategoryId; SELECT c.CategoryName" },
+        { "id": "d", "text": "CROSS JOIN Categories c; SELECT c.CategoryName" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q25",
+      "text": "A developer adds GROUP BY ProductId, CategoryId, SubcategoryId, SupplierName to a reporting query but the product manager complains that rows are not being aggregated at the product level as expected. What is the problem?",
+      "options": [
+        { "id": "a", "text": "GROUP BY with more than 3 columns is not supported" },
+        { "id": "b", "text": "If SupplierName varies per product (e.g., a product can have multiple suppliers), adding SupplierName to GROUP BY creates a separate group per supplier, preventing aggregation at the product level as intended" },
+        { "id": "c", "text": "CategoryId and SubcategoryId should not be grouped together" },
+        { "id": "d", "text": "GROUP BY on VARCHAR columns like SupplierName is case-sensitive and creates duplicate groups" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q26",
+      "text": "A developer receives a report that a transaction involving a bank transfer was partially committed — the debit happened but the credit did not. The code uses TRY...CATCH. On investigation, they find XACT_ABORT was OFF and the CATCH block contained only a PRINT statement. What should the CATCH block have done?",
+      "options": [
+        { "id": "a", "text": "The CATCH block should have used RETURN 0 to exit the procedure" },
+        { "id": "b", "text": "The CATCH block must issue ROLLBACK TRANSACTION (or check XACT_STATE) to undo the debit when the credit fails; a PRINT statement does not undo any changes" },
+        { "id": "c", "text": "The CATCH block should have retried the credit operation" },
+        { "id": "d", "text": "SET XACT_ABORT ON would have prevented the CATCH block from executing" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q27",
+      "text": "A developer uses LAG(Revenue, 2) OVER (ORDER BY QuarterDate) to get the revenue from two periods ago. For the second row in the result set, what value does LAG return?",
+      "options": [
+        { "id": "a", "text": "The revenue from the first row" },
+        { "id": "b", "text": "NULL, because there is no row two positions before the second row" },
+        { "id": "c", "text": "0, the default for missing LAG values" },
+        { "id": "d", "text": "The same value as the current row" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q28",
+      "text": "A developer creates a table with an IDENTITY column as the primary key and also needs a business key (OrderNumber VARCHAR(20)) that must be unique. Which combination of constraints is most appropriate?",
+      "options": [
+        { "id": "a", "text": "PRIMARY KEY on OrderId (identity); no constraint on OrderNumber — enforce uniqueness in application code" },
+        { "id": "b", "text": "PRIMARY KEY on OrderId (identity) and a UNIQUE constraint on OrderNumber — this enforces both surrogate and business key integrity at the database level" },
+        { "id": "c", "text": "PRIMARY KEY on both OrderId and OrderNumber as a composite key" },
+        { "id": "d", "text": "UNIQUE constraint on OrderId; PRIMARY KEY on OrderNumber" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q29",
+      "text": "A developer uses CROSS APPLY to call a table-valued function for each row in a Customers query. A colleague asks why OUTER APPLY wasn't used. What is the difference?",
+      "options": [
+        { "id": "a", "text": "OUTER APPLY and CROSS APPLY are identical in SQL Server" },
+        { "id": "b", "text": "CROSS APPLY excludes customer rows where the TVF returns no rows (like an INNER JOIN); OUTER APPLY keeps customer rows even when the TVF returns no rows, placing NULLs in the TVF columns (like a LEFT JOIN)" },
+        { "id": "c", "text": "OUTER APPLY returns the inverse of CROSS APPLY — only rows where the TVF returns nothing" },
+        { "id": "d", "text": "CROSS APPLY is for correlated subqueries; OUTER APPLY is for uncorrelated ones" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_sql_d04_q30",
+      "text": "A developer needs to write a query that gives each product a rank by revenue within each category, but wants no gaps in ranks when there are ties. Which window function is correct?",
+      "options": [
+        { "id": "a", "text": "RANK() OVER (PARTITION BY CategoryId ORDER BY Revenue DESC)" },
+        { "id": "b", "text": "ROW_NUMBER() OVER (PARTITION BY CategoryId ORDER BY Revenue DESC)" },
+        { "id": "c", "text": "DENSE_RANK() OVER (PARTITION BY CategoryId ORDER BY Revenue DESC)" },
+        { "id": "d", "text": "NTILE(1) OVER (PARTITION BY CategoryId ORDER BY Revenue DESC)" }
+      ],
+      "correctOptionId": "c"
+    }
+  ]
+}

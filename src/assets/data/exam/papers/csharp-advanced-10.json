@@ -1,0 +1,339 @@
+{
+  "id": "qp_cs_a10",
+  "title": "C# Advanced — Paper 10",
+  "description": "Advanced C# covering Async Patterns & CancellationToken, Generics, Generic Variance, LINQ Core & Advanced Operators, Records/Tuples/Deconstruction, Advanced Exception Handling, Memory Management, Span<T>/Memory<T>, and Reflection.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_cs_a10_q1",
+      "text": "What is the difference between a positional record and a nominal record in C# 9+?",
+      "options": [
+        { "id": "a", "text": "Positional records are value types; nominal records are reference types." },
+        { "id": "b", "text": "A positional record uses a primary constructor to declare properties concisely: 'record Point(int X, int Y)'; a nominal record uses standard property declarations with init accessors. Both are functionally equivalent but positional syntax is more concise." },
+        { "id": "c", "text": "Nominal records support inheritance; positional records do not." },
+        { "id": "d", "text": "Positional records are immutable; nominal records are always mutable." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q2",
+      "text": "What is the purpose of the CancellationTokenSource.CancelAfter() method?",
+      "options": [
+        { "id": "a", "text": "It cancels all registered tokens after the source is disposed." },
+        { "id": "b", "text": "CancelAfter() schedules automatic cancellation after a specified delay (TimeSpan or milliseconds), enabling timeout-based cancellation without manually creating a timer." },
+        { "id": "c", "text": "CancelAfter() is equivalent to Thread.Sleep() followed by Cancel()." },
+        { "id": "d", "text": "CancelAfter() cancels any downstream linked tokens only." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q3",
+      "text": "What is the 'notnull' generic constraint in C# 8+ and what does it enforce?",
+      "options": [
+        { "id": "a", "text": "notnull constrains T to value types only." },
+        { "id": "b", "text": "The 'notnull' constraint ensures T is a non-nullable type (either a non-nullable reference type or a value type); with nullable reference types enabled, it prevents nullable reference types from being used as T." },
+        { "id": "c", "text": "notnull automatically adds null checks to all method calls on T." },
+        { "id": "d", "text": "notnull is equivalent to the 'struct' constraint." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q4",
+      "text": "What is the Func<in T, out TResult> contravariant input and covariant output in practice?",
+      "options": [
+        { "id": "a", "text": "Func<T,TResult> is invariant in both T and TResult." },
+        { "id": "b", "text": "Func<T,TResult> is contravariant in T (in) and covariant in TResult (out): Func<object,string> can be assigned to Func<string,object> because it accepts any object (handles strings) and returns a string (which is an object)." },
+        { "id": "c", "text": "Func<T,TResult> is covariant in T and contravariant in TResult." },
+        { "id": "d", "text": "Variance does not apply to Func<T,TResult>." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q5",
+      "text": "What is LINQ's Except() operator and what does it return?",
+      "options": [
+        { "id": "a", "text": "Except() returns elements present in both sequences." },
+        { "id": "b", "text": "Except() returns elements from the first sequence that are not present in the second sequence (set difference), using the default equality comparer or a provided one." },
+        { "id": "c", "text": "Except() excludes the first N elements of a sequence." },
+        { "id": "d", "text": "Except() removes duplicates from a single sequence." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q6",
+      "text": "What does LINQ's Intersect() operator do?",
+      "options": [
+        { "id": "a", "text": "Intersect() returns elements that are in the first sequence but not the second." },
+        { "id": "b", "text": "Intersect() returns the set intersection: elements that appear in both sequences, using the default equality comparer or a provided one." },
+        { "id": "c", "text": "Intersect() concatenates two sequences and removes duplicates." },
+        { "id": "d", "text": "Intersect() returns the union of both sequences." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q7",
+      "text": "How does C# 12 collection expressions work and how do they relate to existing collection types?",
+      "options": [
+        { "id": "a", "text": "Collection expressions only work with arrays." },
+        { "id": "b", "text": "C# 12 collection expressions use '[1, 2, 3]' syntax to initialize any collection type that supports it (arrays, List<T>, Span<T>, ImmutableArray<T>, etc.); the compiler picks the optimal initialization based on the target type." },
+        { "id": "c", "text": "Collection expressions always create a new List<T>." },
+        { "id": "d", "text": "Collection expressions require the CollectionBuilder attribute." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q8",
+      "text": "What is the checked/unchecked context for arithmetic in C# and what is the default?",
+      "options": [
+        { "id": "a", "text": "The default context is checked; overflow throws OverflowException by default." },
+        { "id": "b", "text": "The default arithmetic context is unchecked; integer overflow silently wraps. The 'checked' keyword/block enables overflow detection, throwing OverflowException on integer overflow." },
+        { "id": "c", "text": "Checked is the default for floating-point; unchecked for integers." },
+        { "id": "d", "text": "Both checked and unchecked are compile-time only; there is no runtime difference." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q9",
+      "text": "What is GC.Collect() used for and when is it appropriate to call it?",
+      "options": [
+        { "id": "a", "text": "GC.Collect() should be called frequently to optimize memory usage." },
+        { "id": "b", "text": "GC.Collect() triggers an explicit garbage collection; it should rarely be called in production code as it interrupts normal GC scheduling. Legitimate uses include after a known large allocation release or in test/diagnostic scenarios." },
+        { "id": "c", "text": "GC.Collect() compacts the managed heap." },
+        { "id": "d", "text": "GC.Collect() is required to free objects that implement IDisposable." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q10",
+      "text": "What is the purpose of ArrayPool<T>.Shared in .NET?",
+      "options": [
+        { "id": "a", "text": "ArrayPool<T>.Shared provides a single shared array of type T." },
+        { "id": "b", "text": "ArrayPool<T>.Shared is a shared pool of reusable arrays; you Rent(size) to get an array (may be larger than requested) and Return() it when done, dramatically reducing GC pressure for short-lived large arrays." },
+        { "id": "c", "text": "ArrayPool<T>.Shared is only safe to use on a single thread." },
+        { "id": "d", "text": "ArrayPool<T>.Shared always returns zero-initialized arrays." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q11",
+      "text": "What is the difference between Memory<T>.Span and Memory<T> itself?",
+      "options": [
+        { "id": "a", "text": "Memory<T>.Span is a different type stored on the heap." },
+        { "id": "b", "text": "Memory<T>.Span returns a Span<T> over the same memory region; Span<T> is a ref struct (stack-only) while Memory<T> is a regular struct that can be stored as a field, passed to async methods, and used across await points." },
+        { "id": "c", "text": "Memory<T>.Span copies the data to a new stack allocation." },
+        { "id": "d", "text": "They are the same type; .Span is just an alias." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q12",
+      "text": "What is reflection emit and how does it differ from expression tree compilation?",
+      "options": [
+        { "id": "a", "text": "They produce identical IL code and are interchangeable." },
+        { "id": "b", "text": "Reflection.Emit (System.Reflection.Emit) allows generating full IL byte code for dynamic types, methods, and assemblies at runtime with fine-grained control; expression tree compilation is higher-level, limited to expressions (not arbitrary statements), but easier to use." },
+        { "id": "c", "text": "Expression trees are lower-level than Reflection.Emit." },
+        { "id": "d", "text": "Reflection.Emit is deprecated; expression trees replace it entirely." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q13",
+      "text": "What is a generic interface default implementation in C# 8+ and what restrictions apply?",
+      "options": [
+        { "id": "a", "text": "Default interface methods are only allowed on abstract interfaces." },
+        { "id": "b", "text": "C# 8+ allows interface methods to have a default implementation body; classes implementing the interface inherit the default if not overridden. Restrictions: default implementations require the CLR >=.NET 5 (or compatible), and they are accessed via the interface type, not the class type." },
+        { "id": "c", "text": "Default interface implementations replace abstract classes entirely." },
+        { "id": "d", "text": "Default interface methods can be sealed by the implementing class." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q14",
+      "text": "How does reflection handle generic methods and how do you invoke a generic method with a specific type argument?",
+      "options": [
+        { "id": "a", "text": "Generic methods cannot be invoked via reflection." },
+        { "id": "b", "text": "Get the MethodInfo for the open generic method, then call MakeGenericMethod(typeof(T)) to get a closed MethodInfo, then call .Invoke(instance, args) with the appropriate arguments." },
+        { "id": "c", "text": "You must specify generic arguments in GetMethod() directly." },
+        { "id": "d", "text": "Generic methods are invoked without specifying type arguments; the runtime infers them." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q15",
+      "text": "What is the IAsyncEnumerable<T> cancellation pattern with WithCancellation()?",
+      "options": [
+        { "id": "a", "text": "WithCancellation() is called on IAsyncEnumerable<T> to replace the source." },
+        { "id": "b", "text": "Calling asyncEnumerable.WithCancellation(token) returns a configured IAsyncEnumerable<T> that passes the token to the underlying GetAsyncEnumerator(token), enabling the producer to observe the token and stop early." },
+        { "id": "c", "text": "WithCancellation() converts an IAsyncEnumerable into a Task<List<T>>." },
+        { "id": "d", "text": "WithCancellation() automatically cancels after a fixed timeout." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q16",
+      "text": "What is a covariant return type on a record clone method ('protected virtual T Clone()') in C#?",
+      "options": [
+        { "id": "a", "text": "Records do not have a Clone method." },
+        { "id": "b", "text": "The compiler generates a 'protected virtual T Clone()' method on records used for 'with' expressions; in derived records, this is overridden with a covariant return type returning the derived record type, ensuring 'with' produces the correct derived type." },
+        { "id": "c", "text": "Clone() on records is a public static method." },
+        { "id": "d", "text": "The Clone method uses MemberwiseClone() and returns object." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q17",
+      "text": "What is the LINQ Union() operator and how does it differ from Concat()?",
+      "options": [
+        { "id": "a", "text": "Union() and Concat() return identical results." },
+        { "id": "b", "text": "Union() returns distinct elements from both sequences (set union, no duplicates); Concat() appends the second sequence to the first without removing duplicates." },
+        { "id": "c", "text": "Concat() removes duplicates; Union() keeps all duplicates." },
+        { "id": "d", "text": "Union() requires both sequences to be of the same concrete type." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q18",
+      "text": "What is the difference between Marshal.AllocHGlobal() and stackalloc in unsafe C#?",
+      "options": [
+        { "id": "a", "text": "They are interchangeable; both allocate unmanaged memory." },
+        { "id": "b", "text": "Marshal.AllocHGlobal() allocates unmanaged heap memory that persists until Marshal.FreeHGlobal() is called; stackalloc allocates on the stack and is automatically freed when the method exits. Stack allocations are faster but size-limited." },
+        { "id": "c", "text": "stackalloc allocates on the heap; Marshal.AllocHGlobal() allocates on the stack." },
+        { "id": "d", "text": "Marshal.AllocHGlobal() is managed by the GC; stackalloc is not." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q19",
+      "text": "What is a ValueTask<T> backed by IValueTaskSource<T> and when is it used?",
+      "options": [
+        { "id": "a", "text": "IValueTaskSource<T> is only used in the .NET runtime itself, not in user code." },
+        { "id": "b", "text": "IValueTaskSource<T> allows pooling the ValueTask<T>'s backing state (instead of allocating a new Task<T> each time), enabling zero-allocation async patterns for high-performance scenarios like I/O on hot paths." },
+        { "id": "c", "text": "IValueTaskSource<T> is equivalent to TaskCompletionSource<T>." },
+        { "id": "d", "text": "ValueTask<T> backed by IValueTaskSource<T> cannot be awaited multiple times." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q20",
+      "text": "What is the purpose of MemoryMarshal.Cast<TFrom, TTo>() in .NET?",
+      "options": [
+        { "id": "a", "text": "MemoryMarshal.Cast reinterprets the type of elements in a span." },
+        { "id": "b", "text": "MemoryMarshal.Cast<TFrom,TTo>(Span<TFrom>) reinterprets the raw bytes of the span as a different element type without copying, e.g., treating a Span<byte> as Span<int> to read integer data from a byte buffer." },
+        { "id": "c", "text": "MemoryMarshal.Cast converts managed memory to unmanaged memory." },
+        { "id": "d", "text": "Both a and b are correct." }
+      ],
+      "correctOptionId": "d"
+    },
+    {
+      "id": "qp_cs_a10_q21",
+      "text": "What is a generic variance constraint combining 'in' and 'out' on different type parameters?",
+      "options": [
+        { "id": "a", "text": "A single interface cannot have both in and out type parameters." },
+        { "id": "b", "text": "An interface can have both: e.g., interface IConverter<in TInput, out TOutput> { TOutput Convert(TInput input); } TInput is contravariant (input only), TOutput is covariant (output only), so IConverter<Animal,string> can be used as IConverter<Dog,object>." },
+        { "id": "c", "text": "Combining in and out cancels both, making the parameters invariant." },
+        { "id": "d", "text": "Both in and out make the type parameter bidirectional." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q22",
+      "text": "What is a LINQ query continuation using 'into' in query syntax?",
+      "options": [
+        { "id": "a", "text": "'into' in LINQ terminates the query early." },
+        { "id": "b", "text": "'into' is used after 'select' or 'group' to introduce a new range variable for a query continuation, allowing further operations (where, select, orderby) on the projected results without starting a new query." },
+        { "id": "c", "text": "'into' is used for inserting items into a collection via LINQ." },
+        { "id": "d", "text": "'into' is only valid with the join clause." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q23",
+      "text": "What is the difference between NullReferenceException and ArgumentNullException and when should each be thrown?",
+      "options": [
+        { "id": "a", "text": "They are equivalent; use either for null-related errors." },
+        { "id": "b", "text": "NullReferenceException is thrown by the runtime when dereferencing a null; ArgumentNullException should be thrown explicitly by library code to validate that a required argument is not null, giving a clearer error message with the parameter name." },
+        { "id": "c", "text": "ArgumentNullException is thrown by the runtime; NullReferenceException is user-thrown." },
+        { "id": "d", "text": "Neither should ever be thrown manually; use Debug.Assert instead." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q24",
+      "text": "What is a Span<T> over a string (via AsSpan()) and what does it enable?",
+      "options": [
+        { "id": "a", "text": "string.AsSpan() copies the string into a new char array." },
+        { "id": "b", "text": "string.AsSpan() returns a ReadOnlySpan<char> over the string's underlying character buffer without copying, enabling efficient substring operations, character-level parsing, and zero-allocation string manipulation." },
+        { "id": "c", "text": "string.AsSpan() enables mutating the string's characters in place." },
+        { "id": "d", "text": "string.AsSpan() is only available for StringBuilder." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q25",
+      "text": "What is Type.MakeGenericType() used for in reflection?",
+      "options": [
+        { "id": "a", "text": "It creates an instance of a generic type." },
+        { "id": "b", "text": "Type.MakeGenericType(typeof(T)) constructs a closed generic type from an open generic type definition at runtime: e.g., typeof(List<>).MakeGenericType(typeof(int)) returns typeof(List<int>), which can then be used with Activator.CreateInstance." },
+        { "id": "c", "text": "It defines a new generic type at runtime." },
+        { "id": "d", "text": "MakeGenericType is used to add type parameters to an existing closed type." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q26",
+      "text": "What is an async enumerable producer that uses ConfigureAwait(false) and why does it matter?",
+      "options": [
+        { "id": "a", "text": "ConfigureAwait(false) cannot be used inside async iterators." },
+        { "id": "b", "text": "Inside an async iterator, each 'await' can use ConfigureAwait(false) to avoid capturing the synchronization context; this is important for library code producers that should not marshal continuations back to a specific context (e.g., UI thread)." },
+        { "id": "c", "text": "ConfigureAwait(false) on an async iterator makes it run synchronously." },
+        { "id": "d", "text": "ConfigureAwait(false) only matters when the consumer calls GetAsyncEnumerator()." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q27",
+      "text": "What is the difference between an exception filter (when) and catching then re-throwing?",
+      "options": [
+        { "id": "a", "text": "They are semantically identical; the filter is only a style preference." },
+        { "id": "b", "text": "An exception filter (when) evaluates before stack unwinding; if the condition is false the stack is not unwound and debuggers show the original throw site. Catch-then-rethrow unwinds the stack before the check, losing the original call context if the exception is re-thrown via 'throw ex'." },
+        { "id": "c", "text": "Exception filters only work in async methods." },
+        { "id": "d", "text": "Re-throwing with bare 'throw' and using a filter have identical debugger behavior." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q28",
+      "text": "What is the purpose of the Span<T>.TryCopyTo() method?",
+      "options": [
+        { "id": "a", "text": "TryCopyTo() copies elements one-by-one with error recovery." },
+        { "id": "b", "text": "TryCopyTo(destination) attempts to copy all elements to the destination Span<T>; it returns true on success and false if the destination is too short, without throwing an exception, enabling safe copy operations with a capacity check." },
+        { "id": "c", "text": "TryCopyTo() copies as many elements as fit and returns the count." },
+        { "id": "d", "text": "TryCopyTo() is only available on Memory<T>, not Span<T>." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q29",
+      "text": "What is the tuple swap idiom in C# 7+ using deconstruction?",
+      "options": [
+        { "id": "a", "text": "Tuples cannot be used to swap variables." },
+        { "id": "b", "text": "(a, b) = (b, a); uses tuple deconstruction to swap two variables atomically without a temporary variable, as the right-hand side tuple is created before the left-hand side assignment." },
+        { "id": "c", "text": "The swap requires creating a named tuple type first." },
+        { "id": "d", "text": "(a, b) = (b, a) is only valid for value types." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_cs_a10_q30",
+      "text": "What does GC.KeepAlive() do and when is it necessary?",
+      "options": [
+        { "id": "a", "text": "GC.KeepAlive() pins the object in memory permanently." },
+        { "id": "b", "text": "GC.KeepAlive(obj) ensures the GC considers the object reachable until the call point, preventing premature collection in scenarios where the only live reference is used before this point (e.g., in P/Invoke when a delegate's lifetime must extend to cover the native callback)." },
+        { "id": "c", "text": "GC.KeepAlive() increments the object's reference count." },
+        { "id": "d", "text": "GC.KeepAlive() adds the object to gen 2 permanently." }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}

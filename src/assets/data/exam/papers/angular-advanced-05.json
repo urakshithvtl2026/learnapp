@@ -1,0 +1,339 @@
+{
+  "id": "qp_ng_a05",
+  "title": "Angular Advanced — Paper 5",
+  "description": "Advanced Angular concepts: reactive forms, custom validators, routing, guards, HTTP client, RxJS, change detection, custom directives/pipes, state management, and testing.",
+  "createdAt": "2026-02-26T09:00:00Z",
+  "timer": { "enabled": true, "durationSeconds": 3600, "autoSubmit": true },
+  "questions": [
+    {
+      "id": "qp_ng_a05_q1",
+      "text": "Given this code:\n\nconst form = this.fb.nonNullable.group({\n  username: ['', Validators.required],\n  age: [0, Validators.min(18)]\n});\n\nWhat does nonNullable mean in this context?",
+      "options": [
+        { "id": "a", "text": "The form will throw an error if any control is set to null" },
+        { "id": "b", "text": "When reset() is called, controls restore to their initial values rather than null" },
+        { "id": "c", "text": "The form ignores null values sent from the server" },
+        { "id": "d", "text": "Controls cannot be disabled programmatically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q2",
+      "text": "What is the purpose of the FormGroup's addControl() method?",
+      "options": [
+        { "id": "a", "text": "Adds a validator to an existing control" },
+        { "id": "b", "text": "Dynamically adds a new named FormControl (or nested FormGroup/FormArray) to the FormGroup at runtime" },
+        { "id": "c", "text": "Adds a control to a FormArray" },
+        { "id": "d", "text": "Registers a control with a template-driven form directive" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q3",
+      "text": "Given this code:\n\nform.get('email').setValidators([Validators.required, Validators.email]);\nform.get('email').updateValueAndValidity();\n\nWhy is updateValueAndValidity() called after setValidators()?",
+      "options": [
+        { "id": "a", "text": "To save the validators to local storage" },
+        { "id": "b", "text": "To trigger re-validation with the new validators immediately, since setValidators() alone does not re-run validation" },
+        { "id": "c", "text": "To mark the control as touched" },
+        { "id": "d", "text": "To emit the new value to the parent FormGroup" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q4",
+      "text": "Given this validator:\n\nexport function forbiddenValue(forbidden: string): ValidatorFn {\n  return (control: AbstractControl): ValidationErrors | null => {\n    return control.value === forbidden\n      ? { forbiddenValue: { value: control.value } }\n      : null;\n  };\n}\n\nHow would you apply this to a FormControl for the value 'admin'?",
+      "options": [
+        { "id": "a", "text": "new FormControl('', forbiddenValue)" },
+        { "id": "b", "text": "new FormControl('', forbiddenValue('admin'))" },
+        { "id": "c", "text": "new FormControl('', [forbiddenValue, 'admin'])" },
+        { "id": "d", "text": "new FormControl('', { validator: forbiddenValue('admin') })" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q5",
+      "text": "Which of the following correctly implements an AsyncValidatorFn that checks if a username is taken?",
+      "options": [
+        { "id": "a", "text": "return (c) => this.userService.checkUsername(c.value);" },
+        { "id": "b", "text": "return (c: AbstractControl): Observable<ValidationErrors | null> => this.userService.checkUsername(c.value).pipe(map(taken => taken ? { usernameTaken: true } : null));" },
+        { "id": "c", "text": "return (c) => { this.userService.checkUsername(c.value).subscribe(taken => taken ? { usernameTaken: true } : null); };" },
+        { "id": "d", "text": "return async (c) => await this.userService.checkUsername(c.value);" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q6",
+      "text": "Given this route config:\n{ path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard', breadcrumb: 'Home' } }\n\nHow do you access the static 'title' data in the component?",
+      "options": [
+        { "id": "a", "text": "this.router.data['title']" },
+        { "id": "b", "text": "this.route.snapshot.data['title']" },
+        { "id": "c", "text": "this.route.params['title']" },
+        { "id": "d", "text": "this.route.queryParams['title']" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q7",
+      "text": "What is the RouterLinkActive directive used for?",
+      "options": [
+        { "id": "a", "text": "Programmatically navigating to a route" },
+        { "id": "b", "text": "Adding a CSS class to an element when its associated routerLink matches the current active URL" },
+        { "id": "c", "text": "Lazy loading a component when a link is clicked" },
+        { "id": "d", "text": "Detecting if a route is guarded" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q8",
+      "text": "In Angular, what is the functional router guard syntax introduced in Angular 15+ and what replaces CanActivate class-based guards?",
+      "options": [
+        { "id": "a", "text": "Functional guards replace class-based guards; you define a plain function of type CanActivateFn that can inject services using inject()" },
+        { "id": "b", "text": "Both functional and class-based guards work identically with no syntax difference" },
+        { "id": "c", "text": "Class-based guards were replaced by route interceptors" },
+        { "id": "d", "text": "Functional guards can only redirect; class-based guards can block navigation" }
+      ],
+      "correctOptionId": "a"
+    },
+    {
+      "id": "qp_ng_a05_q9",
+      "text": "What does withPreloading(PreloadAllModules) do when passed to provideRouter()?",
+      "options": [
+        { "id": "a", "text": "Disables lazy loading for all modules" },
+        { "id": "b", "text": "Preloads all lazy-loaded modules in the background after the initial application load completes" },
+        { "id": "c", "text": "Loads only the module for the current route" },
+        { "id": "d", "text": "Compiles all lazy modules at build time" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q10",
+      "text": "Given this interceptor:\n\nexport const cacheInterceptor: HttpInterceptorFn = (req, next) => {\n  if (req.method !== 'GET') return next(req);\n  const cached = cache.get(req.url);\n  if (cached) return of(cached);\n  return next(req).pipe(tap(res => cache.set(req.url, res)));\n};\n\nWhat is this interceptor doing?",
+      "options": [
+        { "id": "a", "text": "Blocking all non-GET requests" },
+        { "id": "b", "text": "Caching GET responses: returning from cache if available, otherwise making the real request and caching the result" },
+        { "id": "c", "text": "Adding cache-control headers to all requests" },
+        { "id": "d", "text": "Clearing the cache after each response" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q11",
+      "text": "What is the purpose of HttpParams in Angular HttpClient?",
+      "options": [
+        { "id": "a", "text": "To configure request timeout settings" },
+        { "id": "b", "text": "To build immutable URL query string parameters in a type-safe, chainable way for HTTP requests" },
+        { "id": "c", "text": "To parse URL path parameters from the response" },
+        { "id": "d", "text": "To set HTTP headers for the request" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q12",
+      "text": "Given this RxJS code:\n\nconst results$ = this.searchTerm$.pipe(\n  debounceTime(400),\n  distinctUntilChanged(),\n  switchMap(term => this.searchService.search(term)),\n  shareReplay(1)\n);\n\nWhat does shareReplay(1) add to this pipeline?",
+      "options": [
+        { "id": "a", "text": "It replays the search 1 time if it errors" },
+        { "id": "b", "text": "It multicasts the observable, shares it among multiple subscribers, and replays the last 1 emission to new late subscribers" },
+        { "id": "c", "text": "It caches only the first search result" },
+        { "id": "d", "text": "It buffers 1 emission before forwarding to subscribers" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q13",
+      "text": "What is the difference between Subject and AsyncSubject in RxJS?",
+      "options": [
+        { "id": "a", "text": "Subject emits asynchronously; AsyncSubject emits synchronously" },
+        { "id": "b", "text": "AsyncSubject only emits the last value and only when the sequence completes; Subject emits every value as it arrives" },
+        { "id": "c", "text": "AsyncSubject supports multiple simultaneous subscribers; Subject does not" },
+        { "id": "d", "text": "They are identical but AsyncSubject has an automatic timeout" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q14",
+      "text": "In Angular, what is the zoneless change detection mode and how is it enabled?",
+      "options": [
+        { "id": "a", "text": "It removes all change detection; enabled with ChangeDetectionStrategy.None" },
+        { "id": "b", "text": "It eliminates the dependency on Zone.js and relies on signals and explicit detectChanges() calls; enabled by passing provideExperimentalZonelessChangeDetection() to bootstrapApplication" },
+        { "id": "c", "text": "It runs change detection outside the browser; enabled with NgZone.runOutsideAngular()" },
+        { "id": "d", "text": "It is a Webpack configuration that removes Zone.js from the bundle" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q15",
+      "text": "Given an OnPush component that displays data from a service via a manually managed subscription (not async pipe), what must you do after updating the data property from the subscription callback?",
+      "options": [
+        { "id": "a", "text": "Call NgZone.runOutsideAngular()" },
+        { "id": "b", "text": "Call this.cdr.markForCheck() to schedule the component for checking in the next change detection cycle" },
+        { "id": "c", "text": "Use setTimeout() to defer the update" },
+        { "id": "d", "text": "Nothing — OnPush automatically detects service changes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q16",
+      "text": "Given this code:\n\n@Directive({ selector: '[appAutoFocus]' })\nexport class AutoFocusDirective implements AfterViewInit {\n  constructor(private el: ElementRef) {}\n  ngAfterViewInit() {\n    this.el.nativeElement.focus();\n  }\n}\n\nWhat does this directive do and why is ngAfterViewInit the correct lifecycle hook?",
+      "options": [
+        { "id": "a", "text": "Focuses the element on every change detection; AfterViewInit fires before the template is rendered" },
+        { "id": "b", "text": "Focuses the host element after the view is fully initialized; AfterViewInit fires after the component's template and children are rendered, ensuring the element exists in the DOM" },
+        { "id": "c", "text": "Focuses the element on every click; AfterViewInit handles click events" },
+        { "id": "d", "text": "Focuses the first input inside the element; AfterViewInit runs after HTTP calls complete" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q17",
+      "text": "Given this pipe:\n\n@Pipe({ name: 'timeAgo' })\nexport class TimeAgoPipe implements PipeTransform {\n  transform(date: Date): string {\n    const seconds = Math.floor((Date.now() - date.getTime()) / 1000);\n    return seconds < 60 ? 'just now' : `${Math.floor(seconds / 60)} min ago`;\n  }\n}\n\nShould this pipe be pure or impure, and why?",
+      "options": [
+        { "id": "a", "text": "Pure — the input date reference does not change so pure is fine" },
+        { "id": "b", "text": "Impure — the transform output changes over time even when the input date reference stays the same, so it must re-run on each change detection cycle" },
+        { "id": "c", "text": "Pure — Angular caches dates automatically" },
+        { "id": "d", "text": "Neither — time-based pipes must use setTimeout internally instead" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q18",
+      "text": "In NgRx, what is the difference between a Feature Store and the Root Store?",
+      "options": [
+        { "id": "a", "text": "Feature stores cannot have effects; root stores can" },
+        { "id": "b", "text": "The root store is registered with StoreModule.forRoot/provideStore; feature stores are registered with StoreModule.forFeature/provideState and are typically lazy-loaded with their feature module" },
+        { "id": "c", "text": "Feature stores are synchronous; root store is asynchronous" },
+        { "id": "d", "text": "Root store uses reducers; feature stores use only selectors" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q19",
+      "text": "In Angular Signals, what happens when you call effect() and one of the signals it reads changes?",
+      "options": [
+        { "id": "a", "text": "The effect runs immediately on the same microtask" },
+        { "id": "b", "text": "The effect is scheduled to re-run asynchronously after the current change detection cycle, executing its side-effect code with the new signal values" },
+        { "id": "c", "text": "The effect only runs once during component initialization" },
+        { "id": "d", "text": "The effect emits a new observable event" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q20",
+      "text": "Given this test:\n\nit('should call API on init', fakeAsync(() => {\n  spyOn(service, 'getUsers').and.returnValue(of([]).pipe(delay(100)));\n  fixture.detectChanges();\n  tick(100);\n  fixture.detectChanges();\n  expect(component.users.length).toBe(0);\n}));\n\nWhy is tick(100) called with 100?",
+      "options": [
+        { "id": "a", "text": "To advance real time by 100 milliseconds" },
+        { "id": "b", "text": "To advance the fakeAsync virtual clock by 100ms, resolving the delay(100) in the observable so the async operation completes" },
+        { "id": "c", "text": "To trigger 100 change detection cycles" },
+        { "id": "d", "text": "To wait for 100 HTTP requests to complete" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q21",
+      "text": "Given this test:\n\nconst req = httpController.expectOne('/api/items');\nreq.flush([{ id: 1, name: 'Item' }]);\nhttpController.verify();\n\nWhat does httpController.verify() do?",
+      "options": [
+        { "id": "a", "text": "Verifies that the flushed data matches the expected shape" },
+        { "id": "b", "text": "Verifies that all expected HTTP requests were made and that no unexpected requests remain unhandled, failing the test if any are outstanding" },
+        { "id": "c", "text": "Verifies the HTTP status code was 200" },
+        { "id": "d", "text": "Closes the HttpTestingController after tests" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q22",
+      "text": "In Angular routing, what is the difference between { path: '', redirectTo: 'home', pathMatch: 'full' } and { path: '', redirectTo: 'home', pathMatch: 'prefix' }?",
+      "options": [
+        { "id": "a", "text": "They behave identically for the empty path" },
+        { "id": "b", "text": "pathMatch: 'full' only redirects when the entire URL is empty; pathMatch: 'prefix' redirects when the URL starts with the path (which for '' matches ALL routes, causing infinite redirects)" },
+        { "id": "c", "text": "pathMatch: 'prefix' is required for lazy-loaded modules" },
+        { "id": "d", "text": "pathMatch: 'full' is the default and pathMatch: 'prefix' must be explicitly set for child routes" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q23",
+      "text": "What is the purpose of the mergeMap operator compared to switchMap for uploading multiple files in parallel?",
+      "options": [
+        { "id": "a", "text": "mergeMap is preferred because it cancels previous uploads when a new file is added" },
+        { "id": "b", "text": "mergeMap is preferred because it subscribes to all inner observables concurrently, allowing multiple file uploads to run in parallel without cancellation" },
+        { "id": "c", "text": "switchMap is preferred for parallel uploads to avoid race conditions" },
+        { "id": "d", "text": "They behave the same for file uploads" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q24",
+      "text": "Given this code in a component using OnPush:\n\nconst result = await this.service.fetchData();\nthis.data = result;\n\nWhy might the template not update after this await?",
+      "options": [
+        { "id": "a", "text": "async/await is not supported in Angular components" },
+        { "id": "b", "text": "The await resolves outside Angular's zone (or without marking for check in OnPush), so change detection is not triggered; using async pipe or calling markForCheck() would fix it" },
+        { "id": "c", "text": "OnPush components cannot use async/await at all" },
+        { "id": "d", "text": "this.data must be declared as a Signal" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q25",
+      "text": "Given this code:\n\n@NgModule({\n  declarations: [HighlightDirective],\n  exports: [HighlightDirective]\n})\nexport class SharedModule {}\n\nWhy must HighlightDirective be in both declarations and exports?",
+      "options": [
+        { "id": "a", "text": "declarations compiles the directive; exports is required to avoid type errors" },
+        { "id": "b", "text": "declarations makes the directive available within SharedModule; exports makes it available to any module that imports SharedModule" },
+        { "id": "c", "text": "exports is for testing only; declarations is for production" },
+        { "id": "d", "text": "declarations registers the directive with the router; exports registers it with the DI system" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q26",
+      "text": "In NgRx, what is the on() function inside createReducer used for?",
+      "options": [
+        { "id": "a", "text": "Subscribing to a store selector inside a reducer" },
+        { "id": "b", "text": "Mapping a specific action to a state transformation function, defining how state changes when that action is dispatched" },
+        { "id": "c", "text": "Registering an effect for the action" },
+        { "id": "d", "text": "Attaching a validator to the action's payload" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q27",
+      "text": "In Angular, what is the inject() function and when would you use it instead of constructor injection?",
+      "options": [
+        { "id": "a", "text": "inject() is a test utility for injecting mock services" },
+        { "id": "b", "text": "inject() allows retrieving dependencies from Angular's injector at the point of call (e.g., in functional guards, factory functions, or field initializers) without needing constructor parameters" },
+        { "id": "c", "text": "inject() replaces @Injectable for class-based services" },
+        { "id": "d", "text": "inject() is used to inject HTML elements into components" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q28",
+      "text": "Given this test for a component with a form:\n\nit('should disable submit when form is invalid', () => {\n  component.form.get('email').setValue('');\n  fixture.detectChanges();\n  const btn = fixture.nativeElement.querySelector('button[type=submit]');\n  expect(btn.disabled).toBeTrue();\n});\n\nFor this test to pass, what must the template contain?",
+      "options": [
+        { "id": "a", "text": "<button type='submit' *ngIf='form.valid'>Submit</button>" },
+        { "id": "b", "text": "<button type='submit' [disabled]='form.invalid'>Submit</button>" },
+        { "id": "c", "text": "<button type='submit' (disabled)='form.invalid'>Submit</button>" },
+        { "id": "d", "text": "<button type='submit' disabled='{{form.invalid}}'>Submit</button>" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q29",
+      "text": "What problem does the async pipe solve compared to manually subscribing in ngOnInit and unsubscribing in ngOnDestroy?",
+      "options": [
+        { "id": "a", "text": "The async pipe emits faster than manual subscriptions" },
+        { "id": "b", "text": "The async pipe automatically subscribes and unsubscribes, handles change detection for OnPush components, and eliminates boilerplate subscription management code" },
+        { "id": "c", "text": "Manual subscriptions cannot handle errors; async pipe can" },
+        { "id": "d", "text": "The async pipe converts observables to signals automatically" }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "qp_ng_a05_q30",
+      "text": "What is the key principle behind NgRx's immutable state updates in reducers?",
+      "options": [
+        { "id": "a", "text": "The reducer must use Object.freeze() on every state object" },
+        { "id": "b", "text": "The reducer must return a new state object (using spread operators or Object.assign) rather than mutating the existing state, ensuring change detection and time-travel debugging work correctly" },
+        { "id": "c", "text": "NgRx automatically makes all state immutable so reducers can mutate freely" },
+        { "id": "d", "text": "State must be stored as a JSON string and parsed on every action" }
+      ],
+      "correctOptionId": "b"
+    }
+  ]
+}
