@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { SupabaseService } from './supabase.service';
 
 export type UserRole = 'admin' | 'user' | 'examuser';
 export type LoginResult = 'ok' | 'invalid' | 'inactive';
@@ -27,9 +25,8 @@ interface SessionData {
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly SESSION_KEY = 'lang_learn_user';
-  private readonly baseUrl = `${environment.apiUrl}/auth`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private supabase: SupabaseService) {}
 
   // ── Session helpers ────────────────────────────────────────────────────────
 
@@ -42,17 +39,12 @@ export class AuthService {
   // ── Auth ──────────────────────────────────────────────────────────────────
 
   async login(username: string, password: string): Promise<LoginResult> {
-    await this.seedIfEmpty();
-    const res = await firstValueFrom(
-      this.http.post<{ result: LoginResult; role?: UserRole }>(
-        `${this.baseUrl}/login`, { username, password }
-      )
-    );
+    const res = await this.supabase.login(username, password);
     if (res.result === 'ok') {
-      const session: SessionData = { username, role: res.role! };
+      const session: SessionData = { username, role: res.role as UserRole };
       localStorage.setItem(this.SESSION_KEY, JSON.stringify(session));
     }
-    return res.result;
+    return res.result as LoginResult;
   }
 
   async signup(
@@ -60,11 +52,7 @@ export class AuthService {
     password: string,
     acceptKey: string
   ): Promise<{ success: boolean; error?: string }> {
-    return firstValueFrom(
-      this.http.post<{ success: boolean; error?: string }>(
-        `${this.baseUrl}/signup`, { username, password, acceptKey }
-      )
-    );
+    return this.supabase.signup(username, password, acceptKey);
   }
 
   logout(): void {
@@ -90,32 +78,15 @@ export class AuthService {
   // ── User management (admin only) ──────────────────────────────────────────
 
   async getAllUsers(): Promise<UserInfo[]> {
-    return firstValueFrom(
-      this.http.get<UserInfo[]>(`${this.baseUrl}/users`)
-    );
+    const rows = await this.supabase.getUsers();
+    return rows.map(r => ({
+      username: r.username,
+      role: r.role as UserRole,
+      isActive: r.is_active,
+    }));
   }
 
   async setUserActive(username: string, isActive: boolean): Promise<void> {
-    await firstValueFrom(
-      this.http.patch(`${this.baseUrl}/users/${username}/status`, { isActive })
-    );
-  }
-
-  // ── One-time migration seed ───────────────────────────────────────────────
-  // Call once to populate Firestore from the static JSON files.
-  // Safe to call repeatedly — skips if users already exist.
-
-  async seedIfEmpty(): Promise<void> {
-    const existing = await this.getAllUsers();
-    if (existing.length > 0) return;
-
-    const [users, keys] = await Promise.all([
-      firstValueFrom(this.http.get<User[]>('assets/data/users.json')),
-      firstValueFrom(this.http.get<{ key: string; label: string }[]>('assets/data/registration-keys.json')),
-    ]);
-
-    await firstValueFrom(
-      this.http.post(`${this.baseUrl}/seed`, { users, keys })
-    );
+    await this.supabase.setUserActive(username, isActive);
   }
 }

@@ -1,16 +1,14 @@
 import { Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
 import { Word } from '../models/word.model';
 import { AuthService } from './auth.service';
-import { environment } from '../../environments/environment';
+import { SupabaseService } from './supabase.service';
 
 @Injectable({ providedIn: 'root' })
 export class ProgressService {
   private _skipped = signal<Word[]>([]);
   private _learnt = signal<Word[]>([]);
 
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(private auth: AuthService, private supabase: SupabaseService) {}
 
   getSkipped(): Word[] {
     return this._skipped();
@@ -24,11 +22,7 @@ export class ProgressService {
     const username = this.auth.getUsername();
     if (!username) return;
     try {
-      const data = await firstValueFrom(
-        this.http.get<{ skipped: Word[]; learnt: Word[] }>(
-          `${environment.apiUrl}/progress/${username}`
-        )
-      );
+      const data = await this.supabase.getProgress(username);
       this._skipped.set(data.skipped ?? []);
       this._learnt.set(data.learnt ?? []);
     } catch {
@@ -40,10 +34,7 @@ export class ProgressService {
   private save(): void {
     const username = this.auth.getUsername();
     if (!username) return;
-    this.http.put(`${environment.apiUrl}/progress/${username}`, {
-      skipped: this._skipped(),
-      learnt: this._learnt(),
-    }).subscribe();
+    this.supabase.saveProgress(username, this._skipped(), this._learnt());
   }
 
   addSkipped(word: Word): void {
