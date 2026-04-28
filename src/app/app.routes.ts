@@ -1,9 +1,22 @@
-import { Routes } from '@angular/router';
+import { inject } from '@angular/core';
+import { Router, Routes } from '@angular/router';
+import { AuthService } from './services/auth.service';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  {
+    path: '',
+    pathMatch: 'full',
+    canActivate: [() => {
+      const auth = inject(AuthService);
+      const router = inject(Router);
+      if (!auth.isLoggedIn()) return router.createUrlTree(['/login']);
+      if (auth.getRole() === 'examuser') return router.createUrlTree(['/exam/my-exams']);
+      return router.createUrlTree(['/dashboard']);
+    }],
+    loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent),
+  },
   {
     path: 'login',
     loadComponent: () =>

@@ -7,7 +7,13 @@ export class SupabaseService {
   private db: SupabaseClient;
 
   constructor() {
-    this.db = createClient(environment.supabaseUrl, environment.supabaseKey);
+    this.db = createClient(environment.supabaseUrl, environment.supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false,
+      },
+    });
   }
 
   // AUTH — login
@@ -30,7 +36,7 @@ export class SupabaseService {
       .from('registration_keys')
       .select('used')
       .eq('key', acceptKey)
-      .single();
+      .maybeSingle();
     if (!key) return { success: false, error: 'Invalid registration key.' };
     if (key.used)
       return {
@@ -43,7 +49,7 @@ export class SupabaseService {
       .from('auth_users')
       .select('username')
       .eq('username', username)
-      .single();
+      .maybeSingle();
     if (existing)
       return { success: false, error: 'Username is already taken.' };
 
@@ -153,14 +159,14 @@ export class SupabaseService {
   async getUsers() {
     const { data, error } = await this.db
       .from('auth_users')
-      .select('id, username, role, is_active');
+      .select('username, role, is_active');
     if (error) throw error;
     return (data ?? []).map((r) => ({
-      id: String(r.id ?? r.username),
+      id: String(r.username),
       username: r.username,
       name: r.username,
       email: '',
-      role: r.role as 'admin' | 'user',
+      role: (r.role === 'admin' ? 'admin' : 'user') as 'admin' | 'user',
       is_active: r.is_active,
     }));
   }

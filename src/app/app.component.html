@@ -21,12 +21,14 @@
       </a>
     } @else {
       <!-- User nav -->
-      <a mat-button routerLink="/dashboard" routerLinkActive="nav-active">
-        <mat-icon>dashboard</mat-icon> Dashboard
-      </a>
-      <a mat-button routerLink="/learn" routerLinkActive="nav-active">
-        <mat-icon>school</mat-icon> Learn
-      </a>
+      @if (auth.getRole() !== 'examuser') {
+        <a mat-button routerLink="/dashboard" routerLinkActive="nav-active">
+          <mat-icon>dashboard</mat-icon> Dashboard
+        </a>
+        <a mat-button routerLink="/learn" routerLinkActive="nav-active">
+          <mat-icon>school</mat-icon> Learn
+        </a>
+      }
       <a mat-button routerLink="/exam/my-exams" routerLinkActive="nav-active">
         <mat-icon>quiz</mat-icon> My Exams
       </a>
