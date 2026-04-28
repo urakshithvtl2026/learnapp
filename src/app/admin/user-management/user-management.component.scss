@@ -57,6 +57,12 @@ table { width: 100%; }
   opacity: 0.55;
 }
 
+.actions-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .no-action {
   color: #aaa;
   font-size: 1.2rem;
@@ -67,6 +73,31 @@ table { width: 100%; }
   text-align: center;
   padding: 40px;
   color: #777;
+}
+
+.change-pw-card {
+  margin-bottom: 24px;
+
+  mat-card-header {
+    margin-bottom: 16px;
+  }
+}
+
+.pw-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  mat-form-field {
+    flex: 1 1 200px;
+    min-width: 180px;
+  }
+}
+
+.pw-error {
+  color: #c62828;
+  font-size: 0.85rem;
+  margin: 4px 0 0;
 }
 
 @media (max-width: 600px) {

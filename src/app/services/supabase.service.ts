@@ -179,4 +179,23 @@ export class SupabaseService {
     if (error) throw error;
     return { success: true };
   }
+
+  async verifyPassword(username: string, password: string): Promise<boolean> {
+    const { data, error } = await this.db
+      .from('auth_users')
+      .select('username')
+      .eq('username', username)
+      .eq('password', password)
+      .maybeSingle();
+    return !error && !!data;
+  }
+
+  async changePassword(username: string, newPassword: string) {
+    const { error } = await this.db
+      .from('auth_users')
+      .update({ password: newPassword })
+      .eq('username', username);
+    if (error) throw error;
+    return { success: true };
+  }
 }

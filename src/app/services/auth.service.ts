@@ -89,4 +89,14 @@ export class AuthService {
   async setUserActive(username: string, isActive: boolean): Promise<void> {
     await this.supabase.setUserActive(username, isActive);
   }
+
+  async verifyPassword(password: string): Promise<boolean> {
+    const username = this.getUsername();
+    if (!username) return false;
+    return this.supabase.verifyPassword(username, password);
+  }
+
+  async changePassword(username: string, newPassword: string): Promise<void> {
+    await this.supabase.changePassword(username, newPassword);
+  }
 }
