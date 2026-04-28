@@ -40,6 +40,9 @@
       {{ auth.getUsername() }}
       @if (auth.isAdmin()) { <span class="role-badge">Admin</span> }
     </span>
+    <a mat-icon-button routerLink="/change-password" title="Change password">
+      <mat-icon>lock</mat-icon>
+    </a>
     <button mat-icon-button (click)="logout()" title="Logout">
       <mat-icon>logout</mat-icon>
     </button>

@@ -3,60 +3,6 @@
     <h1>User Management</h1>
   </div>
 
-  <!-- Change My Password -->
-  <mat-card class="change-pw-card">
-    <mat-card-header>
-      <mat-icon mat-card-avatar>lock</mat-icon>
-      <mat-card-title>Change My Password</mat-card-title>
-      <mat-card-subtitle>Update your own admin password</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="pw-form">
-        <mat-form-field appearance="outline">
-          <mat-label>Current Password</mat-label>
-          <input matInput [type]="showCurrent ? 'text' : 'password'" [(ngModel)]="currentPw" autocomplete="current-password" />
-          <button mat-icon-button matSuffix type="button" (click)="showCurrent = !showCurrent" tabindex="-1">
-            <mat-icon>{{ showCurrent ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>New Password</mat-label>
-          <input matInput [type]="showNew ? 'text' : 'password'" [(ngModel)]="newPw" autocomplete="new-password" />
-          <button mat-icon-button matSuffix type="button" (click)="showNew = !showNew" tabindex="-1">
-            <mat-icon>{{ showNew ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Confirm New Password</mat-label>
-          <input matInput [type]="showConfirm ? 'text' : 'password'" [(ngModel)]="confirmPw" autocomplete="new-password" />
-          <button mat-icon-button matSuffix type="button" (click)="showConfirm = !showConfirm" tabindex="-1">
-            <mat-icon>{{ showConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
-          @if (confirmPw && newPw !== confirmPw) {
-            <mat-error>Passwords do not match</mat-error>
-          }
-        </mat-form-field>
-      </div>
-
-      @if (pwError) {
-        <p class="pw-error">{{ pwError }}</p>
-      }
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button
-        mat-flat-button
-        color="primary"
-        (click)="changeMyPassword()"
-        [disabled]="pwSaving || !currentPw || !newPw || !confirmPw || newPw !== confirmPw"
-      >
-        <mat-icon>save</mat-icon>
-        {{ pwSaving ? 'Saving…' : 'Update Password' }}
-      </button>
-    </mat-card-actions>
-  </mat-card>
-
   <mat-card>
     <table mat-table [dataSource]="users">
 

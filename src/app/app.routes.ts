@@ -40,6 +40,14 @@ export const routes: Routes = [
       import('./pages/learn/learn.component').then(m => m.LearnComponent),
   },
 
+  // ── Change password (all authenticated users) ────────────────────────────
+  {
+    path: 'change-password',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/change-password/change-password.component').then(m => m.ChangePasswordComponent),
+  },
+
   // ── Admin: User management ───────────────────────────────────────────────
   {
     path: 'admin/users',
